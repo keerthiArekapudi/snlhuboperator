@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Opa check for the follow trucks</title>
+<script id="sap-ui-bootstrap" src="../resources/sap-ui-core.js"
+	data-sap-ui-resourceroots='{"opa5": "./"}'></script>
+<script
+	src="../resources/sap/ui/thirdparty/qunit.js"></script>
+<link rel="stylesheet"
+	href="../resources/sap/ui/thirdparty/qunit.css"
+	type="text/css" media="screen" />
+<script type="text/javascript">
+jQuery.sap.require("sap.ui.test.Opa5");
+jQuery.sap.require("sap.ui.test.opaQunit");
+var opa5 = sap.ui.test.Opa5;
+jQuery.sap.require("opa5.Arrangements.arrangements");
+jQuery.sap.require("opa5.Actions.follow_trucks_actions");
+jQuery.sap.require("opa5.Assertions.follow_trucks_assertions");
+
+
+	sap.ui.test.Opa5.extendConfig({
+		arrangements : new opa5.Arrangements.arrangements,
+		actions : new opa5.Actions.actions,
+		assertions : new opa5.Assertions.assertions,
+	});
+	
+	opaTest("Should see shell header user item", function(Given, When, Then) {
+		// Arrangements
+	    Given.iStartMyApp();
+
+	    //Actions
+	    When.findHeaderUserItem().and.clickOnProfileAndSettings();
+	
+		//Assertions
+		Then.iShouldSeeFollowTrucks();
+	});
+	
+	opaTest("Dispatcher owning trucks", function(Given, When, Then) {
+		
+		//Actions
+	    When.clickOnFollowTrucksFilter();
+	
+		//Assertions
+		Then.iShouldSeeTable();
+	});
+	
+	opaTest("open viewSettings Dialog ", function(Given, When, Then) {
+		
+		//Actions
+	    When.openViewSettingsDialog();
+	
+		//Assertions
+		Then.iShouldOnlyViewSettingsDialog();
+	});
+	
+	opaTest("select filter by status item ", function(Given, When, Then) {
+		
+		//Actions
+	    When.selectFilterByStatus().and.iSelectActiveAndInactiveFilters() .and.iClickonOK();
+	
+		//Assertions
+		Then.iShouldSeeTable();
+	});
+	
+	/* opaTest("select filter active trucks ", function(Given, When, Then) {
+		
+		//Actions
+	    When.selectFilterActiveTruck();
+	
+		//Assertions
+		Then.iShouldOnlyActiveTrucks();
+	}); */
+	
+	opaTest("Click on edit in the follow trucks table", function(Given, When, Then) {
+		
+		//Actions
+	    When.iClickOnEdit().and.iClickOnSubscribe().and.iClickOnSave();
+	
+		//Assertions
+		Then.iSeeToastMessage();
+	});
+	
+	opaTest("Click OK for dialog", function(Given, When, Then) {
+		
+		//Actions
+	    When.iClickOnOKinDialog();
+	
+		//Assertions
+		Then.iShouldSeeTable();
+	});
+	
+	opaTest("Search for a truck", function(Given, When, Then) {
+		
+		//Actions
+	    When.iGetARandomTruckNumber().and.iEnterATruckNumber();
+	
+		//Assertions
+		Then.iShouldSeeTableWithMatchingResults();
+	});
+	
+	
+</script>
+</head>
+<body style="height: 100%">
+	<div id="content"></div>
+	<h1 id="qunit-header">Opa test for external viewer - ALL TESTS</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+</body>
+</html>

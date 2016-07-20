@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" charset="UTF-8">
+		
+		<LINK href="./resources/styles/sapSplAppStartup.css" rel="stylesheet" type="text/css">
+		
+		<link rel="icon" type="image/ico" href="./favicon.ico"/>
+		
+		<script src="./startup/PreStartUp.js"></script>
+		
+		<script type="text/javascript">
+		/*Load bootstrap params here. Leave UI5 bootstrap lean*/
+		try{
+		    if(!window){
+			    throw new ReferenceError();
+			}
+		}
+		catch (e){
+		    jQuery.sap.log.error ( (e && e.stack) ? e.stack.toString() : "Window object undefined. Fatal error!!!");
+		}
+		
+		</script>
+		
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-theme="sap_bluecrystal" 
+				data-sap-ui-libs="sap.m,sap.ui.unified,sap.ui.layout,sap.ui.commons,sap.ui.vbm,sap.suite.ui.commons"
+				data-sap-ui-xx-bindingSyntax="complex">
+		</script>
+		
+		<script>
+		
+		sap.ui.getCore().attachInit(function(){
+			
+			if ($.sap.getUriParameters().get("spl-show-log") === "1") {
+				$.sap.log.setLevel($.sap.log.Level.ALL);	
+			}
+			
+			sap.ui.localResources("sap.spl.ui");
+			jQuery.sap.registerModulePath("splReusable","./reusable/");
+			jQuery.sap.registerModulePath("splView","./views/");
+			jQuery.sap.registerModulePath("splController","./controllers/");
+			jQuery.sap.registerModulePath("splStartup","./startup/");
+			jQuery.sap.require("splReusable.libs.Utils");
+			jQuery.sap.includeScript("./startup/splashHandler.js", "splashHandler");
+		});
+			
+		</script>
+	</head>
+
+
+
+<body class="sapUiBody" role="application">
+	<div id="splash-screen">
+		<div class="splash-screen-circle"></div>
+	</div>
+	<div id="splErrorDiv"></div>
+	<div id="content"></div>
+</body>
+</html>

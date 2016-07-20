@@ -1,0 +1,606 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+/* Fix for Incident : 0020079747 0000017179 2015 */
+.vbi-copyright {
+	bottom: 150px;
+}
+
+/* Fix for Incident: 1570040534 - Problem with VB version (z-index) */
+.oSapSplLiveAppMap {
+	z-index: 0;
+}
+
+.oSapSplPenCursor {
+	/* Fix for IE pen icon not getting displayed, Incident: 1580122505*/
+	cursor:url("../../resources/icons/pen.png"), /* Modern Browsers */
+		   url("/webui/resources/icons/pen.cur"), /* localhost pen icon */
+		   url("/resources/icons/pen.cur"), /* helium pen icon */ 
+		   auto !important;
+}
+
+
+/* Fix For Incident : 0020079747 0001175221 2014 */
+.sapSplTrafficStatusContainer {
+	position: fixed;
+}
+
+.sapSplTrafficStatusFooter {
+	position: fixed;
+	bottom: 0em;
+}
+
+/* Fix For : 1580002246 */
+#chatBoxConsoleContainerDiv {
+	position: absolute !important;
+	bottom: 45px;
+	height: 40%;
+	transition: height .75s;
+}
+
+.sapSplIncidentsAssignedLabel {
+	white-space: normal;
+	word-wrap: break-word;
+}
+
+@font-face {
+	font-family: 'businessSuiteIcons';
+	src: url('../../resources/fonts/BusinessSuiteInAppSymbols.ttf')
+		format('truetype'),
+		url('../../resources/fonts/BusinessSuiteInAppSymbols.eot')
+		format('eot');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.oPopoverAnchorButton {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	/* display: none; */
+	visibility: hidden;
+}
+
+.oSapSplLiveAppPage>section {
+	overflow: hidden !important;
+}
+
+.sapSplHideDialog {
+	display: none !important;
+}
+
+/* DETAIL WINDOW START */
+.vbi-detail {
+	border: 2px rgba(0, 159, 222, 0) solid !important;
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+	min-height: 25px !important;
+	height: 25px;
+	width: 130px !important;
+	background-color: rgba(255, 255, 255, 0);
+	border-radius: 5px;
+	padding: 0rem !important;
+}
+
+.vbi-detail .vbi-detail-content {
+	background-color: transparent;
+}
+
+.vbi-detail .vbi-detail-header {
+	display: none;
+}
+
+.vbi-detail b {
+	display: none;
+}
+
+.detailWindowArrowImage {
+	position: absolute;
+	width: 20px;
+	left: 13px;
+	top: 27px;
+}
+
+.detailWindowLabel {
+	position: absolute;
+	cursor: pointer;
+	font-size: 12px;
+	color: #000000;
+	top: 7px;
+	left: 8px;
+}
+
+.detailWindowLayout {
+	width: 130px;
+	height: 25px;
+	cursor: pointer;
+	top: 0px;
+	border-radius: 5px;
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
+.detailWindowLayoutBlueBorder {
+	border: 2px rgba(0, 159, 222, 0.7) solid !important;
+}
+
+.detailWindowLayoutYellowBorder {
+	border: 2px rgba(240, 171, 0, 0.7) solid !important;
+}
+/* DETAIL WINDOW END */
+
+/* TRUCK DETAIL WINDOW START*/
+.truckDetailWindowArrowImage {
+	position: absolute;
+	width: 15px;
+	left: -8px;
+	top: 7px;
+}
+
+.truckDetailWindowLabel {
+	position: absolute;
+	cursor: pointer;
+	font-size: 12px;
+	color: #000000;
+	top: 7px;
+	left: 6px;
+}
+
+.truckDetailWindowLayout {
+	width: 130px;
+	height: 25px;
+	cursor: pointer;
+	border: 1px rgba(0, 0, 0, 0.5) solid !important;
+	box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+	top: 0px;
+	border-radius: 5px;
+	background-color: rgba(255, 255, 255, 0.9);
+}
+/* TRUCK DETAIL WINDOW END*/
+
+/* GATES DETAIL WINDOW START*/
+.gateDetailWindowArrowImage {
+	position: absolute;
+	width: 15px;
+	left: -8px;
+	top: 7px;
+}
+
+.gateDetailWindowLabel {
+	position: absolute;
+	cursor: pointer;
+	font-size: 12px;
+	color: #000000;
+	top: 7px;
+	left: 6px;
+}
+
+.gateDetailWindowLayout {
+	width: 130px;
+	height: 25px;
+	cursor: pointer;
+	border: 1px rgba(0, 0, 0, 0.5) solid !important;
+	box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+	top: 0px;
+	border-radius: 5px;
+	background-color: rgba(255, 255, 255, 0.9);
+}
+/* GATES DETAIL WINDOW END*/
+
+/* INCIDENCE OCCURRENCE POPOVER STARTS */
+.incidenceMinimumInfo {
+	box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+	font-family: arial;
+	font-size: 12px;
+	border-radius: 5px;
+	color: #000000;
+	background-color: #ffffff;
+	border: solid rgba(153, 153, 153, 0.7) 1px;
+	opacity: .9;
+	position: absolute;
+	width: 130px;
+	height: 30px;
+	z-index: 20;
+	cursor: default;
+}
+
+.oIncidenceOccurrenceDetailsPopOver {
+	background-color: rgb(229, 41, 41);
+	opacity: .75;
+	border: solid 1px rgba(255, 255, 255, 0.71);
+	border-radius: 5px;
+	hieght: 50px;
+	box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+	width: 250px;
+}
+
+.oIncidenceOccurrenceDetailsPopOver .sapMPopoverCont {
+	overflow: visible !important;
+}
+
+.oIncidenceOccurrenceDetailsPopOver .sapMPopoverArr {
+	display: none;
+}
+
+.oIncidenceOccurrenceDetailsPopOverContetnLayout {
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-right: 5px;
+}
+
+.oIncidenceOccurrenceDetailsPopOverArrowImage {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: calc(50% -     10px);
+	left: -10px;
+}
+
+.oIncidenceOccurrenceDetailsPopOverIncident {
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+.oIncidenceOccurrenceDetailsPopOverIncidentShortText {
+	color: #FFFFFF;
+	white-space: normal;
+}
+
+.trafficStatusTitle {
+	margin-left: 1em !important;
+}
+
+/* INCIDENCE OCCURRENCE POPOVER ENDS */
+.sapSplAssignTourToTruckDialog .sapMDialogScrollCont {
+	padding: 0rem;
+}
+
+.sapSplHiddenBar .sapSplHiddenButton {
+	display: none;
+}
+
+.contextMenuButton {
+	height: 2rem;
+	padding: 0rem;
+}
+
+.mapContextMenu .sapMPopoverArr {
+	opacity: 1;
+	top: 6px;
+	z-index: -1;
+	border-width: 10px;
+	left: -20px;
+}
+
+.mapContextMenu .sapMPopoverArr {
+	border-right-color: white;
+}
+
+.mapContextMenuAdd .sapMPopoverArr:after {
+	border-right-color: #009de0;
+}
+
+.mapContextMenuDelete .sapMPopoverArr:after {
+	border-right-color: #E00024;
+}
+
+.contextMenuButton {
+	padding: 0 !important;
+}
+
+.contextMenuButton .sapMBtnInner {
+	padding: 0rem;
+	height: 100%;
+}
+
+.contextMenuButton .sapMBtnIcon {
+	line-height: 2rem;
+	color: white;
+}
+
+.contextMenuButton .sapMBtnContent {
+	color: white;
+	line-height: 2rem;
+	padding-left: 2rem;
+}
+
+.contextMenuButtonAdd {
+	width: 7rem;
+}
+
+.contextMenuButtonAdd .sapMBtnContent {
+	background: #009de0;
+}
+
+.contextMenuButtonDelete {
+	width: 8rem;
+}
+
+.contextMenuButtonDelete .sapMBtnContent {
+	background: #E00024;
+}
+
+.contextMenuButton .sapMBtnInner {
+	border: 0px;
+}
+
+.showLabelsSegment .SapSplLeftPanelTitle {
+	margin-left: 0.6rem;
+	margin-top: 0.5rem;
+}
+
+.showLabelsSegment.sapSplLeftPanelMasterPage .sapMPageSubHeader {
+	height: 12.5rem !important;
+}
+
+.sapSplTrafficStatusContainer .sapMSplitContainerMaster {
+	background: transparent;
+	border: none;
+}
+
+.sapSplLeftPanelMasterPage .sapMPageSubHeader {
+	height: 9rem !important;
+}
+
+.showLabelsSegment.sapSplLeftPanelMasterPage>section {
+	top: 10rem !important;
+	background-color: white;
+}
+
+.sapSplLeftPanelMasterPage>section {
+	top: 6rem !important;
+	background-color: white;
+}
+
+.SapSplVisibiltyOffText1 {
+	margin-left: 4%;
+	margin-top: 6%;
+}
+
+.SapSplVisibiltyOffText2 {
+	margin-left: 4%;
+	margin-top: 2%;
+}
+
+.sapSplLeftPanelMasterPage .sapMPageSubHeader .sapMBarChild .sapUiVltCell:nth-child(2) .sapMITB .sapMITBNotScrollable .sapMITBHead .sapMITBFilter .sapMITBText
+	{
+	width: auto !important;
+}
+
+.sapSplLeftPanelMasterPage .sapMPageSubHeader .sapMBarChild .sapUiVltCell:nth-child(2) .sapMITB .sapMITBNotScrollable .sapMITBHead .sapMITBFilter .sapMITBTab
+	{
+	padding: 0 0.25rem !important;
+}
+
+.sapSplTrafficStatusLeftPanelIconTabBar .sapMITBArrowScrollLeft {
+	z-index: 2; 
+}
+
+.sapSplTrafficStatusLeftPanelIconTabBar .sapMITH .sapMITBHead {
+	margin: 1rem 0rem 0 0rem;
+}
+
+.sapSplTrafficStatusLeftPanelIconTabBar .sapMITBSepLine {
+	height: 2rem !important;
+}
+
+.sapSplTrafficStatusLeftPanelIconTabBar .sapMITH .sapMITBHead .sapMITBItem
+	{
+	height: 3.25rem;
+	margin: 0 0.2rem!important;
+}
+
+.sapSplTrafficStatusLeftPanelIconTabBar .sapMITH .sapMITBHead .sapMITBItem .sapMITBTab
+	{
+	height: 2rem;
+	margin: 0rem;
+}
+
+.sapSplTrafficStatusLeftPanelIconTabBar .sapMITBFilterIcon {
+	width: 2rem;
+	height: 2rem;
+}
+
+.sapSplTrafficStatusLeftPanelIconTabBar .sapMITBContentArrow {
+	width: 2rem !important;
+	margin: 0 .5rem !important;
+}
+
+.SapSplLeftPanelTitle {
+	margin-left: 0.6rem;
+}
+
+.SapSplLeftPanelBlocker {
+	position: absolute !important;
+	width: 20rem;
+	background-color: black;
+	height: 100%;
+	z-index: 999;
+	opacity: 0.1;
+}
+
+.SapSplLeftPanelBlockerHide {
+	display: none;
+}
+
+.sapSplNextStopHLayout {
+	white-space: normal;
+}
+
+.SapSplETAOrange {
+	color: orange !important;
+}
+
+.SapSplETAGreen {
+	color: green !important;
+}
+
+.SapSplNextStopName {
+	font-weight: bold !important;
+}
+
+.SapSplNextStopPlannedArrivalTime {
+	margin-left: 0.5rem;
+}
+
+.setSectionWidthForMapBorder {
+	height: calc(100% -     5.05em) !important;
+	box-sizing: border-box;
+}
+
+.sapSplLiveAppDisplayAreaBorder {
+	position: absolute;
+	background: #009de0;
+	z-index: 10;
+	display: none;
+}
+
+.sapSplLiveAppDisplayAreaBorderTop {
+	border-bottom: 5px solid #009de0;
+}
+
+.sapSplLiveAppDisplayAreaBorderRight {
+	height: 100%;
+	width: 5px;
+	right: 0;
+}
+
+.sapSplLiveAppDisplayAreaBorderBottom {
+	border-top: 5px solid #009de0 !important;
+}
+
+.sapSplLiveAppDisplayAreaBorderLeft {
+	height: 100%;
+	width: 5px;
+	left: 0;
+}
+
+.ClusterObjectListItemRegistrationNumber {
+	width: 40%;
+}
+
+.ClusterObjectListItemReportedTime {
+	width: 40%
+}
+
+.leftPanelList .sapMGHLI.sapMLIB {
+	padding: 0rem;
+}
+
+.leftPanelListItemHovered {
+	
+}
+
+.leftPanelListItem {
+	position: relative;
+	cursor: pointer;
+}
+
+.leftPanelListItem .sapMObjLTopRow {
+	width: 95%!important;
+}
+
+.leftPanelListItemHovered .radarApprovalLayout {
+	display: block;
+}
+
+.radarApprovalLayout {
+	position: absolute;
+	display: none;
+	bottom: .4em;
+	right: 1em;
+	float: right;
+}
+
+.radarApprovalAccept {
+	color: rgb(0, 120, 51);;
+	cursor: pointer;
+}
+
+.radarApprovalReject {
+	color: rgb(204, 25, 25);;
+	margin-left: 1em;
+	cursor: pointer;
+}
+
+.leftPanelListItemHeight1 {
+	height: 5rem !important;
+}
+
+.leftPanelListItemHeight2 {
+	height: 4rem !important;
+}
+
+.leftPanelListItemHeight3 {
+	height: 3.5rem !important;
+}
+
+.radarIcon {
+	margin-bottom: 1em;
+}
+
+.radarGeofence .sapMObjLAttrRow {
+	padding-top: 0rem;
+}
+
+.radarStatus {
+	font-size: 0.875rem;
+	color: #007cc0;
+}
+
+.sapSplBusinessPartnersTrackedList {
+	height: 280px;
+}
+
+.sapSnlhHorizotalLayout {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+.sapSnlhTrackGeofenceDialogColumnListItem {
+	position: relative;
+}
+
+.sapSnlhTrackGeofenceDialog .sapMDialogSection .sapMDialogScroll .sapMDialogScrollCont
+	{
+	padding: 0;
+}
+
+.sapSnlhleftPanelGroupByDialog .sapMDialogSection .sapMDialogScroll .sapMDialogScrollCont
+	{
+	padding: 0;
+}
+
+.sapSnlhTrackGeofenceDialog {
+	left: 6rem !important;
+	top: 10rem !important;
+}
+
+.sapSplSelectAllLocationsCheckBox.sapMTB-Transparent-CTX.sapMTB {
+	padding-left: 0rem;
+}
+
+.sapSplLabelVisibilityTitle {
+	height: 2rem!important;
+	padding-left: .75rem!important;
+}
+
+.sapSplLabelVisibilityTitle .sapMLabel {
+	text-align: left;
+	color: #666666!important;
+	font-size: 0.875rem!important;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold!important;
+}
+
+.sapSplSelectAllLocationsCheckBox {
+	height: 2rem!important;
+}
+.sapSnlhIconRepost {
+	padding-left : 1.8rem;
+}
+.sapSnlhInfoToolbarHeight{
+       height:0rem !important;
+}
+.sapSplWebCamURLStyle{
+	word-wrap:normal !important;
+}

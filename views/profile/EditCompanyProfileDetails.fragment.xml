@@ -1,0 +1,126 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Panel xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" expanded="true" expandable="false"
+	class="sapSplPanelContentHideBorderBottom">
+	<content>
+		<f:SimpleForm id="sapSplEditCompanyDetailsForm" minWidth="1024"
+			maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+			title="" labelSpanL="3" labelSpanM="3" emptySpanL="0" emptySpanM="0"
+			columnsL="2" columnsM="2">
+
+			<f:content>
+				<Label id="sapSplCompanyProfileImageLabel" text="{splI18NModel>LABEL_COMPANY_PROFILE_ADD_PHOTO}" />
+				<VBox>
+					<items>
+						<!-- CSNFIX : 0120061532 1325332 2014 -->
+						<HBox class="sapSplImageInputHolder">
+							<Input type="Text" id="sapSplCompanyProfileImageInput"
+								value="{/ImageUrl}" visible="true" liveChange="handleImageUrlChange" />
+							<!-- CSNFIX : 0120061532 1325332 2014 To handle Image flow -->
+							<Button id="sapSplEditProfileAddImage" press="handleAddCompanyProfilePhoto"
+								text="{splI18NModel>REFRESH_PHOTO}"></Button>
+						</HBox>
+						<Image id="sapSplCompanyProfileImage" src="{/ImageUrl}"
+							height="100px" width="100px" />
+					</items>
+				</VBox>
+
+				<Label id="sapSplCompanyProfileEditRegistrationNumberLabel"
+					text="{splI18NModel>REGISTRATION_NUMBER}" />
+				<Input id="sapSplCompanyProfileEditRegistrationNumberText"
+					liveChange="commonLiveChange" value="{/Organization_RegistrationNumber}"
+					change="handleRegNumberChange">
+					<layoutData>
+						<l:GridData span="L6 M6 S12" />
+					</layoutData>
+				</Input>
+
+				<Label id="sapSplCompanyProfileEditRegistryLabel" text="{splI18NModel>REGISTRY_NUMBER}" />
+				<Input id="sapSplCompanyProfileEditModeRegistryText"
+					liveChange="commonLiveChange" value="{/Organization_Registry}"
+					change="handleRegistryNumberChange">
+					<layoutData>
+						<l:GridData span="L6 M6 S12" />
+					</layoutData>
+				</Input>
+
+				<Label id="sapSplCompanyProfileEditModeNameLabel" required="true"
+					text="{splI18NModel>COMPANY_PROFILE_COMPANY_NAME}" />
+				<Input id="sapSplCompanyProfileEditModeNameText" value="{/Organization_Name}"
+					editable="true" liveChange="commonLiveChange" change="handleCompanyNameChange">
+					<layoutData>
+						<l:GridData span="L6 M6 S12" />
+					</layoutData>
+				</Input>
+
+				<Label id="sapSplCompanyProfileEditModeWebsiteLabel" labelFor="sapSplCompanyProfileEditModeWebsiteText"
+					text="{splI18NModel>COMPANY_PROFILE_COMPANY_WEBSITE}" />
+				<Input id="sapSplCompanyProfileEditModeWebsiteText" type="Url"
+					liveChange="commonLiveChange" placeHolder="Enter URL..."
+					value="{/CommunicationInfo_Website}" change="handleWebsiteChange">
+					<layoutData>
+						<l:GridData span="L6 M6 S12" />
+					</layoutData>
+				</Input>
+
+				<Label id="sapSplCompanyProfileEditModeStreetLabel" text="{splI18NModel>STREET}" />
+				<Input id="sapSplCompanyProfileEditModeStreetText" liveChange="commonLiveChange"
+					value="{/PostalAddress_StreetName}" change="handleStreetChange">
+					<layoutData>
+						<l:GridData span="L6 M6 S12" />
+					</layoutData>
+				</Input>
+
+				<Label id="sapSplCompanyProfileEditModeTownLabel" text="{splI18NModel>TOWN}" />
+				<Input id="sapSplCompanyProfileEditModeTownText" liveChange="commonLiveChange"
+					value="{/PostalAddress_Town}" change="handleTownChange">
+					<layoutData>
+						<l:GridData span="L6 M6 S12" />
+					</layoutData>
+				</Input>
+
+				<Label id="sapSplCompanyProfileEditModeDistrictLabel" text="{splI18NModel>DISTRICT}" />
+				<Input id="sapSplCompanyProfileEditModeDistrictText"
+					liveChange="commonLiveChange" value="{/PostalAddress_District}"
+					change="handleDistrictChange">
+					<layoutData>
+						<l:GridData span="L6 M6 S12" />
+					</layoutData>
+				</Input>
+
+				<Label id="sapSplCompanyProfileEditModeCountryLabel" text="{splI18NModel>COUNTRY}" />
+				<Input id="sapSplCompanyProfileEditModeCountryText"
+					liveChange="commonLiveChange" value="{/PostalAddress_Country}"
+					change="handleCountryChange">
+					<layoutData>
+						<l:GridData span="L6 M6 S12" />
+					</layoutData>
+				</Input>
+
+				<Label id="sapSplCompanyProfileEditModePhoneLabel" text="{splI18NModel>PHONE}" />
+				<Input id="sapSplCompanyProfileEditModePhoneText" liveChange="commonLiveChange"
+					type="Tel" value="{/CommunicationInfo_Phone}" change="handlePhoneChange">
+					<layoutData>
+						<l:GridData span="L6 M6 S12" />
+					</layoutData>
+				</Input>
+
+				<Label id="sapSplCompanyProfileEditModeFaxLabel" text="{splI18NModel>FAX}" />
+				<Input id="sapSplCompanyProfileEditModeFaxText" liveChange="commonLiveChange"
+					type="Tel" value="{/CommunicationInfo_Fax}" change="handleFaxChange">
+					<layoutData>
+						<l:GridData span="L6 M6 S12" />
+					</layoutData>
+				</Input>
+
+
+
+
+			</f:content>
+		</f:SimpleForm>
+	</content>
+</Panel>

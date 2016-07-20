@@ -1,0 +1,162 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:VBM="sap.ui.vbm" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout"
+	xmlns="sap.m" controllerName="splController.liveApp.liveApp"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page class="oSapSplLiveAppPage" id="oSapSplLiveAppPage" busyIndicatorDelay="0"
+				showNavButton="true" navButtonPress="fnHandleBackNavigation">
+				<SplitApp id="sapSplTrafficStatusContainer" mode="HideMode"
+					class="sapSplTrafficStatusContainer">
+					<masterPages>
+						<Page showHeader="false" backgroundDesign="Transparent"
+							class="sapSplLeftPanelMasterPage" id="sapSplTrafficStatusContainerPage">
+							<subHeader>
+								<Toolbar>
+									<layout:VerticalLayout width="100%">
+										<List width="100%" mode="MultiSelect"
+											select="sapSplHandleSelectOfTruckVisibility"
+											visible="{path:'sapSplAppConfigDataModel>/isTrucksLabelVisible', formatter:'splReusable.libs.SapSplModelFormatters.sapSplGetVisibilityBasedOnSubscriptionModel'}">
+											<headerToolbar>
+												<Toolbar class="sapSplLabelVisibilityTitle">
+													<Label text="{splI18NModel>MAP_FILTER_LABEL_TITLE}"></Label>
+												</Toolbar>
+											</headerToolbar>
+											<items>
+												<StandardListItem type="InActive" selected="true"
+													title="{splI18NModel>TRUCKS}"></StandardListItem>
+											</items>
+										</List>
+										<Label id="sapSplLeftPanelTitle" class="SapSplLeftPanelTitle"
+											design="Bold" />
+										<IconTabBar class="sapSplTrafficStatusLeftPanelIconTabBar"
+											id="idSapSplLeftPanelIconTabBar" select="fnHandleLeftPanelIconTabBarSelect"
+											expandable="false">
+											<items>
+												<IconTabFilter id="SapSplLeftPanelFilterGeofences" tooltip = "{splI18NModel>SEND_MESSAGE_RECIPIENTS_GEOFENCE}"
+													icon="./resources/icons/tab_geofence_normal.png" key="Geofences" />
+												<!-- text="{path:'SapSplLeftPanelListModel>/' , formatter:'splReusable.libs.SapSplModelFormatters.getSapSplCountBasedOnKey'}" 
+													/> -->
+												<IconTabSeparator />
+												<IconTabFilter id="SapSplLeftPanelFilterParkingSpace" tooltip = "{splI18NModel>PARKING_SPACES_TOOLTIP}"
+													icon="./resources/icons/tab_parking_normal.png" key="ParkingSpace" />
+												<!-- text="{path:'SapSplLeftPanelListModel>/' , formatter:'splReusable.libs.SapSplModelFormatters.getSapSplCountBasedOnKey'}" 
+													/> -->
+												<IconTabSeparator />
+												<IconTabFilter id="SapSplLeftPanelFilterBridge" tooltip = "{splI18NModel>BRIDGES_TOOLTIP}"
+													icon="./resources/icons/tab_bridge_normal.png" key="Bridge" />
+												<!-- text="{path:'SapSplLeftPanelListModel>/' , formatter:'splReusable.libs.SapSplModelFormatters.getSapSplCountBasedOnKey'}" 
+													/> -->
+												<IconTabSeparator />
+												<IconTabFilter id="SapSplLeftPanelFilterContainerTerminals" tooltip ="{splI18NModel>CONTAINER_TERMINALS}"
+													icon="./resources/icons/tab_container_terminal_normal.png"
+													key="ContainerTerminals" />
+												<!-- text="{path:'SapSplLeftPanelListModel>/' , formatter:'splReusable.libs.SapSplModelFormatters.getSapSplCountBasedOnKey'}" 
+													/> -->
+												<IconTabSeparator />
+												<IconTabFilter id="SapSplLeftPanelFilterContainerDepots" tooltip = "{splI18NModel>CONTAINER_DEPOTS_TOOLTIP}"
+													icon="./resources/icons/tab_container_depot_normal.png"
+													key="ContainerDepots" />
+												<!-- text="{path:'SapSplLeftPanelListModel>/' , formatter:'splReusable.libs.SapSplModelFormatters.getSapSplCountBasedOnKey'}" 
+													/> -->
+											</items>
+										</IconTabBar>
+									</layout:VerticalLayout>
+								</Toolbar>
+							</subHeader>
+							<content>
+								<layout:HorizontalLayout id="SapSplLeftPanelBusyIndicatorLayout"
+									class="SapSplLeftPanelBlockerHide" busyIndicatorDelay="0" busy="true">
+								</layout:HorizontalLayout>
+								<List id="SapSplLeftPanelList" mode="MultiSelect"
+									noDataText="{splI18NModel>NO_DATA_TEXT_GEOFENCE}"
+									rememberSelections="false" select="fnHandleSapSplLeftPanelListItemSelect"
+									class="leftPanelList">
+									<infoToolbar>
+										<Toolbar id="sapSnlhGroupFilterInfoToolbar" class="sapSnlhInfoToolbarHeight">
+											<Label id="sapSnlhGroupTitlelabelInfoToolBar" />
+										</Toolbar>
+									</infoToolbar>
+
+									<headerToolbar>
+										<Toolbar class="sapSplSelectAllLocationsCheckBox">
+											<CheckBox text="{splI18NModel>SELECT_ALL_GEOFENCES}"
+												id="sapSplSelectAllLocationsCheckBox" class="sapSplSelectAllLocationsCheckBox"
+												select="sapSplHandleClickOfSelectAllLocations"></CheckBox>
+										</Toolbar>
+									</headerToolbar>
+
+									<!-- <items> -->
+									<!-- <StandardListItem id="oSapSplLeftPanelListItem" -->
+									<!-- title="{Name}" selected="{isSelected}" press="fnHandleLeftPanelItemPress" -->
+									<!-- type="Active"> -->
+									<!-- </StandardListItem> -->
+									<!-- </items> -->
+								</List>
+							</content>
+							<footer>
+								<Bar>
+									<contentRight>
+										<Button icon="sap-icon://group-2" tooltip="{splI18NModel>GROUPBY_BUTTON_TOOLTIP}" id="sapSplLeftPanelGroupButton"
+											press="fnHandleOpenOfLeftPanelGroupFilterDialog"></Button>
+										<Button icon="sap-icon://filter" id="sapSplLeftPanelFilterButton"
+											press="fnHandleOpenOfLeftPanelGroupFilterDialog">
+										</Button>
+									</contentRight>
+								</Bar>
+							</footer>
+						</Page>
+					</masterPages>
+
+					<detailPages>
+						<Page showHeader="false" enableScrolling="false">
+							<content>
+								<layout:HorizontalLayout id="sapSplTrafficStatusMapContainer">
+									<Button id="oPopoverAnchorButton" class="oPopoverAnchorButton"></Button>
+									<VBM:VBI id="oSapSplLiveAppMap" class="oSapSplLiveAppMap"
+										plugin="false" submit="fnEventHandler" config="{oSapSplVBModelLiveApp>/}"
+										openWindow="openDetailWindow">
+									</VBM:VBI>
+									<core:HTML
+										content="&lt;div class=&quot;sapSplLiveAppDisplayAreaBorder sapSplLiveAppDisplayAreaBorderRight&quot;/div&gt;"></core:HTML>
+									<core:HTML
+										content="&lt;div class=&quot;sapSplLiveAppDisplayAreaBorder sapSplLiveAppDisplayAreaBorderLeft&quot;/div&gt;"></core:HTML>
+								</layout:HorizontalLayout>
+							</content>
+						</Page>
+					</detailPages>
+				</SplitApp>
+				<footer>
+					<Bar id="sapSplTrafficStatusFooter" class="sapSplTrafficStatusFooter">
+						<contentLeft>
+							<Button icon="sap-icon://settings" visible="false"
+								class="sapSplHiddenButton"></Button>
+							<Button id="addGeofenceButton" press="fnAddGeofence"
+								class="sapSplHiddenButton" visible="false"></Button>
+							<!-- CSN FIX : 0120061532 0001485156 2014 -->
+							<Button id="addPointOfInterestButton" press="fnAddPointOfInterest"
+								class="sapSplHiddenButton" visible="false"></Button>
+						</contentLeft>
+						<contentRight>
+							<Button id="oContactBusinessPartnerButton" press="fnOpenBusinessPartnerMessageDialog"
+								class="sapSplHiddenButton"></Button>
+							<Button id="oSendMessageToTruckButton" press="fnOpenSendMessageToTruckActionSheet"
+								class="sapSplHiddenButton"
+								visible="{path:'sapSplAppConfigDataModel>/canSendMessageOnMap' , formatter:'splReusable.libs.SapSplModelFormatters.sapSplGetVisibilityBasedOnSubscriptionModel'}"></Button>
+							<Button icon="sap-icon://undo" visible="false"></Button>
+							<!-- CSN FIX : 0120031469 649181 2014 -->
+							<Button id="sapSplLocationCreateCancelButton" press="fnHandleLocationCreationCancelOnTheMap"
+								visible="false"></Button>
+							<Button icon="sap-icon://redo" visible="false"></Button>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</core:View>

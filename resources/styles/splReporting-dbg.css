@@ -1,0 +1,51 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.hiddenObject{
+	display:none !important;
+}
+
+.visibleObject{
+	display:block !important;
+}
+
+.reportingToolbar{
+	width:250%;
+	border-bottom: 2px solid #dddddd !important;
+	padding-bottom: 5px;
+}
+
+.marginLeft{
+	margin-left: 7% !important;
+	padding-top: 20px;
+}
+
+
+.splReportingSelectInput{
+	max-height: 400px !important;
+	height : 400px !important;
+	top: 200 px !important;
+}
+
+.reportingMainView{
+	width:98% !important;
+}
+
+#ReportingSelectLocationsDialog-dialog-cont{
+	max-height: 400px !important;
+	height : 64% !important;
+}
+
+#ReportingLocationsValueHelp-dialog-cont{
+	max-height: 400px !important;
+	height : 64% !important;
+}
+
+.reportingPageHeaderFooter{
+	width: 106%;
+	
+}
+.reportingContent{
+	margin-left: 2.5%;
+	
+}

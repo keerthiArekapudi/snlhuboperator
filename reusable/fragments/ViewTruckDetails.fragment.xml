@@ -1,0 +1,312 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<ResponsivePopover xmlns="sap.m" showHeader="false"
+	modal="false" contentWidth="350px" placement="{splTruckDetailsPopOverModel>/placement}"
+	offsetX="{splTruckDetailsPopOverModel>/x}" offsetY="{splTruckDetailsPopOverModel>/y}">
+	<content>
+		<NavContainer height="250px" id="sapSplTruckDetailsNavContainer">
+			<Page xmlns="sap.m"
+				showHeader="{splTruckDetailsPopOverModel>/showHeaderAndContent}"
+				showFooter="true" id="sapSplTruckDetailsViewPage" backgroundDesign="Solid">
+
+				<customHeader>
+					<Bar xmlns="sap.m" id="sapSplTruckDetailsViewPageHeaderBar">
+						<contentMiddle>
+							<Label xmlns="sap.m" id="sapSplTruckDetailsViewPageHeaderBarLabel"
+								text="{parts:[{path:'splTruckDetailsPopOverModel>/RegistrationNumber'},{path:'splTruckDetailsPopOverModel>/DriverName'}], formatter:'splReusable.libs.SapSplModelFormatters.getTruckDetailsHeader'}" />
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+
+				<SimpleForm xmlns="sap.ui.layout.form" id="splFormForReadLocation"
+					class="createForm">
+					<Label xmlns="sap.m" id="sapSplTruckLabel" visible="{= ${sapSplAppConfigDataModel>/canViewAssignedItems} !== 1}">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="2">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+
+					</Label>
+					<Text xmlns="sap.m" id="sapSplTruckText" visible="{= ${sapSplAppConfigDataModel>/canViewAssignedItems} !== 1}"
+						text="{splTruckDetailsPopOverModel>/Type.description}" editable="false">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="3">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+
+					</Text>
+
+					<Label xmlns="sap.m" id="sapSplTourLabel" visible="{= ${sapSplAppConfigDataModel>/canViewAssignedItems} !== 1}">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="2">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Text xmlns="sap.m" id="sapSplTourtext" editable="false" visible="{= ${sapSplAppConfigDataModel>/canViewAssignedItems} !== 1}">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="3">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Text>
+
+					<Label xmlns="sap.m" id="sapSplNextStopLabel">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="2">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<HorizontalLayout xmlns="sap.ui.commons.layout"
+						class="sapSplNextStopHLayout" id="sapSplNextStopText">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="3">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+						<content>
+							<Text xmlns="sap.m" id="sapSplNextStopName"
+								text="{splTruckDetailsPopOverModel>/TourNextStop}" class="SapSplNextStopName">
+							</Text>
+							<Text xmlns="sap.m" id="sapSplNextStopPlannedArrivalTime"
+								class="SapSplNextStopPlannedArrivalTime"
+								text="{path:'splTruckDetailsPopOverModel>/Planned_ArrivalTime' , formatter:'splReusable.libs.SapSplModelFormatters.returnPlannedArrivalTime'}">
+							</Text>
+							<Text xmlns="sap.m" id="sapSplNextStopEstimatedArrivalTime"
+								text="{parts:[{path:'splTruckDetailsPopOverModel>/ETA'},{path:'splTruckDetailsPopOverModel>/Planned_ArrivalTime'}], formatter:'splReusable.libs.SapSplModelFormatters.returnEstimatedArrivalTime'}">
+							</Text>
+						</content>
+					</HorizontalLayout>
+
+					<Label xmlns="sap.m" id="sapSplPhoneLabel" visible="{= ${sapSplAppConfigDataModel>/canViewAssignedItems} !== 1}">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="2">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Link xmlns="sap.m" id="sapSplPhoneText" visible="{= ${sapSplAppConfigDataModel>/canViewAssignedItems} !== 1}"
+						text="{splTruckDetailsPopOverModel>/DriverPhoneNumber}" editable="false">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="3">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Link>
+
+					<Label xmlns="sap.m" id="sapSplCarrierName" text="{splI18NModel>CARRIER}"
+						visible="{path:'sapSplAppConfigDataModel>/canViewAssignedItems', formatter:'splReusable.libs.SapSplModelFormatters.getCanPublishValue'}">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="2">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Text xmlns="sap.m" id="sapSplCarrierNameText" 
+						visible="{path:'sapSplAppConfigDataModel>/canViewAssignedItems', formatter:'splReusable.libs.SapSplModelFormatters.getCanPublishValue'}"
+						text="{splTruckDetailsPopOverModel>/CarrierName}">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="3">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Text>
+
+					<Label xmlns="sap.m" id="sapSplTruckETA" text="{splI18NModel>ETA}"
+						visible="{path:'sapSplAppConfigDataModel>/canViewAssignedItems', formatter:'splReusable.libs.SapSplModelFormatters.getCanPublishValue'}">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="2">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Text xmlns="sap.m" id="sapSplTruckETAText"
+						visible="{path:'sapSplAppConfigDataModel>/canViewAssignedItems', formatter:'splReusable.libs.SapSplModelFormatters.getCanPublishValue'}"
+						text="{path:'splTruckDetailsPopOverModel>/ETA', formatter:'splReusable.libs.SapSplModelFormatters.convertDateTimeToStringBasedOnLocaleInMediumFormat'}">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="3">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Text>
+
+				</SimpleForm>
+
+				<Panel id="sapSplTruckDetailWindowTourItemsPanel"
+					visible="{path:'sapSplAppConfigDataModel>/canViewAssignedItems', formatter:'splReusable.libs.SapSplModelFormatters.getCanPublishValue'}"
+					headerText="{splI18NModel>FREIGHT_ITEM_IDENTIFIER_LABEL}"
+					expandable="true" expand="fnHandleFetchOfItemsToTour">
+					<content>
+						<Table mode="None" items="{/Items}" id="sapSplTrackingStatusTable">
+							<columns>
+								<Column width="40%" hAlign="Left">
+									<header>
+										<Label text="{splI18NModel>TRUCK_DETAIL_ITEMS}" />
+									</header>
+								</Column>
+								<Column width="60%" hAlign="Right">
+									<header>
+										<Label text="{splI18NModel>TRUCK_DETAIL_ORDERID}" />
+									</header>
+								</Column>
+							</columns>
+							<ColumnListItem type="Navigation"
+								press="fnHandleNavigationIntoItemDetails">
+								<Text text="{ItemID}" />
+								<Text text="{PartnerOrderID}"></Text>
+							</ColumnListItem>
+						</Table>
+					</content>
+				</Panel>
+			</Page>
+			<Page showNavButton="true"
+				title="{/stopItemDetails/ItemID}"
+				navButtonPress="fnHandleBackNavigationFromTruckItemsPage">
+				<content>
+					<SimpleForm xmlns="sap.ui.layout.form"
+						class="createForm">
+						<Label xmlns="sap.m" text="{splI18NModel>TRUCK_DETAIL_ORDERID}">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="2">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+
+						</Label>
+						<Text xmlns="sap.m"
+							text="{/stopItemDetails/PartnerOrderID}"
+							editable="false">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="3">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Text>
+
+						<Label xmlns="sap.m" text="{splI18NModel>TRUCK_DETAIL_DESTINATION}">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="2">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+
+						</Label>
+						<Text xmlns="sap.m"
+							text="{/stopItemDetails/ExternalStopDestination}"
+							editable="false">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="3">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Text>
+
+						<Label xmlns="sap.m" text="{splI18NModel>DETAILS_LABEL}">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="2">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+
+						</Label>
+						<Text xmlns="sap.m"
+							text="{/stopItemDetails/Detail1}"
+							editable="false">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="3">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Text>
+
+						<Label xmlns="sap.m" text="{splI18NModel>TRUCK_DETAIL_ACTIONS}">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="2">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+
+						</Label>
+						<Text xmlns="sap.m"
+							text="{path:'/stopItemDetails/AssignmentType', formatter:'splReusable.libs.SapSplModelFormatters.fnGetTourStopActionText'}"
+							editable="false">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="3">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Text>
+
+						<Label xmlns="sap.m" text="{splI18NModel>FREIGHT_ITEM_TYPE_LABEL}">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="2">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+
+						</Label>
+						<Text xmlns="sap.m"
+							text="{/stopItemDetails/Type_description}"
+							editable="false">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="3">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Text>
+
+						<Label xmlns="sap.m"
+							text="{splI18NModel>FREIGHT_ITEM_CONTAINER_TYPE_LABEL}">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="2">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+
+						</Label>
+						<Text xmlns="sap.m"
+							text="{/stopItemDetails/ContainerType}"
+							editable="false">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="3">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Text>
+
+						<Label xmlns="sap.m"
+							text="{splI18NModel>FREIGHT_ITEM_CONTAINER_LENGTH_LABEL}">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="2">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+
+						</Label>
+						<Text xmlns="sap.m"
+							text="{/stopItemDetails/Length_Value /stopItemDetails/Length_Unit}"
+							editable="false">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="3">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Text>
+					</SimpleForm>
+				</content>
+			</Page>
+		</NavContainer>
+	</content>
+	<beginButton>
+		<Button id="sapSplTruckDetailsViewPageBeginButton" tap="handleSendMessageAction" />
+	</beginButton>
+	<endButton>
+		<Button id="sapSplTruckDetailsViewPageEndButton" tap="handleAssigTourAction" />
+	</endButton>
+</ResponsivePopover>

@@ -1,0 +1,165 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	xmlns:uiLayout="sap.ui.layout" xmlns="sap.m"
+	controllerName="splController.dialogs.SplSendMessageBusinessPartnerDialog"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<NavContainer id="SapSplSendMessageBusinessPartnerNavContainer">
+		<Page id="SapSplSendMessageBusinessPartnerPage">
+			<content>
+				<form:SimpleForm class="createForm">
+					<form:content>
+						<Label id="SapSplMessageBusinessPartnerReceipientsLabel"
+							required="true">
+						</Label>
+						<layout:MatrixLayout class="valueHelpMainLayout" id="SapSplBupaValueHelpLayout">
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell id="SapSplBupaValueHelpCell">
+									<Input type="Text" width="100%"
+										id="SapSplValueHelpForSelectBusinessPartnerInput"
+										showSuggestion="true" showValueHelp="true" suggestionItems="{/BusinessPartners}"
+										valueHelpRequest="fnValueHelpForSelectBusinessPartner" class="sapSplValueHelp sapSplSendMessageToBuPaDisableInputField"
+										suggestionItemSelected="">
+										<suggestionItems>
+											<core:Item text="{Name}">
+											</core:Item>
+										</suggestionItems>
+									</Input>
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+						</layout:MatrixLayout>
+
+						<Label id="SapSplIncidentMessageBusinessPartnerLabel"
+							required="true">
+						</Label>
+
+<!-- 						CSNFIX : 0120061532 1443215    2014 -->
+<!-- 						CSN FIX : 0120031469 620972     2014 -->
+						<uiLayout:VerticalLayout
+							id="sapSplMessageToRecipientMessageFieldLayout" class="sapSplMessageToRecipientMessageFieldLayout">
+							<TextArea id="SapSplMessageFromIncidentInput" rows="3"
+								width="100%" class="sapSplMessageToRecipientTextArea"
+								liveChange="sapSplChangeDirtyFlag" change='sapSplEnableDisableSendButton'>
+							</TextArea>
+							<Link id="sapSplAttachIncidentLink" class="sapSplAttachIncidentLink"
+								press="fnValueHelpForIncidentMessage"></Link>
+						</uiLayout:VerticalLayout>
+
+						<Label id="SapSplMessageBusinessPartnerPriorityLabel">
+							<layoutData>
+								<layout:ResponsiveFlowLayoutData
+									weight="1">
+								</layout:ResponsiveFlowLayoutData>
+							</layoutData>
+						</Label>
+<!-- 						CSNFIX : 759542 -->
+						<uiLayout:HorizontalLayout
+							id="SapSplSendMessagePriorityRadioButtonHolder" class="SapSplSendMessagePriorityRadioButtonHolder">
+							<RadioButton groupName="GroupA" id="SapSplPriorityRadioButton_1"
+								selected="true" />
+							<RadioButton groupName="GroupA" id="SapSplPriorityRadioButton_2" />
+							<RadioButton groupName="GroupA" id="SapSplPriorityRadioButton_3" />
+							<RadioButton groupName="GroupA" id="SapSplPriorityRadioButton_4" />
+						</uiLayout:HorizontalLayout>
+
+					</form:content>
+				</form:SimpleForm>
+			</content>
+		</Page>
+		<Page id="SapSplSendMessageSelectBusinessPartnerPage">
+			<customHeader>
+				<Bar class="sapSplCustomBarContent">
+					<contentLeft>
+						<Button press="fnHandlePressOfBackButtonToSendMessagePage"
+							icon="sap-icon://nav-back"></Button>
+					</contentLeft>
+					<contentMiddle>
+						<Label id="SapSplSendMessageBusinessPartnerSelectDialogTitle">
+						</Label>
+					</contentMiddle>
+				</Bar>
+			</customHeader>
+			<subHeader>
+				<Toolbar>
+					<SearchField id="SapSplSearchOfSelectBusinessPartnerPage" search="fnToHandleSearchOfSelectBusinessPartnerPage">
+					</SearchField>
+				</Toolbar>
+			</subHeader>
+			<content>
+				
+				<List id="SapSplSendMessageBusinessPartnerSelectDialogList" noDataText="{splI18NModel>NO_BUPAS_TEXT}"
+					selectionChange="fnHandleSelectionChange" items="{/BusinessPartners}">
+					<items>
+						<StandardListItem
+							id="SapSplSendMessageBusinessPartnerSelectDialogListItem" title="{Role.description}">
+						</StandardListItem>
+					</items>
+				</List>
+			</content>
+		</Page>
+		<Page id="SapSplSendMessageSelectIncidentsPage">
+			<customHeader>
+				<Bar class="sapSplCustomBarContent">
+					<contentLeft>
+						<Button press="fnHandlePressOfBackButtonToSendMessagePage"
+							icon="sap-icon://nav-back"></Button>
+					</contentLeft>
+					<contentMiddle>
+						<Label id="SapSplSendMessageIncidentSelectDialogTitle">
+						</Label>
+					</contentMiddle>
+				</Bar>
+			</customHeader>
+			<subHeader>
+				<Toolbar>
+					<SearchField id="SapSplSearchOfSelectIncidentsPage" search="fnToHandleSearchOfIncidents">
+					</SearchField>
+				</Toolbar>
+			</subHeader>
+			<content>				
+				<List id="SapSplSendMessageIncidentSelectDialogList" select="fnHandleSelectIncidentOfListItem" noDataText="{splI18NModel>NO_INCIDENTS_TEXT}" items="{/Incidents}">
+					<items>
+						<StandardListItem id="SapSplSendMessageIncidentSelectDialogListItem" title="{Name}" description="{LongText}">
+						</StandardListItem>
+					</items>
+				</List>
+			</content>
+		</Page>
+		<Page id="SapSplSendMessageSelectBusinessPartnerUsersPage">
+			<customHeader>
+				<Bar class="sapSplCustomBarContent">
+					<contentLeft>
+						<Button press="fnHandlePressOfBusinessPartnerUsersBackButton"
+							icon="sap-icon://nav-back"></Button>
+					</contentLeft>
+					<contentMiddle>
+						<Label id="SapSplSendMessageBusinessPartnerSelectUserDialogTitle">
+						</Label>
+					</contentMiddle>
+				</Bar>
+			</customHeader>
+			<subHeader>
+				<Toolbar>
+					<SearchField id="SapSplSearchOfSelectBusinessPartnerUsersPage" search="fnToHandleSearchOfSelectBusinessPartnerUsersPage">
+					</SearchField>
+				</Toolbar>
+			</subHeader>
+			<content>
+				
+				<List id="SapSplSendMessageBusinessPartnerSelectUserDialogList" noDataText="{splI18NModel>NO_BUPAS_TEXT}"
+					select="fnHandleSelectOfBusinessPartnerUsersListItem"
+					selectionChange="fnHandleSelectionChange" items="{/BusinessPartnersUsers}">
+					<items>
+						<StandardListItem
+							id="SapSplSendMessageBusinessPartnerSelectUserDialogListItem" title="{Organization_Name}">
+						</StandardListItem>
+					</items>
+				</List>
+			</content>
+		</Page>
+	</NavContainer>
+</core:View>

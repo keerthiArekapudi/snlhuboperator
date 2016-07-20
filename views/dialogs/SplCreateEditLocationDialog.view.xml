@@ -1,0 +1,228 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout" xmlns="sap.m"
+	controllerName="splController.dialogs.SplCreateEditLocationDialog"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<NavContainer id="SplCreateEditLocationDialogNavContainer"
+		class="SplCreateEditLocationDialogNavContainer">
+		<Page id="SplCreateEditLocationDialogHomePage">
+			<content>
+				<form:SimpleForm id="splFormForCreateLocationContent">
+					<Label id="splLabelForNameOfLocation" required="true" />
+					<Input id="splInputNameOfLocation" type="Text" value="{/Name}"
+						liveChange="sapSplChangeDirtyFlag" />
+
+					<Label id="splLabelForGatesOfLocation"
+						visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getVisibilityBasedOnType'}"></Label>
+					<!-- Fix For Incident : 1472020285 - added a class -->
+					<Input type="Text" class="sapSplValueHelpForGates"
+						visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getVisibilityBasedOnType'}"
+						width="100%" id="splValueHelpForLocationGates" valueHelpOnly="true"
+						value="{path:'/GeofenceGates/results',formatter:'splReusable.libs.SapSplModelFormatters.getGatesName'}"
+						showSuggestion="false" showValueHelp="true"
+						valueHelpRequest="fnHandleValueHelpForLocationGates">
+					</Input>
+
+					<Label id="splLabelForIncidentsAssigned"
+						visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getIncidentVisibilityBasedOnType'}"></Label>
+					<Input type="Text"
+						visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getIncidentVisibilityBasedOnType'}"
+						width="100%" id="splValueHelpForIncidentsAssigned" valueHelpOnly="true"
+						value="{path:'/Incidents/results',formatter:'splReusable.libs.SapSplModelFormatters.getIncidentsName'}"
+						showSuggestion="false" showValueHelp="true"
+						valueHelpRequest="fnHandleValueHelpForIncidenceAssignment">
+					</Input>
+
+					<!-- CSN FIX 0120061532 0001483132 2014 -->
+					<Label id="splLabelForCreationTimeOfLocation" visible="false"></Label>
+					<Text id="splCreationTimeValueOfLocation" visible="false"
+						text="{path:'/AuditTrail_CreationTime',formatter:'splReusable.libs.SapSplModelFormatters.getDateFromString'}">
+					</Text>
+
+					<Label id="splLabelForLocationCoOrdinates" visible="false" />
+
+					<!-- CSNFIX : 0001224990 2014 -->
+
+					<List id="splListForLocationCoOrdinates" items="{/locationGeoCoords}"
+						mode="Delete" delete="splDeleteCordinateInEditDialog" visible="false">
+						<items>
+							<CustomListItem>
+								<content>
+									<Input width="50%" value="{long}" editable="false"
+										liveChange="splChangeCordinateInEditDialog">
+									</Input>
+									<Input width="50%" value="{lat}" editable="false"
+										liveChange="splChangeCordinateInEditDialog">
+									</Input>
+								</content>
+							</CustomListItem>
+						</items>
+					</List>
+
+					<Label id="splDummyLabelForForm" visible="false" />
+
+
+					<Label id="SplCreateEditLocationDialogBuildingID" required="true">
+					</Label>
+					<Input id="SplCreateEditLocationDialogBuildingIDInput" value="{/BuildingID}"
+						liveChange="sapSplChangeDirtyFlag" editable="true"></Input>
+
+					<Label id="SplCreateEditLocationDialogStreetName" required="true">
+					</Label>
+					<Input id="SplCreateEditLocationDialogStreetNameInput" value="{/StreetName}"
+						liveChange="sapSplChangeDirtyFlag" editable="true"></Input>
+
+					<Label id="SplCreateEditLocationDialogCityName" required="true">
+					</Label>
+					<Input id="SplCreateEditLocationDialogCityNameInput" value="{/CityName}"
+						liveChange="sapSplChangeDirtyFlag" editable="true"></Input>
+
+					<Label id="SplCreateEditLocationDialogPostalCode" required="true">
+					</Label>
+					<Input id="SplCreateEditLocationDialogPostalCodeInput" value="{/StreetPostalCode}"
+						liveChange="sapSplChangeDirtyFlag" editable="true"></Input>
+
+					<Label id="SplCreateEditLocationDialogAddressRegionCode"
+						required="true">
+					</Label>
+					<Input id="SplCreateEditLocationDialogRegionCodeInput" value="{/RegionName}"
+						liveChange="sapSplChangeDirtyFlag" editable="true"></Input>
+
+					<Label id="SplCreateEditLocationDialogCountryCode" required="true">
+					</Label>
+					<Input id="SplCreateEditLocationDialogCountryCodeInput"
+						value="{/CountryName}" liveChange="sapSplChangeDirtyFlag"
+						editable="true"></Input>
+
+					<Label id="SplCreateEditLocationDialogWebcamURL" required="false">
+					</Label>
+					<Input id="SplCreateEditLocationDialogWebcamURLInput" value="{/WebcamUrl}"
+						liveChange="sapSplChangeDirtyFlag" editable="true"></Input>
+
+
+					<Label text="{splI18NModel>ADDITIONAL_INFORMATION}"
+						visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getAddressVisibilityBasedOnType'}"
+						required="false">
+					</Label>
+					<TextArea value="{/AdditionalInformation}" liveChange="sapSplChangeDirtyFlag"
+						rows="4"
+						visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getAddressVisibilityBasedOnType'}"></TextArea>
+					<Label text=""></Label>
+					<layout:VerticalLayout>
+						<Text id="SplCreateEditLocationDialogInstructionLabelForAdd"
+							design="Bold" visible="true"
+							class='SplCreateEditLocationDialogInstructionLabel' />
+						<Text id="SplCreateEditLocationDialogInstructionLabelForDelete"
+							design="Bold" visible="true"
+							class='SplCreateEditLocationDialogInstructionLabel' />
+					</layout:VerticalLayout>
+
+
+				</form:SimpleForm>
+
+				<!-- CSNFIX : 0120061532 1403855 2014 -->
+				<CheckBox id="splCheckboxForIsPublic" width="100%"
+					class="splCreateEditLocationDialogCheckBox"
+					selected="{path:'/isPublic', formatter:'splReusable.libs.SapSplModelFormatters.getIsPublicValue'}"
+					select="handleIsPublicCheckChange" />
+				<!-- visible="{path:'/CanPublish', formatter:'splReusable.libs.SapSplModelFormatters.getCanPublishValue'}" 
+					/> -->
+
+				<CheckBox id="splCheckboxForInBoundMessaging" text="{splI18NModel>RECEIVE_MESSAGES}"
+					visible="false" width="100%" class="splCreateEditLocationDialogCheckBox"
+					select="fnHandleInboundMessagingCheckChange" />
+
+				<Table mode="SingleSelectLeft" class="sapSplRadarGeofenceRulesTable"
+					id="sapSplRadarGeofenceRulesTable" visible="false"
+					select="fnHandleSelectOfRuleTableItem">
+					<columns>
+						<Column width="50%" hAlign="Left">
+							<header>
+								<Label text="{splI18NModel>NOTIFY_CONDITION}" />
+							</header>
+						</Column>
+						<Column width="25%" hAlign="Left">
+							<header>
+								<Label text="{splI18NModel>NOTIFY_ENTERS}" />
+							</header>
+						</Column>
+						<Column width="25%" hAlign="Left">
+							<header>
+								<Label text="{splI18NModel>NOTIFY_LEAVES}" />
+							</header>
+						</Column>
+					</columns>
+					<ColumnListItem id="sapSplRadarGeofenceRulesTableRunsWithTourItem">
+						<Text text="{splI18NModel>NOTIFY_TRUCK_WITH_TOUR}" class="sapSplTourOverviewTextBold" />
+						<CheckBox select="handleInboundMessagingCheckChange" />
+						<CheckBox select="handleInboundMessagingCheckChange" />
+					</ColumnListItem>
+					<ColumnListItem id="sapSplRadarGeofenceRulesTableRunsWithoutTourItem">
+						<Text text="{splI18NModel>NOTIFY_TRUCK_WITHOUT_TOUR}" class="sapSplTourOverviewTextBold" />
+						<CheckBox select="handleInboundMessagingCheckChange" />
+						<CheckBox select="handleInboundMessagingCheckChange" />
+					</ColumnListItem>
+				</Table>
+
+			</content>
+		</Page>
+		<Page id="SplCreateEditLocationDialogGatesPage">
+			<form:SimpleForm>
+				<form:content>
+					<Label id="sapSplGatesLabel">
+					</Label>
+					<List id="SapSplGatesDetailsList" select="fnHandleSelectOfListItem"
+						items="{/GeofenceGates/results}" mode="Delete" delete="fnHandleDeleteOfListItem">
+						<items>
+							<StandardListItem id="SapSplSelectDriverDialogListItem"
+								title="{Name}">
+
+							</StandardListItem>
+						</items>
+					</List>
+				</form:content>
+			</form:SimpleForm>
+			<!-- CSN FIX : 0120031469 0000647800 2014 -->
+			<Button type="Emphasized" id="oSapSplAddGateButton" class='oSapSplAddGateButton'
+				icon="sap-icon://add" press="fnHandleClickOfAddGateButton"></Button>
+		</Page>
+		<Page id="SplCreateEditLocationDialogAddGatePage">
+			<form:SimpleForm>
+				<form:content>
+					<Label id="sapSplAddGateLabel" required="true">
+					</Label>
+					<Input id="sapSplAddGateInput" liveChange="handleChangeOfGateNameField"></Input>
+				</form:content>
+			</form:SimpleForm>
+			<!-- CSN FIX : 0120031469 0000647800 2014 -->
+			<Text id='sapSplSelectGeofenceSideText' class='sapSplSelectGeofenceSideText'></Text>
+		</Page>
+		<Page id="SplCreateEditLocationDialogAssignIncidentPage">
+			<!-- fix for internal incident 1482006397 -->
+			<List id="SplCreateEditLocationDialogAssignIncidents" items="{/AssignedIncidents/results}"
+				mode="MultiSelect" select="fnHandleListItemSelection"
+				includeItemInSelection="true" rememberSelections="true">
+				<StandardListItem title="{Name}" description="{ShortText}"
+					selected="{isChecked}" />
+			</List>
+		</Page>
+		<Page id="SplCreateEditLocationDialogWarningPage">
+			<content>
+				<MessageStrip text="{splI18NModel>EDIT_RADAR_GEOFENCE_WARNING}"
+					id="sapSplEditGeofenceWarningMessage" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom"
+					showCloseButton="false" showIcon="true" type="Warning"></MessageStrip>
+				<Label class="sapUiSmallMarginTop sapUiSmallMarginBegin"
+					text="{splI18NModel>BUSINESS_PARTNERS_TRACKED_IN_GEOFENCE}"></Label>
+				<List id="sapSplBusinessPartnersTrackedList"
+					class="sapSplBusinessPartnersTrackedList sapUiSmallMarginTop"
+					items='{path: "/status",filters: [{path: "Status", operator:"NE", value1:"2"}]}'>
+					<StandardListItem title="{From_Organization_Name}"></StandardListItem>
+				</List>
+			</content>
+		</Page>
+	</NavContainer>
+</core:View>

@@ -1,0 +1,19 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.sapSplMaintenanceNotifierDetailIconTabBar .sapMITBNotScrollable {
+	pointer-events: none;
+	visibility: hidden;
+}
+
+.sapSplAddNotificationFormContent .sapMLabel {
+	margin-top: 0.5em;
+}
+.sapSplAddNotificationFormValidity .sapMLabel {
+	margin-top: 0.5em;
+}
+.noDataLabel {
+	position: fixed;
+	top: 50%;
+	left: 55%;
+}

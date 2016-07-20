@@ -1,0 +1,90 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns="sap.m"
+	xmlns:commons="sap.ui.commons" controllerName="controllers.WelcomePage"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="SAP Networked Logistics Hub" icon="./img/sap_logo.png">
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Image src="./img/sap_logo.png"></Image>
+				</contentLeft>
+				<contentMiddle>
+					<!-- <core:HTML content="&lt;h3&gt;SAP Networked Logistics Hub&lt;/h3&gt;"></core:HTML> -->
+					<Label text="SAP Networked Logistics Hub" />
+				</contentMiddle>
+				<contentRight>
+					<Button id="sapSplSelfRegLogonButton" text="{i18n>LOGON}"
+						press="handleLogonOnSelfiePress" type="Emphasized"
+						visible="{visibilityModel>/showLogonButton}" />
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<content>
+			<!-- CSN FIX 759636 2014 -->
+			<Panel expandable="false" expanded="true"
+				class="sapSplWelcomePageLogoutMessageHeader sapSplWelcomePageLogoutMessagePanelColor"
+				visible="{visibilityModel>/showMessageOnHeader}">
+				<content>
+					<Label text="{i18n>CLEAR_CACHE_ON_LOGOUT}"
+						class="centerLogoutLabel sapSplWelcomePageLogoutMessageLabel" />
+				</content>
+			</Panel>
+
+			<layout:Grid defaultSpan="L12 M12 S12" width="auto"
+				height="100%">
+				<layout:content>
+					<form:SimpleForm id="baseForm" minWidth="-1"
+						maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+						columnsS="1" height="90%">
+						<form:content>
+							<Image src="./img/landing_page_left_image.png" style="height:inherit">
+								<layoutData>
+									<layout:GridData span="L4 M4 S12"
+										visibleOnMedium="false" visibleOnSmall="false" />
+								</layoutData>
+							</Image>
+							<Panel id="baseRegistrationFragmentContainer" headerText="{i18n>REGISTER} ({i18n>ALL_FIELDS_REQUIRED})"
+								class="mySimpleFormHeaderFont mySapPanel" width="auto"
+								expandable="false" visible="{visibilityModel>/showRegForm}">
+								<headerToolbar>
+									<Toolbar>
+										<Text text="{i18n>REGISTER} ({i18n>ALL_FIELDS_REQUIRED})" />
+										<Button id="sapSplSelfRegisterLaunchHelpButton" icon="sap-icon://sys-help"
+											press="handleWelcomePageHelpLoad" />
+									</Toolbar>
+								</headerToolbar>
+								<layoutData>
+									<layout:GridData span="L8 M12 S12" />
+								</layoutData>
+								<content>
+									<core:Fragment fragmentName="fragments.SelfRegistrationMandatory"
+										type="XML" />
+									<core:Fragment fragmentName="fragments.SelfRegistrationOptional"
+										type="XML" />
+									<Bar id="formFooterBar" class="mySapMBar">
+										<contentRight>
+											<Button id="sapSplSelfRegistrationRegisterNewAccount"
+												text="{i18n>REGISTER}" press="fnPostBusinessPartnerDetailsData" />
+										</contentRight>
+									</Bar>
+								</content>
+							</Panel>
+							<Panel id="feedbackPageOnSuccessfulDeletion" visible="{visibilityModel>/showFBPage}"
+								class="myCustomFeedbackPanel">
+								<content>
+									<Text id="sapSplLabelSelfDeletion" class="sapSplLabelSelfDeletion" />
+								</content>
+							</Panel>
+						</form:content>
+					</form:SimpleForm>
+
+				</layout:content>
+			</layout:Grid>
+		</content>
+	</Page>
+</core:View>

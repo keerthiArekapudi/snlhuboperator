@@ -1,0 +1,16 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+
+<List id="splDemoMessageList" items="{demoMessageListModel>/messages}"
+	width="100%" xmlns="sap.m" noDataText="No Messages Available">
+	<items>
+		<FeedListItem showIcon="true"
+			icon="{parts:[{path:'demoMessageListModel>MessageType'}], formatter:'splDemoFormatter.UIFormatter.getMessageSpecificIcon'}"
+			width="100%" height="100%" text="{demoMessageListModel>LongText}"
+			timestamp="{parts:[{path:'demoMessageListModel>CreationTime'}], formatter:'splReusable.libs.SapSplModelFormatters.showFormattedDate'}">
+		</FeedListItem>
+	</items>
+</List>

@@ -1,0 +1,112 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout" xmlns="sap.m"
+	controllerName="splController.dialogs.SplNewLocationDialog" xmlns:html="http://www.w3.org/1999/xhtml">
+	<layout:VerticalLayout id="SapSplNewLocationDialogFormContainer" width="100%">
+		<layout:content>
+			<form:SimpleForm class="SapSplNewLocationForm">
+				<form:content>
+					<Label id="SapSplNewLocationFormContainerAddress1Label"
+						class="SapSplNewLocationAlignLabel" required="true">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input id="SapSplNewLocationFormContainerAddress1Input"
+						value="{/Address.Name1}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="3">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+
+
+					<Label id="SapSplNewLocationFormContainerAddress2Label" required="true"
+						class="SapSplNewLocationAlignLabel">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input id="SapSplNewLocationFormContainerAddress2Input"
+						value="{/Address.Name2}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="3">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+
+					<Label id="SapSplNewLocationFormContainerCityLabel" required="true" class="SapSplNewLocationAlignLabel">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input id="SapSplNewLocationFormContainerCityInput" value="{/Address.Town}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="3">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+
+					<Label id="SapSplNewLocationFormContainerZipcodeLabel" required="true" class="SapSplNewLocationAlignLabel">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input id="SapSplNewLocationFormContainerZipcodeInput" value="{/Address.PostalCode}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="3">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+
+					<Label id="SapSplNewLocationFormContainerRegionLabel" required="true" class="SapSplNewLocationAlignLabel">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input id="SapSplNewLocationFormContainerRegionInput" value="{/Address.Region}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="3">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+
+					<Label id="SapSplNewLocationFormContainerCountryLabel" required="true" class="SapSplNewLocationAlignLabel">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input id="SapSplNewLocationFormContainerCountryInput" value="{/Address.Country}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="3">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+
+				</form:content>
+			</form:SimpleForm>
+		</layout:content>
+	</layout:VerticalLayout>
+</core:View>

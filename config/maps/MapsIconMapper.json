@@ -1,0 +1,315 @@
+{
+    "Parking": {
+        "Normal": {
+            "Large": {
+                "Focus": "marker_parking_focus.png",
+                "RollOver": "marker_parking_rollover.png",
+                "Normal": "marker_parking_normal.png"
+            },
+            "Medium": {
+                "Focus": "marker_parking_focus_medium.png",
+                "RollOver": "marker_parking_rollover_medium.png",
+                "Normal": "marker_parking_normal_medium.png"
+            },
+            "Small": {
+                "Focus": "poi_dot.png",
+                "RollOver": "poi_dot.png",
+                "Normal": "poi_dot.png"
+            }
+        },
+        "FastFilling": {
+            "Large": {
+                "Focus": "marker_parking_fast_filling_focus.png",
+                "RollOver": "marker_parking_fast_filling_rollover.png",
+                "Normal": "marker_parking_fast_filling.png"
+            },
+            "Medium": {
+                "Focus": "marker_parking_fast_filling_focus_medium.png",
+                "RollOver": "marker_parking_fast_filling_rollover_medium.png",
+                "Normal": "marker_parking_fast_filling_medium.png"
+            },
+            "Small": {
+                "Focus": "poi_dot.png",
+                "RollOver": "poi_dot.png",
+                "Normal": "poi_dot.png"
+            }
+        },
+        "Full": {
+            "Large": {
+                "Focus": "marker_parking_full_focus.png",
+                "RollOver": "marker_parking_full_rollover.png",
+                "Normal": "marker_parking_full.png"
+            },
+            "Medium": {
+                "Focus": "marker_parking_full_focus_medium.png",
+                "RollOver": "marker_parking_full_rollover_medium.png",
+                "Normal": "marker_parking_full_medium.png"
+            },
+            "Small": {
+                "Focus": "poi_dot.png",
+                "RollOver": "poi_dot.png",
+                "Normal": "poi_dot.png"
+            }
+        }
+    },
+    "ContainerTerminal": {
+        "Normal": {
+            "Large": {
+                "Focus": "marker_container_terminal_focus.png",
+                "RollOver": "marker_container_terminal_rollover.png",
+                "Normal": "marker_container_terminal_normal.png"
+            },
+            "Medium": {
+                "Focus": "marker_container_terminal_focus_medium.png",
+                "RollOver": "marker_container_terminal_rollover_medium.png",
+                "Normal": "marker_container_terminal_normal_medium.png"
+            },
+            "Small": {
+                "Focus": "poi_dot.png",
+                "RollOver": "poi_dot.png",
+                "Normal": "poi_dot.png"
+            }
+        },
+        "NoService": {
+            "Large": {
+                "Focus": "marker_container_terminal_no_service_focus.png",
+                "RollOver": "marker_container_terminal_no_service_rollover.png",
+                "Normal": "marker_container_terminal_no_service_normal.png"
+            },
+            "Medium": {
+                "Focus": "marker_container_terminal_no_service_focus_medium.png",
+                "RollOver": "marker_container_terminal_no_service_rollover_medium.png",
+                "Normal": "marker_container_terminal_no_service_normal_medium.png"
+            },
+            "Small": {
+                "Focus": "poi_dot.png",
+                "RollOver": "poi_dot.png",
+                "Normal": "poi_dot.png"
+            }
+        },
+        "Delay": {
+            "Large": {
+                "Focus": "marker_container_terminal_delay_focus.png",
+                "RollOver": "marker_container_terminal_delay_rollover.png",
+                "Normal": "marker_container_terminal_delay_normal.png"
+            },
+            "Medium": {
+                "Focus": "marker_container_terminal_delay_focus_medium.png",
+                "RollOver": "marker_container_terminal_delay_rollover_medium.png",
+                "Normal": "marker_container_terminal_delay_normal_medium.png"
+            },
+            "Small": {
+                "Focus": "poi_dot.png",
+                "RollOver": "poi_dot.png",
+                "Normal": "poi_dot.png"
+            }
+        },
+        "OutOfHours": {
+            "Large": {
+                "Focus": "marker_container_terminal_out_of_hours_focus.png",
+                "RollOver": "marker_container_terminal_out_of_hours_rollover.png",
+                "Normal": "marker_container_terminal_out_of_hours_normal.png"
+            },
+            "Medium": {
+                "Focus": "marker_container_terminal_out_of_hours_focus_medium.png",
+                "RollOver": "marker_container_terminal_out_of_hours_rollover_medium.png",
+                "Normal": "marker_container_terminal_out_of_hours_normal_medium.png"
+            },
+            "Small": {
+                "Focus": "poi_dot.png",
+                "RollOver": "poi_dot.png",
+                "Normal": "poi_dot.png"
+            }
+        }
+    },
+    "ContainerDepot": {
+        "Normal": {
+            "Large": {
+                "Focus": "marker_container_depot_focus.png",
+                "RollOver": "marker_container_depot_rollover.png",
+                "Normal": "marker_container_depot_normal.png"
+            },
+            "Medium": {
+                "Focus": "marker_container_depot_focus_medium.png",
+                "RollOver": "marker_container_depot_rollover_medium.png",
+                "Normal": "marker_container_depot_normal_medium.png"
+            },
+            "Small": {
+                "Focus": "poi_dot.png",
+                "RollOver": "poi_dot.png",
+                "Normal": "poi_dot.png"
+            }
+        },
+        "NoService": {
+            "Large": {
+                "Focus": "marker_container_depot_no_service_focus.png",
+                "RollOver": "marker_container_depot_no_service_rollover.png",
+                "Normal": "marker_container_depot_no_service_normal.png"
+            },
+            "Medium": {
+                "Focus": "marker_container_depot_no_service_focus_medium.png",
+                "RollOver": "marker_container_depot_no_service_rollover_medium.png",
+                "Normal": "marker_container_depot_no_service_normal_medium.png"
+            },
+            "Small": {
+                "Focus": "poi_dot.png",
+                "RollOver": "poi_dot.png",
+                "Normal": "poi_dot.png"
+            }
+        },
+        "Delay": {
+            "Large": {
+                "Focus": "marker_container_depot_delay_focus.png",
+                "RollOver": "marker_container_depot_delay_rollover.png",
+                "Normal": "marker_container_depot_delay_normal.png"
+            },
+            "Medium": {
+                "Focus": "marker_container_depot_delay_focus_medium.png",
+                "RollOver": "marker_container_depot_delay_rollover_medium.png",
+                "Normal": "marker_container_depot_delay_normal_medium.png"
+            },
+            "Small": {
+                "Focus": "poi_dot.png",
+                "RollOver": "poi_dot.png",
+                "Normal": "poi_dot.png"
+            }
+        },
+        "OutOfHours": {
+            "Large": {
+                "Focus": "marker_container_depot_out_of_hours_focus.png",
+                "RollOver": "marker_container_depot_out_of_hours_rollover.png",
+                "Normal": "marker_container_depot_out_of_hours_normal.png"
+            },
+            "Medium": {
+                "Focus": "marker_container_depot_out_of_hours_focus_medium.png",
+                "RollOver": "marker_container_depot_out_of_hours_rollover_medium.png",
+                "Normal": "marker_container_depot_out_of_hours_normal_medium.png"
+            },
+            "Small": {
+                "Focus": "poi_dot.png",
+                "RollOver": "poi_dot.png",
+                "Normal": "poi_dot.png"
+            }
+        }
+    },
+    "Incident": {
+        "High": {
+            "Large": {
+                "PRM": "alert_prm_high_normal.png",
+                "Traffic": "alert_traffic_high_normal.png"
+            },
+            "Medium": {
+                "PRM": "alert_prm_high_normal_medium.png",
+                "Traffic": "alert_traffic_high_normal_medium.png"
+            },
+            "Small": {
+                "PRM": "incident_dot.png",
+                "Traffic": "incident_dot.png"
+            }
+        },
+        "Medium": {
+            "Large": {
+                "PRM": "alert_prm_medium_normal.png",
+                "Traffic": "alert_traffic_medium_normal.png"
+            },
+            "Medium": {
+                "PRM": "alert_prm_medium_normal_medium.png",
+                "Traffic": "alert_traffic_medium_normal_medium.png"
+            },
+            "Small": {
+                "PRM": "incident_dot.png",
+                "Traffic": "incident_dot.png"
+            }
+        },
+        "Low": {
+            "Large": {
+                "PRM": "alert_prm_low_normal.png",
+                "Traffic": "alert_traffic_low_normal.png"
+            },
+            "Medium": {
+                "PRM": "alert_prm_low_normal_medium.png",
+                "Traffic": "alert_traffic_low_normal_medium.png"
+            },
+            "Small": {
+                "PRM": "incident_dot.png",
+                "Traffic": "incident_dot.png"
+            }
+        }
+    },
+    "Bridge": {
+        "Normal": {
+            "Large": {
+                "Focus": "marker_bridge_focus.png",
+                "RollOver": "marker_bridge_rollover.png",
+                "Normal": "marker_bridge_normal.png"
+            },
+            "Medium": {
+                "Focus": "marker_bridge_focus_medium.png",
+                "RollOver": "marker_bridge_rollover_medium.png",
+                "Normal": "marker_bridge_normal_medium.png"
+            },
+            "Small": {
+                "Focus": "poi_dot.png",
+                "RollOver": "poi_dot.png",
+                "Normal": "poi_dot.png"
+            }
+        }
+    },
+    "Alert": {
+        "Normal": {
+            "Large": {
+                "Focus": "alert_red.png"
+            },
+            "Medium": {
+                "Focus": "alert_red.png"
+            },
+            "Small": {
+                "Focus": "alert_red.png"
+            }
+        }
+    },
+    "Truck": {
+        "NoOrder": {
+            "Large": {
+                "Focus": "truck_no_order_focus.png",
+                "Normal": "truck_no_order_normal.png"
+            },
+            "Medium": {
+                "Focus": "truck_no_order_small_focus.png",
+                "Normal": "truck_no_order_small_normal.png"
+            },
+            "Small": {
+                "Focus": "truck_no_order_small_focus.png",
+                "Normal": "truck_no_order_small_normal.png"
+            }
+        },
+        "Issue": {
+            "Large": {
+                "Focus": "truck_with_issue_focus.png",
+                "Normal": "truck_with_issue_normal.png"
+            },
+            "Medium": {
+                "Focus": "truck_with_issue_small_focus.png",
+                "Normal": "truck_with_issue_small_normal.png"
+            },
+            "Small": {
+                "Focus": "truck_with_issue_small_focus.png",
+                "Normal": "truck_with_issue_small_normal.png"
+            }
+        },
+        "NoIssue": {
+            "Large": {
+                "Focus": "truck_with_order_focus.png",
+                "Normal": "truck_with_order_normal.png"
+            },
+            "Medium": {
+                "Focus": "truck_with_order_small_focus.png",
+                "Normal": "truck_with_order_small_normal.png"
+            },
+            "Small": {
+                "Focus": "truck_with_order_small_focus.png",
+                "Normal": "truck_with_order_small_normal.png"
+            }
+        }
+    }
+}

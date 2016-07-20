@@ -1,0 +1,61 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:m="sap.m" controllerName="splDemoController.SPLDemoAppHomeView"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<m:Page showHeader="false">
+		<core:Fragment fragmentName="splDemoView.SPLDemoAppVehiclesSelectEntities"
+			type="XML" />
+		<l:Grid defaultSpan="L12 M12 S12" width="auto" class="padding">
+			<l:content>
+				<m:Panel headerText="Messages" class="sapSplDemoPanelWithoutPadding">
+					<m:layoutData>
+						<l:GridData span="L6 M12 S12" />
+					</m:layoutData>
+					<m:headerToolbar>
+						<m:Toolbar class="sapSplDemoAppInfoToolbarHeight"
+							design="Transparent">
+							<m:content>
+								<m:Label text="Messages" />
+								<m:ToolbarSpacer></m:ToolbarSpacer>
+								<m:Button type="Emphasized" text="Start Polling" press="startReadingMessages" />
+								<m:Button type="Emphasized" text="Stop Polling" press="stopPollingMessages" />
+								<m:Button type="Emphasized" text="Refresh" press="triggerManualRefresh" />
+							</m:content>
+						</m:Toolbar>
+					</m:headerToolbar>
+					<m:content>
+						<core:Fragment fragmentName="splDemoView.SPLDemoAppVehiclesMessageList"
+							type="XML" />
+					</m:content>
+				</m:Panel>
+				<m:Panel headerText="Tours" class="sapSplDemoPanelWithoutPadding">
+					<m:layoutData>
+						<l:GridData span="L6 M12 S12" />
+					</m:layoutData>
+					<m:Panel headerText="All Tours" expandable="true" visible="false"
+						id="AllToursPanel">
+						<m:content>
+							<!-- <l:VerticalLayout content="{demoAllToursListModel>/}"> -->
+							<!-- <m:Button text="{Name}"></m:Button> -->
+							<!-- </l:VerticalLayout> -->
+							<m:List noDataText="No Tours Available" id="allToursList">
+<!-- 								<m:StandardListItem title="{demoAllToursListModel>Name}" -->
+<!-- 									description="{demoAllToursListModel>Status}"> -->
+<!-- 								</m:StandardListItem> -->
+							</m:List>
+						</m:content>
+					</m:Panel>
+					<core:Fragment fragmentName="splDemoView.SPLDemoAppVehicleCurrentTour"
+						type="XML" />
+				</m:Panel>
+			</l:content>
+		</l:Grid>
+		<!--<m:footer> <m:Bar> <m:contentMiddle> <m:Button text="Reply" press="fnReplyToChat"></m:Button> 
+			</m:contentMiddle> </m:Bar> </m:footer> -->
+	</m:Page>
+</core:View>

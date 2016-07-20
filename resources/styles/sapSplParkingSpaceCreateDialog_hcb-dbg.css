@@ -1,0 +1,94 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.SplParkingSpaceCreateEditDialog {
+	/* 	left: 0px !important; */
+	/* 	top: 100px !important; */
+	
+}
+
+.SplParkingSpaceCreateEditDialog .sapMDialogScrollCont {
+	padding: 0rem !important;
+}
+
+.viewHolderLayout {
+	display: block !important;
+}
+
+.sapSplParkingSpaceCreateDialogContainerView {
+	height: 35em;
+}
+
+.sapSplValueHelp {
+	margin: 0;
+}
+
+.sapSplParkingSpaceImage {
+	width: 130px !important;
+	height: 130px;
+}
+
+.sapSplParkingSpaceChangeImageLink {
+	margin-top: 30%;
+}
+
+.sapSplParkingSpaceAddImage {
+	width: 70%;
+}
+
+.sapSplValueHelp .sapMInputBaseInner:focus {
+	/* 	border-bottom:0px!important;	 */
+	
+}
+
+.sapSplValueHelp .sapMInputBaseInner,.sapMInputValHelp {
+	border-bottom: 0px;
+}
+
+.valueHelpMainLayout .sapUiMltPadRight {
+	padding: 0;
+}
+
+.valueHelpMainLayout {
+	width: 96%;
+	border-bottom: 1px solid #bfbfbf;
+	border-left: 1px solid #bfbfbf;
+	border-right: 1px solid #bfbfbf;
+}
+
+.deleteItemButton {
+	padding: 0% 7px 20% 0%;
+	color: white;
+}
+
+.itemDetailButton {
+	color: white;
+	padding: 0% 10px 0% 7px;
+}
+
+.itemLayout {
+	background: #009de0;
+	margin-bottom: 0.5em;
+	margin-right: 0em;
+	margin-left: 0.5em;
+	border: black solid 1px;
+}
+
+.itemLayoutButton:hover {
+	background: transparent !important
+}
+
+.itemLayoutButton {
+	outline: 0px;
+	background: transparent;
+	border: 0;
+}
+
+.SapSplParkingSpaceCreateEditNavContainer .sapMNavItem,.sapMNavItem.sapMPage {
+	z-index: 0;
+}
+
+.errorBorderStyle {
+	border-color: #e52929;
+	border-width: 2px;
+}

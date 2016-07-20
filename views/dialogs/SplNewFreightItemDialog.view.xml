@@ -1,0 +1,156 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	xmlns="sap.m" controllerName="splController.dialogs.SplNewFreightItem" xmlns:html="http://www.w3.org/1999/xhtml">
+	
+	<layout:VerticalLayout id="SapSplNewFreightItemFormContainer" width="100%">
+		<layout:content>
+			<form:SimpleForm class="SapSplNewFreightItemForm">
+				<form:content>
+					<Label id="SapSplNewFreightItemFormFreightItemTypeLabel" class ="SapSplNewFreightItemAlignLabel" >
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<layout:VerticalLayout id="SapSplNewFreightItemFormFreightItemTypeRadioButtonHolder">
+						<layout:layoutData>
+							<layout:ResponsiveFlowLayoutData
+										weight="3">
+							</layout:ResponsiveFlowLayoutData>
+						</layout:layoutData>
+						<layout:content>
+							<RadioButton groupName="GroupA" id="SapSplFreightItemTypeRadioButton_1"  select="fnHandleToggleOfRadioButtons" class="SapSplFreightItemTypeRadioButton1"/>
+							<RadioButton groupName="GroupA" id="SapSplFreightItemTypeRadioButton_2"  select="fnHandleToggleOfRadioButtons"/>
+						</layout:content>
+					</layout:VerticalLayout>
+					
+					<Label id="SapSplNewFreightItemFormContainerIdLabel" class ="SapSplNewFreightItemAlignLabel" required="true">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input value="{/ItemID}" id="SapSplNewFreightItemFormContainerIdInput" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="3">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+					
+					<Label id="SapSplNewFreightItemFormContainerTypeLabel" class ="SapSplNewFreightItemAlignLabel" visible="{path:'/Type' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibilityForContainer'}" >
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input id="SapSplNewFreightItemFormContainerTypeInput" value="{/Description}" visible="{path:'/Type' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibilityForContainer'}"
+					liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="3">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+					
+					<Label id="SapSplNewFreightItemFormQuantityLabel" class ="SapSplNewFreightItemAlignLabel" visible="{path:'/Type' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibilityForBreakBulk'}">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input id="SapSplNewFreightItemFormQuantityInput" value="{parts:[{path:'/Quantity_Value'},{path:'/Quantity_Unit'}] , formatter:'splReusable.libs.SapSplModelFormatters.getValueUnitCombination'}" visible="{path:'/Type' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibilityForBreakBulk'}"
+					liveChange="fnHandleLiveChangeOfQuantityInput">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="3">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+					
+					<Label id="SapSplNewFreightItemFormContainerLengthLabel" class ="SapSplNewFreightItemAlignLabel" visible="{path:'/Type' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibilityForContainer'}">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<layout:VerticalLayout id="SapSplNewFreightItemFormContainerLengthLayoutHolder" visible="{path:'/Type' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibilityForContainer'}">
+						<layout:layoutData>
+							<layout:ResponsiveFlowLayoutData
+										weight="3">
+							</layout:ResponsiveFlowLayoutData>
+						</layout:layoutData>
+						<layout:content>
+							<RadioButton groupName="GroupB" id="SapSplFreightItemLengthButton_1"  select="fnHandelLengthRadioButton" class="SapSplFreightItemTypeRadioButton1"/>
+							<RadioButton groupName="GroupB" id="SapSplFreightItemLengthButton_2"  select="fnHandelLengthRadioButton" class="SapSplFreightItemTypeRadioButton1"/>
+<!-- 						Fix for Incident :	1472003621 -->
+							<layout:HorizontalLayout>
+							<RadioButton groupName="GroupB" id="SapSplFreightItemLengthButton_3"  select="fnHandelLengthRadioButton" />
+							<Input id="SapSplFreightItemCustomLengthInput_3" width="50%" liveChange="fnToCaptureLiveChangeToSetFlag"> 
+							</Input>
+							</layout:HorizontalLayout>
+	 					</layout:content>
+					</layout:VerticalLayout>
+					
+					<Label id="SapSplNewFreightItemFormContainerWeightLabel" class ="SapSplNewFreightItemAlignLabel" visible="{path:'/Type' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibilityForBreakBulk'}">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input id="SapSplNewFreightItemFormContainerWeightInput" value="{parts:[{path:'/Weight_Value'},{path:'/Weight_Unit'}] , formatter:'splReusable.libs.SapSplModelFormatters.getValueUnitCombination'}" visible="{path:'/Type' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibilityForBreakBulk'}"
+					liveChange="fnHandleLiveChangeOfWeightInput">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="3">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+					
+					<Label id="SapSplNewFreightItemFormContainerVolumeLabel" class ="SapSplNewFreightItemAlignLabel" visible="{path:'/Type' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibilityForBreakBulk'}">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input value="{parts:[{path:'/Volume_Value'},{path:'/Volume_Unit'}] , formatter:'splReusable.libs.SapSplModelFormatters.getValueUnitCombination'}" id="SapSplNewFreightItemFormContainerVolumeInput" visible="{path:'/Type' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibilityForBreakBulk'}"
+					liveChange="fnHandleLiveChangeOfVolumeInput">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="3">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+					
+					<Label id="SapSplNewFreightItemFormContainerDangerClassLabel" class ="SapSplNewFreightItemAlignLabel" visible="{path:'/Type' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibilityForBreakBulk'}">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input value="{/DangerGoodsClass}" id="SapSplNewFreightItemFormContainerDangerClassInput" visible="{path:'/Type' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibilityForBreakBulk'}"
+					liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="3">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+				</form:content>
+			</form:SimpleForm>
+		</layout:content>
+	</layout:VerticalLayout>
+</core:View>

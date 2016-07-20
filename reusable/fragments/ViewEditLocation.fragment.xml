@@ -1,0 +1,207 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<ResponsivePopover xmlns="sap.m" showHeader="false"
+	showFooter="true" class="ViewEditLocationFragmentClass" modal="false"
+	contentWidth="320px" offsetX="{splViewEditLocationModel>/x}" offsetY="{splViewEditLocationModel>/y}"
+	placement="{splViewEditLocationModel>/placement}">
+	<content>
+		<NavContainer height="250px" id="sapSplLocationDetailsNavContainer">
+			<Page showHeader="true" id="sapSplLocationDetailsPage" title="{splViewEditLocationModel>/Name}">
+				<content>
+					<SimpleForm xmlns="sap.ui.layout.form" id="splFormForReadLocation"
+						class="ViewEditLocationFragmentFormClass">
+						<!-- <Label xmlns="sap.m" id="sapSplIncidentsAssignedToTheLocationLabel" -->
+						<!-- class="sapSplIncidentsAssignedLabel" -->
+						<!-- visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getVisibilityBasedOnType'}"> -->
+						<!-- <layoutData> -->
+						<!-- <ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout" -->
+						<!-- weight="2"> -->
+						<!-- </ResponsiveFlowLayoutData> -->
+						<!-- </layoutData> -->
+						<!-- </Label> -->
+						<!-- Incident : 1482012334 -->
+						<!-- <VerticalLayout xmlns="sap.ui.layout" class="splLocationCoordsText" -->
+						<!-- id="sapSplLocationIncidentAssignedLayout" -->
+						<!-- visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getVisibilityBasedOnType'}"> -->
+						<!-- <Text xmlns="sap.m" -->
+						<!-- text="{path:'splViewEditLocationModel>/Incidents/results',formatter:'splReusable.libs.SapSplModelFormatters.getIncidentsName'}"></Text> -->
+						<!-- <Link id="sapSplLocationIncidentsAssignedViewAllLink" xmlns="sap.m" -->
+						<!-- visible="false"></Link> -->
+						<!-- <layoutData> -->
+						<!-- <ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout" -->
+						<!-- weight="3"> -->
+						<!-- </ResponsiveFlowLayoutData> -->
+						<!-- </layoutData> -->
+						<!-- </VerticalLayout> -->
+
+						<!-- <Label xmlns="sap.m" id="sapSplLocationGatesLabel" -->
+						<!-- visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getVisibilityBasedOnType'}"> -->
+						<!-- <layoutData> -->
+						<!-- <ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout" -->
+						<!-- weight="2"> -->
+						<!-- </ResponsiveFlowLayoutData> -->
+						<!-- </layoutData> -->
+						<!-- </Label> -->
+						<!-- <Text xmlns="sap.m" -->
+						<!-- visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getVisibilityBasedOnType'}" -->
+						<!-- text="{path:'splViewEditLocationModel>/GeofenceGates/results',formatter:'splReusable.libs.SapSplModelFormatters.getGatesName'}"> -->
+						<!-- <layoutData> -->
+						<!-- <ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout" -->
+						<!-- weight="3"> -->
+						<!-- </ResponsiveFlowLayoutData> -->
+						<!-- </layoutData> -->
+						<!-- </Text> -->
+						<Label xmlns="sap.m" id="splLocationCreatedOn"
+							visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getVisibilityBasedOnType'}">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="2">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Label>
+						<Text xmlns="sap.m" id="splLocationCreatedOnText"
+							visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getVisibilityBasedOnType'}"
+							text="{parts:[{path:'splViewEditLocationModel>/AuditTrail_CreationTime'}],formatter:'splReusable.libs.SapSplModelFormatters.getDateFromString'}">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="3">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Text>
+
+						<Label xmlns="sap.m" id="splLocationGeoCoords" visible="false">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="2">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Label>
+						<Text xmlns="sap.m" id="splLocationCoordsTextArea" class="splLocationCoordsText"
+							visible="false"
+							text="{parts:[{path:'splViewEditLocationModel>/Geometry'}],formatter:'splReusable.libs.SapSplModelFormatters.getFormattedLocationGeometry'}">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="3">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Text>
+						<!-- CSN FIX : 0120061532 0001483173 2014 -->
+						<Label xmlns="sap.m" id="splLocationAddressLabel"
+							visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getAddressVisibilityBasedOnType'}">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="2">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Label>
+						<Text xmlns="sap.m"
+							text="{parts:[{path:'/BuildingID'},{path:'/StreetName'},{path:'/CityName'},{path:'/StreetPostalCode'},{path:'/RegionName'},{path:'/CountryName'}], formatter:'splReusable.libs.SapSplModelFormatters.getFormatedAddressFromAddressfields'}"
+							editable="false"
+							visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getAddressVisibilityBasedOnType'}">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="3">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Text>
+
+						<Label xmlns="sap.m" text="{splI18NModel>WEBCAM_URL_LABEL}"
+							visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getAddressVisibilityBasedOnType'}">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="2">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Label>
+						<Link xmlns="sap.m" text="{/WebcamUrl}" href="{/WebcamUrl}"
+							target="_blank" editable="false" wrapping="true" class="sapSplWebCamURLStyle">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="3">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Link>
+
+
+						<Label xmlns="sap.m" id="splLocationAdditionalInfoLabel"
+							text="{splI18NModel>ADDITIONAL_INFORMATION}" class="sapSplIncidentsAssignedLabel"
+							visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getAddressVisibilityBasedOnType'}">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="2">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Label>
+						<Text xmlns="sap.m" text="{/AdditionalInformation}" editable="false"
+							visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getAddressVisibilityBasedOnType'}">
+							<layoutData>
+								<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+									weight="3">
+								</ResponsiveFlowLayoutData>
+							</layoutData>
+						</Text>
+
+					</SimpleForm>
+
+					<Panel id="sapSplIncidentsAssignedToTheLocationPanel"
+						headerText="{splI18NModel>LOCATION_INCIDENTS_ASSIGNED_LABEL}"
+						expandable="true" expand="fnHandleFetchOfIncidentsAssigned">
+						<content>
+							<Text
+								text="{path:'splViewEditLocationModel>/Incidents/results',formatter:'splReusable.libs.SapSplModelFormatters.getIncidentsNameInDetailWindow'}"></Text>
+						</content>
+					</Panel>
+
+					<Panel id="sapSplLocationGatesPanel"
+						visible="{path:'/Type', formatter:'splReusable.libs.SapSplModelFormatters.getVisibilityBasedOnType'}"
+						headerText="{splI18NModel>LOCATION_GATES_FIELD}" expandable="true"
+						expand="fnHandleFetchOfGatesAssigned">
+						<content>
+							<Text
+								text="{path:'splViewEditLocationModel>/GeofenceGates/results',formatter:'splReusable.libs.SapSplModelFormatters.getGatesNameInDetailWindow'}"></Text>
+						</content>
+					</Panel>
+
+					<Link xmlns="sap.m" text="{splI18NModel>VIEW_TRACKING_STATUS}"
+						press="fnHandlePressOfViewTrackingStatusLink" class="sapUiSmallMarginBegin sapUiSmallMarginTop"
+						visible="{parts:[{path:'/isRadar'}, {path:'/Type'}, {path:'sapSplAppConfigDataModel>/canViewRulesWithoutTour'}], formatter:'splReusable.libs.SapSplModelFormatters.CanViewTrackingStatusLink'}"></Link>
+
+				</content>
+			</Page>
+			<Page id="sapSplLocationDetailTrackingPage" showNavButton="true"
+				title="{splViewEditLocationModel>/Name}" navButtonPress="fnHandleBackNavigationFromTrackingPage">
+				<content>
+					<Table mode="None" items="{/status}" id="sapSplTrackingStatusTable">
+						<columns>
+							<Column width="50%" hAlign="Left">
+								<header>
+									<Label text="{splI18NModel>MY_BUSINESS_PARTNER_DETAIL_TITLE}" />
+								</header>
+							</Column>
+							<Column width="50%" hAlign="Right">
+								<header>
+									<Label text="{splI18NModel>TRACKING_STATUS}" />
+								</header>
+							</Column>
+						</columns>
+						<ColumnListItem>
+							<Text text="{From_Organization_Name}" />
+							<Text
+								text="{path:'Status', formatter:'splReusable.libs.SapSplModelFormatters.returnTrackingStatusText'}"></Text>
+						</ColumnListItem>
+					</Table>
+				</content>
+			</Page>
+		</NavContainer>
+	</content>
+	<beginButton>
+		<Button id="splBtnEdit" icon="sap-icon://edit" tap="fnHandleLocationEdit" />
+	</beginButton>
+	<endButton>
+		<Button id="splBtnDelete" icon="sap-icon://delete"
+			tap="fnOpenDeleteLocationConfirmationDialog" />
+	</endButton>
+</ResponsivePopover>

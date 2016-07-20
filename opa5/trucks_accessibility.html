@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Opa check for accessibility in trucks tile</title>
+<script id="sap-ui-bootstrap" src="../resources/sap-ui-core.js"
+	data-sap-ui-resourceroots='{"opa5": "./"}'></script>
+<script src="../resources/sap/ui/thirdparty/qunit.js"></script>
+<link rel="stylesheet" href="../resources/sap/ui/thirdparty/qunit.css"
+	type="text/css" media="screen" />
+<script type="text/javascript">
+jQuery.sap.require("sap.ui.test.Opa5");
+jQuery.sap.require("sap.ui.test.opaQunit");
+var opa5 = sap.ui.test.Opa5;
+jQuery.sap.require("opa5.Arrangements.arrangements");
+jQuery.sap.require("opa5.Actions.actions_trucks");
+jQuery.sap.require("opa5.Assertions.assertions_trucks");
+
+
+sap.ui.test.Opa5.extendConfig({
+	arrangements : new opa5.Arrangements.arrangements,
+	actions : new opa5.Actions.actions,
+	assertions : new opa5.Assertions.assertions,
+//	viewNamespace : "splView."
+}); 
+
+	opaTest("Should see the apps tiles on the launchpad", function(Given,
+			When, Then) {
+		// Arrangements
+	    Given.iStartMyApp();
+
+	    //Actions
+	    When.waitFor({
+			id : "masterTileContainerPage",
+			viewName : "splView.tileContainer.MasterTileContainer",
+			success : function(oPage) {
+				this.getContext().oAppsPage = oPage;
+			}
+		});
+		Then.iShouldSeeTiles();
+	});
+	opaTest("Should click on the Trucks Tile and should see the focus on the search field", function(Given,When,Then){
+		When.ClickTrucksTile();
+		Then.iclickonTrucksTile();
+		
+	});
+	
+	opaTest("Should Click on the Add New Trucks Button",function(Given,When,Then){
+		When.AddNewTruck_focusCheck();
+		Then.focusCheckforAddTrucks();
+	});
+	opaTest("Should click on cancle",function(Given,When,Then){
+		When.ClickAddTruckCancle();
+		Then.cancleReturn();
+	});
+	opaTest("Should click on Filters and should see focus on search field",function(Given,When,Then){
+		When.ApplyFilters().and.chooseFilter().and.confirmFilter();
+		Then.focusCheckAfterFilter();
+	});
+	opaTest("Should Click on Group button and see the focus on search field",function(Given,When,Then){
+		When.ApplyGrouping();
+		Then.iShouldSeePopover();
+	});
+	opaTest("Should Choose group and see focus on search field",function(Given,When,Then){
+		When.choosegroup();
+		Then.focusCheckAfterFilter();
+	});
+	opaTest("Should click on edit and should see focus on Registration Number input field",function(Given,When,Then){
+		When.EditTruckFocusTest();
+		Then.focusCheckEdit();
+		
+	}); 
+	opaTest("Should click on cancle",function(Given,When,Then){
+		When.ClickEditCancle();
+		Then.cancleReturn();
+	}); 
+	</script>
+	</head>
+	<body style="height: 100%">
+		<div id="content"></div>
+		<h1 id="qunit-header">Opa test for external viewer - ALL TESTS</h1>
+		<h2 id="qunit-banner"></h2>
+		<h2 id="qunit-userAgent"></h2>
+		<ol id="qunit-tests"></ol>
+	</body>
+	</html>

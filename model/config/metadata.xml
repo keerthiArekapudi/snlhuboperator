@@ -1,0 +1,191 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<edmx:Edmx Version="1.0"
+	xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+	<edmx:DataServices m:DataServiceVersion="2.0"
+		xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+		<Schema Namespace="sap.spl.xs.config.services.config"
+			xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+			xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="BusinessPartnerRelationScopeType">
+				<Key>
+					<PropertyRef Name="Name" />
+				</Key>
+				<Property Name="Name" Type="Edm.String" Nullable="false"
+					MaxLength="50" />
+				<Property Name="Name.description" Type="Edm.String"
+					MaxLength="100" />
+			</EntityType>
+			<EntityType Name="BusinessPartnerRoleType">
+				<Key>
+					<PropertyRef Name="Name" />
+				</Key>
+				<Property Name="Name" Type="Edm.String" Nullable="false"
+					MaxLength="50" />
+				<Property Name="Name.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PartnerType" Type="Edm.String" MaxLength="1" />
+				<Property Name="PartnerType.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="CanLogonAsUser" Type="Edm.String"
+					MaxLength="1" />
+				<NavigationProperty Name="Relation"
+					Relationship="sap.spl.xs.config.services.config.BusinessPartnerRoleToRelationsType"
+					FromRole="BusinessPartnerRolePrincipal" ToRole="BusinessPartnerRoleRelationsDependent" />
+				<NavigationProperty Name="OutgoingRelations"
+					Relationship="sap.spl.xs.config.services.config.BusinessPartnerRoleToOutgoingRelationsType"
+					FromRole="BusinessPartnerRolePrincipal" ToRole="BusinessPartnerRoleRelationDependent" />
+				<NavigationProperty Name="IncomingRelations"
+					Relationship="sap.spl.xs.config.services.config.BusinessPartnerRoleToIncomingRelationsType"
+					FromRole="BusinessPartnerRolePrincipal" ToRole="BusinessPartnerRoleRelationDependent" />
+			</EntityType>
+			<EntityType Name="BusinessPartnerRoleRelationType">
+				<Key>
+					<PropertyRef Name="Name" />
+				</Key>
+				<Property Name="Name" Type="Edm.String" Nullable="false"
+					MaxLength="50" />
+				<Property Name="FromRole" Type="Edm.String" MaxLength="50" />
+				<Property Name="FromRole.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ToRole" Type="Edm.String" MaxLength="50" />
+				<Property Name="ToRole.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Scope" Type="Edm.String" MaxLength="50" />
+				<Property Name="Scope.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="InstanceSpecific" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="FromRolePartnerType" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="FromRolePartnerType.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ToRolePartnerType" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="ToRolePartnerType.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ToPartyHasToAccept" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="FromPartyPrivilege_ObjectType" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="FromPartyPrivilege_Action" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="ToPartyPrivilege_ObjectType" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="ToPartyPrivilege_Action" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="CannotBeChanged" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="ToPartyCanDelete" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="PrerequisiteRelation" Type="Edm.String"
+					MaxLength="50" />
+			</EntityType>
+			<EntityType Name="BusinessPartnerRoleRelationsType">
+				<Key>
+					<PropertyRef Name="RoleForSelect" />
+					<PropertyRef Name="Name" />
+				</Key>
+				<Property Name="RoleForSelect" Type="Edm.String" Nullable="false"
+					MaxLength="50" />
+				<Property Name="Name" Type="Edm.String" Nullable="false"
+					MaxLength="50" />
+				<Property Name="FromRole" Type="Edm.String" MaxLength="50" />
+				<Property Name="ToRole" Type="Edm.String" MaxLength="50" />
+				<Property Name="Scope" Type="Edm.String" MaxLength="50" />
+				<Property Name="Direction" Type="Edm.String" MaxLength="1" />
+				<Property Name="InstanceSpecific" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="ToPartyHasToAccept" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="FromPartyPrivilege_ObjectType" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="FromPartyPrivilege_Action" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="ToPartyPrivilege_ObjectType" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="ToPartyPrivilege_Action" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="CannotBeChanged" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="ToPartyCanDelete" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="PrerequisiteRelation" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="FromRole_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ToRole_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Scope_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Direction_description" Type="Edm.String"
+					MaxLength="100" />
+			</EntityType>
+			<EntityType Name="LocationFacilityType">
+				<Key>
+					<PropertyRef Name="Name" />
+				</Key>
+				<Property Name="Name" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="Category" Type="Edm.String" MaxLength="1" />
+				<Property Name="CanHaveCapacityInfo" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="ImageUrl" Type="Edm.String" MaxLength="2000" />
+				<Property Name="Text" Type="Edm.String" MaxLength="1024" />
+			</EntityType>
+			<Association Name="BusinessPartnerRoleToRelationsType">
+				<End Type="sap.spl.xs.config.services.config.BusinessPartnerRoleType"
+					Role="BusinessPartnerRolePrincipal" Multiplicity="1" />
+				<End
+					Type="sap.spl.xs.config.services.config.BusinessPartnerRoleRelationsType"
+					Role="BusinessPartnerRoleRelationsDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="BusinessPartnerRoleToOutgoingRelationsType">
+				<End Type="sap.spl.xs.config.services.config.BusinessPartnerRoleType"
+					Role="BusinessPartnerRolePrincipal" Multiplicity="1" />
+				<End
+					Type="sap.spl.xs.config.services.config.BusinessPartnerRoleRelationType"
+					Role="BusinessPartnerRoleRelationDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="BusinessPartnerRoleToIncomingRelationsType">
+				<End Type="sap.spl.xs.config.services.config.BusinessPartnerRoleType"
+					Role="BusinessPartnerRolePrincipal" Multiplicity="1" />
+				<End
+					Type="sap.spl.xs.config.services.config.BusinessPartnerRoleRelationType"
+					Role="BusinessPartnerRoleRelationDependent" Multiplicity="*" />
+			</Association>
+			<EntityContainer Name="config"
+				m:IsDefaultEntityContainer="true">
+				<EntitySet Name="BusinessPartnerRelationScope"
+					EntityType="sap.spl.xs.config.services.config.BusinessPartnerRelationScopeType" />
+				<EntitySet Name="BusinessPartnerRole"
+					EntityType="sap.spl.xs.config.services.config.BusinessPartnerRoleType" />
+				<EntitySet Name="BusinessPartnerRoleRelation"
+					EntityType="sap.spl.xs.config.services.config.BusinessPartnerRoleRelationType" />
+				<EntitySet Name="BusinessPartnerRoleRelations"
+					EntityType="sap.spl.xs.config.services.config.BusinessPartnerRoleRelationsType" />
+				<EntitySet Name="LocationFacility"
+					EntityType="sap.spl.xs.config.services.config.LocationFacilityType" />
+				<AssociationSet Name="BusinessPartnerRoleToRelations"
+					Association="sap.spl.xs.config.services.config.BusinessPartnerRoleToRelationsType">
+					<End Role="BusinessPartnerRolePrincipal" EntitySet="BusinessPartnerRole" />
+					<End Role="BusinessPartnerRoleRelationsDependent" EntitySet="BusinessPartnerRoleRelations" />
+				</AssociationSet>
+				<AssociationSet Name="BusinessPartnerRoleToOutgoingRelations"
+					Association="sap.spl.xs.config.services.config.BusinessPartnerRoleToOutgoingRelationsType">
+					<End Role="BusinessPartnerRolePrincipal" EntitySet="BusinessPartnerRole" />
+					<End Role="BusinessPartnerRoleRelationDependent" EntitySet="BusinessPartnerRoleRelation" />
+				</AssociationSet>
+				<AssociationSet Name="BusinessPartnerRoleToIncomingRelations"
+					Association="sap.spl.xs.config.services.config.BusinessPartnerRoleToIncomingRelationsType">
+					<End Role="BusinessPartnerRolePrincipal" EntitySet="BusinessPartnerRole" />
+					<End Role="BusinessPartnerRoleRelationDependent" EntitySet="BusinessPartnerRoleRelation" />
+				</AssociationSet>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

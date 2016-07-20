@@ -1,0 +1,9 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.sapSplMSLITitleOnly {
+	font-size:1rem!important;
+}
+section [id*="splView.profile.EditUserProfile--sapSplUserProfileEditPage-cont"]{
+	background-color:#ffffff!important;
+}

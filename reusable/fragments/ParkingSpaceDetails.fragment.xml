@@ -1,0 +1,293 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<ResponsivePopover xmlns="sap.m" showHeader="false"
+	class="sapSplParkingSpaceDetailsPopOver" contentHeight="30rem"
+	contentWidth="320px" modal="false" offsetX="{splParkingSpaceDetailsPopOverModel>/x}"
+	offsetY="{splParkingSpaceDetailsPopOverModel>/y}" placement="{splParkingSpaceDetailsPopOverModel>/placement}">
+	<content>
+		<Page xmlns="sap.m" showHeader="true" showFooter="true"
+			id="sapSplParkingSpaceDetailPage" backgroundDesign="Solid">
+			<customHeader>
+				<Bar xmlns="sap.m">
+					<!-- CSNFIX : 642130 -->
+					<contentMiddle>
+						<Label xmlns="sap.m" id="splParkingSpaceDetailsHeaderLabel"
+							text="{/Name}" />
+					</contentMiddle>
+				</Bar>
+			</customHeader>
+			<content>
+				<!-- CSN FIX : 0120061532 0001309803 2014 -->
+				<MatrixLayout xmlns="sap.ui.commons.layout"
+					id="sapSplPointOfInterestOccupancyLayout">
+					<MatrixLayoutRow xmlns="sap.ui.commons.layout">
+						<MatrixLayoutCell xmlns="sap.ui.commons.layout"
+							vAlign="Top">
+							<Image xmlns="sap.m" height="65px" width="65px" src="{/ImageUrl}">
+							</Image>
+						</MatrixLayoutCell>
+
+						<MatrixLayoutCell xmlns="sap.ui.commons.layout"
+							vAlign="Top">
+
+							<Grid xmlns="sap.ui.layout" defaultSpan="L12 M12 S12" width="auto"
+								class="sapSplGridTerminalDepotID"
+								visible="{parts:[{path:'/Tag'},{path:'/ModeOfStatusUpdate'},{path:'/isEditable'}], formatter:'splReusable.libs.SapSplModelFormatters.getTerminalOrDepotIdFormVisibility'}">
+								<content xmlns="sap.ui.layout">
+									<SimpleForm xmlns="sap.ui.layout.form"
+										class="sapSplContainerterminalDepotIdForm">
+
+										<Label xmlns="sap.m"
+											text="{path:'/Tag', formatter:'splReusable.libs.SapSplModelFormatters.getTerminalOrDepotIdLabel'}">
+											<layoutData>
+												<GridData xmlns="sap.ui.layout" span="L6 M6 S12" />
+											</layoutData>
+
+										</Label>
+										<Text xmlns="sap.m" text="{/AdditionalID}" editable="false">
+											<layoutData>
+												<GridData xmlns="sap.ui.layout" span="L6 M6 S12" />
+											</layoutData>
+										</Text>
+									</SimpleForm>
+								</content>
+							</Grid>
+
+
+							<SimpleForm xmlns="sap.ui.layout.form" class="sapSplOccupancyContainer"
+								id="sapSplOccupancyContainer">
+								<!-- CSN FIX : 0120031469 0000626426 -->
+								<!-- /* CSNFIX : 1570126093 */ -->
+								<Label class="sapSplOccupancyContainerAvailabilityLabel"
+									width="95%" xmlns="sap.m" text="{/texts/availability}"
+									visible="{path:'sapSplAppConfigDataModel>/canViewParkingStatus',formatter:'splReusable.libs.SapSplModelFormatters.sapSplGetVisibilityBasedOnSubscriptionModel'}">
+									<layoutData>
+										<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+											weight="1">
+										</ResponsiveFlowLayoutData>
+									</layoutData>
+								</Label>
+								<Select id="sapSplParkingSpaceStatusSelect" xmlns="sap.m"
+									width="90%"
+									visible="{path:'sapSplAppConfigDataModel>/canViewParkingStatus', formatter:'splReusable.libs.SapSplModelFormatters.sapSplGetVisibilityBasedOnSubscriptionModel'}"
+									selectedKey="{splParkingSpaceDetailsPopOverModel>/ReportedStatus}"
+									items="{/ParkingSpaceStatusData}" change="fnHandleChangeOfParkingSpaceStatus">
+									<Item xmlns="sap.ui.core" key="{Value}" text="{Value.description}" />
+								</Select>
+							</SimpleForm>
+
+							<SimpleForm xmlns="sap.ui.layout.form" class="sapSplOccupancyContainerTerminal"
+								id="sapSplOccupancyContainerTerminal">
+								<!-- CSN FIX : 0120031469 0000626426 -->
+								<Label class="sapSplOccupancyContainerAvailabilityLabel"
+									width="95%" xmlns="sap.m" text="{/texts/availability}"
+									visible="{path:'sapSplAppConfigDataModel>/canViewParkingStatus',formatter:'splReusable.libs.SapSplModelFormatters.sapSplGetVisibilityBasedOnSubscriptionModel'}"></Label>
+								<!-- <Label class="sapSplContainerAvailabilityLabel" id="sapSplContainerAvailabilityLabel" 
+									width="40%" xmlns="sap.m" text=""></Label> -->
+								<Select id="sapSplContainerTerminalStatusSelect" xmlns="sap.m"
+									width="90%" class="sapSplContainerTerminalStatusSelect"
+									visible="{path:'sapSplAppConfigDataModel>/canViewParkingStatus', formatter:'splReusable.libs.SapSplModelFormatters.sapSplGetVisibilityBasedOnSubscriptionModel'}"
+									selectedKey="{splParkingSpaceDetailsPopOverModel>/ReportedStatus}"
+									items="{/ParkingSpaceStatusData}" change="fnHandleChangeOfParkingSpaceStatus"
+									enabled="{parts:[{path:'/ModeOfStatusUpdate'},{path:'/isEditable'}], formatter:'splReusable.libs.SapSplModelFormatters.setEnabledForContainerTerminalStatusSelect'}">
+									<Item xmlns="sap.ui.core" key="{Value}" text="{Value.description}" />
+								</Select>
+							</SimpleForm>
+
+
+							<Grid xmlns="sap.ui.layout" defaultSpan="L12 M12 S12" width="auto"
+								class="sapSplGridSource"
+								visible="{parts:[{path:'/Tag'},{path:'/ModeOfStatusUpdate'},{path:'/isEditable'}], formatter:'splReusable.libs.SapSplModelFormatters.getTerminalOrDepotIdFormVisibility'}">
+								<content xmlns="sap.ui.layout">
+									<SimpleForm xmlns="sap.ui.layout.form"
+										class="sapSplContainerterminalDepotSourceForm" layout="ResponsiveGridLayout">
+										<content xmlns="sap.ui.layout.form">
+											<Label xmlns="sap.m" text="{/texts/source}"
+												id="sapSplContainerterminalDepotSourceLabel" class="sapSplContainerterminalDepotSourceLabel">
+												<layoutData>
+													<GridData xmlns="sap.ui.layout" span="L6 M6 S4" />
+												</layoutData>
+											</Label>
+											<Text xmlns="sap.m" id="sapSplContainerterminalDepotSourceText"
+												text="{/StatusProvider}" editable="false">
+												<layoutData>
+													<GridData xmlns="sap.ui.layout" span="L6 M6 S8" />
+												</layoutData>
+											</Text>
+										</content>
+									</SimpleForm>
+								</content>
+							</Grid>
+
+						</MatrixLayoutCell>
+
+					</MatrixLayoutRow>
+				</MatrixLayout>
+				<SimpleForm xmlns="sap.ui.layout.form" class="sapSplOccupancyContainerlForm">
+					<!-- CSNFIX : 0120031469 0000793981 2014 -->
+					<Label xmlns="sap.m" text="{/texts/total_space}"
+						id="sapSplOccupancyContainerAvailabilityLabel" class="sapSplOccupancyContainerAvailabilityLabel">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+
+					</Label>
+					<Text xmlns="sap.m" id="sapSplOccupancyContainerAvailabilityText"
+						text="{/Capacity}" editable="false">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Text>
+
+					<Label xmlns="sap.m" text="{/texts/status}"
+						visible="{parts:[{path:'/Tag'},{path:'/isEditable'}], formatter:'splReusable.libs.SapSplModelFormatters.getVisiblityofContainerTerminalDepotStatusField'}"
+						id="sapSplContainerterminalDepotStatusLabel">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Text xmlns="sap.m"
+						visible="{parts:[{path:'/Tag'},{path:'/isEditable'}], formatter:'splReusable.libs.SapSplModelFormatters.getVisiblityofContainerTerminalDepotStatusField'}"
+						text="{parts:[{path:'/ModeOfStatusUpdate'},{path:'/ParkingSpaceStatusListData'}], formatter:'splReusable.libs.SapSplModelFormatters.getTerminalOrDepotIdStatusText'}"
+						editable="false">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+
+					</Text>
+
+					<Label xmlns="sap.m" text="{/texts/timings}">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+
+					</Label>
+					<Text xmlns="sap.m" text="{/Timings}" editable="false">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+
+					</Text>
+
+					<Label xmlns="sap.m" text="{/texts/address}">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<!-- CSNFIX : 1570135901 -->
+					<Text xmlns="sap.m"
+						text="{parts:[{path:'/BuildingID'},{path:'/StreetName'},{path:'/CityName'},{path:'/StreetPostalCode'},{path:'/RegionName'},{path:'/CountryName'}], formatter:'splReusable.libs.SapSplModelFormatters.getFormatedAddressFromAddressfields'}"
+						editable="false">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Text>
+
+					<Label xmlns="sap.m" text="{/texts/phone}">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+
+					</Label>
+					<Text xmlns="sap.m" text="{/PhoneNumber}" editable="false">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+
+					</Text>
+
+					<Label xmlns="sap.m" text="{/texts/website}">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Link xmlns="sap.m" text="{/Website}" href="{/Website}"
+						editable="false" wrapping="true">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Link>
+
+					<Label xmlns="sap.m" text="{splI18NModel>WEBCAM_URL_LABEL}">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Link xmlns="sap.m" text="{/WebcamUrl}" href="{/WebcamUrl}"
+						target="_blank" editable="false" wrapping="true" class="sapSplWebCamURLStyle">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Link>
+
+
+					<Label xmlns="sap.m" text="{splI18NModel>ADDITIONAL_INFORMATION}"
+						class="sapSplOccupancyContainerAvailabilityLabel">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+
+					</Label>
+					<Text xmlns="sap.m" text="{/AdditionalInformation}" editable="false">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+
+					</Text>
+
+				</SimpleForm>
+			</content>
+			<footer>
+				<Bar xmlns="sap.m" id="splViewEditLocationFooter">
+					<contentLeft>
+						<Button xmlns="sap.m" id="splBtnIncidents" icon="sap-icon://marketing-campaign"
+							text="{splViewEditLocationModel>/IncidentMessages}" visible="false" />
+					</contentLeft>
+					<contentRight>
+						<Button id="splBtnEdit" icon="sap-icon://edit" tooltip="{splI18NModel>MY_COLLEAGUES_EDIT_BUTTON}"
+							tap="fnHandleEditDialogOfParkingSpace" />
+						<Button id="splBtnDelete" icon="sap-icon://delete"
+							tap="fnOpenDeleteLocationConfirmationDialog" />
+						<Button id="splBtnShare" icon="sap-icon://share-2" tap="handleShareLocation"
+							visible="false" />
+					</contentRight>
+				</Bar>
+			</footer>
+		</Page>
+	</content>
+</ResponsivePopover>

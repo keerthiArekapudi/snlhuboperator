@@ -1,0 +1,177 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+
+	xmlns:form="sap.ui.layout.form" xmlns:commons="sap.ui.commons"
+	xmlns:layout="sap.ui.layout" xmlns="sap.m"
+	controllerName="splController.managetours.CreateNewTour" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="CreateNewTour" backgroundDesign="Transparent"
+		class="sapSplCreateNewTourPage">
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Button icon="sap-icon://nav-back" press="fnHandlePressOfBackButton"></Button>
+				</contentLeft>
+				<contentMiddle>
+					<Label id="sapSplCreateTourLabel">
+					</Label>
+				</contentMiddle>
+			</Bar>
+		</customHeader>
+		<content>
+			<layout:VerticalLayout id="SapSplCreateNewTourVerticalLayout"
+				class="SapSplCreateNewTourVerticalLayout">
+				<layout:layoutData>
+					<layout:ResponsiveFlowLayoutData>
+					</layout:ResponsiveFlowLayoutData>
+				</layout:layoutData>
+				<layout:content>
+					<!-- Freight Items -->
+					<Label id="sapSplFreightItemsLayoutLabel" class="sapSplSectionLabel"></Label>
+					<commons:HorizontalDivider width="99%"
+						class="sapSplHorizontalDivider">
+					</commons:HorizontalDivider>
+
+					<Table id="SapSplAddFreightItemsTable" class="SapSplAddFreightItemsTable" noDataText="{splI18NModel>NO_FREIGHTITEMS_AVAILABLE_TEXT}"
+						items="{/Items}" >
+						<headerToolbar>
+							<Toolbar>
+								<Label id="SapSplAddFreightItemsTableHeaderText">
+								</Label>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column hAlign="Center" width="15%">
+							</Column>
+							
+							<Column hAlign="Center" width="10%">
+							</Column>
+							
+							<Column hAlign="Center" width="10%">
+							</Column>
+							
+							<Column hAlign="Center" width="10%">
+							</Column>
+							
+							<Column hAlign="Center" width="15%">
+							</Column>
+							
+							<Column hAlign="Center" width="40%">
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem class="SplSapAssignFrieghtItemsCloumnListItem">
+								<cells>
+									<Link id="splSapAddFreightItems_Identifier"
+										text="{ItemID}" press="fnHandlePressOfIdentifier"></Link>
+									<Text id="splSapAddFreightItems_Length"
+										text="{parts:[{path:'Type'},{path:'ContainerType'},{path:'Quantity_Value'},{path:'Quantity_Unit'}], formatter:'splReusable.libs.SapSplModelFormatters.getValueForAddFreightItemsTable'}"></Text>
+									<Text id="splSapAddFreightItems_Weight"
+										text="{parts:[{path:'Type'},{path:'Description'},{path:'Weight_Value'},{path:'Weight_Unit'}], formatter:'splReusable.libs.SapSplModelFormatters.getValueForAddFreightItemsTable'}"></Text>
+									<Text id="splSapAddFreightItems_Volume"
+										text="{parts:[{path:'Type'},{path:'Volume_Value'},{path:'Volume_Unit'}], formatter:'splReusable.libs.SapSplModelFormatters.getVolumeForAddFreightItemsTable'}"></Text>
+									<Text id="splSapAddFreightItems_DangerCLass"
+										text="{DangerGoodsClass}"></Text>
+									<Button icon="sap-icon://delete" type="Transparent" id="splSapAddFreightItems_Delete"
+										press="fnHandlePressOfDeleteAddFreightItemsRow" class="sapSplCreateTourFormFreightItemDeleteButton"></Button>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<Link id="sapSplAddFreightItemLink" press="fnHandleCLickOfAddFreightItem"
+						class="sapSplAddFreightItemLink">
+					</Link>
+
+					<!-- Stops -->
+
+					<Label id="sapSplStopsLayoutLabel" class="sapSplSectionLabel"></Label>
+					<commons:HorizontalDivider width="99%"
+						class="sapSplHorizontalDivider">
+					</commons:HorizontalDivider>
+
+					<layout:VerticalLayout id="AddStopsLayout" class="sapSplAddStopsVerticalLayout">
+						<layout:content>
+							<!-- AddSTopsMatrixLayoutRow Fragment -->
+						</layout:content>
+					</layout:VerticalLayout>
+
+					<Button type="Emphasized" id="sapSplAddStop" icon="sap-icon://add"
+						visible="false" class="sapSplAddStopButton" press="fnHandlePressOfAddStop"></Button>
+					<!-- Trucks -->
+					<Label id="sapSplTrucksLayoutLabel" class="sapSplSectionLabel"></Label>
+					<commons:HorizontalDivider width="99%"
+						class="sapSplHorizontalDivider">
+					</commons:HorizontalDivider>
+
+					<layout:HorizontalLayout class="sapSplTruckDetailsLayout">
+						<layout:content>
+							<Label id="sapSplSelectTruckLabel" class="sapSplCreateTourFormsAndTableItemsLabelClass">
+								<layoutData>
+									<layout:ResponsiveFlowLayoutData
+										weight="1">
+									</layout:ResponsiveFlowLayoutData>
+								</layoutData>
+							</Label>
+							<Input id="sapSplSelectTruckInput" showValueHelp="true"
+								valueHelpRequest="fnHandleValueHelpOfTrucks" class="SapSplSelectTruckInput"
+								value="{parts:[{path:'/RegistrationNumber'},{path:'/DriverName'}], formatter:'splReusable.libs.SapSplModelFormatters.getVehicleAndTruckDetails'}">
+								<layoutData>
+									<layout:ResponsiveFlowLayoutData
+										weight="4">
+									</layout:ResponsiveFlowLayoutData>
+								</layoutData>
+							</Input>
+							<Link id="SapSplRemoveTruck" press="fnHandleCLickOfRemoveTruck" class="SapSplRemoveTruck"
+							enabled="{path:'/RegistrationNumber' , formatter:'splReusable.libs.SapSplModelFormatters.enableRemoveTruckLink'}">
+							</Link>
+						</layout:content>
+					</layout:HorizontalLayout>
+
+					<!-- Details -->
+					<Label id="sapSplTourDetailsLayoutLabel" class="sapSplSectionLabel"></Label>
+					<commons:HorizontalDivider width="99%"
+						class="sapSplHorizontalDivider">
+					</commons:HorizontalDivider>
+					<layout:HorizontalLayout class="sapSplTourDetailsLayout">
+						<layout:content>
+
+							<Label id="sapSplTourNameLabel" class="sapSplCreateTourFormsAndTableItemsLabelClass"
+								required="true">
+							</Label>
+							<!-- Binding Visible property instead of Value because Formatter function shouldn't be called when User edits Tour name -->
+							<Input id="sapSplTourNameInput" width="100%" class="SapSplTourNameInput"
+								visible="{path:'/', formatter:'splReusable.libs.SapSplModelFormatters.setTourName'}" liveChange="fnToHandleTourNameInputLiveChange">
+							</Input>
+
+							<Label id="sapSplTourIDLabel" class="sapSplCreateTourFormsAndTableItemsLabelClass">
+							</Label>
+							<Input id="sapSplTourIDInput" width="100%" value="{/TourID}" liveChange="fnToCaptureLiveChangeToSetFlag">
+							</Input>
+
+							<Label id="sapSplCommentsLabel" class="sapSplCreateTourFormsAndTableItemsLabelClass">
+							</Label>
+							<TextArea id="sapSplCommentsInput" width="100%" value="{/Text}" liveChange="fnToCaptureLiveChangeToSetFlag">
+							</TextArea>
+
+						</layout:content>
+					</layout:HorizontalLayout>
+				</layout:content>
+			</layout:VerticalLayout>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="sapSplCreateTourSubmit" press="fnHandelPressOfSubmitButton" type="Emphasized"
+						enabled="{path:'/', formatter:'splReusable.libs.SapSplModelFormatters.enableAssignTourButton'}"></Button>
+					<Button id="sapSplCreateTourSaveForlater" press="fnHandelPressOfSubmitButton" 
+						enabled="{path:'/RegistrationNumber', formatter:'splReusable.libs.SapSplModelFormatters.enableSaveTourButton'}"></Button>
+					<Button id="sapSplCreateTourCancel" press="fnHandlePressOfBackButton"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+
+</core:View>

@@ -1,0 +1,165 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:Layout="sap.ui.layout" xmlns="sap.m" xmlns:custom="splReusable.libs"
+	xmlns:commons="sap.suite.ui.commons" controllerName="splController.managetours.ToursOverview"
+	xmls.core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<Page id="ToursOverViewPage" backgroundDesign="Transparent"
+		class="SapSplTourOverviewPage" showNavButton="true" navButtonPress="fnHandleBackNavigation">
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Button icon="sap-icon://nav-back" id="sapSplBackNavigationButton"
+						press="fnHandleBackNavigation"></Button>
+				</contentLeft>
+				<contentMiddle>
+					<Label id="ToursOverViewPageTitle">
+					</Label>
+				</contentMiddle>
+			</Bar>
+		</customHeader>
+		<content>
+			<SearchField id="sapSplTourOverviewSearchField" width="25%"
+				class="sapSplTourOverviewSearch" search="fnHandleSearch"></SearchField>
+			<ObjectHeader id='toursOverviewHeader' titleActive="false">
+				<attributes>
+					<ObjectAttribute />
+				</attributes>
+			</ObjectHeader>
+			<IconTabBar id="idIconTabBar" select="handleIconTabBarSelect"
+				class="sapSplTourOverviewIcontab" expandable="false">
+				<items>
+					<IconTabFilter id="SapSplToursIconTabbarTitle"
+						showAll="true" keys="All"
+						count="{path:'/results/length',formatter:'splReusable.libs.SapSplModelFormatters.setTourOverHeaderText'}" />
+					<IconTabSeparator />
+					<IconTabFilter id="SapSplToursIconTabFilterUnassigned"
+						icon="sap-icon://activity-items" key="UnAssigned" />
+					<IconTabFilter id="SapSplToursIconTabFilterActive"
+						icon="sap-icon://workflow-tasks" key="Active" />
+					<IconTabFilter id="SapSplToursIconTabFilterCompleted"
+						icon="sap-icon://activity-2" key="Finished" />
+				</items>
+				<content>
+
+					<Table id="SapSplToursOverView" inset="false" items="{/Tours}"
+						growing="true" mode="MultiSelect" select="handleSelectOfTour"
+						class="SapSplTourOverviewTable">
+						<columns>
+							<Column width="23%" hAlign="Left">
+								<header>
+									<Label id='SapSplTourName' />
+								</header>
+							</Column>
+
+							<Column width="8%" hAlign="Left">
+								<header>
+									<Label id='SapSplTourID' />
+								</header>
+							</Column>
+
+							<!-- Fix for CSN 1314746 -->
+							<Column width="8%" hAlign="Left" demandPopin="true"
+								minScreenWidth="Desktop">
+								<header>
+									<Label id="SapSplTourStatus" />
+								</header>
+							</Column>
+
+							<Column width="8%" hAlign="Left" demandPopin="true"
+								minScreenWidth="Desktop">
+								<header>
+									<Label id="SapSplTourTruck" />
+								</header>
+							</Column>
+
+							<Column width="15%" hAlign="Left" demandPopin="true"
+								minScreenWidth="Desktop">
+								<header>
+									<Label id="SapSplTourStartTime" />
+								</header>
+							</Column>
+
+							<Column width="15%" hAlign="Left" demandPopin="true"
+								minScreenWidth="Desktop">
+								<header>
+									<Label id="SapSplTourEndTime" />
+								</header>
+							</Column>
+
+							<Column width="8%" hAlign="Left" demandPopin="true"
+								minScreenWidth="Desktop">
+								<header>
+									<Label id="SapSplTourNumberOfDelays" />
+								</header>
+							</Column>
+
+							<Column width="15%" hAlign="Left" demandPopin="true"
+								minScreenWidth="Desktop">
+								<header>
+									<Label id="SapSplTourDelay" />
+								</header>
+							</Column>
+						</columns>
+
+						<ColumnListItem id="oSapSplTourOverviewColumnItemTemplate"
+							type="Navigation" press="handleSelectionChange"
+							selected="{path:'TourStatus',formatter:'splReusable.libs.SapSplModelFormatters.setTourStatusEditable'}">
+							<Text text="{Name}" class="sapSplTourOverviewTextBold" />
+							<Text text="{TourID}" class="sapSplTourOverviewTextBold" />
+
+							<Text text="{TourStatus.description}" wrapping="false" />
+							<Text text="{RegistrationNumber}" wrapping="false" />
+							<Text
+								text="{path:'Planned_StartTime' , formatter:'splReusable.libs.SapSplModelFormatters.convertDateTimeToStringBasedOnLocaleInMediumFormat'}" />
+							<Text
+								text="{path:'Planned_EndTime' , formatter:'splReusable.libs.SapSplModelFormatters.convertDateTimeToStringBasedOnLocaleInMediumFormat'}" />
+
+							<Link
+								text="{path:'DelayCount' , formatter:'splReusable.libs.SapSplModelFormatters.getTourDelayCount'}"
+								press="fnHandleTourDelayDetailsLink"
+								visible="{path:'DelayCount',formatter:'splReusable.libs.SapSplModelFormatters.setTourDelayCountVisibility'}" />
+
+							<commons:BulletChart minValue="0"
+								maxValue="{path:'PlannedDuration',formatter:'splReusable.libs.SapSplModelFormatters.convertDurationToInteger'}"
+								showValueMarker="false" class="sapSplBulletChart"
+								targetValue="{path:'PlannedDuration',formatter:'splReusable.libs.SapSplModelFormatters.convertDurationToInteger'}"
+								scaleColor="Medium"
+								tooltip="{parts:[{path:'ActualDuration'},{path:'PlannedDuration'},{path:'WarningDuration'},{path:'CriticalDuration'}],formatter:'splReusable.libs.SapSplModelFormatters.getTooltipForDelayChart'}"
+								visible="{path:'TourStatus',formatter:'splReusable.libs.SapSplModelFormatters.getTourStatusVisibilityBasedOnStatus'}">
+								<commons:actual>
+									<commons:BulletChartData
+										value="{path:'ActualDuration',formatter:'splReusable.libs.SapSplModelFormatters.convertDurationToInteger'}"
+										color="{path:'TourState',formatter:'splReusable.libs.SapSplModelFormatters.getColorForTourDelayChart'}">
+									</commons:BulletChartData>
+								</commons:actual>
+								<commons:thresholds>
+									<commons:BulletChartData value="{path:'WarningDuration',formatter:'splReusable.libs.SapSplModelFormatters.convertDurationToInteger'}" color="Critical" />
+									<commons:BulletChartData value="{path:'CriticalDuration',formatter:'splReusable.libs.SapSplModelFormatters.convertDurationToInteger'}" color="Error" />
+								</commons:thresholds>
+							</commons:BulletChart>
+
+						</ColumnListItem>
+					</Table>
+				</content>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="sapSplMarkAsFinished" press="fnHandlePressFinish"
+						enabled="{path:'/count',formatter:'splReusable.libs.SapSplModelFormatters.enableCompleteButton'}"></Button>
+					<Button id="sapSplMonitorTourStatus" icon="sap-icon://forward"
+						press="fnHandlePressMonitorTourStatus"></Button>
+					<Button id="sapSplCreateNewTour" press="fnHandlePressCreateNewTour"
+						enabled="{path:'/TourInputType',formatter:'splReusable.libs.SapSplModelFormatters.enableCreateTour'}"
+						type="Emphasized"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

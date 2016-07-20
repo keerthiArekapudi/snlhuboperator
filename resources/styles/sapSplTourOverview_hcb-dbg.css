@@ -1,0 +1,292 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.sapSplTourDetailsGrid .sapMPanelContent {
+	padding: 0rem;
+	border-bottom: 0px;
+}
+
+.sapSplTourDetailsGrid2 .sapUiRespGridSpanL6 {
+	margin-bottom: 0 !important;
+} 
+
+.sapSplToursMapContainer {
+	width: 101%;
+}
+
+.sapSplTruckLocationInfoToolbar {
+	margin-top : 0.5rem;
+	border-top: 1px solid #cccccc;
+  	border-left: 1px solid #cccccc;
+  	border-right: 1px solid #cccccc;
+}
+
+.sapSplStopsInTourDetailLayout .sapUiHLayoutChildWrapper {
+	width: 50% !important;
+}
+
+.SapSplDetailsTourForm {
+	
+}
+
+.oSapSplTourDetailsMap {
+	width: 99% !important;
+	  border-width: 0;
+}
+
+.SapSplTourOverviewTransparentForm .sapUiFormResLayout>div {
+	background-color: transparent;
+	padding: 16px;
+	-moz-box-sizing: padding-box;
+	box-sizing: border-box;
+}
+
+.sapSplTourDetailHlayout .sapUiHLayoutChildWrapper {
+	width: 50%;
+}
+
+.sapSplTourDetailHlayout {
+	width: 100%;
+}
+
+.sapSplTourDetailVlayout {
+	width: 100%;
+	padding-top: 2rem !important;
+}
+
+.sapSplImageIcon {
+	padding-right: 1rem;
+	position: relative;
+	left: 0px;
+}
+
+.sapSplImageIcon1 {
+	padding-right: 0.5rem;
+	padding-left: 0.5rem;
+}
+
+.SapSplTourOverviewItemColumn {
+	margin-bottom: 0.2rem !important;
+}
+
+.SapSplTourTextHidden {
+	visibility: hidden;
+}
+
+.SapSplTourStopDetailsHlayout .sapUiHLayoutChildWrapper {
+	margin-right: 17%;
+}
+
+.SapSplTourStopDetailsHlayout .sapMLIBShowSeparator>td {
+	border-top: 1px solid transparent;
+	border-bottom: 1px solid transparent !important;
+	padding: .0rem .0rem;
+}
+
+.SapSplTourDetailsItemslabel {
+	padding-right: 10%;
+}
+
+.sapSplTourOverviewTextBold {
+	font-weight: bold !important;
+}
+
+.SapSplTourOverviewETAOrange {
+	color: orange !important;
+	padding-left: 0.5rem;
+}
+
+.SapSplTourOverviewETAGreen {
+	color: green !important;
+	padding-left: 0.5rem;
+}
+
+.sapSplTourOverviewIconPadding {
+	margin-left: 2.632em;
+}
+
+.sapSplTourOverviewSearch {
+	left: 74%;
+	position: relative;
+	top: 10rem;
+	z-index: 8;
+}
+
+.oSapSplTourDetailsTruckChart {
+	width: 100%;
+}
+
+.sapSPlCreateTourTimeControl {
+	padding-top: 1rem;
+}
+
+.sapSplTourOverviewArriveTime {
+	padding-top: 0.1rem;
+}
+
+.oSapSplArriveColumn {
+	padding-left: 2.4rem;
+	margin-bottom: 0.2rem !important;
+}
+
+.sapSplTourOverviewIcontab .sapMITBContainerContent  .sapMITBContent {
+	padding: 0 0 0 !important;
+}
+
+.SapSplTourDetailsLayout {
+	
+}
+
+.SapSplTourDetailsLayout .sapSplTourDetailVlayout {
+	padding-top: 2rem !important;
+	width: "100%";
+}
+
+.SapSplTourDetailsCellPadding {
+	padding-top: 2rem !important;
+}
+
+.SapSplTourOverviewHeader {
+	margin-right: 40rem;
+}
+
+.SapSplTourOverviewPage {
+	
+}
+
+.SapSplTourOverviewPage>section {
+	top: 1em !important;
+	overflow-y: scroll !important;
+}
+
+.SapSplTourDetailsLogTable {
+	width: 97%;
+	padding-left: 3%;
+}
+
+.SapSplTruckIconMirror {
+	transform: rotateY(180deg);
+	transform-origin: 0.1%;
+}
+
+.oSapSplTourDetailH1 {
+	width: 100%;
+	padding-top: 1.5%;
+}
+
+.oSapSplTourDetailH1 .sapUiHLayoutChildWrapper {
+	width: 50%;
+}
+
+.oSapSplTourDetailH1 .sapUiHLayoutChildWrapper .sapUiVlt {
+	width: 100%;
+}
+
+.oSapSplTourDetailH1 .sapUiHLayoutChildWrapper .sapUiVlt .sapUiHLayout {
+	width: 100%;
+}
+
+.SapSplHideCompletedToursCheckBox {
+	
+}
+
+.SapSplHideCompletedToursCheckBox .sapMListTblSelCol .sapMLIBSelectM {
+	visibility: hidden !important;
+}
+
+.SapSplTourOverviewTable {
+	
+}
+
+.SapSplTourOverviewTable .sapMListModeMultiSelect .sapMListTblHeader .sapMListTblSelCol .sapMLIBSelectM
+	{
+	visibility: hidden !important;
+}
+
+.SapSplProgressBarForm .sapUiForm .sapUiFormResGrid .sapUiFormResGridCont
+	{
+	padding: 0;
+}
+
+.sapSplTourDetailsGrid1  .sapUiRespGridSpanL3 {
+	width: 6% !important;
+}
+
+.SapSplStopIcon {
+	margin-left: 0.5rem;
+  	margin-top: 0.7rem;
+}
+
+.sapSplTourDetailsGrid1  .sapUiRespGridSpanL4 {
+	margin-bottom: 0 !important;
+}
+
+.sapSplTourDetailsGrid1  .sapUiRespGridSpanL8 {
+	margin-bottom: 0 !important;
+}
+
+.SapSplStopDetailsForm .sapUiForm .sapUiFormResGrid .sapUiFormResGridCont
+	{
+	padding-bottom: 0;
+}
+
+.SapSplDetailsTourForm .sapUiForm .sapUiFormResGrid .sapUiFormResGridCont
+	{
+	padding-bottom: 0;
+}
+
+.sapSplBulletChart .sapUiForm .sapUiFormResGrid .sapUiFormResGridCont .sapUiRespGridSpanL6 .sapSuiteBCContent
+	{
+	top: -1.25rem;
+}
+
+.sapSplTourDelayTextGreen {
+	color: green !important;
+}
+
+.sapSplTourDelayTextRed {
+	color: red !important;
+}
+
+.sapSplStopHLayout {
+	margin-top: 1rem;
+}
+
+.SapSplTourEventGrey {
+	color: lightgrey !important;
+}
+
+.SapSplTourEventGreen {
+	color: limegreen !important;
+}
+.SapSplProgressBarForm .sapUiForm .sapUiFormResGrid .sapUiFormResGridCont .sapUiRespGridSpanL10 .sapUiHLayout {
+	 white-space:normal;
+}
+.sapSplTourProgressLink {
+	margin-top:1rem;
+}
+.sapSplStopHLayout {
+	width : 100%;
+}
+.sapSplStopHLayout>.sapUiHLayoutChildWrapper:nth-child(2){
+	width : 95%;
+}
+.sapSplBulletChart  .sapSuiteBCChart .sapSuiteBCItemValue {
+	visibility:hidden;
+}
+.sapSplBulletChart  .sapSuiteBCChart .sapSuiteBCTargetValue {
+	visibility:hidden;
+}
+.SapSplControlHide {
+	display : none; 
+}
+.sapSnlhTourDetailObjectHeader {
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+.sapSplActualStayDurationField {
+	white-space: normal;
+}
+.SapSnlhTourPanel .sapMPanelContent {
+	overflow: visible;
+}

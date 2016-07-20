@@ -1,0 +1,9 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.viewHolderLayout {
+	display: block !important;
+}
+.splSelectTruckDialogContainerView {
+	height: 23em;
+}

@@ -1,0 +1,118 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:VBM="sap.ui.vbm" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout"
+	xmlns="sap.m" controllerName="splController.profile.UsageLogDetails"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page class="sapSplUsageLogDetailsPage" id="sapSplUsageLogDetailsPage"
+				showHeader="true" showNavButton="true" navButtonPress="fnHandleBackNavigation">
+				<footer>
+					<Bar>
+						<contentRight>
+							<!-- <Button id="oSendMessageToTruckButton" press="fnOpenSendMessageToTruckActionSheet"></Button> -->
+						</contentRight>
+					</Bar>
+				</footer>
+				<content>
+<!-- 				CSN FIX : 0120031469 0000771513 2014 -->
+					<ObjectHeader title="{/Title}"
+						condensed="true" number="{/BillableDays}" numberUnit="" id='sapSplUsageLogDetailsObjectHeader' class='sapSplUsageLogDetailsObjectHeader' backgroundDesign='Translucent'>
+						<attributes>
+							<ObjectAttribute text="{/TimeFilter}" />
+						</attributes>
+					</ObjectHeader>
+
+					<Table id='sapSplUsageLogDetailsTrucksTable' class='sapSplUsageLogDetailsTrucksTable' noDataText="{splI18NModel>NO_ACTIVE_TRUCKS_TEXT}"
+						items="{/ActiveTrucks}" width="97%">
+						<headerToolbar>
+							<Toolbar design="Solid">
+								<content>
+<!-- 								CSN FIX : 0120031469 0000771513 2014 -->
+									<Label id='sapSplUsageLogDetailsTrucksTableTitle' class='sapSplUsageLogDetailsTableTitle' design='Bold'/>
+									<ToolbarSpacer />
+									<Button icon="sap-icon://group-2" press='fnHandleGrouping' id='sapSplUsageLogDetailsTrucksTableGroupBy'/>
+								</content>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column mergeDuplicates="true">
+								<header>
+<!-- 								CSN FIX : 0120031469 0000771513 2014 -->
+									<Label id='sapSplUsageLogDetailsTrucksRegNumber' design='Bold'/>
+								</header>
+							</Column>
+							<Column mergeDuplicates="false">
+								<header>
+<!-- 								CSN FIX : 0120031469 0000771513 2014 -->
+									<Label id='sapSplUsageLogDetailsTrucksDeviceId' design='Bold'/>
+								</header>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right">
+								<header>
+<!-- 								CSN FIX : 0120031469 0000771513 2014 -->
+									<Label id='sapSplUsageLogDetailsTrucksDevicetype' design='Bold'/>
+								</header>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+								<header>
+<!-- 								CSN FIX : 0120031469 0000771513 2014 -->
+									<Label id='sapSplUsageLogDetailsTrucksFrom' design='Bold'/>
+								</header>
+							</Column>
+							<Column hAlign="Right">
+								<header>
+<!-- 								CSN FIX : 0120031469 0000771513 2014 -->
+									<Label id='sapSplUsageLogDetailsTrucksTo' design='Bold'/>
+								</header>
+							</Column>
+						</columns>
+						<ColumnListItem>
+							<Text text="{RegistrationNumber}" />
+							<Text text="{UniqueID}" />
+							<Text text="{DeviceType}" />
+							<Text text="{parts:[{path:'From'}],formatter:'splReusable.libs.SapSplModelFormatters.showFormattedDate'}" />
+							<Text text="{parts:[{path:'To'}],formatter:'splReusable.libs.SapSplModelFormatters.showFormattedDate'}" />
+						</ColumnListItem>
+					</Table>
+
+					<Table headerText="Products" id='sapSplUsageLogDetailsUsersTable' class='sapSplUsageLogDetailsUsersTable' noDataText="{splI18NModel>NO_USERS_TEXT}"
+						items="{/TotalUsers}" width="96%">
+						<headerToolbar>
+							<Toolbar design="Solid">
+								<content>
+<!-- 								CSN FIX : 0120031469 0000771513 2014 -->
+									<Label id='sapSplUsageLogDetailsUsersTableTitle' class='sapSplUsageLogDetailsTableTitle' design='Bold'/>
+									<ToolbarSpacer />
+									<Button icon="sap-icon://group-2" press='fnHandleGrouping' id='sapSplUsageLogDetailsUsersTableGroupBy'/>
+								</content>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column mergeDuplicates="false">
+								<header>
+<!-- 								CSN FIX : 0120031469 0000771513 2014 -->
+									<Label id='sapSplUsageLogDetailsUsersName' design='Bold'/>
+								</header>
+							</Column>
+							<Column mergeDuplicates="false">
+								<header>
+<!-- 								CSN FIX : 0120031469 0000771513 2014 -->
+									<Label id='sapSplUsageLogDetailsUsersRole' design='Bold'/>
+								</header>
+							</Column>
+						</columns>
+						<ColumnListItem>
+							<Text text="{GivenName}" />
+							<Text text="{Role}" />
+						</ColumnListItem>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</core:View> 

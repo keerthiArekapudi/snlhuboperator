@@ -1,0 +1,80 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.sapUiSizeCompact .sapSplCustomSearchControlLayout {
+	margin-top: .25em;
+	border-right: #D8D8D8 solid 1px;
+    margin-right: .25rem;
+    padding-right: .25rem;
+}
+
+.sapSplCustomSearchControlLayout {
+	width: 20rem;
+}
+
+.oSearchList {
+	width: 20rem !important;
+	z-index: 10;
+	/* 	position: absolute; */
+}
+
+.oSearchList .sapMObjLItem {
+	/* 	line-height: 0.75em; */
+	/* 	padding: 0px; */
+	/* 	padding-left: 1rem; */
+	/* 	padding-top: .5rem; */
+	/* 	padding-right: .5rem; */
+	/* 	padding-bottom: .5rem; */
+	
+}
+
+.sapSplSearchListItemTemplate {
+	height: auto;
+	line-height: normal;
+}
+
+.sapSplSearchListName {
+	padding-left: .5em;
+	padding-top: .5em;
+	padding-bottom: .5em;
+	width: 65%;
+}
+
+.sapSplSearchListType {
+	padding-right: .5em;
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+
+.oSearchListPopover .sapMPopoverArr {
+	display: none !important;
+}
+
+.oSearchListPopover {
+	/* 	visibility : hidden!important; */
+/* 	margin-left: 6em; */
+	margin-top: -1.75em!important;
+}
+
+.sapSplExpandedSearchListHeader {
+	background : white!important;
+}
+
+.sapSplExpandedSearchList .sapMObjLItem {
+	line-height: 0.75em;
+	padding: 0px;
+	padding-left: 1rem;
+	padding-top: .5rem;
+	padding-right: .5rem;
+	padding-bottom: .5rem;
+}
+
+.sapSplExpandedSearchListContainer {
+	width: 21rem;
+	position: absolute;
+	right: 0;
+	z-index: 101;
+	max-height: 65rem;
+	overflow-y: scroll;
+	background: #ffffff;
+}

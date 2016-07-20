@@ -1,0 +1,10 @@
+[
+    {
+        "from": "MyContactsMaster",
+        "to": "MyContactDetails"
+    },
+    {
+    	"from": "MyContactDetails",
+    	"to": "NewContactRegistrationDetail"
+    }
+]

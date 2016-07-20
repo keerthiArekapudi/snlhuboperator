@@ -1,0 +1,155 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	controllerName="splController.vehicles.MyVehiclesDetailAddVehicle"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="NewContactRegistrationDetailPage">
+		<content>
+			<form:SimpleForm id="SapSPlAddVehicleSimpleForm"
+				class="SapSPlAddVehicleSimpleForm">
+				<form:content>
+					<core:Title id="MyVehiclesFormTitle_Truck">
+					</core:Title>
+					<Label id="SapSplVehicleRegistrationNumberLabel" required="true">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input id="SapSplNewVehiclesVehicleRegistrationNumber" value="{/data/RegistrationNumber}"
+						width="85%" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="4">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+					<!--Incident 1482013412 -->
+					<Label id="SapSplVehicleVehicleTypeLabel" required="true">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Select id="sapSplNewVehiclesVehicleType" items="{/enum/VehicleType}"
+						width="85%" change="fnToCaptureLiveChangeToSetFlag">
+						<core:Item key="{Value}" text="{Value.description}" />
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="4">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Select>
+					<Label id="SapSplVehiclePublicName">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" value="{/data/PublicName}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="4">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+					<!-- Fix for CSN 1320355 2014 -->
+					<Label id="SapSplVehicleDriver">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Link
+						text="{path:'/data/DriverName',formatter:'splReusable.libs.SapSplModelFormatters.returnDriverName'}"
+						press="fnHandlePressSelectDriverName" class="SapSplDriverLink">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="4">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Link>
+
+
+				</form:content>
+			</form:SimpleForm>
+
+			<form:SimpleForm class="SapSPlAddVehicleSimpleForm">
+				<form:content>
+					<core:Title id="MyVehiclesFormTitle_Device">
+					</core:Title>
+					<Label id="SapSplVehicleDeviceType">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Select id="sapSplNewVehiclesDeviceType" items="{/enum/DeviceType}"
+						width="85%">
+						<core:Item key="{Value}" text="{Value.description}" />
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="4">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Select>
+					<!-- CSNFIX 0120061532 0001320694 2014 -->
+					<Label id="SapSplVehicleDeviceID" visible="false" required="true" class="sapSplDeviceID">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<layout:VerticalLayout>
+						<layout:layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="4">
+							</layout:ResponsiveFlowLayoutData>
+						</layout:layoutData>
+						<Link id="sapSplNewVehiclesDeviceID" class="sapSplDeviceID"
+							text="{path:'/data/DevicePublicName',formatter:'splReusable.libs.SapSplModelFormatters.displayDeviceIDLink'}"
+							press="fnGetDevicesFromTSystems" visible="false">
+						</Link>
+
+						<Input visible="false" id="sapSplNewVehicleMobileDeviceID" liveChange="fnToCaptureLiveChangeToSetFlag"
+							width="85%" value="{/data/DevicePublicName}" class="sapSplDeviceIDInput" suggest="handleSuggest"
+							showSuggestion="true" showValueHelp="false" suggestionItems="{/mobileDeviceNames}"
+							suggestionItemSelected="handleSelectOfSugesstedItem">
+							<suggestionItems>
+								<core:Item text="{PublicName}">
+								</core:Item>
+							</suggestionItems>
+							<layoutData>
+								<layout:ResponsiveFlowLayoutData
+									weight="4">
+								</layout:ResponsiveFlowLayoutData>
+							</layoutData>
+						</Input>
+
+					</layout:VerticalLayout>
+
+				</form:content>
+			</form:SimpleForm>
+
+
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button press="fireSaveAction" id="addVehicleSave" type="Emphasized"></Button>
+					<Button press="fireCancelAction" id="addVehicleCancel"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

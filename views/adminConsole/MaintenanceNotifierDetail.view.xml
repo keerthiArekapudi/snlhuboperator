@@ -1,0 +1,73 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	controllerName="splController.adminConsole.MaintenanceNotifierDetail"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="sapSplMaintenanceNotifierDetailPage">
+		<content>
+			<Label id="sapSplNotificationDetailNoDataLabel" visible="{/noData}"
+				class="noDataLabel"></Label>
+			<layout:VerticalLayout width="100%" visible="{/isClicked}">
+				<layout:content>
+					<ObjectHeader id="sapSplMaintenanceNotifierHeader"
+						title="{/Text1}">
+						<attributes>
+						<!-- Message type added as an attribute in the header to give more details -->
+							<ObjectAttribute
+								text="{path:'/MessageType', formatter:'splReusable.libs.SapSplModelFormatters.getMessageTypeForNotification'}" />
+							<ObjectAttribute id="sapSplStartTime"
+								text="{path:'/Validity_StartTime' , formatter:'splReusable.libs.SapSplModelFormatters.convertDateTimeToStringBasedOnLocaleInMediumFormat'}" />
+							<ObjectAttribute id="sapSplExpiryTime"
+								text="{path:'/Validity_EndTime' , formatter:'splReusable.libs.SapSplModelFormatters.convertDateTimeToStringBasedOnLocaleInMediumFormat'}" />
+						</attributes>
+						<statuses>
+						<!-- Status added as in the header to give more details -->
+							<ObjectStatus
+								text="{path:'/isActive' , formatter:'splReusable.libs.SapSplModelFormatters.getNotificationValidityText'}"
+								state="{path:'/isActive' , formatter:'splReusable.libs.SapSplModelFormatters.getNotificationValidityState'}" />
+						</statuses>
+					</ObjectHeader>
+
+					<IconTabBar expandable="false"
+						class="sapSplMaintenanceNotifierDetailIconTabBar">
+						<items>
+							<IconTabFilter>
+								<form:SimpleForm>
+									<form:content>
+										<Label id="sapSplMaintenanceNotifierMessage">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="2">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Label>
+										<Text text="{/Text1}">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="5">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Text>
+									</form:content>
+								</form:SimpleForm>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</layout:content>
+			</layout:VerticalLayout>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button press="fnHandleEditNotification" id="sapSplMaintenanceNotifierDetailEdit"
+						type="Emphasized" visible="{parts:[{path:'/isActive'},{path:'/showFooterButtons'}], formatter:'splReusable.libs.SapSplModelFormatters.getVisibilityOfEditNotificationButton'}">
+					</Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

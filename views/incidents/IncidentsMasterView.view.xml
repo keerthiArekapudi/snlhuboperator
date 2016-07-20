@@ -1,0 +1,52 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="splController.incidents.IncidentsMasterView"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="IncidentsMasterPage" backgroundDesign="Transparent"
+		showNavButton="true" navButtonPress="fnHandleBackNavigation">
+		<subHeader>
+			<Toolbar>
+				<SearchField id="sapSplIncidentSearch" search="fnToHandleSearchOfIncidents"
+					showRefreshButton="true"></SearchField>
+			</Toolbar>
+		</subHeader>
+		<content>
+			<Toolbar design="Info">
+				<content>
+					<Text id="FilterStatusText"></Text>
+				</content>
+			</Toolbar>
+			<List items="{path:'/IncidentDetails'}" id="SapSplIncidentsList"
+				mode="SingleSelectMaster" select="onSelectOfIncidents" growing="true">
+				<items>
+				<!-- 								FIX : 1482007678 -->
+					<StandardListItem id="oSapSplIncidentListItem"
+						title="{Name}" description="{parts:[{path:'LongText'}], formatter:'splReusable.libs.SapSplModelFormatters.descriptionField'}" info="{Priority.description}"
+						infoState="{path:'Priority',formatter:'splReusable.libs.SapSplModelFormatters.returnIncidentInfoState'}">
+					</StandardListItem>
+				</items>
+			</List>
+		</content>
+		<footer>
+			<Bar>
+				<contentLeft>
+					<Button press="fire" icon="sap-icon://action-settings"
+						visible="false"></Button>
+				</contentLeft>
+				<contentRight>
+					<Button id="SapSplGroupIncidentsButton" icon="sap-icon://group-2"
+						press="openSapSplIncidentSortPopover"></Button>
+					<Button id="SapSplFilterIncidentsButton" icon="sap-icon://filter"
+						press="openSapSplIncidentFilterPopover"></Button>
+					<Button id="SapSplAddIncidentButton" icon="sap-icon://add"
+						press="openSapSplAddIncidentsActionSheet"></Button>
+
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

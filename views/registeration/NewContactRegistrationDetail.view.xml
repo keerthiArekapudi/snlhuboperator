@@ -1,0 +1,137 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	controllerName="splController.registeration.NewContactRegistrationDetail"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="NewContactRegistrationDetailPage">
+		<content>
+			<core:Icon size="4em"
+				src="{parts:[{path:'ImageUrl'}], formatter:'splReusable.libs.SapSplModelFormatters.getImageUrlForUser'}" class="contactImage">
+			</core:Icon>
+
+			<form:SimpleForm class="createForm">
+				<form:content>
+					<Label  required="true" id="sapSplMyUserEditFirstName">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="1">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" value="{/PersonName_GivenName}" liveChange="fnToCaptureLiveChangeToSetFlag" id="sapSplMyUserFirstNameInput">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+
+					<Label required="true" id="sapSplMyUserEditLastName">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="1">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" value="{/PersonName_Surname}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+
+
+					<Label required="true" id="sapSplMyUserEditRole">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="1">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Select id="splNewContactRegistrationRoles" items="{/results}" change="fnToCaptureLiveChangeToSetFlag"
+						width="85%" selectedKey="{myContactsRegisterEditModel>/MainUserRoles_Role1}">
+						<core:Item key="{GrantableRole.description}" text="{GrantableRole.description}" />
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Select>
+
+					<Label required="true" id="sapSplMyUserEditEmail" visible="{/EmailVisible}">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="1">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" type="Email" visible="{/EmailVisible}" value="{/CommunicationInfo_EmailAddress}" id="sapSplMyUserEditEmailInput" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+
+					<Label id="sapSplMyUserEditPhone">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="1">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" value="{/CommunicationInfo_Phone}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+
+					<Label text="Birthday" visible="false">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="1">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" value="{/Birthday}" visible="false" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+
+					<Label text="Notes" visible="false">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="1">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" value="{/Notes}" visible="false" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+				</form:content>
+			</form:SimpleForm>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button press="fireInviteAction" id="newContactInvite" text="{/ActionName}" type="Emphasized"></Button>
+					<Button press="fireCancelAction" id="newContactCancel"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

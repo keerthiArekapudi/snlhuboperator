@@ -1,0 +1,75 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="splController.logger.Logger" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Table id="sapSplLogTable" inset="false" items="{/Logs}" noDataText="{splI18NModel>NO_LOGGED_EVENTS_TEXT}">
+		<headerToolbar>
+			<Toolbar>
+				<Label id="sapSplLogHeaderCount"></Label>
+				<Link id="sapSplLogExportToCSV" text="Export to CSV" press="handleLogExportToCSV" subtle="true" emphasized="true"/>
+				<!-- <core:HTML id="sapSplLogExportToCSVHtml"/> -->
+
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column width="10em">
+				<!-- <ActionSelect id="sapSplLogHeaderComponentSelect" items="{/Logs}"> -->
+				<!-- <core:Item text="{component}" /> -->
+				<!-- </ActionSelect> -->
+				<Label editable="false" text="Component" />
+			</Column>
+			<Column width="15em">
+				<!-- <Select id="sapSplLogHeaderDetailsSelect" items="{/Logs}"> -->
+				<!-- <core:Item text="{details}" /> -->
+				<!-- </Select> -->
+				<Label editable="false" text="Message" />
+			</Column>
+			<Column width="15em">
+				<!-- <Select id="sapSplLogHeaderDetailsSelect" items="{/Logs}"> -->
+				<!-- <core:Item text="{details}" /> -->
+				<!-- </Select> -->
+				<Label editable="false" text="Description" />
+			</Column>
+			<Column width="5em">
+				<Select id="sapSplLogHeaderLevelSelect" items="{/levels}"
+					change="handleLevelChangeEvent">
+					<core:Item text="{name}" />
+				</Select>
+			</Column>
+			<Column width="9em">
+				<!-- <Select id="sapSplLogHeaderTimestampSelect" items="{/Logs}"> -->
+				<!-- <core:Item text="{parts:[{path:'timestamp'}],formatter:'splReusable.libs.SapSplModelFormatters.showFormattedDate'}" 
+					/> -->
+				<!-- </Select> -->
+				<Label editable="false" text="Date" />
+			</Column>
+			<Column width="18em">
+				<!-- <Select id="sapSplLogHeaderMessageSelect" items="{/Logs}"> -->
+				<!-- <core:Item text="{message}" /> -->
+				<!-- </Select> -->
+				<Label editable="false" text="Timestamp" />
+			</Column>
+
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectNumber number="{component}" emphasized="true"
+						state="{parts:[{path:'level'}], formatter:'splReusable.libs.SapSplModelFormatters.logLevelFormatter'}" />
+					<Text text="{message}" />
+					<Text text="{details}" />
+					<ObjectNumber number="{level}"
+						state="{parts:[{path:'level'}], formatter:'splReusable.libs.SapSplModelFormatters.logLevelFormatter'}" />
+					<Text
+						text="{parts:[{path:'date'}],formatter:'splReusable.libs.SapSplModelFormatters.showFormattedDate'}" />
+					<Text
+						text="{parts:[{path:'timestamp'}],formatter:'splReusable.libs.SapSplModelFormatters.showFormattedTime'}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:View>

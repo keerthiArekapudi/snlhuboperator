@@ -1,0 +1,286 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+/* SAP Connected Logistics */
+/* Self registration page style sheet */
+@CHARSET "UTF-8";
+
+.centerLogoutLabel {
+	left: 50%;
+	margin-left: 15px;
+}
+
+/*CSNFIX 759358 2014*/
+span[id*="views.WelcomePage--sapSplSelfRegisterLaunchHelpButton-img"] {
+	color: #ffffff!important;
+	font-size: 1.375rem;
+	line-height: 2.375rem;
+	width: 2.375rem;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	text-shadow: none;
+	background-color: #3582ac;
+	vertical-align: top;
+	max-height: 2.375rem
+}
+
+.sapMTB-Transparent-CTX .sapMText {
+	font-weight: normal;
+	font-size: 0.9rem;
+	color: #93F4FD;
+	text-shadow: none;
+}
+
+.sapMIBar-CTX.sapMPageHeader .sapMLabel, .sapMDialog-CTX .sapMIBar-CTX .sapMLabel
+	{
+	font-size: 1.25rem !important;
+}
+
+/*Image scrolling to bottom. Need to scroll to see complete image. Setting base container height and making child inherit*/
+div[class*="sapUiRespGridSpanL4 sapUiRespGridSpanM4 sapUiRespGridSpanS12 sapUiRespGridVisibleL"]
+	{
+	height: 95%;
+}
+
+/*Child of above container. Inheriting (relative)*/
+img[src="./img/landing_page_left_image.png"] {
+	height: inherit;
+}
+
+/*Needed to align 4 fields on same line in form*/
+.sapUiRespGridBreak {
+	clear: none;
+}
+
+.sapUiRespGridMedia-Std-Phone.sapUiFormResGridCont>.sapUiFormResGridLbl,
+	.sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont>.sapUiFormResGridLbl,
+	.sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormResGridLbl
+	{
+	/* 	padding-right: 0.5rem; */
+	padding-top: 0.5rem;
+}
+
+/*Override the hover effect on a button within the footer. Ref. next style. Without the override, the shadow effect appears on the footer bar button*/
+.sapMBtn:hover>.sapMBtnHoverable {
+	background-color: rgba(255, 255, 255, 0);
+}
+
+/*Only for the register button. Hence selector*/
+button [id*="views.WelcomePage--sapSplSelfRegistrationRegisterNewAccount"]
+	{
+	background-color: #9BB339;
+	border-radius: 0.4rem;
+	padding: 1px 2px 1px 2px;
+	margin: 1px 2px 1px 2px;
+	color: white !important;
+	border: 2px solid;
+	text-shadow: none;
+}
+
+section [id*="views.WelcomePage--feedbackPageOnSuccessfulDeletion"]	{
+	background-color: rgba(252,252,252,0.46)!important;
+	position:absolute;
+	width:50%!important;
+	top:20rem;
+	box-shadow:none!important;
+}
+
+.myCustomFeedbackPanel>.sapMPanelBG {
+	background-color: rgba(239,239,239,0.46)!important;
+	box-shadow:none;
+}
+
+
+.sapSplLabelSelfDeletion {
+	font-size:1.5rem;
+	color:#000000;
+}
+
+.sapSplFormLabel {
+	color: white !important;
+}
+
+.sapMPage {
+	/* IE10 Consumer Preview */
+	background-image: -ms-linear-gradient(top, #FFFFFF 0%, #888888 100%);
+	/* Mozilla Firefox */
+	background-image: -moz-linear-gradient(top, #FFFFFF 0%, #888888 100%);
+	/* Opera */
+	background-image: -o-linear-gradient(top, #FFFFFF 0%, #888888 100%);
+	/* Webkit (Safari/Chrome 10) */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF),
+		color-stop(1, #888888));
+	/* Webkit (Chrome 11+) */
+	background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #888888 100%);
+	/* W3C Markup, IE10 Release Preview */
+	background-image: linear-gradient(to bottom, #FFFFFF 0%, #888888 100%);
+}
+
+/*The corner radius for a select control*/
+.sapMSlt {
+	border-radius: 0.75em;
+}
+
+/*Logon button appeared to be stuck to top*/
+.sapMIBar .sapMBarChild {
+	margin: 1px;
+}
+
+.myInputFields>.sapMInputBaseInner {
+	border-radius: 0.75em;
+}
+
+.sclSelfRegistrationHelpButton {
+	color: #ffffff;
+	font-size: 1.375rem;
+	line-height: 2.375rem;
+	width: 2.375rem;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	text-shadow: none;
+	vertical-align: top;
+	max-height: 2.375rem;
+	background-color: #3582ac;
+}
+
+/*To be applied for all panels*/
+.sapMPanel {
+	background-color: #3582ac;
+	border: 4px 4px 4px 4px black;
+	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.75), 0px 0px 5px
+		rgba(0, 0, 0, 0.2);
+}
+
+/*The overall grid background. Important else the background turns blue (due to base theme effect)*/
+.sapUiFormResGrid {
+	/* IE10 Consumer Preview */
+	background-image: -ms-linear-gradient(top, #FFFFFF 0%, #888888 100%);
+	/* Mozilla Firefox */
+	background-image: -moz-linear-gradient(top, #FFFFFF 0%, #888888 100%);
+	/* Opera */
+	background-image: -o-linear-gradient(top, #FFFFFF 0%, #888888 100%);
+	/* Webkit (Safari/Chrome 10) */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF),
+		color-stop(1, #888888));
+	/* Webkit (Chrome 11+) */
+	background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #888888 100%);
+	/* W3C Markup, IE10 Release Preview */
+	background-image: linear-gradient(to bottom, #FFFFFF 0%, #888888 100%);
+}
+
+/*Form color needed*/
+div[id*="views.WelcomePage--SimpleFormChange471--Form--Grid"] {
+	background-color: #3582ac !important;
+}
+
+/*Form color needed*/
+.sapMPanelContent {
+	background-color: #3582ac;
+}
+
+/*Form color needed*/
+div [class="sapMPanelBG sapMPanelContent"] {
+	background-color: #3582ac;
+}
+
+/*Form color needed*/
+div[id*="views.WelcomePage2--SimpleFormChange471--Form--Grid"] {
+	background-color: #3582ac!imporant;
+}
+
+/*Base panel*/
+.mySapPanel>.sapMPanel {
+	background-color: #3582ac;
+	border-radius: 0.4rem 0.4rem;
+}
+
+/*The footer of the main registration. Stretching height to accomodate styled button*/
+.mySapMBar {
+	background-color: #3582ac;
+	height: 3.5rem !important;
+}
+
+/*2 panels needed the header color as per spec*/
+.sapMPanelHdr {
+	font-weight: normal;
+	font-size: 0.9rem;
+	color: #93F4FD;
+	text-shadow: none;
+}
+
+/*The panel expander*/
+.sapMPanelExpandableIcon {
+	color: #ffffff !important;
+}
+
+/*The title for the forms within the mandatory panel*/
+.sapUiForm .sapUiFormTitle {
+	color: #93F4FD;
+	font-weight: normal;
+	background-color: #3582ac;
+}
+
+/*Form title appeared with inset shadow. Making more subtle*/
+.sapUiFormResGrid>.sapUiFormTitle {
+	text-shadow: none;
+}
+
+.sapSplUiFormTitle {
+	font-size: 0.9rem !important;
+	font-weight: normal !important;
+	color: #ffffff !important;
+}
+
+/*Form color needed*/
+div[id*="__container0--Grid"] {
+	background-color: #3582ac !important;
+}
+
+/*Form color needed*/
+div[id*="__container4--Grid"] {
+	background-color: #3582ac !important;
+}
+
+.sapUiRGLContainer>.sapUiFormTitle {
+	border: none;
+	margin: 1rem 0 0 0;
+	font-size: 1rem;
+	color: #ffffff;
+}
+
+/*Handle scroll issue on small screens. Reducing grid padding on top*/
+.sapUiFormResGrid>div {
+	padding: 0.5rem;
+}
+
+.mySapPanel .sapMPanelContent .sapMPanel {
+	box-shadow: inherit;
+}
+
+/*For the logout message to be prominent*/
+.sapSplWelcomePageLogoutMessageHeader.sapMPanel {
+	width:98.15%!important;
+	margin-left: 15px;
+	background-color:#fcb560;
+	border:2px solid;
+	border-style: outset;
+}
+
+/*For the logout message to be prominent*/
+.sapSplWelcomePageLogoutMessagePanelColor>.sapMPanelBG{
+	background-color:#fcb560!important;
+}
+
+.sapSplWelcomePageLogoutMessageLabel.sapMLabel{
+	font-size:larger;
+}
+
+.sapMPageWithHeader>section, .sapMPageWithSubHeader>section {
+/* 	top: 5em; */
+}
+
+.sapMPanelWrappingDiv.sapMPanelWrappingDivExpanded {
+	border-bottom: 1px solid #cccccc !important;
+}

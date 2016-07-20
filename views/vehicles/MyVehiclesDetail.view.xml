@@ -1,0 +1,188 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:uiLayout="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+	xmlns:layout="sap.ui.commons.layout" xmlns="sap.m"
+	controllerName="splController.vehicles.MyVehiclesDetail" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="MyVehiclesDetailPage">
+		<content>
+			<Label id="sapSplVehicleDetailNoDataLabel" visible="{/noData}"
+				class="noDataLabel"></Label>
+			<layout:VerticalLayout width="100%" visible="{/isClicked}">
+				<layout:content>
+					<!-- icon="{parts:[{path:'ImageUrl'}], formatter:'splReusable.libs.SapSplModelFormatters.getImageUrlForVehicle'}" -->
+					<ObjectHeader titleActive="false" title="{/RegistrationNumber}"
+						id="MyVehiclesDetailHeader">
+						<statuses>
+<!-- 						CSNFIX : 0120031469 620158     2014 -->
+							<ObjectStatus text="{parts:[{path:'/Status.description'},{path:'/isDeleted'}],formatter:'splReusable.libs.SapSplModelFormatters.getStatusLabel'}"
+								state="{path:'/Status',formatter:'splReusable.libs.SapSplModelFormatters.infoState'}" />
+							<ObjectStatus text="{path:'/DeviceReplicationStatus',formatter:'splReusable.libs.SapSplModelFormatters.DeviceReplicationState'}"
+							state="{path:'/DeviceReplicationStatus',formatter:'splReusable.libs.SapSplModelFormatters.getDeviceReplicationState'}"></ObjectStatus>
+						</statuses>
+						<attributes>
+							<ObjectAttribute text="{/DevicePublicName}" />
+						</attributes>
+					</ObjectHeader>
+
+					<IconTabBar class="iconTabBarPaddingTop" id="sapSplVehiclesDetailViewIconTabBar" expandable="false"
+						expanded="{device>/isNoPhone}" selectedKey="{/SelectedKey}" select="fnHandleSelectOfIconTabBar">
+						<items>
+							<IconTabFilter icon="sap-icon://hint" key="info" tooltip="{splI18NModel>INFO_ICON_TOOLTIP}"
+								enabled="{/enableInfo}">
+								<form:SimpleForm class="SapSPlAddVehicleSimpleForm">
+									<form:content>
+										<core:Title id="MyVehiclesDetailTruckTitle">
+										</core:Title>
+										<Label id="SapSplVehicleRegistrationNumberLabel">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="2">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Label>
+										<Text text="{/RegistrationNumber}">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="5">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Text>
+
+										<Label id="SapSplVehicleVehicleTypeLabel">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="2">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Label>
+										<Text text="{/Type.description}">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="5">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Text>
+										<Label id="SapSplVehiclePublicName">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="2">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Label>
+										<Text text="{/PublicName}">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="5">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Text>
+<!-- 										Fix for CSN 1320355 2014 -->
+										<Label id="SapSplVehicleDriver">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="2">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Label>
+										<Text text="{/DriverName}">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="5">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Text>
+										
+									</form:content>
+								</form:SimpleForm>
+								<form:SimpleForm class="SapSPlAddVehicleSimpleForm">
+									<form:content>
+										<core:Title id="MyVehiclesDetailDeviceTitle">
+										</core:Title>
+										<Label id="SapSplVehicleDeviceType">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="2">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Label>
+										<Text text="{/DeviceType.description}">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="5">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Text>
+
+										<Label id="SapSplVehicleDeviceID">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="2">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Label>
+										<Text text="{/DevicePublicName}">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="5">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Text>
+									</form:content>
+								</form:SimpleForm>
+
+								
+
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://share-2" visible="{path:'sapSplAppConfigDataModel>/canShareVehicle' , formatter:'splReusable.libs.SapSplModelFormatters.sapSplGetVisibilityBasedOnSubscriptionModel'}"
+							tooltip="{splI18NModel>SHARE_ICON_TOOLTIP}">
+								<Button type="Emphasized" id="sapSplAddBupaForSharingButton"
+									class="sapSplAddBupaForSharingButton" press="handlePressOfAddBupaForSharing"
+									visible="{SapSplMyVehicleDetailModel>/isEdit}"></Button>
+								<Text id="sapSplAddBupaSectionTitle" class="sapSplAddBupaSectionTitle" width="100%"></Text>
+								<uiLayout:Grid content="{/BupaPermissions}"
+									class="sapSplSharePermissionsLayout" id="sapSplSharePermissionsLayout">
+									<uiLayout:content>
+										<Bar class="sapSplSharePermissionsLayoutTemplate" width="10em">
+											<contentLeft>
+												<core:Icon src="sap-icon://employee">
+												</core:Icon>
+												<Text text="{Partner_Name}">
+												</Text>
+											</contentLeft>
+<!-- 											 CSNFIX : 0120061532 0001320277 2014 -->
+											<contentRight>
+												<Link id="sapSplRemoveSharePermissionLink"
+													visible="{SapSplMyVehicleDetailModel>/isEdit}" press="handlePressOfRemoveSharePermissionButton"
+													class="removeShareButton"></Link>
+											</contentRight>
+										</Bar>
+									</uiLayout:content>
+								</uiLayout:Grid>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</layout:content>
+			</layout:VerticalLayout>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button press="fireEditAction" id="vehicleDetailEdit" type="Emphasized" visible="{/showFooterButtons}"
+						enabled="{path:'/isEditable', formatter:'splReusable.libs.SapSplModelFormatters.showEditable'}"></Button>
+					<Button press="fireActivate_DeactiveAction" id="vehicleDetailActivate_DeActicate" visible="{/showFooterButtons}"
+						enabled="{path:'/isEditable', formatter:'splReusable.libs.SapSplModelFormatters.showEditable'}"></Button>
+					<Button press="fireDeregisterAction" id="vehicleDetailDeRegister" visible="{/showFooterButtons}"
+						enabled="{path:'/isEditable', formatter:'splReusable.libs.SapSplModelFormatters.showEditable'}"></Button>
+					<Button press="fireSaveOfSharedPermissionsEdit" id="vehicleSharePermissionsEditSave"
+						visible="false"></Button>
+					<Button press="fireCancelOfSharedPermissionsEdit" id="vehicleSharedPermissionEditCancel"
+						visible="false"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

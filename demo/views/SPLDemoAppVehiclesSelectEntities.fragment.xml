@@ -1,0 +1,59 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<m:Panel expandable="true" expanded="false" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	xmlns:m="sap.m" xmlns:f="sap.ui.layout.form">
+	<m:headerToolbar>
+		<m:Toolbar>
+			<m:Label design="Bold" text="Select Organization and Vehicle"></m:Label>
+			<m:ToolbarSpacer></m:ToolbarSpacer>
+			<m:Label text="" id="SplDemoSelectedOrg"></m:Label>
+			<m:Label text="" id="SplDemoSelectedVehicle"></m:Label>
+		</m:Toolbar>
+	</m:headerToolbar>
+	<m:content>
+		<l:Grid defaultSpan="L12 M12 S12" width="auto">
+			<l:content>
+				<f:SimpleForm id="selectOrgDevice" minWidth="1024"
+					maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+					labelSpanL="2" labelSpanM="2" emptySpanM="0" emptySpanL="0"
+					columnsL="1" columnsM="1">
+					<f:content>
+						<m:Label text="Organization">
+							<m:layoutData>
+								<l:GridData span="L2 M2 S12"></l:GridData>
+							</m:layoutData>
+						</m:Label>
+						<m:ComboBox id="splDemoOrganizationsSelect"
+							placeholder="Enter the organization name" items="{demoDataModel>/organizations}"
+							selectionChange="handleChangeOfOrganization">
+							<m:layoutData>
+								<l:GridData span="L4 M4 S12" />
+							</m:layoutData>
+							<m:items>
+								<core:Item key="{demoDataModel>UUID}" text="{demoDataModel>Organization_Name}" />
+							</m:items>
+						</m:ComboBox>
+						<m:Label text="Vehicles">
+							<m:layoutData>
+								<l:GridData span="L2 M2 S12"></l:GridData>
+							</m:layoutData>
+						</m:Label>
+						<m:ComboBox id="splDemoVehiclesList" placeholder="Enter the vehicle name"
+							items="{demoVehicleListModel>/vehicles}" selectionChange="handleSelectionOfVehicle">
+							<m:layoutData>
+								<l:GridData span="L4 M4 S12" />
+							</m:layoutData>
+							<m:items>
+								<core:Item key="{demoVehicleListModel>DeviceUUID}"
+									text="{demoVehicleListModel>RegistrationNumber}" />
+							</m:items>
+						</m:ComboBox>
+					</f:content>
+				</f:SimpleForm>
+			</l:content>
+		</l:Grid>
+	</m:content>
+</m:Panel>

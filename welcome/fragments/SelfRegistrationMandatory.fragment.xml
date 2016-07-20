@@ -1,0 +1,144 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<form:SimpleForm xmlns:form="sap.ui.layout.form"
+	xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" xmlns="sap.m"
+	layout="ResponsiveGridLayout" minWidth="-1" columnsL="4" columnsM="2"
+	columnsS="1">
+	<form:content>
+		<Label text="{i18n>PERSON_GIVENNAME_FIELD}" class="sapSplFormLabel" />
+		<Input id="sapSplSelfRegistrationFormFNameInput" liveChange="handleLiveChange"
+			valueStateText="{i18n>FIELD_CANNOT_BE_NULL_OR_EMPTY}" class="myInputFields"
+			value="{/PersonName.GivenName}">
+			<layoutData>
+				<layout:GridData span="L4 M4 S12" spanL="4" spanM="4"></layout:GridData>
+			</layoutData>
+		</Input>
+		<Label text="{i18n>PERSON_SURNAME_FIELD}" class="sapSplFormLabel" />
+		<Input id="sapSplSelfRegistrationFormLNameInput" valueStateText="{i18n>FIELD_CANNOT_BE_NULL_OR_EMPTY}"
+			liveChange="handleLiveChange" class="myInputFields" value="{/PersonName.Surname}">
+			<layoutData>
+				<layout:GridData span="L4 M4 S12"></layout:GridData>
+			</layoutData>
+		</Input>
+
+		<Label text="{i18n>ORGANIZATION_NAME_FIELD}" class="sapSplFormLabel" />
+		<Input id="sapSplSelfRegistrationFormONameInput" liveChange="handleLiveChange"
+			class="myInputFields" value="{/Organization.Name}" valueStateText="{i18n>FIELD_CANNOT_BE_NULL_OR_EMPTY}">
+			<layoutData>
+				<layout:GridData span="L4 M4 S12"></layout:GridData>
+			</layoutData>
+		</Input>
+
+		<Label text="{i18n>EMAIL}" class="sapSplFormLabel" />
+		<Input id="sapSplSelfRegistrationFormEMailInput" valueStateText="{i18n>INVALID_EMAIL}"
+			value="{/CommunicationInfo.EmailAddress}" class="myInputFields"
+			liveChange="handleLiveChange" type="Email">
+			<layoutData>
+				<layout:GridData linebreak="true" linebreakL="true"
+					linebreakM="true" linebreakS="true" span="L4 M4 S12"></layout:GridData>
+			</layoutData>
+		</Input>
+
+		<Label id="sapSPlSelfregistrationFormDeviceIDLabel" text="{i18n>DEVICEID}"
+			visible="false" class="sapSplFormLabel" />
+
+		<Input id="sapSplSelfRegistrationFormDeviceIDInput" visible="false"
+			value="{/DeviceID}" class="myInputFields" enabled="false"
+			liveChange="handleLiveChange" tooltip="{/DeviceID}">
+			<layoutData>
+				<layout:GridData linebreak="true" linebreakL="true"
+					linebreakM="true" linebreakS="true" span="L4 M4 S12"></layout:GridData>
+			</layoutData>
+		</Input>
+
+		<Label id="sapSPlSelfregistrationFormRegistrationNumberLabel"
+			text="{i18n>REGISTRATION_NUMBER}" visible="false" class="sapSplFormLabel" />
+
+		<Input id="sapSplSelfRegistrationFormRegistrationNumberInput"
+			visible="false" class="myInputFields" liveChange="handleLiveChange">
+			<layoutData>
+				<layout:GridData linebreak="true" linebreakL="true"
+					linebreakM="true" linebreakS="true" span="L4 M4 S12"></layout:GridData>
+			</layoutData>
+		</Input>
+
+
+
+		<Label id="sapSPlSelfregistrationFormVehiclePublicNameLabel"
+			text="{i18n>VEHICLE_PUBLIC_NAME}" visible="false" class="sapSplFormLabel" />
+
+		<Input id="sapSplSelfRegistrationFormVehiclePublicNameInput"
+			visible="false" class="myInputFields" liveChange="handleLiveChange">
+			<layoutData>
+				<layout:GridData linebreak="true" linebreakL="true"
+					linebreakM="true" linebreakS="true" span="L4 M4 S12"></layout:GridData>
+			</layoutData>
+		</Input>
+
+		<Label id="sapSPlSelfregistrationFormVehicleTypeLabel" text="{i18n>VEHICLE_TYPE}"
+			visible="false" class="sapSplFormLabel" />
+
+
+
+		<Select id="sapSplSelfRegistrationFormVehicleTypeInput" items="{/results}"
+			change="fnHandleChangeOfVehicleType" visible="false">
+			<layoutData>
+				<layout:GridData span="L4 M4 S12" />
+			</layoutData>
+			<items>
+				<core:Item text="{Value.description}" key="{Value}">
+				</core:Item>
+			</items>
+		</Select>
+
+
+
+
+		<Label text="{i18n>OWNER}" class="sapSplFormLabel">
+
+		</Label>
+		<Select id="sapSplSelfRegistrationFormOwnerSelect" items="{/results}"
+			change="fnHandleChangeOfOwner">
+			<layoutData>
+				<layout:GridData span="L4 M4 S12" />
+			</layoutData>
+			<items>
+				<core:Item text="{Organization_Name}" key="{OrganizationUUID}">
+				</core:Item>
+			</items>
+		</Select>
+
+
+		<Label text="{i18n>ROLE}" class="sapSplFormLabel">
+
+		</Label>
+		<Select id="sapSplSelfRegistrationFormRoleSelect" items="{/results}"
+			change="fnHandleChangeOfRole">
+			<layoutData>
+				<layout:GridData span="L4 M4 S12" />
+			</layoutData>
+			<items>
+				<core:Item text="{RoleOfPotentialOwnedAccount_description}"
+					key="{RoleOfPotentialOwnedAccount}">
+				</core:Item>
+			</items>
+		</Select>
+
+		<Label text="{i18n>SERVICE_PACK}" class="sapSplFormLabel">
+
+		</Label>
+		<Select id="sapSplSelfRegistrationFormSubscriptionPackSelect"
+			items="{/results}">
+			<layoutData>
+				<layout:GridData span="L4 M4 S12" />
+			</layoutData>
+			<items>
+				<core:Item text="{Name.description}" key="{ProductUUID}">
+				</core:Item>
+			</items>
+		</Select>
+	</form:content>
+</form:SimpleForm>

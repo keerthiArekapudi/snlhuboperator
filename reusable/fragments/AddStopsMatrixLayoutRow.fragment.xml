@@ -1,0 +1,196 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+
+<VerticalLayout class="SapSplTransparentForm" xmlns="sap.ui.layout"
+	id="sapSclAddStopsMatrixRowLayoutVerticalLayout">
+	<content>
+		<HorizontalLayout class="SapSplTransparentForm SapSplStopHLayout"
+			xmlns="sap.ui.layout">
+			<content>
+				<Label id="sapSplStopsLocationLabel" text="{labels/location}"
+					class="sapSplCreateTourFormsAndTableItemsLabelClass" required="true"
+					xmlns="sap.m">
+				</Label>
+				<VerticalLayout id="SapSplStopsLocationLayout" xmlns="sap.ui.layout"
+					width="100%" class="SapSplStopVLayout">
+					<content>
+						<!-- Fix for 1580005077. Adding tooltip for address -->
+						<Input id="sapSplStopsLocationInput" placeholder="{labels/stopPlaceholder}"
+							width="100%"
+							value="{parts:[{path:'Address.Country'},{path:'Address.Town'},{path:'Address.Name2'}] , formatter: 'splReusable.libs.SapSplModelFormatters.returnLocationName'}"
+							xmlns="sap.m" showValueHelp="true"
+							class="sapSplCreateTourStopInput sapSplCreateTourDisableInputFields"
+							valueHelpRequest="fnHandleValueHelpOfLocations"
+							tooltip="{parts:[{path:'Address.Name1'},{path:'Address.Name2'},{path:'Address.Town'},{path:'Address.PostalCode'},{path:'Address.Region'},{path:'Address.Country'}] , formatter: 'splReusable.libs.SapSplModelFormatters.returnLocationName'}"></Input>
+						<Link id="sapSplNewLocationLink" press="fnHandleClickOfEnterNewLocation"
+							text="{labels/newlocationlink}" xmlns="sap.m" enabled="{path:'canEditStopLocation', formatter:'splReusable.libs.SapSplModelFormatters.enableEditStopLinkForStopsInTour'}"
+							class="sapSplCreateTourMarginLeftSpace sapSplNewLocationLink"></Link>
+					</content>
+				</VerticalLayout>
+
+				<Label id="sapSplStopsArriveTimeLabel"
+					class="sapSplCreateTourFormsAndTableItemsLabelClass sapSplStopsArriveTimeLabel"
+					required="true" text="{labels/arrivetime}" xmlns="sap.m">
+				</Label>
+				<SapSplTimeControl xmlns="splReusable.libs"
+					id="sapSplStopsArriveTimeInput" class="sapSPlCreateTourTimeControl sapSplCreateTourMarginLeftSpace"
+					width="100%" value="{Planned.ArrivalTime}" change="fnHandleChangeOfDateTimeInput">
+				</SapSplTimeControl>
+
+				<Label id="sapSplStopsLeavesTimeLabel"
+					class="sapSplCreateTourFormsAndTableItemsLabelClass sapSplStopsLeavesTimeLabel"
+					required="true" text="{labels/leavestime}" xmlns="sap.m">
+				</Label>
+				<SapSplTimeControl id="sapSplStopsLeavesTimeInput"
+					xmlns="splReusable.libs" width="100%"
+					class="sapSplCreateTourMarginLeftSpace sapSPlCreateTourTimeControl"
+					value="{Planned.DepartureTime}" change="fnHandleChangeOfDateTimeInput">
+				</SapSplTimeControl>
+
+				<!-- Move stop up -->
+				<Button icon="sap-icon://arrow-top" type="Transparent" class="SapSnlhShiftStopToUpButton"
+					tooltip="{labels/MoveUp}" press="fnHandlePressOfShiftStopToUpButton"
+					xmlns="sap.m"
+					enabled="{path:'/stopsRow', formatter:'splReusable.libs.SapSplModelFormatters.enableShiftStopToUpButton'}"></Button>
+
+				<!-- Move stop down -->
+				<Button icon="sap-icon://arrow-bottom" type="Transparent"
+					tooltip="{labels/MoveDown}" press="fnHandlePressOfShiftStopToDownButton"
+					xmlns="sap.m"
+					enabled="{path:'/stopsRow', formatter:'splReusable.libs.SapSplModelFormatters.enableShiftStopToDownButton'}"></Button>
+
+				<!-- Remove stop -->
+				<Button icon="sap-icon://sys-cancel" type="Transparent"
+					tooltip="{labels/DeleteStop}" press="fnHandlePressOfDeleteStop"
+					xmlns="sap.m"
+					enabled="{path:'/stopsRow', formatter:'splReusable.libs.SapSplModelFormatters.enableDeleteStopButton'}"></Button>
+			</content>
+		</HorizontalLayout>
+
+		<HorizontalLayout xmlns="sap.ui.layout" class="SapSnlhPartnerInputLayout"
+			visible="{path:'Tag',formatter:'splReusable.libs.SapSplModelFormatters.enablePartnerIDInput'}">
+			<content>
+				<Label id="sapSnlhPartnerInputLabel" text="{labels/partner}"
+					xmlns="sap.m"
+					class="sapSplCreateTourFormsAndTableItemsLabelClass sapSnlhPartnerInputLabel">
+				</Label>
+				<Input id="sapSnlhPartnerInputID" xmlns="sap.m" value="{StopPartnerName}" tooltip="{StopPartnerName}"
+					showValueHelp="true" valueHelpRequest="fnHandleValueHelpForBuPaList"
+					class="sapSnlhPartnerInput sapSplCreateTourDisableInputFields">
+				</Input>
+			</content>
+		</HorizontalLayout>
+
+
+		<HorizontalLayout class="SapSplTransparentForm SapSplStopHLayout"
+			xmlns="sap.ui.layout">
+			<content>
+				<Table id="SapSplAssignFreightItemsTable" class="SapSplAssignFreightItemsTable"
+					noDataText="{splI18NModel>NO_FREIGHTITEMS_ASSIGNED_TEXT}" xmlns="sap.m">
+					<headerToolbar class="sapSplToolbar">
+						<Toolbar>
+							<Label text="{labels/AssignFreightItemsLabel}">
+							</Label>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column hAlign="Center" width="15%" xmlns="sap.m">
+						</Column>
+
+						<Column hAlign="Center" width="12%" xmlns="sap.m">
+						</Column>
+
+						<Column hAlign="Center" width="12%" xmlns="sap.m">
+						</Column>
+
+						<Column hAlign="Center" width="10%" xmlns="sap.m">
+						</Column>
+
+						<Column hAlign="Center" width="10%" xmlns="sap.m">
+						</Column>
+
+						<Column hAlign="Center" width="10%" xmlns="sap.m">
+						</Column>
+
+						<Column hAlign="Center" width="15%" xmlns="sap.m">
+						</Column>
+
+						<Column hAlign="Center" width="25%" xmlns="sap.m">
+						</Column>
+
+						<Column hAlign="Center" width="10%" xmlns="sap.m">
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem class="SplSapAssignFrieghtItemsColumnListItem"
+							xmlns="sap.m" id="SplSapAssignFrieghtItemsColumnListItem">
+							<cells>
+								<Text id="splSapAssignFreightItems_Identifier" text="{ItemID}"
+									xmlns="sap.m"></Text>
+								<Link text="{PartnerOrderID}" press="fnHandlePressOfAssignFreightItem">
+								</Link>
+								<Link text="{ExternalStopDestination}" press="fnHandlePressOfAssignFreightItem">
+								</Link>
+								<Text id="splSapAssignFreightItems_Length"
+									text="{parts:[{path:'Type'},{path:'ContainerType'},{path:'Quantity_Value'},{path:'Quantity_Unit'}], formatter:'splReusable.libs.SapSplModelFormatters.getValueForAddFreightItemsTable'}"
+									xmlns="sap.m"></Text>
+								<Text id="splSapAssignFreightItems_Weight"
+									text="{parts:[{path:'Type'},{path:'Description'},{path:'Weight_Value'},{path:'Weight_Unit'}], formatter:'splReusable.libs.SapSplModelFormatters.getValueForAddFreightItemsTable'}"
+									xmlns="sap.m"></Text>
+								<Text id="splSapAssignFreightItems_Volume"
+									text="{parts:[{path:'Type'},{path:'Volume_Value'},{path:'Volume_Unit'}], formatter:'splReusable.libs.SapSplModelFormatters.getVolumeForAddFreightItemsTable'}"
+									xmlns="sap.m"></Text>
+								<Text id="splSapAssignFreightItems_DangerClass" text="{DangerGoodsClass}"
+									xmlns="sap.m"></Text>
+								<HorizontalLayout xmlns="sap.ui.commons.layout"
+									id="SapSplAssignFreightItemsTableButtons">
+									<content>
+										<Button id="SapSplAssignFreightItemsTableButton_1"
+											text="{pickup}" xmlns="sap.m" press="fnHandlePressOfActionButton"
+											type="{path:'Action' , formatter:'splReusable.libs.SapSplModelFormatters.setTypeForPickUpButton'}"
+											enabled="{path:'ItemUUID' , formatter:'splReusable.libs.SapSplModelFormatters.setEnablePropertyForPickUpButtonInFragment'}">
+										</Button>
+										<Button id="SapSplAssignFreightItemsTableButton_2"
+											text="{drop}" class="sapSplDropButton" xmlns="sap.m"
+											press="fnHandlePressOfActionButton"
+											type="{path:'Action' , formatter:'splReusable.libs.SapSplModelFormatters.setTypeForDropButton'}"
+											enabled="{path:'ItemUUID' , formatter:'splReusable.libs.SapSplModelFormatters.setEnablePropertyForDropButtonInFragment'}">
+										</Button>
+									</content>
+								</HorizontalLayout>
+								<Button icon="sap-icon://delete" type="Transparent"
+									tooltip="{delete}" press="fnHandlePressOfDeleteAssignFreightItemsRow"
+									xmlns="sap.m"></Button>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+				<Button icon="sap-icon://add" text="{labels/AddStop}" class="sapSplAddStopButton"
+					press="fnHandlePressOfAddStop" xmlns="sap.m"></Button>
+			</content>
+		</HorizontalLayout>
+
+
+
+		<HorizontalLayout xmlns="sap.ui.layout"
+			class="sapSplAssignFreightItemLinkLayout">
+			<content>
+				<Link id="sapSplAssignFreightItemLink" text="{labels/assignfreightitemlink}"
+					press="fnHandlePressOfAssignFreightItem" class="sapSplAssignFreightItemLink"
+					xmlns="sap.m">
+				</Link>
+				<Link id="sapSplDropFreightItemLink" text="{labels/dropfreightitemlink}"
+					class="sapSplAssignFreightItemDropRemainingLink" press="fnHandlePressOfDropFreightItemLink"
+					xmlns="sap.m"
+					visible="{path:'leavesTimeVisible' , formatter:'splReusable.libs.SapSplModelFormatters.showDropRemainingFreightItems'}"
+					enabled="{path:'/Items' , formatter:'splReusable.libs.SapSplModelFormatters.enableDropRemainingFreightItemsLink'}">
+				</Link>
+			</content>
+		</HorizontalLayout>
+		<HorizontalDivider xmlns="sap.ui.commons">
+		</HorizontalDivider>
+	</content>
+</VerticalLayout>

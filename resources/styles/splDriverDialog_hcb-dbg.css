@@ -1,0 +1,25 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.splSendMessageBusinessPartnerDialog {
+       top: 10em!important;
+       z-index:7;
+}
+
+.splSendMessageBusinessPartnerDialog .sapMDialogScrollCont {
+       padding : 0rem!important;
+}
+
+.viewHolderLayout {
+       display:block!important;
+}
+
+.AddDriverDialogDialogContainerView {
+       height: 20em;
+}
+.DriverBar{
+	
+}
+.DriverBar .sapMBarRight{
+	width:30% !important;
+}

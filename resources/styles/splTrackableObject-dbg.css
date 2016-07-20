@@ -1,0 +1,20 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+
+.splTrackableObjectDetailsPanel {
+	margin-top : 3%;
+}
+.oTrackableObjectOverlayContainer .sapUiUx3OCContent {
+	overflow-y : scroll;
+}
+.oTrackableObjectOverlayContainer > input{
+width:60%;	
+}
+
+
+.sapSplTracableObjectOverlayLabel
+{
+margin-left: 8%;
+font-size: 15pt;
+}

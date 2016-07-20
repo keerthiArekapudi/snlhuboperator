@@ -1,0 +1,52 @@
+{
+    "authenticationMethod": "none",
+    "securityConstraints": [
+        {
+            "protectedPaths": [
+                "/"
+            ],
+            "excludedPaths": [
+                "welcome/**",
+                "logout/**",
+                "logout.html",
+                "/sap/spl/xs/selfRegistration/**"
+            ]
+        }
+    ],
+    "routes": [
+        {
+            "path": "/sap/spl/xs/selfRegistration",
+            "target": {
+                "type": "destination",
+                "name": "onboarding"
+            },
+            "description": "Anonymous end point"
+        },
+        {
+            "path": "/sapsplui5",
+            "target": {
+                "type": "destination",
+                "name": "sapsplui5"
+            },
+            "description": "UI5 specific to SNLH1511"
+        },
+        {
+            "path": "/sap",
+            "target": {
+                "type": "destination",
+                "name": "core"
+            },
+            "description": "Target System For SNLH"
+        },
+        {
+            "path": "/sapui5",
+            "target": {
+                "type": "service",
+                "name": "sapui5",
+                "entryPath": "/resources"
+            },
+            "description": "SAPUI5"
+        }
+    ],
+    "logoutPage": "/logout/index.html"
+}

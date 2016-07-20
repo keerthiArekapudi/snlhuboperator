@@ -1,0 +1,72 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Panel xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" expandable="false" expanded="true"
+	class="sapSplPanelContentHideBorderBottom">
+	<content>
+		<f:SimpleForm xmlns:core="sap.ui.core" xmlns="sap.m"
+			xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" id="SimpleFormDisplay483"
+			minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout"
+			title="" labelSpanL="3" labelSpanM="3" emptySpanL="0" emptySpanM="0"
+			columnsL="2" columnsM="2">
+			<f:content>
+
+				<Label id="sapSplCompanyProfileStreet">
+				</Label>
+				<Text
+					text="{parts:[{path:'/PostalAddress_StreetName'}], formatter:'splReusable.libs.SapSplModelFormatters.valueNotAvailable'}">
+				</Text>
+
+				<Label id="sapSplCompanyProfileTown" />
+				<Text
+					text="{parts:[{path:'/PostalAddress_Town'}], formatter:'splReusable.libs.SapSplModelFormatters.valueNotAvailable'}" />
+
+				<Label id="sapSplCompanyProfileDistrict" />
+				<Text
+					text="{parts:[{path:'/PostalAddress_District'}], formatter:'splReusable.libs.SapSplModelFormatters.valueNotAvailable'}" />
+
+				<Label id="sapSplCompanyProfileCountry" />
+				<Text
+					text="{parts:[{path:'/PostalAddress_Country'}], formatter:'splReusable.libs.SapSplModelFormatters.valueNotAvailable'}" />
+
+				<Label id="sapSplCompanyProfilePhone" />
+				<Text
+					text="{parts:[{path:'/CommunicationInfo_Phone'}], formatter:'splReusable.libs.SapSplModelFormatters.valueNotAvailable'}" />
+
+				<Label id="sapSplCompanyProfileFax" />
+				<Text
+					text="{parts:[{path:'/CommunicationInfo_Fax'}], formatter:'splReusable.libs.SapSplModelFormatters.valueNotAvailable'}" />
+				<!-- CSN FIX : 0120061532 0001325253 2014 -->
+				<Label id="sapSplComanyProfileWebsite" />
+				<Link target="_top" href="{/CommunicationInfo_Website}"
+					text="{parts:[{path:'/CommunicationInfo_Website'}], formatter:'splReusable.libs.SapSplModelFormatters.valueNotAvailable'}" />
+
+				<!-- CSNFIX 1482006262: SUB INFO NOT DISPLAYED FOR (NOT)CANMAINTAINWALLET -->
+				<!-- <Label id="sapSplCompanyProductName"
+					visible="{parts:[{path:'/canMaintainWallet'}],formatter:'splReusable.libs.SapSplModelFormatters.showEditable'}" />
+				<Text text="{/SubscriptionText}"
+					visible="{parts:[{path:'/canMaintainWallet'}],formatter:'splReusable.libs.SapSplModelFormatters.showEditable'}" /> -->
+				<Label id="sapSplCompanyProfileRegistrationNumber" text="{splI18NModel>REGISTRATION_NUMBER}">
+				</Label>
+				<Text text="{/Organization_RegistrationNumber}" />
+				<Label id="sapSplCompanyProfileRegistry" text="{splI18NModel>REGISTRY_NUMBER}" />
+				<Text text="{/Organization_Registry}" />
+				<!-- <Label id="sapSplCompanyProfileSearchVisibility" text="{splI18NModel>SEARCH_VISIBILITY_LABEL}"
+					visible="{parts:[{path:'/canChangeSearch'}],formatter:'splReusable.libs.SapSplModelFormatters.showEditable'}" />
+				<Text id="sapSplCompanyProfileSearchVisibilityText"
+					visible="{parts:[{path:'/canChangeSearch'}],formatter:'splReusable.libs.SapSplModelFormatters.showEditable'}"
+					text="{parts:[{path:'/isVisibleOnSearch'}],formatter:'splReusable.libs.SapSplModelFormatters.displaySearchVisibilityMessage'}" /> -->
+
+				<!-- 0120031469 0000793750 2014 -->
+				<Label id="sapSplCompanyProfileTourAutomation" text="{splI18NModel>COMPANY_PROFILE_TOUR_CREATION}"
+					visible="{parts:[{path:'/canChangeTourInput'}],formatter:'splReusable.libs.SapSplModelFormatters.isPanelVisible'}" />
+				<Text id="sapSplCompanyProfileTourAutomationText"
+					visible="{parts:[{path:'/canChangeTourInput'}],formatter:'splReusable.libs.SapSplModelFormatters.isPanelVisible'}"
+					text="{parts:[{path:'/TourInputType'}],formatter:'splReusable.libs.SapSplModelFormatters.displayTourAutomationMessage'}" />
+			</f:content>
+		</f:SimpleForm>
+	</content>
+</Panel>

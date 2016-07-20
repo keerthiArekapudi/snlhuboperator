@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" charset="UTF-8">
+
+
+
+<script src="/sap/ui5/1/resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-theme="sap_bluecrystal" 
+				data-sap-ui-libs="sap.m,sap.ui.layout,sap.ui.unified"
+				data-sap-ui-xx-bindingSyntax="complex">
+</script>
+<script type="text/javascript">
+		/*Load bootstrap params here. Leave UI5 bootstrap lean*/
+		
+
+	var oData = [
+ 			{
+				Name : "Map Data (Polygon/Predefind Path/Points of Interest) KML format Upload",
+				URL : "/sap/spl/ui/demo/mapKMLUpload.html"
+			},
+			{
+				Name : "Assignment of Predefined Paths to Vehicles/Devices",
+				URL : "/sap/spl/ui/demo/setup.html"
+			},
+			{
+				Name : "Activation/Deactivation of Incidents",
+				URL : "/sap/spl/ui/demo/incidentActivation.html"
+			},
+			{
+				Name : "Vehicle Mobile UI Simulation",
+				URL : "/sap/spl/ui/demo/vehicles.html"
+			},
+			{
+				Name : "Download/Upload Demo data",
+				URL : "/sap/spl/xs/demoSetup"
+			}
+	];
+	var oModel = new sap.ui.model.json.JSONModel(oData);
+	new sap.m.Shell({
+		app :
+		new sap.m.Page({
+			title : "SAP Connected Logistics Demo Setup Activities",
+			content : [
+			new sap.m.List({
+				items : {
+					path : "/",
+					template : new sap.m.CustomListItem({
+						content : [
+						new sap.m.Bar({
+							design : "Header",
+							contentMiddle : new sap.m.Link({
+								text : "{Name}",
+								href : "{URL}"
+							})
+						})
+						]
+					})
+				}
+			}).setModel(oModel)
+			]
+		})
+	}).placeAt("demoContent");
+</script>
+
+
+
+</head>
+
+
+
+<body class="sapUiBody" role="application">
+	<div id="demoContent"></div>
+</body>
+</html>

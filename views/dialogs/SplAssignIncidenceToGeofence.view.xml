@@ -1,0 +1,54 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	xmlns="sap.m" controllerName="splController.dialogs.SplAssignIncidenceToGeofence"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<NavContainer id="sapSplAssignIncidenceToLocationNavContainer">
+		<Page id="sapSplAssignIncidenceToLocationNavContainerViewIncidencePage">
+			<customHeader>
+				<Bar class="sapSplCustomBarContent">
+					<contentMiddle >
+						<Label id="sapSplAssignIncidenceToLocationViewIncidencePageTitle" >
+						</Label>
+					</contentMiddle>
+				</Bar>
+			</customHeader>
+			<content>
+				<SearchField>
+				</SearchField>
+				<List id="sapSplAssignIncidenceToLocationViewIncidencePageContentList"
+					select="fnHandleSelectOfListItem" items="{/}">
+					<items>
+						<StandardListItem
+							id="sapSplAssignIncidenceToLocationViewIncidencePageContentListItem" title="{Name}" description="{ShortText}">
+						</StandardListItem>
+					</items>
+				</List>
+			</content>
+		</Page>
+		<Page id="sapSplAssignIncidenceToLocationNavContainerAssignIncidencePage">
+			<customHeader>
+				<Bar class="sapSplCustomBarContent">
+					<contentMiddle >
+						<Label id="sapSplAssignIncidenceToLocationAssignIncidencePageTitle" >
+						</Label>
+					</contentMiddle>
+				</Bar>
+			</customHeader>
+			<content>
+				<SearchField>
+				</SearchField>
+				<List id="sapSplAssignIncidenceToLocationAssignIncidencePageContentList" select="fnHandleSelectInsidentOfListItem" mode="MultiSelect" items="{/}">
+					<items>
+						<StandardListItem id="sapSplAssignIncidenceToLocationAssignIncidencePageContentListItem" title="{Name}" selected="{checked}" description="{ShortText}">
+						</StandardListItem>
+					</items>
+				</List>
+			</content>
+		</Page>
+	</NavContainer>
+</core:View>

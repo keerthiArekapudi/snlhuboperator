@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" charset="UTF-8">
+		
+		<LINK href="./resources/styles/splDemoVehicleAppStyles.css" rel="stylesheet" type="text/css">
+		
+		<script type="text/javascript">
+		/*Load bootstrap params here. Leave UI5 bootstrap lean*/
+		try{
+		    if(!window){
+			    throw new ReferenceError();
+			}
+		}
+		catch (e){
+		    jQuery.sap.log.error ( (e && e.stack) ? e.stack.toString() : "Window object undefined. Fatal error!!!");
+		}
+		
+		</script>
+		
+		<script src="/sap/ui5/1/resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-theme="sap_bluecrystal" 
+				data-sap-ui-libs="sap.m,sap.ui.layout,sap.ui.unified"
+				data-sap-ui-xx-bindingSyntax="complex">
+		</script>
+		
+		<script>
+		
+		sap.ui.getCore().attachInit(function(){
+			
+			sap.ui.localResources("sap.spl.ui.demo");
+			jQuery.sap.registerModulePath("splDemoStartup","./startup/");
+			jQuery.sap.registerModulePath("splDemoFormatter","./formatters/");
+			jQuery.sap.registerModulePath("splDemoConfiguration","./configuration/");
+			jQuery.sap.registerModulePath("splReusable","../reusable/");
+			jQuery.sap.registerModulePath("splDemoView","./views/");
+			jQuery.sap.registerModulePath("splDemoController","./controllers/");
+			jQuery.sap.require("splDemoStartup.Vehicles");
+		});
+			
+		</script>
+
+	</head>
+
+
+
+<body class="sapUiBody" role="application">
+	<div id="demoContent"></div>
+</body>
+</html>

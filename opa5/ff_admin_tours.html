@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Opa check for tours</title>
+<script id="sap-ui-bootstrap" src="../resources/sap-ui-core.js"
+	data-sap-ui-resourceroots='{"opa5": "./"}'></script>
+<script src="../resources/sap/ui/thirdparty/qunit.js"></script>
+<link rel="stylesheet" href="../resources/sap/ui/thirdparty/qunit.css"
+	type="text/css" media="screen" />
+<script type="text/javascript">
+	jQuery.sap.require("sap.ui.test.Opa5");
+	jQuery.sap.require("sap.ui.test.opaQunit");
+	var opa5 = sap.ui.test.Opa5;
+	jQuery.sap.require("opa5.Arrangements.arrangements");
+	jQuery.sap.require("opa5.Actions.actions_tours");
+	jQuery.sap.require("opa5.Assertions.assertions_tours");
+	var index = 0;
+
+	sap.ui.test.Opa5.extendConfig({
+		arrangements : new opa5.Arrangements.arrangements,
+		actions : new opa5.Actions.actions_tours,
+		assertions : new opa5.Assertions.assertions_tours,
+	});
+
+	opaTest("Should see the apps tiles on the launchpad", function(Given, When,
+			Then) {
+		// Arrangements
+		Given.iStartMyApp();
+
+		//Actions
+		When.waitFor({
+			id : "masterTileContainerPage",
+			viewName : "splView.tileContainer.MasterTileContainer",
+			success : function(oPage) {
+				this.getContext().oAppsPage = oPage;
+			}
+		});
+		Then.iShouldSeeTiles();
+	});
+
+	opaTest("Should navigate to Tours App", function(Given, When, Then) {
+		When.iclickonToursTile();
+		Then.iSeeToursPage();
+	});
+
+	opaTest("Should click on create tours button", function(Given, When, Then) {
+		When.iclickonCreateNewTours();
+		Then.iSeeCreateNewToursPage();
+	});
+
+	opaTest("Should click on Add freight items link and add items", function(
+			Given, When, Then) {
+		When.iclickonAddFreightItemsLink().and.iEnterValues().and
+				.iClickOnOkButton();
+		Then.FreightItemsAdded();
+	});
+
+	opaTest("Click on select stop", function(Given, When, Then) {
+		index = 0;
+		When.iClickOnStopInputField();
+		Then.iSeeSelectStopDialog();
+	});
+
+	opaTest("Enter stop details", function(Given, When, Then) {
+		When.iClickOnCTButton().and.iClickOnTableRow();
+		Then.PartnerFieldIsVisible();
+	});
+
+	opaTest("Assign freight items", function(Given, When, Then) {
+		index = 0;
+		When.iclickOnAssignFreightItem().and.iClickOnPickUp();
+		Then.TwoFieldsAreVisible();
+	});
+
+	opaTest("Enter Order Id and destination description", function(Given, When,
+			Then) {
+		When.iEnterOrderIdAndDestination().and.iClickOnCloseButton();
+		Then.iSeeCreateNewToursPage();
+	});
+
+	opaTest("Click on select stop", function(Given, When, Then) {
+		index = 1;
+		When.iClickOnStopInputField();
+		Then.iSeeSelectStopDialog();
+	});
+
+	opaTest("Enter stop details", function(Given, When, Then) {
+		When.iClickOnCTButton().and.iClickOnTableRow();
+		Then.PartnerFieldIsVisible();
+	});
+
+	opaTest("Assign freight items", function(Given, When, Then) {
+		index = 1;
+		When.iclickOnAssignFreightItem().and.iClickOnDrop();
+		Then.TwoFieldsAreVisible();
+	});
+
+	opaTest("Enter Order Id and destination description", function(Given, When,
+			Then) {
+		When.iEnterOrderIdAndDestination().and.iClickOnCloseButton();
+		Then.iSeeAssignedFreightItemsInTable();
+	});
+
+	opaTest("Save the tour", function(Given, When, Then) {
+		When.iClickOnSaveForLaterButton();
+		Then.iSeeToursPage();
+	});
+</script>
+</head>
+<body style="height: 100%">
+	<div id="content"></div>
+	<h1 id="qunit-header">Opa test for external viewer - ALL TESTS</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+</body>
+</html>

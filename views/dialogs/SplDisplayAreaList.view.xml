@@ -1,0 +1,13 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="splController.dialogs.SplDisplayAreaList"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<!-- 			Incident fix : 1570452538 -->
+	<List id="DisplayAreaList" items="{/ViewList}" mode="SingleSelectMaster" select="handleSelectOfDisplayArea"  growing="true" growingThreshold="100" growingScrollToLoad="true" noDataText="{splI18NModel>NO_DISPLAY_AREAS}">
+		<StandardListItem title="{parts:[{path:'Name'},{path:'isDefault'}], formatter:'splReusable.libs.SapSplModelFormatters.getDefaultDisplayAreaName'}"></StandardListItem>
+	</List>
+</core:View>

@@ -1,0 +1,29 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<ResponsivePopover xmlns="sap.m" showHeader="true"
+	xmlns:core="sap.ui.core" title="{/Title}" class="clusterObjectsListPopover"
+	modal="false" contentWidth="320px" offsetX="{/PositionObject/x}"
+	offsetY="{/PositionObject/y}" placement="{/PositionObject/placement}">
+	<content>
+		<List items="{/Data}" mode="SingleSelectMaster" select="fnHandleClickOfClusterObjectListItem">
+			<items>
+				<CustomListItem title="{Name}" description="{Tag}">
+					<Toolbar height="2.5rem">
+						<content>
+							<Image
+								src="{parts:[{path:'Tag'},{path:'ReportedStatus'}], formatter:'splReusable.libs.SapSplModelFormatters.getLocationTypeIcon'}"
+								width="1.5rem"></Image>
+							<Label text="{Name}"></Label>
+							<ToolbarSpacer></ToolbarSpacer>
+							<Button type="Transparent" icon="sap-icon://slim-arrow-right" enabled="false"></Button>
+						</content>
+					</Toolbar>
+				</CustomListItem>
+			</items>
+		</List>
+
+	</content>
+</ResponsivePopover>

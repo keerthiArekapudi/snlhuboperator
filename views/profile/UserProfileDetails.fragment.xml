@@ -1,0 +1,41 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Panel xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	expanded="true" expandable="false" height="100%" class="sapSplPanelContentHideBorderBottom">
+	<content>
+		<f:SimpleForm xmlns:core="sap.ui.core" xmlns="sap.m"
+			xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" id="SimpleFormDisplay483"
+			minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout"
+			title="" labelSpanL="2" labelSpanM="2" emptySpanL="0" emptySpanM="0"
+			columnsL="2" columnsM="2">
+			<f:content>
+				<Label id="sapSplUserProfileEmail" text="{splI18NModel>EMAIL}">
+				</Label>
+				<Text
+					text="{parts:[{path:'loggedOnUserModel>/profile/CommunicationInfo_EmailAddress'}]}">
+				</Text>
+
+				<Label id="sapSplUserProfileSalutation" text="{splI18NModel>SALUTATION}" />
+				<Text
+					text="{parts:[{path:'loggedOnUserModel>/profile/PersonName_Title'}]}" />
+
+				<Label id="sapSplUserProfilePrefix" text="{splI18NModel>PREFIX}" />
+				<Text
+					text="{parts:[{path:'loggedOnUserModel>/profile/PersonName_SurnamePrefix'}]}" />
+
+				<Label id="sapSplUserProfileDesignation" text="{splI18NModel>DESIGNATION}" />
+				<Text
+					text="{parts:[{path:'loggedOnUserModel>/profile/PersonName_JobFunction'}]}" />
+
+				<Label id="sapSplUserProfilePhone" text="{splI18NModel>PHONE}" />
+				<!-- CSNFIX 787102 2014 -->
+				<Text text="{parts:[{path:'loggedOnUserModel>/profile/CommunicationInfo_Phone'}]}" />
+			</f:content>
+		</f:SimpleForm>
+
+
+	</content>
+</Panel>

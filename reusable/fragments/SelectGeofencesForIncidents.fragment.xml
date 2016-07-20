@@ -1,0 +1,55 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Dialog xmlns="sap.m" id="SapSplGeofenceToIncidentAssignmentSelectDialog"
+	class="SapSplGeofenceToIncidentAssignmentSelectDialog" showHeader="false">
+	<NavContainer xmlns="sap.m"
+		id="sapSplGeofenceToIncidentsAssignmentNavContainer">
+		<Page xmlns="sap.m" title="" id="listGeofencesPage">
+			<subHeader>
+	      		<Toolbar xmlns="sap.m">
+	      			<SearchField xmlns="sap.m"  search="fnToHandleSearchOfIncidents"></SearchField>
+	      		</Toolbar>
+    		</subHeader>
+    		<content>			
+				<List items="{/}" mode="MultiSelect" id="sapSplGeofenceToIncidentAssignmentList"  enableBusyIndicator="true"
+				selectionChange="fnHandleSelectionChange" showNoData="false">
+					<items>
+						<ObjectListItem iconDensityAware="false" iconInset="false"
+							xmlns="sap.m" title="{Name}" selected="{checked}" press="fnHandleClickOfListItem"
+							type="Navigation">
+						</ObjectListItem> 
+					</items>
+				</List>
+			</content>
+		</Page>
+		<Page xmlns="sap.m" id="listGatesPage">
+		<customHeader>
+			<Bar xmlns="sap.m">
+				<contentLeft>
+					<Button xmlns="sap.m" icon="sap-icon://nav-back" press="handleBackNavigationInGeofenceDialog"></Button>
+				</contentLeft>
+				<contentMiddle>
+					<Label xmlns="sap.m" id="sapSplSelectGatesPageTitle"></Label>
+				</contentMiddle>
+			</Bar>
+		</customHeader>
+			<SearchField xmlns="sap.m" id="sapSplAssignGateSearch" search="fnToHandleSearchOfGates"></SearchField>
+			<List items="{/}" mode="MultiSelect" id="sapSplGeofenceToIncidentAssignmentGatesList" selectionChange="handleSelectOfGates">
+				<items>
+					<ObjectListItem iconDensityAware="false" iconInset="false"
+						xmlns="sap.m" title="{Name}" selected="{checked}">
+					</ObjectListItem>
+				</items>
+			</List>
+		</Page>
+	</NavContainer>
+	<beginButton>
+		<Button id="sapSplSelectGeofencesForIncidentsConfirm" text="OK"></Button>
+	</beginButton>
+	<endButton>
+		<Button id="sapSplSelectGeofencesForIncidentsCancel" text="Cancel"></Button>
+	</endButton>
+</Dialog>

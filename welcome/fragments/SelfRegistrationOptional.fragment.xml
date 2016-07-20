@@ -1,0 +1,131 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+
+<Panel xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core" xmlns="sap.m" expanded="false" expandable="true"
+	headerText="{i18n>OPTIONAL_TEXT}">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto">
+		<l:content>
+			<f:SimpleForm id="SimpleFormChange471" minWidth="-1"
+				editable="true" layout="ResponsiveGridLayout" title="{i18n>ORGANIZATION_DETAILS}"
+				columnsL="1" columnsM="1" columnsS="1" emptySpanL="4" emptySpanM="4"
+				emptySpanS="1" class="mySapPanel">
+				<f:content>
+
+					<Label text="{i18n>ORGANIZATION_REGISTRATION_NUMBER}" class="sapSplFormLabel">
+					</Label>
+					<Input class="myInputFields" value="{/Organization.RegistrationNumber}"
+						title="Registration Number">
+						<layoutData>
+							<l:GridData span="L4 M4 S12" />
+						</layoutData>
+					</Input>
+
+					<Label text="{i18n>ORGANIZATION_REGISTRY}" class="sapSplFormLabel" />
+					<Input class="myInputFields" value="{/Organization.Registry}">
+						<layoutData>
+							<l:GridData span="L4 M4 S12" />
+						</layoutData>
+					</Input>
+
+					<core:Title text="{i18n>ADDRESS}" class="sapSplUiFormTitle">
+					</core:Title>
+
+					<Label text="{i18n>STREET}" class="sapSplFormLabel" />
+					<Input class="myInputFields" value="{/PostalAddress.StreetName}">
+						<layoutData>
+							<l:GridData span="L4 M4 S12" />
+						</layoutData>
+					</Input>
+
+					<Label text="{i18n>DISTRICT}" class="sapSplFormLabel" />
+					<Input class="myInputFields" value="{/PostalAddress.District}">
+						<layoutData>
+							<l:GridData span="L4 M4 S12" />
+						</layoutData>
+					</Input>
+
+					<Label text="{i18n>CITY}/{i18n>TOWN}" class="sapSplFormLabel" />
+					<Input class="myInputFields" value="{/PostalAddress.Town}">
+						<layoutData>
+							<l:GridData span="L4 M4 S12" />
+						</layoutData>
+					</Input>
+
+					<Label text="{i18n>POSTAL_CODE}" class="sapSplFormLabel" />
+					<Input class="myInputFields" value="{/PostalAddress.PostalCode}"
+						type="Number">
+						<layoutData>
+							<l:GridData span="L3 M3 S12" />
+						</layoutData>
+					</Input>
+
+					<Label text="{i18n>COUNTRY}" class="sapSplFormLabel" />
+					<Input class="myInputFields" value="{/PostalAddress.Country}">
+						<layoutData>
+							<l:GridData span="L4 M4 S12" />
+						</layoutData>
+					</Input>
+
+					<core:Title text="{i18n>COMMUNICATION}" />
+
+					<Label text="{i18n>PHONE}" class="sapSplFormLabel" />
+					<Input class="myInputFields" value="{/CommunicationInfo.Phone}"
+						type="Tel">
+						<layoutData>
+							<l:GridData span="L4 M4 S12" />
+						</layoutData>
+					</Input>
+
+					<Label text="{i18n>FAX}" class="sapSplFormLabel" />
+					<Input class="myInputFields" value="{/CommunicationInfo.Fax}"
+						type="Tel">
+						<layoutData>
+							<l:GridData span="L4 M4 S12" />
+						</layoutData>
+					</Input>
+
+					<Label text="{i18n>WEBSITE}" class="sapSplFormLabel" />
+					<Input class="myInputFields" value="{/CommunicationInfo.Website}"
+						type="Url">
+						<layoutData>
+							<l:GridData span="L4 M4 S12" />
+						</layoutData>
+					</Input>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm id="SimpleFormChange472" minWidth="-1"
+				editable="true" layout="ResponsiveGridLayout" title="{i18n>PERSONAL_DETAILS}"
+				columnsL="1" columnsM="1" columnsS="1" emptySpanL="4" emptySpanM="4"
+				emptySpanS="1">
+				<f:content>
+					<Label text="{i18n>SALUTATION}" class="sapSplFormLabel" />
+					<Input class="myInputFields" value="{/PersonName.Title}">
+						<layoutData>
+							<l:GridData span="L2 M2 S12" />
+						</layoutData>
+					</Input>
+
+					<Label text="{i18n>SURNAME_PREFIX}" class="sapSplFormLabel" />
+					<Input class="myInputFields" value="{/PersonName.SurnamePrefix}">
+						<layoutData>
+							<l:GridData span="L2 M2 S12" />
+						</layoutData>
+					</Input>
+
+					<Label text="{i18n>JOBFUNCTION}" class="sapSplFormLabel" />
+					<!-- CSNFIX 1580108512 -->
+					<Input class="myInputFields" value="{/PersonName.JobFunction}">
+						<layoutData>
+							<l:GridData span="L2 M2 S12" />
+						</layoutData>
+					</Input>
+				</f:content>
+			</f:SimpleForm>
+		</l:content>
+	</l:Grid>
+</Panel>
+

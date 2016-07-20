@@ -1,0 +1,68 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	xmlns="sap.m" controllerName="splController.dialogs.SplAddEditHubDialog"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout">
+	<layout:VerticalLayout id = "AddEditHubDialogVerticalLayout" width="100%">
+		<Text id = "HubText" 
+			  text = "{splI18NModel>HUB_Name}" 
+			  class = "HubText"/>
+		<Select id = "SelectNewHub"
+			autoAdjustWidth = "true"
+			items = "{/possibleOwners}"
+ 			change = "handleHubSelectionChange"
+ 			class = "selectDropDown">
+ 			<core:Item key="{OwnerID}" text="{OwnerName}" />
+ 			<layoutData>
+				<l:GridData span="L6 M6 S12" />
+			</layoutData>
+ 		</Select>
+ 		<!-- Bug Fix Incident ID: 1570004633 for the selected hub owner as "Bold" -->
+		<Label id = "SelectedHubName" 
+			   text = "{/SelectedHub/OwnerName}"
+			   design = "Bold" />
+		<Text id = "SubscriptionPackageText"
+			  text = "{splI18NModel>SUBSCRIPTION_PACKAGE}"
+			  class = "SubscriptionPackageText"/>
+		 <!-- /* Bug Fix - Incident 1570002929 */ --> 
+		 <Select id = "SubscriptionPackage" selectedKey="{/SelectedHub/SubscriptionProductName}"
+			autoAdjustWidth = "true"
+			items = "{/subscription}"
+			change = "handleProductChange"
+			class = "selectDropDown">
+			<core:Item key="{Name}" text="{Name.description}" />
+			<layoutData>
+				<l:GridData span="L6 M6 S12" />
+			</layoutData>
+		</Select>
+		<Label id = "SingleSubscriptionPackage" 
+			   text = "{/SelectedHub/SubscriptionProductName}"
+			   design = "Bold" />
+		<CheckBox id = "BuPaIsVisibleCheckBox" 
+				  text = "{splI18NModel>IS_VISIBLE}" 
+				  select = "fnToSetSaveButtonEnablement"/>
+		<CheckBox id = "AgreeDisagreeClause" 
+				  text = "{splI18NModel>AGREE_TO_SUBSCRIPTION_CHANGE_CHECKBOX}"
+				  select = "handleAgreeDisagreeSelect" />
+		
+		<Select id = "SelectOneOfAlreadyConnectedHubsToDeregister"
+				autoAdjustWidth = "true"
+				items = "{/connectedHubs}"
+				change = "fnToCaptureLiveChangeToSetFlag"
+				class = "selectDropDown">
+			<core:Item key="{OwnerID}" text="{OwnerName}" />
+			<layoutData>
+				<l:GridData span="L6 M6 S12" />
+			</layoutData>
+		</Select>
+		<layout:HorizontalLayout id = "DeregistrationHorizontalLayout" 
+								 class = "DeregistrationHorizontalLayout">
+			<core:Icon src = "sap-icon://alert" class = "alertIcon"></core:Icon>
+			<Text text = "{splI18NModel>DEREGISTER_WARNING_TEXT}" class = "DeregistrationText"/>
+		</layout:HorizontalLayout>
+	</layout:VerticalLayout>
+</core:View>

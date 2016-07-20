@@ -1,0 +1,14 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="splController.registeration.SplitAppBase"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Shell>
+		<app>
+			<SplitApp id="SplitAppBase"></SplitApp>
+		</app>
+	</Shell>
+</core:View>

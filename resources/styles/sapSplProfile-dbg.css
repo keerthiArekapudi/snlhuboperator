@@ -1,0 +1,178 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.oSapSplObjectHeader {
+	
+}
+
+.sapSplUsageLogDetailsObjectHeader .sapMOHTitle {
+	font-size: 1.75rem !important;
+}
+
+.oSapSplObjectHeader .sapMOHAttrRow:first-child {
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+.SapSplUsageLogHeader {
+	background-color: #e6e6e6;
+}
+
+.sapSplUsageLogDetailsPage .sapMList {
+	margin: 1.5%;
+}
+
+.sapSplUsageLogDetailsUsersTable {
+	height: 326px;
+	overflow-y: scroll;
+	background-color: white;
+}
+
+.sapSplUsageLogDetailsTrucksTable {
+	height: 326px;
+	overflow-y: scroll;
+	background-color: white;
+}
+
+.sapSplUsageLogDetailsTableTitle {
+	margin-left: 1.25rem !important;
+}
+
+.sapSplImageInputHolder .sapMFlexItem:first-child {
+	width: 30%;
+}
+
+/*
+Header bold text in Deregister prompt on C Profile
+*/
+.sapSplHeaderTextFont.sapMText.sapMTextMaxWidth {
+	font-weight: bold;
+	padding-bottom: 0.2rem;
+	margin-bottom: 0.2rem;
+}
+
+/*
+Detailed message text in Deregister prompt on C Profile
+*/
+.sapSplDeregisterTextDetailMessage.sapMText.sapMTextMaxWidth {
+	padding-bottom: 0.3rem;
+	margin-bottom: 0.3rem;
+}
+
+.sapSplPanelContentHideBorderBottom>.sapMPanelContent {
+	border-bottom: none !important;
+}
+
+/*
+To set the background color of the page to W
+*/
+.sapSplCustomPageStyle.sapMPage {
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.sapSplUserProfilePanelPaddingBorderBottomNone>.sapMPanelContent {
+	padding: 0px !important;
+	border-bottom: none !important;
+}
+
+.sapSplCompanyProfileCompanyDeregisterBoldText {
+	font-weight: bold;
+}
+
+.sapSplCompanyProfileCompanyDeregisterConsequenceHeaderLabel {
+	color: rgb(205, 55, 55) !important;
+}
+
+.sapSplCompanyProfileCompanyDeregisterBoldPanelHeader>.sapMPanelHdr {
+	font-size: 0.9rem;
+	font-weight: bold;
+}
+
+/*The grayed out warning message to display in the sub scrip change prompt window (MESSAGE_TOBE_SEEN_ON_RESTART_LABEL)*/
+.sapSplComProfSubScripChangeWarningMessageText.sapMText {
+	font-size: 0.8rem;
+	color: #888888;
+}
+
+.sapSplComProfSubScriptChangeAcceptanceCheckBox.sapMCb {
+	bottom: 0.7rem;
+}
+
+/* Fix for Incident : 1482012129 */
+.splChangeTourPromptDialogContentForm .sapUiFormTitle {
+	padding: 0rem;
+}
+
+.sapSplDeregisterCompanyDialog .sapMPanelHdr {
+	border-bottom: 0px !important
+}
+
+.sapSplDeregisterCompanyDialog .sapMPanelContent {
+	padding-top: 0rem;
+	padding-bottom: 0.5rem;
+}
+
+.sapSplDeregisterDeleteAllLocationLabel {
+	margin-top: 1.5rem;
+}
+
+.CompanyProfileButtons {
+	float: right;
+}
+
+.sapSplPanelContentHideBorderBottom {
+	margin-top: 2em;
+}
+
+.addEditDeregisterHubDialog {
+	min-width: 18rem !important;
+}
+
+.sapSclFollowTrucksSearchField {
+	width: 12rem;
+}
+
+.SapSplTrucksListDisabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.sapSplThemePreferenceLayout .sapMRbB {
+	width: 0;
+}
+
+.sapSplThemePreferenceLayout .sapMRbBOut {
+	display: none;
+}
+
+.sapSplProfilePanelContent .sapMPanelContent {
+	overflow-y: hidden;
+	height: 100% !important;
+	min-height: 100% !important;
+}
+
+.sapSnlhNoBreakWord {
+	word-break: normal;
+}
+.sapSnlhOrangeText {
+	color:#e17b24;
+}
+.sapSnlhRedText {
+	color:#d32030;
+}
+.sapSnlhRedBorder {
+	  border: 1px solid #e17b24;
+}
+.sapSnlhRedBorder:hover {
+	  border: 1px solid #e17b24;
+}
+.sapSnlhTourSetingsInnerTableSecondItem .sapMListTblCell {
+	border-bottom: 0 !important;
+}
+.SapSplUsageLogTimeHorizonControl{
+	padding-left: 1rem;
+    padding-bottom: 1rem;
+}
+.sapSplProductChangeAgreementDialog{
+	z-index : 1000 !important;
+}

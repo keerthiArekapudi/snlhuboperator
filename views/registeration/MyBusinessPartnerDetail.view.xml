@@ -1,0 +1,137 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns="sap.m"
+	controllerName="splController.registeration.MyBusinessPartnerDetail"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="MyBusinessPartnerDetailPage">
+		<content>
+
+			<Label id="sapSplBupaDetailNoDataLabel" visible="{/noData}"
+				class="noDataLabel">
+			</Label>
+			<!-- CSNFIX : 0120031469 0000760596 2014 added 'Status' to the path -->
+			<ObjectHeader titleActive="false" visible="{/isClicked}"
+				icon="{parts:[{path:'/ImageUrl'}], formatter:'splReusable.libs.SapSplModelFormatters.getImageUrlForOrganization'}"
+				title="{/Organization_Name}">
+
+				<statuses>
+					<ObjectStatus
+						text="{parts:[{path:'/RequestStatus'},{path:'/Status'}] , formatter:'splReusable.libs.SapSplModelFormatters.showPendingLabel'}"
+						state="Error" />
+				</statuses>
+
+				<attributes>
+					<ObjectAttribute text="{/Role.description}" />
+				</attributes>
+
+			</ObjectHeader>
+
+			<IconTabBar class="iconTabBarPaddingTop" id="SapSplBupaIconTabBar"
+				selectedKey="{/SelectedKey}" expanded="{device>/isNoPhone}" visible="{/isClicked}"
+				expandable="false" select="fnhandleIconTabBarSelect">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" key="info"
+						tooltip="{splI18NModel>INFO_ICON_TOOLTIP}">
+
+						<form:SimpleForm>
+							<form:content>
+
+								<Label id="sapSplBusinessPartnerDetailMainContact">
+								</Label>
+								<Text
+									text="{parts:[{path:'/POC/PersonName_GivenName'},{path:'/POC/PersonName_Surname'}] , formatter: 'splReusable.libs.SapSplModelFormatters.displayNameFormatterBP'}">
+								</Text>
+
+								<Label id="sapSplBusinessPartnerDetailEmail">
+								</Label>
+								<Link text="{/POC/CommunicationInfo_EmailAddress}" href="mailto:{/POC/CommunicationInfo_EmailAddress}">
+								</Link>
+
+								<Label id="sapSplBusinessPartnerDetailStreet">
+								</Label>
+								<Text text="{/PostalAddress_Street}">
+								</Text>
+
+								<Label id="sapSplBusinessPartnerDetailTown">
+								</Label>
+								<Text text="{/PostalAddress_Town}">
+								</Text>
+
+								<Label id="sapSplBusinessPartnerDetailDistrict">
+								</Label>
+								<Text text="{/PostalAddress_District}">
+								</Text>
+
+								<Label id="sapSplBusinessPartnerDetailCountry">
+								</Label>
+								<Text text="{/PostalAddress_Country}">
+								</Text>
+
+								<Label id="sapSplBusinessPartnerDetailOrgPhone">
+								</Label>
+								<Text text="{/CommunicationInfo_Phone}">
+								</Text>
+								<Label id="sapSplBusinessPartnerDetailExternalId">
+								</Label>
+								<Input id ="sapSplBusinessPartnerExternalIdInput" value="{/ExternalInstanceID}" liveChange="fnToCaptureLiveChangeToSetFlag" class = "SapSplBusinessPartnerExternalIDInputViewMode" editable="{/Editable}" width="50%" visible="{path:'/canMaintainExternalID' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibilityofExternalID'}">
+								</Input>
+								<Label></Label>
+								<MessageStrip id="sapSplBusinessPartnerDetailExternalIdMessage"
+									type="Information" showIcon="true" class="sapUiMediumMarginBottom SapSplBusinessPartnerMessageStrip" visible="{/Editable}">
+								</MessageStrip>
+							</form:content>
+						</form:SimpleForm>
+
+					</IconTabFilter>
+
+					<IconTabFilter icon="sap-icon://share-2" enabled="{= !${/Editable} }"
+						visible="{parts:[{path:'/isVehicleSharable'},{path:'/RequestStatus'},{path:'sapSplAppConfigDataModel>/canViewShareVehicle'},{path:'/Status'}] , formatter: 'splReusable.libs.SapSplModelFormatters.showTruckSharingTab'}"
+						id="SapSplVehicles" key="truck" tooltip="{splI18NModel>SHARE_ICON_TOOLTIP}">
+
+						<Label design="Bold" class="SapSplTruckShareLabel"
+							text="{path:'/Trucks/SharePermissions' , formatter:'splReusable.libs.SapSplModelFormatters.showTruckShareLabel'}">
+						</Label>
+
+						<Table items="{/Trucks/SharePermissions}"
+							id="sapSplBusinessPartnerVehicleSharePermissionsTable">
+							<columns>
+								<Column cssAlign="center" width="60%">
+									<header>
+										<Text id="SapSplVehiclesDetailRegistrationNumber"></Text>
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{RegistrationNumber}"></Text>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+
+		</content>
+
+		<footer>
+			<Bar>
+				<contentRight>
+					<!-- Fix for internal incident : 1482007933 Added one more field -->
+					<Button id="MyBuPaDetailsEditButton" press="fnEditBupaDetails"
+						visible="{parts:[{ path:'/canTerminate'},{path:'/showFooterOptions'},{path:'/canMaintainExternalID'} ], formatter:'splReusable.libs.SapSplModelFormatters.fnCanEditBupaDetails'}"></Button>
+					<Button id="MyBupaEditCancel" press="fnCancelEditBupaDetails"
+						visible="false"></Button>
+					<Button id="MyBuPaDeleteButton" press="fnRelationTerminator"
+						visible="{ parts:[{ path:'/canTerminate'}, { path:'/Status'}, { path:'/RequestStatus'}, {path:'/showFooterOptions'} ], formatter:'splReusable.libs.SapSplModelFormatters.fnCanTerminateRelation'}"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+
+	</Page>
+</core:View>

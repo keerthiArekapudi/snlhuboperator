@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:commons="sap.ui.commons" xmlns:custom="splReusable.libs"
+	xmlns:form="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:VBM="sap.ui.vbm" xmlns:layout="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:suitecommons="sap.suite.ui.commons" controllerName="splController.managetours.TourDetails">
+	<Page id="ToursOverViewPage" backgroundDesign="Transparent">
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Button icon="sap-icon://nav-back" tap="fnHandleTapOfBackbutton" />
+				</contentLeft>
+				<contentMiddle>
+					<Label id="TourDetailPageTitle" />
+				</contentMiddle>
+				<contentRight>
+					<Button id="SapSplNavigationUp" icon="sap-icon://up"
+						tap="fnHandlePressOfUpButton" visible="false"
+						enabled="{path:'/index/value',formatter:'splReusable.libs.SapSplModelFormatters.enableTourNavigationButton'}" />
+					<Button id="SapSplNavigationDown" icon="sap-icon://down"
+						tap="fnHandlePressOfDownButton" visible="false"
+						enabled="{path:'/index/value',formatter:'splReusable.libs.SapSplModelFormatters.enableTourNavigationButton'}" />
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<content>
+			<ObjectHeader id="toursOverviewHeader" title="{/data/Name}"
+				titleActive="false" class="sapSnlhTourDetailObjectHeader">
+				<attributes>
+					<ObjectAttribute text="{/data/RegistrationNumber}" />
+					<ObjectAttribute text="{/data/TourID}" />
+				</attributes>
+				<statuses>
+					<ObjectStatus text="{/data/TourStatus.description}"
+						state="{path:'/data/TourStatus',formatter:'splReusable.libs.SapSplModelFormatters.setTourStatusState'}" />
+					<ObjectStatus text="{splI18NModel>ACTUAL_DURATION}" visible="{path:'/data/ActualDuration',formatter:'splReusable.libs.SapSplModelFormatters.getVisibilityForActualDuarationStatus'}"/>
+					<ObjectStatus text="{path:'/data/ActualDuration',formatter:'splReusable.libs.SapSplModelFormatters.getTourDurationInTextFormatFromSeconds'}" state="{path:'/data/TourState',formatter:'splReusable.libs.SapSplModelFormatters.getStateOfObjectStatusForActualDuration'}" />
+					<ObjectStatus text="{splI18NModel>PLANNED_DURATION}" />
+					<ObjectStatus text="{path:'/data/PlannedDuration',formatter:'splReusable.libs.SapSplModelFormatters.getTourDurationInTextFormatFromSeconds'}" state="None" />
+				</statuses>
+			</ObjectHeader>
+			<suitecommons:HeaderContainer id="sapSnlhHeaderContainer"
+				class="sapUiSmallMarginBegin sapUiSmallMarginEnd">
+				<suitecommons:items>
+					<suitecommons:HeaderCell
+						visible="{path:'/data/TourStatus',formatter:'splReusable.libs.SapSplModelFormatters.getTourStatusVisibilityBasedOnStatus'}">
+						<suitecommons:north>
+							<suitecommons:HeaderCellItem height="90%">
+								<suitecommons:content>
+									<suitecommons:BulletChart minValue="0"
+										maxValue="{path:'/data/PlannedDuration',formatter:'splReusable.libs.SapSplModelFormatters.convertDurationToInteger'}"
+										showValueMarker="false" class="sapSplBulletChart"
+										targetValue="{path:'/data/PlannedDuration',formatter:'splReusable.libs.SapSplModelFormatters.convertDurationToInteger'}"
+										tooltip="{parts:[{path:'/data/ActualDuration'},{path:'/data/PlannedDuration'},{path:'/data/WarningDuration'},{path:'/data/CriticalDuration'}],formatter:'splReusable.libs.SapSplModelFormatters.getTooltipForDelayChart'}"
+										scaleColor="Medium">
+										<suitecommons:actual>
+											<suitecommons:BulletChartData
+												value="{path:'/data/ActualDuration',formatter:'splReusable.libs.SapSplModelFormatters.convertDurationToInteger'}"
+												color="{path:'/data/TourState',formatter:'splReusable.libs.SapSplModelFormatters.getColorForTourDelayChart'}">
+											</suitecommons:BulletChartData>
+										</suitecommons:actual>
+										<suitecommons:thresholds>
+											<suitecommons:BulletChartData
+												value="{path:'/data/WarningDuration',formatter:'splReusable.libs.SapSplModelFormatters.convertDurationToInteger'}"
+												color="Critical" />
+											<suitecommons:BulletChartData
+												value="{path:'/data/CriticalDuration',formatter:'splReusable.libs.SapSplModelFormatters.convertDurationToInteger'}"
+												color="Error" />
+										</suitecommons:thresholds>
+									</suitecommons:BulletChart>
+								</suitecommons:content>
+							</suitecommons:HeaderCellItem>
+						</suitecommons:north>
+						<suitecommons:south>
+							<suitecommons:HeaderCellItem height="10%">
+								<suitecommons:content>
+<!-- 								Fix for Incident 1570809218 -->
+									<Label text="{splI18NModel>TOUR_DELAY}" />
+								</suitecommons:content>
+							</suitecommons:HeaderCellItem>
+						</suitecommons:south>
+					</suitecommons:HeaderCell>
+					<suitecommons:HeaderCell
+						visible="{path:'/data/TourStatus',formatter:'splReusable.libs.SapSplModelFormatters.getTourStatusVisibilityBasedOnStatus'}">
+						<suitecommons:north>
+							<suitecommons:HeaderCellItem height="90%">
+								<suitecommons:content>
+									<suitecommons:BulletChart targetValue="100" id="SapSplMinTATBulletChart"
+										mode="Delta" showDeltaValue="{path:'/data/MinTurnAroundTimeIndex',formatter:'splReusable.libs.SapSplModelFormatters.getDeltaValueShowStatus'}" scale="%" 
+										showValueMarker="false" tooltip = "{path:'/data/MinTurnAroundTimeIndex',formatter :'splReusable.libs.SapSplModelFormatters.getActualValueForToolTip'}">
+										<suitecommons:actual>
+											<suitecommons:BulletChartData
+												value="{path:'/data/MinTurnAroundTimeIndex',formatter:'splReusable.libs.SapSplModelFormatters.getTATIndexforStringToInteger'}"
+												color="{path:'/data/MinTurnAroundTimeIndex',formatter:'splReusable.libs.SapSplModelFormatters.getColorForTATIndex'}">
+											</suitecommons:BulletChartData>
+										</suitecommons:actual>
+										<suitecommons:thresholds>
+											<suitecommons:BulletChartData
+												value="0" color="Error" />
+											<suitecommons:BulletChartData
+												value="50" color="Critical" />
+											<suitecommons:BulletChartData
+												value="150" color="Critical" />
+											<suitecommons:BulletChartData
+												value="200" color="Error" />
+										</suitecommons:thresholds>
+									</suitecommons:BulletChart>
+								</suitecommons:content>
+							</suitecommons:HeaderCellItem>
+						</suitecommons:north>
+						<suitecommons:south>
+							<suitecommons:HeaderCellItem height="10%">
+								<suitecommons:content>
+									<Label text="{splI18NModel>MINIMUM_TURNAROUND_INDEX}"></Label>
+								</suitecommons:content>
+							</suitecommons:HeaderCellItem>
+						</suitecommons:south>
+					</suitecommons:HeaderCell>
+					<suitecommons:HeaderCell
+						visible="{path:'/data/TourStatus',formatter:'splReusable.libs.SapSplModelFormatters.getTourStatusVisibilityBasedOnStatus'}">
+						<suitecommons:north>
+							<suitecommons:HeaderCellItem height="90%">
+								<suitecommons:content>
+									<suitecommons:BulletChart targetValue="100" id="SapSplMaxTATBulletChart"
+										mode="Delta" showDeltaValue="{path:'/data/MaxTurnAroundTimeIndex',formatter:'splReusable.libs.SapSplModelFormatters.getDeltaValueShowStatus'}" showValueMarker="false"
+										scale="%" tooltip = "{path:'/data/MaxTurnAroundTimeIndex',formatter :'splReusable.libs.SapSplModelFormatters.getActualValueForToolTip'}">
+										<suitecommons:actual>
+											<suitecommons:BulletChartData
+												value="{path:'/data/MaxTurnAroundTimeIndex',formatter:'splReusable.libs.SapSplModelFormatters.getTATIndexforStringToInteger'}"
+												color="{path:'/data/MaxTurnAroundTimeIndex',formatter:'splReusable.libs.SapSplModelFormatters.getColorForTATIndex'}">
+											</suitecommons:BulletChartData>
+										</suitecommons:actual>
+										<suitecommons:thresholds>
+											<suitecommons:BulletChartData
+												value="0" color="Error" />
+											<suitecommons:BulletChartData
+												value="50" color="Critical" />
+											<suitecommons:BulletChartData
+												value="150" color="Critical" />
+											<suitecommons:BulletChartData
+												value="200" color="Error" />
+										</suitecommons:thresholds>
+									</suitecommons:BulletChart>
+								</suitecommons:content>
+							</suitecommons:HeaderCellItem>
+						</suitecommons:north>
+						<suitecommons:south>
+							<suitecommons:HeaderCellItem height="10%">
+								<suitecommons:content>
+									<Label text="{splI18NModel>MAXIMUM_TURNAROUND_INDEX}"></Label>
+								</suitecommons:content>
+							</suitecommons:HeaderCellItem>
+						</suitecommons:south>
+					</suitecommons:HeaderCell>
+				</suitecommons:items>
+			</suitecommons:HeaderContainer>
+			<IconTabBar id="sapSplTourDetailsIconTabBar">
+				<content>
+					<layout:Grid defaultSpan="L12 M12 S12" width="auto"
+						class="sapSplTourDetailsGrid">
+						<layout:VerticalLayout id="sapSplTourDetailsVerticalLayout1"
+							width="100%" visible="{/showMapFullScreenButton}">
+							<layout:layoutData>
+								<layout:GridData span="L9 M12 S12" />
+							</layout:layoutData>
+							<Panel width="100%" id="sapSplTruckDetailsPanel" class="SapSnlhTourPanel">
+								<layout:VerticalLayout width="100%">
+									<layout:content>
+										<layout:Grid defaultSpan="L12 M12 S12" class="sapSplTourDetailsGrid2">
+											<form:SimpleForm layout="ResponsiveGridLayout"
+												class="SapSplDetailsTourForm">
+												<form:layoutData>
+													<layout:GridData span="L6 M6 S12"></layout:GridData>
+												</form:layoutData>
+												<form:content>
+													<Label id="sapSplSelectTruckLabel">
+													</Label>
+													<Text id="sapSplTruckText" text="{/data/RegistrationNumber}">
+													</Text>
+													<Label id="sapSplDriverLabel">
+													</Label>
+													<layout:VerticalLayout>
+														<Text id="sapSplSelectTruckText" text="{/data/DriverName}">
+														</Text>
+														<Text id="sapSplDriverPhoneNumber" text="{/data/DriverPhoneNumber}">
+														</Text>
+													</layout:VerticalLayout>
+												</form:content>
+											</form:SimpleForm>
+											<form:SimpleForm layout="ResponsiveGridLayout">
+												<form:layoutData>
+													<layout:GridData span="L6 M6 S12"></layout:GridData>
+												</form:layoutData>
+												<form:content>
+													<Label id="sapSplCommentLabel">
+													</Label>
+													<Text id="sapSplCommentText" text="{/data/Text}">
+													</Text>
+												</form:content>
+											</form:SimpleForm>
+										</layout:Grid>
+									</layout:content>
+								</layout:VerticalLayout>
+							</Panel>
+							<Panel width="100%" id="sapSplStopPanel" class="SapSnlhTourPanel">
+								<layout:VerticalLayout content="{/data/Stops/results}"
+									id="sapSplTourDetailsMainLayout" class="sapSplTourDetailsMainLayout"
+									width="100%">
+									<layout:content>
+										<layout:HorizontalLayout class="sapSplStopHLayout"
+											width="100%">
+											<Image
+												src="{parts:[{path:'/data/CurrentStop'},{path:'UUID'}],formatter:'splReusable.libs.SapSplModelFormatters.getSrcForStopImage'}"
+												class="SapSplStopIcon" />
+											<layout:Grid defaultSpan="L3 M6 S12" class="sapSplTourDetailsGrid1">
+												<form:SimpleForm layout="ResponsiveGridLayout"
+													class="SapSplTourOverviewTransparentForm SapSplStopDetailsForm">
+													<form:layoutData>
+														<layout:GridData span="L4 M5 S12"></layout:GridData>
+													</form:layoutData>
+													<form:content>
+														<Label text="{/label/Location}">
+															<layoutData>
+																<layout:GridData span="L4 M4 S5"></layout:GridData>
+															</layoutData>
+														</Label>
+														
+														<!-- Fix incident 1580132730 -->
+														<Text text="{parts:[{path:'CountryName'},{path:'CityName'},{path:'StreetName'}],formatter:'splReusable.libs.SapSplModelFormatters.returnLocationName'}"
+														tooltip="{parts:[{path:'BuildingID'},{path:'StreetName'},{path:'CityName'},{path:'StreetPostalCode'},{path:'RegionName'},{path:'CountryName'}] , formatter: 'splReusable.libs.SapSplModelFormatters.returnLocationName'}" >
+															
+															<layoutData>
+																<layout:GridData span="L8 M8 S7"></layout:GridData>
+															</layoutData>
+														</Text>
+														<Label text="{/label/Start}">
+															<layoutData>
+																<layout:GridData span="L4 M4 S5"></layout:GridData>
+															</layoutData>
+														</Label>
+														<Text
+															text="{path:'Planned_ArrivalTime',formatter:'splReusable.libs.SapSplModelFormatters.convertDateTimeToStringBasedOnLocaleInMediumFormat'}">
+															<layoutData>
+																<layout:GridData span="L8 M8 S7"></layout:GridData>
+															</layoutData>
+														</Text>
+														<Label text="{/label/End}">
+															<layoutData>
+																<layout:GridData span="L4 M4 S5"></layout:GridData>
+															</layoutData>
+														</Label>
+														<Text
+															text="{path:'Planned_DepartureTime',formatter:'splReusable.libs.SapSplModelFormatters.convertDateTimeToStringBasedOnLocaleInMediumFormat'}">
+															<layoutData>
+																<layout:GridData span="L8 M8 S7"></layout:GridData>
+															</layoutData>
+														</Text>
+														<Label text="{splI18NModel>ACTUAL_STAY_DURATION}"
+															visible="{path:'Status',formatter:'splReusable.libs.SapSplModelFormatters.getStopStatusVisibilityBasedOnStatus'}"
+															class="sapSplActualStayDurationField">
+															<layoutData>
+																<layout:GridData span="L6 M4 S5"></layout:GridData>
+															</layoutData>
+														</Label>
+														<Text
+															text="{path:'ActualStayDuration',formatter:'splReusable.libs.SapSplModelFormatters.getTourDurationFromSeconds'}"
+															visible="{path:'Status',formatter:'splReusable.libs.SapSplModelFormatters.getStopStatusVisibilityBasedOnStatus'}">
+															<layoutData>
+																<layout:GridData span="L6 M8 S7"></layout:GridData>
+															</layoutData>
+														</Text>
+													</form:content>
+												</form:SimpleForm>
+												<form:SimpleForm layout="ResponsiveGridLayout"
+													class="SapSplTourOverviewTransparentForm SapSplDetailsTourForm">
+													<form:layoutData>
+														<layout:GridData span="L7 M7 S12"></layout:GridData>
+													</form:layoutData>
+													<form:content>
+														<Label text="{/label/items}" class="SapSplTourDetailsItemslabel">
+															<layoutData>
+																<layout:GridData span="L2 M2 S3"></layout:GridData>
+															</layoutData>
+														</Label>
+														<layout:VerticalLayout content="{AssignedItems/results}"
+															class="SapSplTourVlayout">
+															<layout:layoutData>
+																<layout:GridData span="L10 M10 S12"></layout:GridData>
+															</layout:layoutData>
+															<Table class="SapSplTourStopDetailsHlayout" width="100%">
+																<columns>
+																	<Column hAlign="Center" width="10%" />
+																	<Column hAlign="Left" width="22%" />
+																	<Column hAlign="Left" width="48%" />
+																	<Column hAlign="Left" width="20%" />
+																</columns>
+																<items>
+																	<ColumnListItem>
+																		<cells>
+																			<core:Icon class="sapSplImageIcon"
+																				src="{path:'AssignmentType',formatter:'splReusable.libs.SapSplModelFormatters.sapSplTourAssignedItemsImageIcon'}" />
+																			<Text text="{ItemID}" class="SapSplToursOverview"
+																				wrapping="false" />
+																			<Text
+																				text="{path:'Actual_DepartureTime',formatter:'splReusable.libs.SapSplModelFormatters.returnItemDetails'}"
+																				wrapping="false" />
+																			<Text text="{DangerGoodsClass}" wrapping="false" />
+																		</cells>
+																	</ColumnListItem>
+																</items>
+															</Table>
+														</layout:VerticalLayout>
+													</form:content>
+												</form:SimpleForm>
+												<form:SimpleForm layout="ResponsiveGridLayout"
+													class="SapSplTourOverviewTransparentForm SapSplProgressBarForm"
+													visible="{parts:[{path:'/data/CurrentStop'},{path:'UUID'}],formatter:'splReusable.libs.SapSplModelFormatters.getProgressBarVisibility'}">
+													<form:layoutData>
+														<layout:GridData span="L12 M12 S12"></layout:GridData>
+													</form:layoutData>
+													<form:content>
+														<Label text="{/label/Process}">
+															<layoutData>
+																<layout:GridData span="L1 M2 S3"></layout:GridData>
+															</layoutData>
+														</Label>
+														<layout:HorizontalLayout
+															visible="{parts:[{path:'UUID'},{path:''}],formatter:'splReusable.libs.SapSplModelFormatters.setTourProgressBar'}">
+															<layout:layoutData>
+																<layout:GridData span="L10 M10 S7"></layout:GridData>
+															</layout:layoutData>
+															<layout:content>
+																<Text id="com.sap.scl.ApproachingDestination" text="{/label/ApproachStop}"
+																	class="SapSplTourEventGrey">
+																</Text>
+																<core:Icon id="com.sap.scl.ArrivedAtDestinationIcon"
+																	class="sapSplImageIcon1 SapSplTourEventGrey" src="sap-icon://open-command-field" />
+
+																<Text id="com.sap.scl.ArrivedAtDestination" text="{/label/Arrival}"
+																	class="SapSplTourEventGrey">
+																</Text>
+																<core:Icon id="com.sap.scl.LoadingBeginIcon"
+																	class="sapSplImageIcon1 SapSplTourEventGrey" src="sap-icon://open-command-field" />
+
+																<Text id="com.sap.scl.LoadingBegin" text="{/label/LoadingStart}"
+																	class="SapSplTourEventGrey">
+																</Text>
+																<core:Icon id="com.sap.scl.UnloadingBeginIcon"
+																	class="sapSplImageIcon1 SapSplTourEventGrey" src="sap-icon://open-command-field" />
+
+																<Text id="com.sap.scl.UnloadingBegin" text="{/label/UnloadingStart}"
+																	class="SapSplTourEventGrey">
+																</Text>
+																<core:Icon id="com.sap.scl.LoadingEndIcon"
+																	class="sapSplImageIcon1 SapSplTourEventGrey" src="sap-icon://open-command-field" />
+
+																<Text id="com.sap.scl.LoadingEnd" text="{/label/LoadingEnd}"
+																	class="SapSplTourEventGrey">
+																</Text>
+																<core:Icon id="com.sap.scl.UnloadingEndIcon"
+																	class="sapSplImageIcon1 SapSplTourEventGrey" src="sap-icon://open-command-field" />
+
+																<Text id="com.sap.scl.UnloadingEnd" text="{/label/UnloadingEnd}"
+																	class="SapSplTourEventGrey">
+																</Text>
+																<core:Icon id="com.sap.scl.ProofOfDeliveryIcon"
+																	class="sapSplImageIcon1 SapSplTourEventGrey" src="sap-icon://open-command-field" />
+
+																<Text id="com.sap.scl.ProofOfDelivery" text="{/label/ProofOfDelievery}"
+																	class="SapSplTourEventGrey">
+																</Text>
+																<core:Icon id="com.sap.scl.DepartureIcon"
+																	class="sapSplImageIcon1 SapSplTourEventGrey" src="sap-icon://open-command-field" />
+
+																<Text id="com.sap.scl.Departure" text="{/label/Departure}"
+																	class="SapSplTourEventGrey">
+																</Text>
+															</layout:content>
+														</layout:HorizontalLayout>
+													</form:content>
+												</form:SimpleForm>
+											</layout:Grid>
+										</layout:HorizontalLayout>
+									</layout:content>
+								</layout:VerticalLayout>
+							</Panel>
+							<Link id="sapSplTourProgressLink" class="sapSplTourProgressLink"
+								press="fnHandleTourProgressLink"></Link>
+						</layout:VerticalLayout>
+						<layout:VerticalLayout width="100%"
+							id="sapSplTourDetailsVerticalLayout2">
+							<layout:layoutData>
+								<layout:GridData
+									span="{path:'/showMapFullScreenButton',formatter:'splReusable.libs.SapSplModelFormatters.returnTourDetailsLayoutSpan'}"
+									id="sapSplTourDetailsVerticalLayout2Grid" />
+							</layout:layoutData>
+							<Panel width="100%" id="sapSplTruckLocationPanel" visible="true" class="SapSnlhTourPanel">
+								<infoToolbar>
+									<Toolbar design="Transparent" class="sapSplTruckLocationInfoToolbar">
+										<ToolbarSpacer />
+										<Button id="sapSplMapFullScreen" icon="sap-icon://full-screen"
+											press="fnHandleMapFullScreen" visible="{/showMapFullScreenButton}"
+											tooltip="{splI18NModel>FULL_SCREEN}" />
+										<Button id="sapSplMapExitFullScreen" icon="sap-icon://exit-full-screen"
+											press="fnHandleMapExitFullScreen" tooltip="{splI18NModel>MINIMIZE_CHAT_BOX_TOOLTIP}"
+											visible="{path:'/showMapFullScreenButton',formatter:'splReusable.libs.SapSplModelFormatters.showExitFUllScreenButtonOnMap'}" />
+									</Toolbar>
+								</infoToolbar>
+								<layout:VerticalLayout id="sapSplToursMapContainer"
+									class="sapSplToursMapContainer">
+									<VBM:VBI id="oSapSplTourDetailsMap" class="oSapSplTourDetailsMap"
+										plugin="false" submit="fnEventHandler" config="{oSapSplVBModelTourApp>/}"
+										openWindow="openDetailWindow">
+									</VBM:VBI>
+								</layout:VerticalLayout>
+							</Panel>
+
+						</layout:VerticalLayout>
+					</layout:Grid>
+				</content>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="sapSplNavigateToLiveAppButton" press="fnHandleClickOfNavigateButton"
+						enabled="false" icon="sap-icon://forward"></Button>
+					<Button id="sapSplToursEditButton" type="Emphasized"
+						press="fnHandelPressOfEdit"
+						enabled="{parts:[{path:'/data/isEditable'},{path:'/data/TourStatus'}],formatter:'splReusable.libs.SapSplModelFormatters.sapSplTourDetailEditVisiblity'}" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

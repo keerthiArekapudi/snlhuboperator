@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<!-- In case of issues in development enable the antiJARLocking attribute -->
+<!-- This attribute is mandatory to prevent JAR files from being locked -->
+<!-- If you do not face any issue related to JAR locking you can delete this file -->
+<Context antiJARLocking="false">
+</Context>

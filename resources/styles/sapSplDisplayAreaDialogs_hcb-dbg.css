@@ -1,0 +1,31 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.sapSplDisplayAreaSettingsDialog {
+	width: 40em;
+}
+
+.sapSplDisplayAreaCreateLabel {
+	margin: 1rem 1rem 0rem 1rem;
+}
+
+.sapSplDisplayAreaCreateCheckBox {
+	margin-left: .5rem;
+}
+
+.sapSplDisplayAreaDialogContent .sapMDialogScrollCont {
+	padding: 0rem!important;
+}
+
+.SapSplEditDisplayAreaSettingsTable td {
+	border-top: transparent!important;
+	border-bottom: transparent!important;
+	height: 2.5em!important;
+}
+
+.highLightMap {
+	border: 3px solid #009de0 !important;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}

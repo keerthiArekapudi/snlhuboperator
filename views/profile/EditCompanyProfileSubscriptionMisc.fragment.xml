@@ -1,0 +1,54 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Panel xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" expanded="true" expandable="false"
+	class="sapSplPanelContentHideBorderBottom">
+	<content>
+		<f:SimpleForm id="sapSplEditCompanyProfileSubscriptionMiscForm"
+			minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+			title="" labelSpanL="3" labelSpanM="3" emptySpanL="0" emptySpanM="0"
+			columnsL="2" columnsM="2">
+			<f:content>
+				<!-- CSNFIX 646894 2014 -->
+				<!-- <Label id="sapSplCompanyProfileEditModeProductLabel" text="{splI18NModel>PRODUCT_NAME}"
+					required="true"
+					visible="{parts:[{path:'/canMaintainWallet'}],formatter:'splReusable.libs.SapSplModelFormatters.showEditable'}" />
+				<Select visible="{parts:[{path:'/canMaintainWallet'}],formatter:'splReusable.libs.SapSplModelFormatters.showEditable'}" id="sapSplCompanyProfileEditModeProduct" items="{/results}"
+					selectedKey="{/SubscriptionUUID}" change="handleProductChange">
+					<core:Item key="{UUID}" text="{Name.description}" />
+					<layoutData>
+						<l:GridData span="L6 M6 S12" />
+					</layoutData>
+				</Select> -->
+				<!-- <Label text="{splI18NModel>SEARCH_VISIBILITY_LABEL}">
+				</Label> -->
+				<!-- CSNFIX -->
+				<!-- <l:VerticalLayout visible="{parts:[{path:'/canChangeSearch'}],formatter:'splReusable.libs.SapSplModelFormatters.showEditable'}">
+					<l:content>
+						<CheckBox text="{splI18NModel>SEARCH_VISIBILITY_VALUE_1}"
+							selected="{parts:[{path:'/isVisibleOnSearch'}],formatter:'splReusable.libs.SapSplModelFormatters.getSelectedSearchState'}"
+							select="handleSearchVisibilityChange" enabled="{parts:[{path:'/canChangeSearch'}],formatter:'splReusable.libs.SapSplModelFormatters.isPanelVisible'}" />
+						<Text id="searchVisibilityTurnedOff" visible="{splSearchVisibilityModel>/visible}">
+							<layoutData>
+								<l:GridData span="L4 M4 S12" />
+							</layoutData>
+						</Text>
+					</l:content>
+				</l:VerticalLayout> -->
+				<!-- CSNFIX 0120031469 0000793750 2014 -->
+						<Label text="{splI18NModel>COMPANY_PROFILE_TOUR_CREATION}" visible="{parts:[{path:'/canChangeTourInput'}],formatter:'splReusable.libs.SapSplModelFormatters.isPanelVisible'}"></Label>
+						<List id="listOfTourOptions" mode="SingleSelectLeft" visible="{parts:[{path:'/canChangeTourInput'}],formatter:'splReusable.libs.SapSplModelFormatters.isPanelVisible'}"
+							items="{splTourAutomationModel>/tours}" selectionChange="tourOptionSelected">
+							<items>
+								<StandardListItem title="{splTourAutomationModel>tourName}"
+									selected="{splTourAutomationModel>selected}" />
+							</items>
+						</List>
+
+			</f:content>
+		</f:SimpleForm>
+	</content>
+</Panel>

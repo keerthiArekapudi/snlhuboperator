@@ -1,0 +1,160 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Grid defaultSpan="L12 M12 S12" xmlns="sap.ui.layout">
+	<VerticalLayout width="100%" xmlns="sap.ui.layout">
+		<layoutData xmlns="sap.ui.layout">
+			<GridData span="L9 M12 S12" xmlns="sap.ui.layout" />
+		</layoutData>
+		<Table xmlns="sap.m" id="sapSnlhTourSettingsTable" fixedLayout="false" noDataText="{splI18NModel>TOUR_SETTINGS_NO_DATA_TEXT}"
+			mode="{path:'/isEdit' , formatter:'splReusable.libs.SapSplModelFormatters.setTourSettingsTableMode'}" items="{/data}" delete="fnHandlePressDeleteOfTourSettingsTableItem">
+			<headerToolbar xmlns="sap.m">
+				<Toolbar xmlns="sap.m">
+					<Text id="sapSnlhTourSettingsTableHeaderText" text="{splI18NModel>THRESHOLD_RULES}"
+						xmlns="sap.m" />
+
+					<ToolbarSpacer xmlns="sap.m"></ToolbarSpacer>
+
+					<Link id="sapSnlhTourSettingsAddRuleLink" text="{splI18NModel>ADD_RULE}"
+						press="fnHandlePressOfTourSettingsAddRuleLink" xmlns="sap.m"
+						tooltip="{splI18NModel>ADD_RULE}" visible="{path:'/isEdit' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibleTourSettingsAddRuleLink'}" />
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column xmlns="sap.m" hAlign="Right">
+
+				</Column>
+				
+				<Column xmlns="sap.m" hAlign="Center" visible="{path:'/isEdit' , formatter:'splReusable.libs.SapSplModelFormatters.getThresholdDetailTextVisibility'}">
+				
+				</Column>
+				
+				<Column xmlns="sap.m" hAlign="Center" visible="{path:'/isEdit' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibleTourSettingsAddRuleLink'}">
+				</Column >
+				
+				<Column xmlns="sap.m" hAlign="Center">
+
+				</Column>
+				
+				<Column xmlns="sap.m" hAlign="Center" visible="{path:'/isEdit' , formatter:'splReusable.libs.SapSplModelFormatters.getThresholdDetailTextVisibility'}">
+				
+				</Column>
+				<Column xmlns="sap.m" hAlign="Center" visible="{path:'/isEdit' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibleTourSettingsAddRuleLink'}">
+
+				</Column>
+				<Column xmlns="sap.m" hAlign="Center">
+
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem id="sapSnlhTourSettingsColumnListItem"
+					xmlns="sap.m">
+					<cells>
+
+						<Text text="{splI18NModel>TOURS_BETWEEN}" xmlns="sap.m" />
+						
+						<Label xmlns="sap.m" design="Bold" text="{path:'LowerThreshold' , formatter:'splReusable.libs.SapSplModelFormatters.getThresholdText'}" > </Label>
+						<Select xmlns="sap.m" enabled="{parts:[{path:'isEnabled'},{path:'/isEdit'}], formatter:'splReusable.libs.SapSplModelFormatters.getIsEnabledForFromSelectControl'}" items="{fromArray}" change="fnHandleChangeOfFromThreshold" selectedKey="{LowerThreshold}"
+						visible="{path:'fromSelectError' , formatter:'splReusable.libs.SapSplModelFormatters.setErrorCLassForSelectControl'}" >
+							<Item key="{key}" text="{value}" xmlns="sap.ui.core" />
+						</Select>
+						<Text text="{splI18NModel>TOUR_SETTINGS_AND}" xmlns="sap.m" class="sapSnlhNoBreakWord"/>
+						
+						<Label xmlns="sap.m" design="Bold" text="{path:'UpperThreshold' , formatter:'splReusable.libs.SapSplModelFormatters.getThresholdText'}" > </Label>
+						<Select xmlns="sap.m" items="{toArray}" selectedKey="{UpperThreshold}" change="fnHandleChangeOfToThreshold" enabled="{/isEdit}" visible="{path:'toSelectError' , formatter:'splReusable.libs.SapSplModelFormatters.setErrorCLassForSelectControl'}">
+							<Item key="{key}" text="{value}" xmlns="sap.ui.core" />
+						</Select>
+						
+						
+						<Table xmlns="sap.m" fixedLayout="false">
+							<columns>
+								<Column xmlns="sap.m" hAlign="Center">
+
+								</Column>
+								<Column xmlns="sap.m" hAlign="Center">
+
+								</Column>
+								<Column xmlns="sap.m" hAlign="Center">
+
+								</Column>
+							</columns>
+							<ColumnListItem id="sapSnlhTourSettingsNestedColumnListItem"
+								xmlns="sap.m">
+								<cells>
+									<Text text="{splI18NModel>WARNING_TOUR_DURATION_TEXT}" xmlns="sap.m" visible="{path:'/' , formatter:'splReusable.libs.SapSplModelFormatters.setWarningColorTextToOrange'}" ></Text>
+									<Input description="%" xmlns="sap.m" value="{WarningValue}"
+										textAlign="Right" editable="{/isEdit}" liveChange="fnToCaptureLiveChangeToSetFlag" valueState="{warningValueState}" valueStateText="{warningValueStateText}" />
+									<Text text="{splI18NModel>PLANNED_TOUR_DURATION}" xmlns="sap.m"></Text>
+								</cells>
+							</ColumnListItem>
+							<ColumnListItem id="sapSnlhTourSettingsNestedColumnListItem1"
+								xmlns="sap.m" class="sapSnlhTourSetingsInnerTableSecondItem">
+								<cells>
+									<Text text="{splI18NModel>CRITICAL_TOUR_DURATION_TEXT}" xmlns="sap.m"></Text>
+									<Input description="%" xmlns="sap.m" change="fnToCaptureLiveChangeToSetFlag"
+										textAlign="Right" value="{CriticalValue}" editable="{/isEdit}" valueState="{criticalValueState}" valueStateText="{criticalValueStateText}" />
+									<Text text="{splI18NModel>PLANNED_TOUR_DURATION}" xmlns="sap.m"></Text>
+								</cells>
+							</ColumnListItem>
+						</Table>
+
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</VerticalLayout>
+	<VerticalLayout xmlns="sap.ui.layout">
+		<layoutData xmlns="sap.ui.layout">
+			<GridData span="L3 M8 S12" xmlns="sap.ui.layout" />
+		</layoutData>
+		<content>
+			<Text text="{splI18NModel>TOUR_SETTINGS_MSG_1}" xmlns="sap.m"
+				class="sapUiSmallMarginBeginEnd sapUiLargeMarginTop">
+			</Text>
+			<Text text="{splI18NModel>TOUR_SETTINGS_MSG_2}" xmlns="sap.m"
+				class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+			</Text>
+			<SimpleForm xmlns="sap.ui.layout.form">
+				<content>
+					<Label xmlns="sap.m" text="{splI18NModel>WARNING_EXAMPLE}" >
+						<layoutData>
+							<ResponsiveFlowLayoutData
+								weight="1" xmlns="sap.ui.layout">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<BulletChart size="L" targetValue="2" minValue="0" maxValue="3.5" tooltip="" showActualValue="false" showTargetValue="false" xmlns="sap.suite.ui.commons" 
+					class="sapUiNoContentPadding" width="60%" >
+						<actual>
+							<BulletChartData value="2.5" color="Critical" />
+						</actual>
+						<thresholds>
+							<BulletChartData value="2.3" color="Critical" />
+							<BulletChartData value="2.7" color="Error" />
+						</thresholds>
+					</BulletChart>
+					
+					<Label xmlns="sap.m" text="{splI18NModel>CRITICAL_EXAMPLE}">
+					<layoutData>
+							<ResponsiveFlowLayoutData
+								weight="1" xmlns="sap.ui.layout">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<BulletChart size="L" targetValue="2" minValue="0" maxValue="3.5" tooltip="" showActualValue="false" showTargetValue="false" xmlns="sap.suite.ui.commons"
+					class="sapUiNoContentPadding" width="60%">
+						<actual>
+							<BulletChartData value="2.8" color="Error" />
+						</actual>
+						<thresholds>
+							<BulletChartData value="2.3" color="Critical" />
+							<BulletChartData value="2.7" color="Error" />
+						</thresholds>
+					</BulletChart>
+				</content>
+			</SimpleForm>
+		</content>
+	</VerticalLayout>
+</Grid>

@@ -1,0 +1,188 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	controllerName="splController.registeration.NewBusinessPartnerRegistrationDetail"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="NewBusinessPartnerRegistrationDetailPage" showNavButton="true" navButtonPress="fnHandlePressOfBackButton" title="{path:'/pageTitle', formatter:'splReusable.libs.SapSplModelFormatters.showBusinessPartnerEditTitle'}">
+		<content>
+			<form:SimpleForm class="createForm">
+				<form:content>
+					
+					<core:Title id="BusinessPartnerInfoTitle" text="{path:'/Role_description', formatter:'.splReusable.libs.SapSplModelFormatters.formatterForTitleOfForm'}">
+					
+					</core:Title>
+					
+					<Label required="true" id="sapSplBusinessPartnerEditCompanyName">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" value="{/Organization_Name}" id="sapSplBusinessPartnerEditCompanyNameInput" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+
+					<Label id="sapSplBusinessPartnerEditStreet">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" value="{/PostalAddress_Street}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+					
+					<Label id="sapSplBusinessPartnerEditTown">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" value="{/PostalAddress_Town}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+					
+					<Label id="sapSplBusinessPartnerEditDistrict">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" value="{/PostalAddress_District}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+					
+					<Label id="sapSplBusinessPartnerEditCountry">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" value="{/PostalAddress_Country}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+					
+					<Label id="sapSplBusinessPartnerEditPhone">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" value="{/CommunicationInfo_Phone}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+
+					
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm class="createForm">
+				<form:content>
+				<core:Title id="MainContactInfoTitle" >
+				</core:Title>
+					
+					<Label required="true" id="sapSplBusinessPartnerEditFirstName">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" value="{/POC/PersonName_GivenName}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+					
+					<Label required="true" id="sapSplBusinessPartnerEditLastName">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" value="{/POC/PersonName_Surname}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+
+					<Label required="true" id="sapSplBusinessPartnerEditEmail">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%" type="Email" value="{/POC/CommunicationInfo_EmailAddress}" id="sapSplBusinessPartnerEditEmailInput" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+					
+					<Label id="sapSplBusinessPartnerEditDesignation">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="2">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Input width="85%"  value="{/POC/PersonName_JobFunction}" liveChange="fnToCaptureLiveChangeToSetFlag">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="5">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Input>
+				</form:content>
+			</form:SimpleForm>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button press="fireInvite"  id="newBusinessPartnerInvite" type="Emphasized" ></Button>
+					<Button press="navigationToDetailPage" id="newBusinessPartnerCancel" ></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

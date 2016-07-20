@@ -1,0 +1,225 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.sapSplAddStopsLayout .sapUiMltCell:nth-child(1) {
+	width:	36rem;
+	padding-left: 2rem;
+}
+.SapSplCreateNewTourVerticalLayout {
+	width : 100%
+}
+.sapSplAddStopsLayout .sapUiMltCell:nth-child(2)  {
+	padding-left: 2rem !important;
+	padding-right: 4rem !important;
+}
+.SplSapAssignFrieghtItemsCloumnListItem .sapMListTblCell {
+	padding: .2rem .5rem;
+}
+.FreightItemsLayout .sapUiMltCell:nth-child(1) {
+	width: 45rem;
+	padding-left: 2rem;
+}
+.FreightItemsLayout .sapUiMltCell:nth-child(2) {
+	width: 54rem;
+	padding-right: 19rem;
+}
+.sapSplSectionLabel {
+	padding-left: 1rem;
+	padding-top: 1rem;
+}
+
+.sapSplDropFreightItemLink{
+	margin-left: 4rem;
+}
+.sapSplAddFreightItemLink {
+	margin-top: 1rem;
+}
+.SapSplSelectTourForm  {
+	width: 36rem;
+	padding-left: 2rem;
+}
+.sapSplCreateTourFormFreightItemDeleteButton {
+	margin-left: 78%;
+}
+.sapSplCreateTourFormsAndTableItemsLabelClass {
+	margin-top: 0.5rem !important;
+}
+.sapSplTourDetailsLayout {
+	width: 100%;
+	padding-left: 2rem;
+	padding-bottom: 2rem;
+	padding-top: 1rem;
+}
+.sapSplTourDetailsLayout .sapUiHLayoutChildWrapper:nth-child(2) {
+	width: 12.4%;
+}
+.SapSplTourNameInput {
+	padding-left: 0.7rem !important;
+}
+
+.sapSplTourDetailsLayout .sapUiHLayoutChildWrapper:nth-child(3) {
+	padding-left: 9rem;
+}
+
+.sapSplTourDetailsLayout .sapUiHLayoutChildWrapper:nth-child(4) {
+	padding-left: 0.5rem;
+	width: 12.2%;
+}
+
+.sapSplTourDetailsLayout .sapUiHLayoutChildWrapper:nth-child(5) {
+	padding-left: 8rem;
+}
+
+.sapSplTourDetailsLayout .sapUiHLayoutChildWrapper:nth-child(6) {
+	padding-left: 0.5rem;
+	width: 12.3%;
+}
+
+.sapSplTruckDetailsLayout {
+	padding-left: 1.5rem;
+	padding-top: 1rem;
+}
+.SapSplSelectTruckInput {
+	padding-left: 1rem !important;
+}
+
+.SapSplSelectTruckInput .sapMInputBaseInner{
+	opacity: 0.8;
+	pointer-events: none;
+}
+.sapSplStepsIcon {
+	font-size: 2em;
+	color: #666666;
+	padding-right: 2.7rem;
+}
+
+.SapSplTransparentForm .sapUiFormResLayout>div {
+background-color: transparent;
+padding: 16px;
+-moz-box-sizing: padding-box;
+box-sizing: border-box;
+}
+.sapSplHorizontalDivider {
+	border-width: 2px 0 0 0;
+	border-color: #bfbfbf;
+}
+.sapSplNewLocationLink {
+	margin-top: 0.4rem;
+}
+
+.sapSplAddStopButton {
+	margin-left: 1rem;
+	margin-top: 3rem;
+}
+.sapSplDropButton {
+	margin-left: 1rem;
+	width: 100%;
+}
+.sapSplCreateTourDisableInputFields .sapMInputBaseInner{
+	opacity: 0.8;
+	pointer-events: none;
+}
+.sapSplCreateNewTourPage>section {
+	overflow-x: scroll !important;
+}
+.sapSplCreateNewTourPage>section .sapMPageScroll{
+	overflow: visible;
+}
+.SapSplAddFreightItemsTable {
+	margin-left: 7.5rem;
+	width: 66.4rem !important;
+}
+.SapSplAssignFreightItemsTable {
+	margin-left: 3rem;
+	width: 66.3rem !important;
+}
+.sapSplAddFreightItemLink {
+	margin-left: 7.5rem;
+}
+.sapSplAddStopsVerticalLayout {
+	margin-left: 3rem;
+}
+.sapSplAssignFreightItemLinkLayout {
+	margin-left: 4.5rem;
+}
+.sapSplAssignFreightItemLink{
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+.sapSplAssignFreightItemDropRemainingLink {
+	margin-left:3rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.sapSplStopsLeavesTimeLabel {
+	margin-left:4rem;
+}
+.sapSplStopsArriveTimeLabel {
+	margin-left:4rem;
+}
+.SapSplStopHLayout {
+	width: 100%;
+	margin-left: 1.5rem;
+}
+.SapSplStopVLayout {
+	margin-left: 0.5rem;
+}
+.SapSplStopHLayout  .sapUiHLayoutChildWrapper:nth-child(4){
+	width : 13rem;
+}
+.SapSplStopHLayout  .sapUiHLayoutChildWrapper:nth-child(6){
+	width : 13rem;
+}
+.sapSPlCreateTourTimeControl {
+	margin-left : 0.5rem;
+	padding-top : 0.3rem;
+}
+.sapSPlCreateTourTimeControlError {
+	margin-left : 0.5rem;
+	padding-top : 0.3rem;
+}
+.splSapSelectLocationDialog .sapMDialogSection .sapMDialogScroll .sapMDialogScrollCont {
+	padding: 0rem !important;
+}
+.splSapSelectTruckDialog .sapMDialogSection .sapMDialogScroll .sapMDialogScrollCont {
+	padding: 0rem !important;
+}
+.sapSplAssignFreightItemsDialog .sapMDialogSection .sapMDialogScroll .sapMDialogScrollCont {
+	padding: 0rem !important;
+}
+.SapSplRemoveTruck {
+	margin-left: 0.5rem !important;
+	margin-top: 0.5rem !important;
+}
+.sapSPlCreateTourTimeControl .sapUiVltCell .sapUiHLayout .sapUiHLayoutChildWrapper .sapUiTfBack {
+	height: 1.6rem;
+}
+.sapSPlCreateTourTimeControl .sapUiVltCell .sapUiHLayout .sapUiHLayoutChildWrapper .sapUiTfBack .sapUiTfDateIcon{
+	padding-top : 0.3rem;
+}
+.sapSPlCreateTourTimeControlError .sapUiVltCell .sapUiHLayout .sapUiHLayoutChildWrapper .sapUiTfBack {
+	border-color: red;
+	height: 1.6rem;
+}
+.sapSPlCreateTourTimeControlError .sapUiVltCell .sapUiHLayout .sapUiHLayoutChildWrapper .sapUiTfBack .sapUiTfDateIcon{
+	padding-top : 0.3rem;
+}
+.sapSPlCreateTourTimeControlError .sapUiVltCell .sapUiHLayout .sapUiHLayoutChildWrapper:nth-child(2) .sapUiTfBack .sapUiTfComboIcon{
+	margin-top: 0.1rem;
+}
+.sapSPlCreateTourTimeControl .sapUiVltCell .sapUiHLayout .sapUiHLayoutChildWrapper:nth-child(2) .sapUiTfBack .sapUiTfComboIcon{
+	margin-top: 0.1rem;
+}
+.sapSnlhSelectPartnerForTourStopsPage >section{
+    height : 100%;
+}
+.sapSnlhPartnerList{
+    height:100%;
+}
+.sapSnlhPartnerInputLabel {
+    margin-left : 1rem;
+}
+.sapSnlhPartnerInput {
+    margin-left : 0.4rem;
+}

@@ -1,0 +1,395 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.sapSplChatBoxConsoleHeader {
+	background: #666666!important;
+	cursor: move;
+}
+
+.sapSplChatBoxConsoleHeader .sapMLabel {
+	color: white;
+	padding-left: .5em;
+}
+
+.sapSplChatBoxConsoleHeader .sapUiIcon {
+	padding-right: .5em;
+}
+
+.sapSplChatBoxConsoleLeftList .sapMSLIImgIcon {
+	width: 2rem!important;
+	font-size: 1rem!important;
+}
+
+.sapSplChatBoxConsoleLeftList .sapMSLITitleOnly {
+	word-break: break-word;
+	white-space: normal!important;
+}
+
+.sapSplChatBoxConsoleLeftList .sapMLIBSelectD {
+	width: 2rem!important;
+}
+
+.sapSplChatBoxConsoleLeftList .sapMLIB {
+	height: 4rem!important;
+}
+
+.sapSplChatBoxConsoleParentClosed {
+	position: absolute;
+	width: 19em!important;
+	z-index: 10;
+	box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.38);
+	background: white;
+	display: none;
+}
+
+.sapSplChatBoxConsoleParent {
+	position: absolute;
+	width: 29em!important;
+	z-index: 10;
+	box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.38);
+	background: white;
+	display: none;
+}
+
+.sapSplChatBoxConsoleClosed > section:nth-child(1) {
+	width: 0em!important;
+}
+
+.sapSplChatBoxConsoleClosed > .sapUiLoSplitterNoResize {
+	width: 2px !important;
+	background: #e5e5e5;
+	visibility: visible !important;
+}
+
+.sapSplChatBoxConsoleClosed > section:nth-child(3) {
+    width: 19em!important;
+}
+
+.sapSplChatBoxConsole > section:nth-child(1) {
+	width: 10em!important;
+}
+
+.sapSplChatBoxConsole > .sapUiLoSplitterNoResize {
+	width: 2px !important;
+	background: #e5e5e5;
+	visibility: visible !important;
+}
+
+.sapSplChatBoxConsole > section:nth-child(3) {
+    width: 19em!important;
+}
+
+.sapSplChatBoxConsoleLeftPanel {
+	width: 10em;
+}
+
+.sapSplChatBoxConsoleRightPanel {
+	width: 20em;
+}
+
+.sentItemsTopLayoutDiv {
+    margin-top: -0.5em;
+}
+
+.sentItemsTopLayoutDiv p {
+	word-break: break-word;
+	white-space: normal;
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.875em;
+	line-height: normal;
+}
+
+.sentItemsTopLayoutDiv span {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 1rem;
+	line-height: normal;
+}
+
+.sapSplFeedLayout {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	width: 21rem;
+}
+
+/* SPLPDTBACKLOG-373 */
+.sapSplMessageFeedListContainer {
+	width: 21rem!important;
+	position: absolute;
+	right: 1px;
+	z-index: 100;
+	max-height: 65rem;
+	box-shadow: 0px 15px 10px 6px rgba(0, 0, 0, 0.22);
+	background: #ffffff;
+	border-right: solid 1px #aaaaaa;
+}
+
+.sapSplPointerEventsBlocker {
+	pointer-events: none;
+}
+
+.feedLayoutPage {
+	background: white;
+}
+
+/* Incident : 1482011181 */
+/* Fix for 1570004930 */
+.sapSplFeedFilterLayoutButton {
+	border: none;
+	width: 4em;
+	height: 2.5rem!important;
+}
+
+.sapSplFeedFilterLayoutButton .sapMBtnInner {
+	min-width: 2rem !important;
+}
+
+.sapSplMessageFeedListItem .sapMLIBContent .sapMFeedListItem {
+	padding-top: 0.5rem !important;
+	padding-bottom: 0rem !important;
+}
+
+.detailOverlayClass {
+	position: absolute;
+	background: white;
+	opacity: 0.9;
+	width: 100%;
+	overflow-y: hidden;
+}
+
+.detailOverlayClass:hover {
+	overflow-y: scroll;
+}
+
+.detailOverlayClass p {
+	word-break: break-word;
+	white-space: normal;
+	position: absolute;
+	margin-left: 1em;
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.875em;
+	line-height: normal;
+}
+
+.detailOverlayClass span {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 1rem;
+	line-height: normal;
+}
+
+.more {
+	left: 4.25em;
+	position: absolute;
+	line-height: normal;
+	outline: 0px;
+}
+
+.moreRight {
+	left: 1.25em;
+}
+
+.sapSplMessageFeedList {
+	width: 100%;
+}
+
+.sapSplMessageFeedListItem .sapMFeedListItemFigure {
+	float: left;
+	height: 4rem;
+	width: auto;
+	overflow: hidden;
+	margin-top: -1rem;
+}
+
+.sapSplMessageFeedListItemRight .sapMFeedListItemFigure {
+	float: right !important;
+	margin-right: -1em !important;
+}
+
+.sapSplMessageFeedListItem .sapMFeedListItemImage {
+	width: 3rem;
+	line-height: 4rem;
+	font-size: 24px;
+	margin-left: -0.625rem;
+	margin-right: 0.5rem;
+	color: #666666;
+}
+
+.sapSplMessageFeedListItemSelected {
+	background: #ffffff !important;
+	outline: 0px !important;
+}
+
+.sapSplMessageFeedListItemSelected:hover {
+	background: #f0f0f0 !important;
+}
+
+.sapSplMessageFeedListItem .sapMFeedListItemHasFigure {
+	margin-left: 2.75rem;
+}
+
+.sapSplMessageFeedListItemRight .sapMFeedListItemHasFigure {
+	margin-left: 0rem !important;
+	width: 85% !important;
+}
+
+.sapSplMessageFeedListItem .sapMFeedListItemFooter {
+	display: flex;
+	margin-top: 1rem;
+	margin-bottom: -0.625rem;
+	text-align: left;
+	min-height: 4em;
+}
+
+.filterSettingsPanel .sapMPanelContent {
+	padding: 0rem;
+}
+
+.filterSettingsListItem .sapMSLITitleOnly {
+	text-align: left;
+	padding-left: 1em;
+}
+
+/* Fix for 1570004930 */
+/* .filterSettingsListItem .sapMRb { */
+/* 	margin-top: 1rem; */
+/* } */
+
+.sapSplFeedBlockerHide {
+	display: none;
+}
+
+.sapSplFeedBlocker {
+	position: absolute!important;
+	width: 21rem;
+	background-color: black;
+	height: 100%;
+	right: 2px;
+	z-index: 999;
+	opacity: .1;
+}
+
+.filterSettingsPanel .sapMLIB {
+	border-bottom: 0em;
+}
+
+.removeOutline {
+	outline: none !important;
+}
+
+.sapSplMainChatBoxLayout {
+	position: absolute;
+	right: 21.5em;
+	z-index: 100;
+	bottom: 0.1em;
+	overflow: visible;
+}
+
+.dateWithHighPrio {
+	position: absolute;
+	right: 2em;
+	margin-top: 1em;
+}
+
+.Expired {
+	line-height: 1em;
+	padding-bottom: 0.5em;
+	padding-top: 1.5em;
+	position: absolute;
+	left: 1.5em;
+}
+
+.HighPriority {
+	line-height: 1em;
+	padding-bottom: 0.5em;
+	color: red;
+	padding-top: 1.5em;
+	position: absolute;
+	left: 1.5em;
+}
+
+.MediumPriority {
+	line-height: 1em;
+	padding-bottom: 0.5em;
+	color: orange;
+	padding-top: 1.5em;
+	position: absolute;
+	left: 1.5em;
+}
+
+.LowPriority {
+	line-height: 1em;
+	padding-bottom: 0.5em;
+	color: green;
+	padding-top: 1.5em;
+	position: absolute;
+	left: 1.5em;
+}
+
+.dateClassForMessage {
+	position: absolute;
+	right: 2em;
+	line-height: 1em;
+	padding-top: 1.5em;
+}
+
+.addHighlight {
+	border-bottom: solid #007cc0 5px !important;
+	outline: none !important;
+}
+
+.segmentButton {
+	visibility: visible !important;
+}
+
+.liveFeedHidden {
+	display: none;
+}
+
+.sapSplFeedListToolbarTitle {
+	margin-left: 1em !important;
+	font-size: 14px !important;
+	text-align: left !important;
+	font-weight: bold !important;
+	color: #333333 !important;
+	font-family: sans-serif !important;
+}
+
+.sapSplFeedListToolbarFilterIcon {
+	margin-right: 1em;
+}
+
+/*
+context specific bar styling
+*/
+.sapSplMessageFeedListItem .sapMFeedListItemTextText {
+	width: 90%;
+	text-align: left;
+	word-break: break-word;
+	white-space: normal;
+}
+
+/* Fix For : 1580002245 */
+.messageUnRead .sapMFeedListItemTextString {
+	font-weight:  bold!important;
+}
+
+.messageUnRead .sapMFeedListItemTextText {
+	font-weight:  bold!important;
+}
+
+/* .sapSplMessageFeedListItem .sapMFeedListItemFooter { */
+/* 	text-align: left; */
+/* } */
+.contextBar {
+	background: #e5e5e5;
+	height: 30px;
+	border-bottom: solid 2px #007cc0;
+	/* height : 2em !important; */
+}
+
+.contextBarIcon {
+	padding: 0.5em;
+}

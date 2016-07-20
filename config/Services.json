@@ -1,0 +1,259 @@
+{
+    "services": [
+        {
+            "id": "app",
+            "value": "/sap/spl/xs/app/services/appl.xsodata",
+            "type": "odata",
+            "dataType": "json",
+            "usedBy": [
+                {
+                    "appId": "myUsers",
+                    "namedModels": [
+                        "myContactListODataModel",
+                        "myColleaguesODataModel"
+                    ]
+                },
+                {
+                    "appId": "myBusinessPartners",
+                    "namedModels": [
+                        "myBusinessPartnerListODataModel",
+                        "myConfigODataModel"
+                    ]
+                },
+                {
+                    "appId": "vehicles",
+                    "namedModels": [
+                        "myVehiclesListODataModel",
+                        "myDriversListODataModel",
+                        "myConfigODataModel"
+                    ]
+                },
+                {
+                    "appId": "manageHarbour",
+                    "namedModels": ["manageHarbourModel"]
+                },
+                {
+                    "appId": "incidences",
+                    "namedModels": [
+                        "IncidentsListODataModel", "IncidentsToLocationMapODataModel"
+                    ]
+                },
+                {
+                    "appId": "maps",
+                    "namedModels": ["LiveFeedODataModel", "LiveFeedContextODataModel", "ChatODataModel", "LiveAppODataModel"]
+                },
+                {
+                	"appId":"reporting",
+                	"namedModels":["ReportingModel"]
+           		},
+           		{
+           			"appId": "liveApp",
+                    "namedModels": ["LiveFeedODataModel", "LiveFeedContextODataModel", "ChatODataModel", "LiveAppODataModel"]
+           		},
+           		{
+           			"appId": "manageTours",
+           			"namedModels": ["ToursOverviewODataModel","ToursDetailODataModelStops","TourCreateAssignTruckList"]
+           		},
+           		{
+           			"appId": "userNotification",
+           			"namedModels": ["UserNotificationListODataModel"]
+           		},
+           		{
+           			"appId": "communicationLog",
+           			"namedModels": ["CommunicationLogODataModel"]
+           		}
+            ],
+            "actions": [
+                {
+                    "action": "read"
+                }
+            ]
+        },
+        {
+            "id": "utils",
+            "value": "/sap/spl/xs/utils/services/utils.xsodata/",
+            "type": "odata",
+            "dataType": "json",
+            "actions": [
+                {
+                    "action": "read"
+                }
+            ]
+        },
+        {
+            "id": "enums",
+            "value": "/sap/spl/xs/appl/services/enums.xsodata/",
+            "type": "odata",
+            "dataType": "json",
+            "actions": [
+                {
+                    "action": "read"
+                }
+            ]
+        },
+        {
+            "id": "config",
+            "value": "/sap/spl/xs/config/services/config.xsodata/",
+            "type": "odata",
+            "dataType": "json",
+            "actions": [
+                {
+                    "action": "read"
+                }
+            ]
+        },
+        {
+            "id": "deviceList",
+            "value": "/sap/spl/xs/app/services/deviceList.xsjs",
+            "type": "odata",
+            "dataType": "json",
+            "actions": [
+                {
+                    "action": "read"
+                }
+            ]
+        },
+        {
+            "id": "bupa",
+            "value": "/sap/spl/xs/app/services/businessPartner.xsjs",
+            "type": "xsjs",
+            "dataType": "json",
+            "actions": [
+                {
+                    "action": "read"
+                },
+                {
+                    "action": "post"
+                }
+            ]
+        },
+        {
+            "id": "location",
+            "value": "/sap/spl/xs/appl/services/createLocations.xsjs",
+            "type": "xsjs",
+            "dataType": "json",
+            "actions": [
+                {
+                    "action": "read"
+                },
+                {
+                    "action": "post"
+                }
+            ]
+        },
+        {
+            "id": "newLocation",
+            "value": "/sap/spl/xs/app/services/locations.xsjs",
+            "type": "xsjs",
+            "dataType": "json",
+            "actions": [
+                {
+                    "action": "read"
+                },
+                {
+                    "action": "post"
+                }
+            ]
+        },
+        {
+            "id": "message",
+            "value": "/sap/spl/xs/app/services/message.xsjs",
+            "type": "xsjs",
+            "dataType": "json",
+            "actions": [
+                {
+                    "action": "read"
+                },
+                {
+                    "action": "post"
+                }
+            ]
+        },
+        {
+            "id": "deviceVehicleAssignment",
+            "value": "/sap/spl/xs/app/services/deviceVehicleAssignment.xsjs",
+            "type": "xsjs",
+            "dataType": "json",
+            "actions": [
+                {
+                    "action": "read"
+                },
+                {
+                    "action": "post"
+                }
+            ]
+        },
+        {
+            "id": "incidents",
+            "value": "/sap/spl/xs/app/services/message.xsjs",
+            "type": "xsjs",
+            "dataType": "json",
+            "actions": [
+                {
+                    "action": "read"
+                },
+                {
+                    "action": "post"
+                }
+            ]
+        },
+        {
+        	"id": "parkingSpaceStatus",
+            "value": "/sap/spl/xs/app/services/facilityAvailability.xsjs",
+            "type": "xsjs",
+            "dataType": "json",
+            "actions": [
+                {
+                    "action": "post"
+                }
+            ]
+        },
+        {
+            "id": "init",
+            "value": "/sap/spl/xs/app/services/init.xsjs",
+            "type": "xsjs",
+            "dataType": "json",
+            "actions": [
+                {
+                    "action": "post"
+                }
+            ]
+        },
+        {
+            "id": "sessionLogout",
+            "value": "/sap/hana/xs/formLogin/logout.xscfunc",
+            "type": "xsjs",
+            "dataType": "json",
+            "actions": [
+                {
+                    "action": "post"
+                }
+            ]
+        },
+        {
+            "id": "token",
+            "value": "/sap/hana/xs/formLogin/token.xsjs",
+            "type": "xsjs",
+            "dataType": "json",
+            "actions": [
+                {
+                    "action": "get"
+                }
+            ]
+        },
+        {
+            "id": "usageLogDetails",
+            "value": "/sap/spl/xs/app/services/usageLogDetails.xsjs",
+            "type": "xsjs",
+            "dataType": "json",
+            "actions": [
+                {
+                    "action": "get"
+                },
+                {
+                    "action": "post"
+                }
+            ]
+        }
+    ]
+}

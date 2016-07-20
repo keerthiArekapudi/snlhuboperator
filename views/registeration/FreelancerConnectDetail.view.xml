@@ -1,0 +1,87 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout"
+	controllerName="splController.registeration.FreelancerConnectDetail"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="FreelancerConnectDetailPage">
+		<content>
+			<layout:HorizontalLayout class="sapSplBusinessPartnerSearchHLayout">
+				<layout:content>
+					<layout:VerticalLayout class="sapSplBusinessPartnerSearchVLayout" >
+						<layout:content>
+
+							<Text id="sapSplBusinessPartnerSearchFieldTitle" class="sapSplSearchFieldTitle">
+							</Text>
+
+							<SearchField id="sapSplBusinessPartnerSearchField"
+								class="sapSplSearchFieldInput" search="fnHandleClickOfSearch"
+								selectOnFocus="true" />
+
+							<Table id="SapSplFreelancerTable" width="100%"
+								selectionChange="fnHandleSelectOfBusinessPartner" items="{/BusinessPartners}"
+								mode="MultiSelect" rememberSelections="false">
+								<columns>
+									<Column width="40%">
+										<header>
+											<Text id="SapSplFreelancerTableColumnHeader_CompanyName"></Text>
+										</header>
+									</Column>
+									<Column cssAlign="center" width="60%">
+										<header>
+											<Text id="SapSplFreelancerTableColumnHeader_Email"></Text>
+										</header>
+									</Column>
+
+								</columns>
+								<items>
+									<ColumnListItem
+										selected="{path:'isConnected' , formatter:'splReusable.libs.SapSplModelFormatters.disableListItemCheckBox'}">
+										<cells>
+											<Text text="{Organization.Name}"></Text>
+											<Text text="{CommunicationInfo.EmailAddress}"></Text>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<Text id="SapSplFreelancerConnectRequestLabel" class="sapSplBusinessPartnerPaddingTop"
+							visible="{/showNewBuPaLink}"> </Text>
+							
+							<Link id="SapSplFreelancerInviteLink" press="fnHandleClickOfInvite"
+								class="sapSplBusinessPartnerPaddingTop" visible="false"></Link>
+							
+							<!-- <Link id="SapSplFreelancerInviteLink" press="fnHandleClickOfInvite" 
+								class="sapSplBusinessPartnerPaddingTop" -->
+							<!-- visible="{/showNewBuPaLink}"></Link> -->
+						</layout:content>
+					</layout:VerticalLayout>
+
+					<layout:VerticalLayout class="SapSplSearchBusinessPartnerVLayout" visible="false">
+						<layout:content>
+							<Text id="sapSplNewBuPaLabel" class="sapSplNewBusinessPartnerFontSize">
+							</Text>
+							<Link id="sapSplNewBuPaLink" class="sapSplNewBusinessPartnerNewBuPaLink"
+								press="fnHandleClickOfInvite">
+							</Link>
+						</layout:content>
+					</layout:VerticalLayout>
+				</layout:content>
+			</layout:HorizontalLayout>
+
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+
+					<Button press="fnHandleClickOfConnect" visible="{/showConnectButton}"
+						id="sapSplBusinessPartnerConnect"></Button>
+					<Button press="fireCancel" id="freelancerCancel"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

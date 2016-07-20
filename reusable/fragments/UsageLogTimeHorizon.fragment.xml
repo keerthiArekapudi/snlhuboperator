@@ -1,0 +1,25 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+
+<core:FragmentDefinition 
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+ <VerticalLayout class="SapSplTransparentForm" xmlns="sap.ui.layout">
+     <content>
+    <List items="{/results}" id="SapSplTimeHorizon" xmlns="sap.m"
+				mode="SingleSelectMaster" growing="true" select="onSelectOfTimeHorizon">
+				<items>
+					<StandardListItem title="{name}" id="SapSplVehiclesListItem" class="sapSplVehiclesMasterListItem">
+					</StandardListItem>
+				</items>
+			</List>
+			     			<Button id="CustomTimeRange" press="handlePressOfCustomRange" xmlns="sap.m" width="100%"></Button>
+    
+     </content>
+     </VerticalLayout>
+    
+</core:FragmentDefinition>
+

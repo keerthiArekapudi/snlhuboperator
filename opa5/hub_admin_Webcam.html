@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title> Opa check for Webcam url</title>
+<script id="sap-ui-bootstrap"
+	src="../resources/sap-ui-core.js"
+	data-sap-ui-resourceroots='{"opa5": "./"}'></script>
+<script 
+	src="../resources/sap/ui/thirdparty/qunit.js"></script>
+<link rel="stylesheet"
+	href="../resources/sap/ui/thirdparty/qunit.css"
+	type="text/css" media="screen" />
+<script type="text/javascript">
+jQuery.sap.require("sap.ui.test.Opa5");
+jQuery.sap.require("sap.ui.test.opaQunit");
+var opa5 = sap.ui.test.Opa5;
+jQuery.sap.require("opa5.Arrangements.arrangements");
+jQuery.sap.require("opa5.Actions.actions_webcam");
+jQuery.sap.require("opa5.Assertions.assertions_webcam");
+var webcamlink_id;
+var webcam_label_index = 0;
+
+
+	sap.ui.test.Opa5.extendConfig({
+		arrangements : new opa5.Arrangements.arrangements,
+		actions : new opa5.Actions.actions_webcam,
+		assertions : new opa5.Assertions.assertions_webcam,
+	});
+	
+	opaTest("Should see the apps tiles on the launchpad", function(Given,
+			When, Then) {
+		// Arrangements
+	    Given.iStartMyApp();
+
+	    //Actions
+	    When.waitFor({
+			id : "masterTileContainerPage",
+			viewName : "splView.tileContainer.MasterTileContainer",
+			success : function(oPage) {
+				this.getContext().oAppsPage = oPage;
+			}
+		});
+		Then.iShouldSeeTiles();
+	});
+	
+	opaTest("Should navigate to Traffic Status App", function(Given, When, Then) {
+		  When.iclickonTrafficStatusTile();
+	      Then.iSeeTrafficStatusPage();
+		});	
+	
+	opaTest("Should click on Entities button and see all entities", function(Given, When, Then) {
+		  When.iClickOnEntitiesButton();
+	      Then.iSeeAllEntities();
+		});	
+	
+	opaTest("Should click on parking space icon and get the list ", function(Given, When, Then) {
+		  When.iClickOnParkingspaceIcon();
+	      Then.iSeeEntityList();
+		});	
+	
+	opaTest("Select a parking space", function(Given, When, Then) {
+		  When.iSelectAnEntity();
+	      Then.iSeePopover();
+		});
+	
+	opaTest("Click on the webcam url", function(Given, When, Then) {
+		  webcam_label_index = 7;
+		  When.iSeeWebCamURLDetails();
+		  Then.iClickOnWebCamUrl();
+		});
+	
+	opaTest("Should click on bridge icon and get the list for bridges",function(Given, When, Then) {
+		  When.iClickOnBridgeIcon();
+	      Then.iSeeEntityList();
+		});	
+	
+	opaTest("Select a bridge", function(Given, When, Then) {
+		  When.iSelectAnEntity();
+	      Then.iSeePopover();
+		});
+	
+	opaTest("Click on the webcam url", function(Given, When, Then) {
+		  webcam_label_index = 1;
+		  When.iSeeWebCamURLDetails();
+		  Then.iClickOnWebCamUrl();
+		});
+	
+	opaTest("Should click on container terminal icon and get the list ", function(Given, When, Then) {
+		  When.iClickOnCTIcon();
+	      Then.iSeeEntityList();
+		});	
+	
+	opaTest("Select a container terminal ", function(Given, When, Then) {
+		  When.iSelectAnEntity();
+	      Then.iSeePopover();
+		});
+	
+	opaTest("Click on the webcam url", function(Given, When, Then) {
+		  webcam_label_index = 6;
+		  When.iSeeWebCamURLDetails();
+		  Then.iClickOnWebCamUrl();
+		});
+	
+	opaTest("Should click on container depot icon and get the list ", function(Given, When, Then) {
+		  When.iClickOnContainerdepotIcon();
+	      Then.iSeeEntityList();
+		});	
+	
+	opaTest("Select a container depot ", function(Given, When, Then) {
+		  When.iSelectAnEntity();
+	      Then.iSeePopover();
+		});
+	
+	opaTest("Click on the webcam url", function(Given, When, Then) {
+		  webcam_label_index = 6;
+		  When.iSeeWebCamURLDetails();
+		  Then.iClickOnWebCamUrl();
+		});
+	
+	  	  
+	</script>
+</head>
+<body style="height: 100%">
+	<div id="content"></div>
+	<h1 id="qunit-header">Opa test for external viewer - ALL TESTS</h1>
+	<h2 id="qunit-banner"></h2>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+</body>
+</html>

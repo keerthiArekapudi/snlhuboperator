@@ -1,0 +1,77 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="splController.usageLog.usageLog"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Page id="usageLog" enableScrolling="true" showHeader="true"
+		showFooter="true" showNavButton="true" navButtonPress="handleProfileBackNavigation">
+		<content>
+			<ObjectHeader id="sapSplCompanyProfileHeader"
+				icon="{parts:[{path:'/ImageUrl'}], formatter:'splReusable.libs.SapSplModelFormatters.getImageUrlForOrganization'}"
+				iconDensityAware="false" title="{/Organization_Name}">
+			</ObjectHeader>
+
+			<l:VerticalLayout class="SapSplUsageLogTimeHorizonControl">
+
+				<Label text="{splI18NModel>TIME_HORIZON_TEXT}" id="SapSplUsageTimeHorizonLabel"></Label>
+				<Select items="{/results}" change="handlePressOfTimeHorizon"
+					id="SapSplUsageTimeHorizon">
+					<items>
+						<core:Item key="{key}" text="{name}" />
+					</items>
+				</Select>
+
+			</l:VerticalLayout>
+
+			<List items="{/results}" id="SapSplUsageDetail" growing="true">
+				<items>
+					<CustomListItem>
+						<ObjectHeader id="SapSplUsageLogHeader" class="oSapSplObjectHeader"
+							title="{Organization.Name}"
+							number="{parts:[{path:'bupaCount'}], formatter:'splReusable.libs.SapSplModelFormatters.showFormatedBupaCount'}">
+							<firstStatus>
+								<ObjectStatus
+									text="{parts:[{path:'excludedCount'}], formatter:'splReusable.libs.SapSplModelFormatters.showFormatedExcludedCount'}"
+									state="None" />
+							</firstStatus>
+							<attributes>
+								<ObjectAttribute
+									text="{parts:[{path:'StartTime'},{path:'EndTime'}], formatter:'splReusable.libs.SapSplModelFormatters.showFormattedDateForUsageLog'}" />
+
+								<ObjectAttribute id="SapSplBupaCount"
+									text="{parts:[{path:'bupaCount'}], formatter:'splReusable.libs.SapSplModelFormatters.displayBupCount'}" />
+								<ObjectAttribute id="SapSplTruckCount"
+									text="{parts:[{path:'deviceCount'}], formatter:'splReusable.libs.SapSplModelFormatters.displayDeviceCount'}" />
+								<ObjectAttribute id="SapSplUserCount"
+									text="{parts:[{path:'userCount'}], formatter:'splReusable.libs.SapSplModelFormatters.displayHubUserCount'}" />
+
+							</attributes>
+						</ObjectHeader>
+					</CustomListItem>
+				</items>
+				<headerToolbar>
+					<Toolbar active="true" class="SapSplUsageLogHeaderTitle">
+						<Label id="sapSplUsageLogHeaderlabel"
+							text="{parts:[{path:'/results/length'}], formatter:'splReusable.libs.SapSplModelFormatters.setUsageLogTableHeaderText'}" />
+					</Toolbar>
+				</headerToolbar>
+
+			</List>
+
+		</content>
+		<footer>
+			<Bar id="profilePageFooter">
+				<contentRight>
+					<Button id="btnDownloadCSV" press="handlePressOfCSVButton"
+						type="Emphasized"
+						visible="{parts:[{path:'/isEditable'},{path:'profileButtonVisibilityModel>/editButton'}],formatter:'splReusable.libs.SapSplModelFormatters.showEditable2'}"
+						icon="sap-icon://download" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

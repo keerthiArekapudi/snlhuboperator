@@ -1,0 +1,120 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.sapUiSizeCompact .sapSplMapFilterControlVerticalLayout .filterTable .sapMTB.sapMListHdrTBar {
+	height: 2rem;
+}
+
+.headerToolbar {
+	background: white;
+}
+
+.sapSplMapToolbarMapFilterButton {
+	padding: 0px .5em 0px .5em;
+	margin-right: 1px;
+}
+
+.sapUiSizeCompact .sapSplMapToolbarMapFilterButton .sapMBtnIcon {
+	padding-left: .5em;
+	padding-right: .5em;
+}
+
+.sapSplMapToolbarMapFilterButton .sapMBtnIcon {
+	border-right: solid 1px #bfbfbf;
+	border-left: solid 1px #bfbfbf;
+}
+
+.shadow {
+	/* 	-moz-box-shadow: 8px 8px 10px rgb(124, 122, 122); */
+	/* 	-webkit-box-shadow: 8px 8px 10px rgb(124, 122, 122); */
+	/* 	box-shadow: 8px 8px 10px rgb(124, 122, 122); */
+	
+}
+
+.filterTable {
+	/* 	position: absolute; */
+	/* 	right: 2em; */
+	/* 	top: 1em; */
+	z-index: 10;
+	/* 	opacity: 0.9; */
+	/* 	display: none; */
+	opacity: 1;
+}
+
+.whiteBackground>.sapMBarLeft>span,.sapMBarLeft>label {
+	margin-left: 0.5rem;
+}
+
+.itemSelectedBackground>.sapMBarLeft>span,.sapMBarLeft>label {
+	margin-left: 0.3rem;
+}
+
+.itemSelectedBackground>.sapMListTbl .sapMLabel {
+	padding-top: 1px;
+	font-size: 0.875rem;
+	color: #333333;
+	font-weight: bold;
+}
+
+.filterTable .sapMListTbl {
+	/* 	padding-top: 0.3em; */
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0em;
+	table-layout: fixed;
+	overflow: hidden;
+}
+
+.filterTable .sapMTB-Transparent-CTX.sapMTB {
+	padding-left: 0rem;
+	border-bottom-width: .125rem;
+}
+
+.geoFenceText {
+	cursor: default !important;
+}
+
+.whiteBackground {
+	background: white;
+	outline: 0px;
+	cursor: default !important;
+}
+
+.opacityLow {
+	opacity: 0.3;
+	outline: 0px;
+}
+
+.opacityHigh {
+	opacity: 0.9;
+	outline: 0px;
+}
+
+.filterTable .sapMListTblCell {
+	padding: 0rem;
+	vertical-align: top;
+	font-size: 0.875rem;
+	padding-left: 0rem !important;
+	padding-right: 0rem !important;
+	background: white!important;
+}
+
+.navigateButton {
+	border-bottom: solid 1px #aaaaaa;
+}
+
+.itemSelectedBackground {
+	/* 	background: #e6f2f9; */
+	outline: 0px;
+}
+/* CSNFIX : 0120031469 0000788179 2014 */
+.mapFilterPopover {
+	background: transparent;
+	box-shadow: none;
+	border-bottom: 0px;
+	border-left-color: transparent;
+}
+
+.mapFilterPopover .sapMPopoverArr {
+	display: none;
+}

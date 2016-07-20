@@ -1,0 +1,126 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="splController.profile.Profile"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Page id="profilePage" enableScrolling="true" showHeader="true"
+		showFooter="true" showNavButton="true" navButtonPress="handleProfileBackNavigation">
+		<content>
+			<ObjectHeader id="sapSplCompanyProfileHeader"
+				icon="{parts:[{path:'/ImageUrl'}], formatter:'splReusable.libs.SapSplModelFormatters.getImageUrlForOrganization'}"
+				iconDensityAware="false" title="{/Organization_Name}">
+				<statuses>
+					<ObjectStatus
+						text="{parts:[{path:'/BuPaReplication'}], formatter:'splReusable.libs.SapSplModelFormatters.getAccountCreationStatus'}"
+						state="{parts:[{path:'/BuPaReplication'}], formatter:'splReusable.libs.SapSplModelFormatters.getAccountCreationState'}" />
+				</statuses>
+				<attributes>
+					<ObjectAttribute
+						text="{parts:[{path:'/BuPaReplication'}], formatter:'splReusable.libs.SapSplModelFormatters.getAccountRefreshState'}"
+						active="true" press="refreshAccountStatus"></ObjectAttribute>
+				</attributes>
+			</ObjectHeader>
+
+			<IconTabBar id="sapSplCompanyProfileIconTabBar" select="handleIconTabSelect">
+				<items>
+
+					<IconTabFilter id="sapSplCompanyHeaderInfoIcon"
+						showAll="false" key="sapSplCompanyInfo" height="100%">
+						<content>
+							<l:Grid defaultSpan="L12 M12 S12" width="auto">
+								<f:SimpleForm id="SimpleFormDisplay480" minWidth="1024"
+									maxContainerCols="2" editable="false" layout="ResponsiveGridLayout"
+									title="" labelSpanL="6" labelSpanM="6" emptySpanL="0"
+									emptySpanM="0" columnsL="2" columnsM="2">
+									<!-- CSN FIX : 0120061532 0001325253 2014 -->
+									<!-- <core:Title id="sapSplCompanyProfileContactDetails" -->
+									<!-- visible="false" /> -->
+									<core:Fragment fragmentName="splView.profile.CompanyProfileDetails"
+										type="XML" />
+
+									<core:Fragment fragmentName="splView.profile.CompanyProfileWalletDeregister"
+										type="XML" />
+								</f:SimpleForm>
+							</l:Grid>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter id="sapSplUsageLogIcon" height="100%"
+						key="sapSplUsageInfo"
+						visible="{parts:[{path:'/canMaintainWallet'}],formatter:'splReusable.libs.SapSplModelFormatters.showEditable'}">
+						<content>
+							<!-- <Button id="SapSplUsageTimeHorizon" press="handlePressOfTimeHorizon" 
+								/> -->
+							<l:VerticalLayout class="SapSplUsageLogTimeHorizonControl">
+
+								<Label text="{splI18NModel>TIME_HORIZON_TEXT}" id="SapSplUsageTimeHorizonLabel"></Label>
+								<Select items="{/results}" change="handlePressOfTimeHorizon"
+									id="SapSplUsageTimeHorizon">
+									<items>
+										<core:Item key="{key}" text="{name}" />
+									</items>
+								</Select>
+
+							</l:VerticalLayout>
+
+							<List items="{/results}" id="SapSplUsageDetail" mode="SingleSelectMaster"
+								growing="true" select="onSelectOfListItem">
+								<items>
+									<!-- FIX FOR CSN 759898 -->
+									<CustomListItem type="Navigation">
+										<ObjectHeader id="SapSplUsageLogHeader" class="oSapSplObjectHeader"
+											title="{Name_Description}" number="{BillableDays}">
+											<attributes>
+												<ObjectAttribute
+													text="{parts:[{path:'StartTime'},{path:'EndTime'}], formatter:'splReusable.libs.SapSplModelFormatters.showFormattedDateForUsageLog'}" />
+												<ObjectAttribute id="SapSplTruckCount"
+													text="{parts:[{path:'VehicleCount'}], formatter:'splReusable.libs.SapSplModelFormatters.displayVehicleCount'}" />
+												<ObjectAttribute id="SapSplUserCount"
+													text="{parts:[{path:'UserCount'}], formatter:'splReusable.libs.SapSplModelFormatters.displayUserCount'}" />
+
+											</attributes>
+										</ObjectHeader>
+									</CustomListItem>
+								</items>
+								<headerToolbar>
+									<Toolbar active="true" class="SapSplUsageLogHeader">
+										<Label id="sapSplUsageLogHeaderlabel" />
+									</Toolbar>
+								</headerToolbar>
+
+							</List>
+						</content>
+					</IconTabFilter>
+
+					<IconTabFilter id="sapSnlhCompanyTourSettings" key="sapSnlhCompanyTourSettings"
+						text="{splI18NModel>TOUR_SETTINGS}" height="100%"
+						visible="{parts:[{path:'loggedOnUserModel>/profile/canMaintainTourPreference'}],formatter:'splReusable.libs.SapSplModelFormatters.showFreightForwarderSpecificIconTabFilter'}">
+						<content>
+							<core:Fragment fragmentName="splView.profile.TourSettings"
+								type="XML" />
+						</content>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Bar id="profilePageFooter">
+				<contentRight>
+					<Button id="btnEditCompanyProfile" press="handleProfileEditActionEvent"
+						type="Emphasized"
+						visible="{parts:[{path:'/isEditable'},{path:'profileButtonVisibilityModel>/editButton'}],formatter:'splReusable.libs.SapSplModelFormatters.showEditable2'}"
+						icon="sap-icon://edit" />
+					<Button id="sapSnlhCompnayTourSettingsSaveButton" visible="false"
+						text="{splI18NModel>SAVE_PROFILE_ACTION}" type="Emphasized"
+						press="fnHandleCompnayTourSettingsSaveButton" tooltip="{splI18NModel>SAVE_PROFILE_ACTION}" />
+					<Button id="sapSnlhCompnayTourSettingsCancelButton" visible="false"
+						text="{splI18NModel>CANCEL_PROFILE_ACTION}" press="fnHandleCompnayTourSettingsCancelButton"
+						tooltip="{splI18NModel>CANCEL_PROFILE_ACTION}" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

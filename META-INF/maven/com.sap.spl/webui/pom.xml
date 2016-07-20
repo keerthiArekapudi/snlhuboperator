@@ -1,0 +1,1080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<!--************************************************************************** 
+		* POM SECTION: Maven Model Version Settings *************************************************************************** -->
+	<modelVersion>4.0.0</modelVersion>
+
+	<!--************************************************************************** 
+		* Project Artifact ******************************************************** -->
+	<groupId>com.sap.spl</groupId>
+	<artifactId>webui</artifactId>
+	<version>1.0.22</version>
+	<packaging>war</packaging>
+	<description>SAP Networked Logistics Hub</description>
+	<organization>
+		<name>SAP AG</name>
+		<url>www.sap.com</url>
+	</organization>
+	<scm>
+		<url>scm:git.wdf.sap.corp:29418/spl082013/iotparent.git</url>
+		<connection>scm:git.wdf.sap.corp:29418/spl082013/iotparent.git</connection>
+	</scm>
+	<mailingLists>
+		<mailingList>
+			<name>
+				DL_52577E88FD84A04B5800073E@exchange.sap.corp
+			</name>
+		</mailingList>
+	</mailingLists>
+	<developers>
+		<developer>
+			<name>Karthikeyan Loganathan</name>
+			<email>karthikeyan.loganathan@sap.com</email>
+			<id>i014309</id>
+			<organization>SAP Labs India</organization>
+			<timezone>+5.30</timezone>
+			<roles>
+				<role>
+					Chief Architect
+				</role>
+			</roles>
+		</developer>
+		<developer>
+			<name>Saharsh Taneja</name>
+			<email>saharsh.taneja@sap.com</email>
+			<id>I075694</id>
+			<organization>SAP Labs India</organization>
+			<timezone>+5.30</timezone>
+			<roles>
+				<role>Scrum Master</role>
+			</roles>
+		</developer>
+		<developer>
+			<name>Niranjan Raju</name>
+			<email>n.raju@sap.com</email>
+			<id>i036896</id>
+			<organization>SAP Labs India</organization>
+			<timezone>+5.30</timezone>
+			<roles>
+				<role>Product Owner</role>
+			</roles>
+		</developer>
+	</developers>
+	<contributors>
+		<contributor>
+			<name>Karthikeyan Loganathan</name>
+			<email>karthikeyan.loganathan@sap.com</email>
+			<organization>SAP Labs India</organization>
+			<timezone>+5.30</timezone>
+			<roles>
+				<role>
+					Chief Architect
+				</role>
+			</roles>
+		</contributor>
+		<contributor>
+			<name>Saharsh Taneja</name>
+			<email>saharsh.taneja@sap.com</email>
+			<organization>SAP Labs India</organization>
+			<timezone>+5.30</timezone>
+			<roles>
+				<role>
+					Scrum Master
+				</role>
+			</roles>
+		</contributor>
+	</contributors>
+
+	<properties>
+		<jettyVersion>6.1.15</jettyVersion>
+		<TRANSLATIONAREA>510004</TRANSLATIONAREA>
+		<TRANSLATIONUSER>ASA1_SPLHELI</TRANSLATIONUSER>
+		<TRANSLATIONPASSWORD>Abcd1234</TRANSLATIONPASSWORD>
+		<translationFailOnError>false</translationFailOnError>
+		<exec.mainClass>com.sap.writer.SimpleJSONWriter</exec.mainClass>
+		<appSourceDirectory>src/main/webapp</appSourceDirectory>
+		<copyFromDir></copyFromDir>
+		<copyToDir></copyToDir>
+		<ui5version>1.30.8</ui5version>
+	</properties>
+
+	<parent>
+		<groupId>com.sap.iot</groupId>
+		<artifactId>parent-pom</artifactId>
+		<version>1.0.4</version>
+		<relativePath />
+	</parent>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.sap.ui5.dist</groupId>
+				<artifactId>runtime-collection</artifactId>
+				<version>${ui5version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.sap.ui5.dist</groupId>
+				<artifactId>uilib-collection</artifactId>
+				<version>${ui5version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.sap.ui5</groupId>
+			<artifactId>resource</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.ui5.dist</groupId>
+			<artifactId>runtime-collection</artifactId>
+			<version>${ui5version}</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.ui5.dist</groupId>
+			<artifactId>uilib-collection</artifactId>
+			<version>${ui5version}</version>
+			<type>pom</type>
+			<scope>import</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>themelib_sap_platinum</artifactId>
+					<groupId>com.sap.ui5</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>ux3</artifactId>
+					<groupId>com.sap.ui5</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>richtexteditor</artifactId>
+					<groupId>com.sap.ui5</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>inbox</artifactId>
+					<groupId>com.sap.ui5</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>portal-ui5-ext</artifactId>
+					<groupId>com.sap.portal.ui5</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>scfld.md</artifactId>
+					<groupId>com.sap.ca</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>apf-lib</artifactId>
+					<groupId>com.sap.apf</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>suite.smartbusiness</artifactId>
+					<groupId>com.sap.smartbusiness</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>webui</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>1.1.1</version>
+					<executions>
+						<execution>
+							<phase>install</phase>
+							<goals>
+								<goal>java</goal>
+							</goals>
+							<configuration>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<profiles>
+		<profile>
+			<id>translation</id>
+			<activation>
+				<property>
+					<name>translate</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<configuration>
+							<excludes>
+								<exclude>**/src/test/java/**/*.java</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>com.sap.ldi</groupId>
+						<artifactId>translation-plugin</artifactId>
+						<configuration>
+							<skipNoteExistenceCheck>true</skipNoteExistenceCheck>
+							<failOnError>${translationFailOnError}</failOnError>
+							<translationArea>${TRANSLATIONAREA}</translationArea>
+							<jcoClientMsHost>ldcib0y.wdf.sap.corp</jcoClientMsHost>
+							<jcoClientMsServ>64389</jcoClientMsServ>
+							<jcoClientR3Name>B0Y</jcoClientR3Name>
+							<jcoClientUser>${TRANSLATIONUSER}</jcoClientUser>
+							<jcoClientPassword>${TRANSLATIONPASSWORD}</jcoClientPassword>
+							<translationDomain>LO</translationDomain>
+							<translationDeveloper>I055334</translationDeveloper>
+							<translationCollection>SAP Networked Logistics Hub</translationCollection>
+							<translationResources>
+								<resource>${appSourceDirectory}/resources/l10n</resource>
+								<resource>${appSourceDirectory}/welcome/resources/l10n</resource>
+							</translationResources>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<configuration>
+							<source>1.7</source>
+							<target>1.7</target>
+						</configuration>
+					</plugin>
+
+					<plugin>
+						<groupId>org.mortbay.jetty</groupId>
+						<artifactId>maven-jetty-plugin</artifactId>
+						<version>${jettyVersion}</version>
+						<configuration>
+							<scanIntervalSeconds>10</scanIntervalSeconds>
+							<stopKey>foo</stopKey>
+							<systemProperties>
+								<systemProperty>
+									<name>jetty.port</name>
+									<value>8000</value>
+								</systemProperty>
+								<systemProperty>
+									<name>jetty.skip</name>
+									<value>true</value>
+								</systemProperty>
+							</systemProperties>
+							<stopPort>9999</stopPort>
+						</configuration>
+						<executions>
+							<execution>
+								<id>start-jetty</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<scanIntervalSeconds>0</scanIntervalSeconds>
+									<daemon>true</daemon>
+								</configuration>
+							</execution>
+							<execution>
+								<id>stop-jetty</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>stop</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>default.build</id>
+			<activation>
+				<property>
+					<name>default.build</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.googlecode.json-simple</groupId>
+					<artifactId>json-simple</artifactId>
+					<version>1.1.1</version>
+					<scope>compile</scope>
+				</dependency>
+				<dependency>
+					<groupId>com.sap.selenium2.testing</groupId>
+					<artifactId>com.sap.selenium2.test.framework</artifactId>
+					<version>1.1.4</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>jsp-2.1</artifactId>
+					<version>6.0.0</version>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.0</version><!--$NO-MVN-MAN-VER$ -->
+				</dependency>
+				<dependency>
+					<groupId>org.sikuli</groupId>
+					<artifactId>sikuli-api</artifactId>
+					<version>1.2.0</version>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<configuration>
+							<source>1.7</source>
+							<target>1.7</target>
+							<testExcludes>
+								<testExclude>**/com/sap/spl/selenium/Reusables/*.java</testExclude>
+								<testExclude>**/com/sap/spl/selenium/TestCases/*.java</testExclude>
+							</testExcludes>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.mortbay.jetty</groupId>
+						<artifactId>maven-jetty-plugin</artifactId>
+						<version>${jettyVersion}</version>
+						<configuration>
+							<scanIntervalSeconds>10</scanIntervalSeconds>
+							<stopKey>foo</stopKey>
+							<systemProperties>
+								<systemProperty>
+									<name>jetty.port</name>
+									<value>8000</value>
+								</systemProperty>
+								<systemProperty>
+									<name>jetty.skip</name>
+									<value>true</value>
+								</systemProperty>
+							</systemProperties>
+							<stopPort>9999</stopPort>
+						</configuration>
+						<executions>
+							<execution>
+								<id>start-jetty</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<scanIntervalSeconds>0</scanIntervalSeconds>
+									<daemon>true</daemon>
+								</configuration>
+							</execution>
+							<execution>
+								<id>stop-jetty</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>stop</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>local.build</id>
+			<activation>
+				<property>
+					<name>local.build</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.3</version>
+						<executions>
+							<execution>
+								<id>copyFiles</id>
+								<phase>pre-site</phase>
+								<configuration>
+									<tasks>
+										<echo message="${copyFromDir}" />
+										<copy failonerror="true" verbose="true" todir="${copyToDir}"
+											overwrite="true">
+											<fileset dir="${copyFromDir}/${applicationOptWarDirectory}">
+												<include name="**/*.html" />
+												<include name="**/*.ico" />
+												<include name="welcome/**" />
+												<include name="help/**" />
+												<include name="anonymous/**" />
+												<include name="config/**" />
+												<include name="controllers/**" />
+												<include name="libs/**" />
+												<include name="resources/**" />
+												<include name="reusable/**" />
+												<include name="startup/**" />
+												<include name="views/**" />
+												<exclude name=".settings/**" />
+											</fileset>
+										</copy>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>selenium</id>
+			<activation>
+				<property>
+					<name>selenium</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.sap.selenium2.testing</groupId>
+					<artifactId>com.sap.selenium2.test.framework</artifactId>
+					<version>1.1.4</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>jsp-2.1</artifactId>
+					<version>6.0.0</version>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.0</version><!--$NO-MVN-MAN-VER$ -->
+				</dependency>
+				<dependency>
+					<groupId>org.sikuli</groupId>
+					<artifactId>sikuli-api</artifactId>
+					<version>1.2.0</version>
+				</dependency>
+			</dependencies>
+			<build>
+
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.0</version>
+						<configuration>
+							<source>1.7</source>
+							<target>1.7</target>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<testFailureIgnore>true</testFailureIgnore>
+							<excludes></excludes>
+							<includes>
+								<include>com/sap/spl/selenium/**</include>
+							</includes>
+							<executions>
+								<execution>
+									<phase>integration-test</phase>
+								</execution>
+								<goals>
+									<goal>test</goal>
+								</goals>
+								<configuration>
+									<skip>false</skip>
+									<includes>
+										<include>com/sap/spl/selenium/**</include>
+									</includes>
+								</configuration>
+							</executions>
+						</configuration>
+					</plugin>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.3</version>
+						<executions>
+							<execution>
+								<id>deleteHtmlFiles</id>
+								<phase>pre-clean</phase>
+								<configuration>
+									<tasks>
+										<delete dir="${java.io.tmpdir}\Selenium_Reports"
+											includes="**/*.*" failonerror="false">
+										</delete>
+										<echo message="Creating folder for the lib..." />
+										<mkdir dir="${java.io.tmpdir}\Selenium_Reports" />
+										<delete dir="Selenium_Reports" includeemptydirs="true"
+											includes="**/*.*" failonerror="false"></delete>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>copyHtmlFilesToWorkspace</id>
+								<phase>post-integration-test</phase>
+								<configuration>
+									<tasks>
+										<copy todir="Selenium_Reports" failonerror="false">
+											<fileset dir="${java.io.tmpdir}\Selenium_Reports" />
+										</copy>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>releaseToNexus</id>
+			<properties>
+				<appSourceDirectory>src/main/webapp</appSourceDirectory>
+			</properties>
+			<activation>
+				<property>
+					<name>ldi.releaseBuild</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.googlecode.json-simple</groupId>
+					<artifactId>json-simple</artifactId>
+					<version>1.1.1</version>
+					<scope>compile</scope>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<configuration>
+							<source>1.7</source>
+							<target>1.7</target>
+							<excludes>
+								<exclude>**/com/sap/spl/proxy/*.java</exclude>
+								<exclude>**/com/sap/writer/*.java</exclude>
+							</excludes>
+							<testExcludes>
+								<testExclude>**/com/sap/spl/selenium/Reusables/*.java</testExclude>
+								<testExclude>**/com/sap/spl/selenium/TestCases/*.java</testExclude>
+							</testExcludes>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>com.sap.ui5.tools.build</groupId>
+						<artifactId>maven-coldwater-plugin</artifactId>
+						<version>1.30.4</version>
+						<goals>
+							<goal>optimize</goal>
+						</goals>
+						<executions>
+							<execution>
+								<phase>
+										package
+									</phase>
+								<goals>
+									<goal>
+											optimize
+										</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<optimize>true</optimize>
+							<autoDetectOutputPrefix>true</autoDetectOutputPrefix>
+							<modules>
+								<module>${appSourceDirectory}/js/*.js</module>
+							</modules>
+							<verbose>true</verbose>
+							<scanNonStandardFolders>true</scanNonStandardFolders>
+							<resourceRoots>
+								<resourceRoot>${appSourceDirectory}/js/*</resourceRoot>
+							</resourceRoots>
+						</configuration>
+					</plugin>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.3</version>
+						<executions>
+							<execution>
+								<id>deleteOptWarFiles</id>
+								<phase>
+										package
+									</phase>
+								<goals>
+									<goal>
+											run
+										</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<tasks>
+								<unzip
+									src="${project.build.directory}/${project.build.finalName}-opt.war"
+									dest="${project.build.directory}/${project.build.finalName}-opt" />
+							</tasks>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>com.mycila</groupId>
+						<artifactId>license-maven-plugin</artifactId>
+						<configuration>
+							<skip>${skipBuildPlugins}</skip>
+							<header>
+								${project.basedir}/src/resources/copyright.txt
+							</header>
+							<properties>
+								<currentYear>${currentYear}</currentYear>
+							</properties>
+							<basedir>${project.build.directory}/${project.build.finalName}-opt</basedir>
+							<includes>
+								<include>**/*.js</include>
+								<include>**/*.xml</include>
+								<include>**/*.css</include>
+							</includes>
+						</configuration>
+						<executions>
+							<execution>
+								<id>add-license-header</id>
+								<phase>
+										package
+									</phase>
+								<goals>
+									<goal>format</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-assembly-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>create-distribution</id>
+								<phase>package</phase>
+								<goals>
+									<goal>single</goal>
+								</goals>
+								<configuration>
+									<descriptors>
+										<descriptor>src/main/assembly/assembly.xml</descriptor>
+									</descriptors>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>releaseToCustomer</id>
+			<activation>
+				<property>
+					<name>releaseToCustomer</name>
+				</property>
+			</activation>
+			<properties>
+				<HELIUMPLUGIN>1.0.0</HELIUMPLUGIN>
+				<gitRepository></gitRepository>
+				<dispatcher>dispatcher.hana.ondemand.com</dispatcher>
+				<excludeTests>false</excludeTests>
+				<cloudApplication>snlhwebapp</cloudApplication>
+				<cloudAccount>a7d0b3a5c</cloudAccount>
+				<gitEmail>antara.choudhury@sap.com</gitEmail>
+				<gBranch>master</gBranch>
+				<gitRepository>https://git.hana.ondemand.com/a7d0b3a5c/</gitRepository>
+				<gitUsername>I055334</gitUsername>
+				<cloudUser>I055334</cloudUser>
+				<cloudPassword>welcome42#</cloudPassword>
+				<maven.build.timestamp.format>yyMMddHHmm</maven.build.timestamp.format>
+				<buildNumber>${maven.build.timestamp}</buildNumber>
+				<applicationVersion>${project.version}</applicationVersion>
+				<applicationTemporaryOutputFolder>tempOutput</applicationTemporaryOutputFolder>
+				<applicationWarFile>webui.war</applicationWarFile>
+				<applicationOptWarFile>webui-opt.war</applicationOptWarFile>
+				<applicationOptWarDirectory>webui-opt</applicationOptWarDirectory>
+			</properties>
+			
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<configuration>
+							<source>1.7</source>
+							<target>1.7</target>
+							<excludes>
+								<exclude>**/com/sap/spl/proxy/*.java</exclude>
+								<exclude>**/com/sap/writer/*.java</exclude>
+							</excludes>
+							<testExcludes>
+								<testExclude>**/com/sap/spl/selenium/Reusables/*.java</testExclude>
+								<testExclude>**/com/sap/spl/selenium/TestCases/*.java</testExclude>
+							</testExcludes>
+						</configuration>
+					</plugin>
+					<!-- Download Zip from Nexus and extract to Helium client workspace -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<version>2.10</version>
+						<executions>
+							<execution>
+								<id>unpack</id>
+								<phase>package</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>com.sap.spl</groupId>
+											<artifactId>webui</artifactId>
+											<version>1.0.22</version>
+											<classifier>bin</classifier>
+											<type>zip</type>
+											<overWrite>false</overWrite>
+											<outputDirectory>${project.build.directory}/${applicationTemporaryOutputFolder}</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.build.directory}/${applicationTemporaryOutputFolder}</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+
+					<plugin>
+						<groupId>com.sap.ui5.tools.maven</groupId>
+						<artifactId>nwcloud-maven-plugin</artifactId>
+						<executions>
+
+							<!-- create Helium applications -->
+							<execution>
+
+								<id>spl-helium-create</id>
+								<!-- <phase>process-resources</phase> -->
+								<goals>
+									<goal>helium-create</goal>
+								</goals>
+							</execution>
+
+							<!-- prepare the workspaces in the target folder -->
+							<execution>
+								<id>spl-helium-prepare</id>
+								<!-- <phase>process-resources</phase> -->
+								<goals>
+									<goal>helium-prepare</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<application>${cloudApplication}</application>
+							<applicationVersion>${project.version}</applicationVersion>
+							<landscape>${dispatcher}</landscape>
+							<account>spltest</account>
+							<username>${cloudUser}</username>
+							<password>${cloudPassword}</password>
+							<gitUsername>${gitUsername}</gitUsername>
+							<gitEmail>${gitEmail}</gitEmail>
+							<gitBranch>${gBranch}</gitBranch>
+							<httpProxyHost>proxy.wdf.sap.corp</httpProxyHost>
+							<httpProxyPort>8080</httpProxyPort>
+							<httpsProxyHost>proxy.wdf.sap.corp</httpsProxyHost>
+							<httpsProxyPort>8080</httpsProxyPort>
+							<httpsNonProxyHosts>localhost,*sap.corp</httpsNonProxyHosts>
+						</configuration>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>2.7</version><!--$NO-MVN-MAN-VER$ -->
+						<executions>
+							<execution>
+								<id>copy-resources</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>${project.build.directory}/${applicationTemporaryOutputFolder}</directory>
+											<includes>
+												<include>**/*</include>
+											</includes>
+											<excludes>
+												<exclude>WEB-INF/**/*</exclude>
+												<exclude>**/*index_test.html</exclude>
+												<!-- <exclude>**/*index.html</exclude> -->
+											</excludes>
+										</resource>
+									</resources>
+									<overwrite>true</overwrite>
+									<outputDirectory>${project.build.directory}/snlhwebapp</outputDirectory>
+									<overWriteReleases>true</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<!-- Run Helium Deployment with version same as the one released by 
+						assembly -->
+					<plugin>
+						<groupId>com.sap.ui5.tools.maven</groupId>
+						<artifactId>nwcloud-maven-plugin</artifactId>
+						<executions>
+							<execution>
+
+								<id>spl-helium-upload</id>
+								<!-- <phase>process-resources</phase> -->
+								<goals>
+									<goal>helium-deploy</goal>
+								</goals>
+							</execution>
+
+						</executions>
+						<configuration>
+							<application>snlhwebapp</application>
+							<applicationVersion>${project.version}</applicationVersion>
+							<landscape>dispatcher.hana.ondemand.com</landscape>
+							<account>spltest</account>
+							<username>${cloudUser}</username>
+							<password>${cloudPassword}</password>
+							<gitUsername>${gitUsername}</gitUsername>
+							<gitEmail>${gitEmail}</gitEmail>
+							<gitBranch>master</gitBranch>
+							<httpProxyHost>proxy.wdf.sap.corp</httpProxyHost>
+							<httpProxyPort>8080</httpProxyPort>
+							<httpsProxyHost>proxy.wdf.sap.corp</httpsProxyHost>
+							<httpsProxyPort>8080</httpsProxyPort>
+							<httpsNonProxyHosts>localhost,*sap.corp</httpsNonProxyHosts>
+						</configuration>
+					</plugin>
+				</plugins>
+
+
+			</build>
+		</profile>
+		<profile>
+			<id>releaseToValidation</id>
+			<activation>
+				<property>
+					<name>releaseToValidation</name>
+				</property>
+			</activation>
+			<properties>
+				<HELIUMPLUGIN>1.0.0</HELIUMPLUGIN>
+				<gitRepository></gitRepository>
+				<dispatcher>${VALDISPATCHER}</dispatcher>
+				<excludeTests>false</excludeTests>
+				<cloudApplication>snlhwebapp</cloudApplication>
+				<cloudAccount>${VALCLOUDACCOUNT}</cloudAccount>
+				<gitEmail>${VALACCOUNTUSEREMAIL}</gitEmail>
+				<gBranch>master</gBranch>
+				<gitRepository>https://git.hana.ondemand.com/${VALCLOUDACCOUNT}/</gitRepository>
+				<gitUsername>${VALACCOUNTIUSER}</gitUsername>
+				<cloudUser>${VALACCOUNTIUSER}</cloudUser>
+				<cloudPassword>${VALACCOUNTPASSWORD}</cloudPassword>
+				<maven.build.timestamp.format>yyMMddHHmm</maven.build.timestamp.format>
+				<buildNumber>${maven.build.timestamp}</buildNumber>
+				<applicationVersion>${project.version}</applicationVersion>
+				<applicationTemporaryOutputFolder>tempOutput</applicationTemporaryOutputFolder>
+				<applicationWarFile>webui.war</applicationWarFile>
+				<applicationOptWarFile>webui-opt.war</applicationOptWarFile>
+				<applicationOptWarDirectory>webui-opt</applicationOptWarDirectory>
+			</properties>
+			
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<configuration>
+							<source>1.7</source>
+							<target>1.7</target>
+							<excludes>
+								<exclude>**/com/sap/spl/proxy/*.java</exclude>
+								<exclude>**/com/sap/writer/*.java</exclude>
+							</excludes>
+							<testExcludes>
+								<testExclude>**/com/sap/spl/selenium/Reusables/*.java</testExclude>
+								<testExclude>**/com/sap/spl/selenium/TestCases/*.java</testExclude>
+							</testExcludes>
+						</configuration>
+					</plugin>
+					<!-- Download Zip from Nexus and extract to Helium client workspace -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<version>2.10</version>
+						<executions>
+							<execution>
+								<id>unpack</id>
+								<phase>package</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>com.sap.spl</groupId>
+											<artifactId>webui</artifactId>
+											<version>1.0.22</version>
+											<classifier>bin</classifier>
+											<type>zip</type>
+											<overWrite>false</overWrite>
+											<outputDirectory>${project.build.directory}/${applicationTemporaryOutputFolder}</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.build.directory}/${applicationTemporaryOutputFolder}</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+
+					<plugin>
+						<groupId>com.sap.ui5.tools.maven</groupId>
+						<artifactId>nwcloud-maven-plugin</artifactId>
+						<executions>
+
+							<!-- create Helium applications -->
+							<execution>
+
+								<id>spl-helium-create</id>
+								<!-- <phase>process-resources</phase> -->
+								<goals>
+									<goal>helium-create</goal>
+								</goals>
+							</execution>
+
+							<!-- prepare the workspaces in the target folder -->
+							<execution>
+								<id>spl-helium-prepare</id>
+								<!-- <phase>process-resources</phase> -->
+								<goals>
+									<goal>helium-prepare</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<application>${cloudApplication}</application>
+							<applicationVersion>${project.version}</applicationVersion>
+							<landscape>${dispatcher}</landscape>
+							<account>${VALCLOUDACCOUNT}</account>
+							<username>${cloudUser}</username>
+							<password>${cloudPassword}</password>
+							<gitUsername>${gitUsername}</gitUsername>
+							<gitEmail>${gitEmail}</gitEmail>
+							<gitBranch>${gBranch}</gitBranch>
+							<httpProxyHost>proxy.wdf.sap.corp</httpProxyHost>
+							<httpProxyPort>8080</httpProxyPort>
+							<httpsProxyHost>proxy.wdf.sap.corp</httpsProxyHost>
+							<httpsProxyPort>8080</httpsProxyPort>
+							<httpsNonProxyHosts>localhost,*sap.corp</httpsNonProxyHosts>
+						</configuration>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>2.7</version><!--$NO-MVN-MAN-VER$ -->
+						<executions>
+							<execution>
+								<id>copy-resources</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<resources>
+										<resource>
+											<includes>
+												<include>**/*</include>
+											</includes>
+											<excludes>
+												<exclude>WEB-INF/**/*</exclude>
+												<exclude>**/*index_test.html</exclude>
+												<!-- <exclude>**/*index.html</exclude> -->
+											</excludes>
+										</resource>
+									</resources>
+									<overwrite>true</overwrite>
+									<outputDirectory>${project.build.directory}/snlhwebapp</outputDirectory>
+									<overWriteReleases>true</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<!-- Run Helium Deployment with version same as the one released by 
+						assembly -->
+					<plugin>
+						<groupId>com.sap.ui5.tools.maven</groupId>
+						<artifactId>nwcloud-maven-plugin</artifactId>
+						<executions>
+							<execution>
+
+								<id>spl-helium-upload</id>
+								<!-- <phase>process-resources</phase> -->
+								<goals>
+									<goal>helium-deploy</goal>
+								</goals>
+							</execution>
+
+						</executions>
+						<configuration>
+							<application>snlhwebapp</application>
+							<applicationVersion>${project.version}</applicationVersion>
+							<landscape>dispatcher.hana.ondemand.com</landscape>
+							<account>spltest</account>
+							<username>${cloudUser}</username>
+							<password>${cloudPassword}</password>
+							<gitUsername>${gitUsername}</gitUsername>
+							<gitEmail>${gitEmail}</gitEmail>
+							<gitBranch>master</gitBranch>
+							<httpProxyHost>proxy.wdf.sap.corp</httpProxyHost>
+							<httpProxyPort>8080</httpProxyPort>
+							<httpsProxyHost>proxy.wdf.sap.corp</httpsProxyHost>
+							<httpsProxyPort>8080</httpsProxyPort>
+							<httpsNonProxyHosts>localhost,*sap.corp</httpsNonProxyHosts>
+						</configuration>
+					</plugin>
+				</plugins>
+
+
+			</build>
+		</profile>
+	</profiles>
+</project>

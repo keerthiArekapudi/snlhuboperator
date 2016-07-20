@@ -1,0 +1,55 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<m:Panel xmlns:l="sap.ui.layout" expandable="true" expanded="true" id="currentTourPanel" visible="false"
+	xmlns:m="sap.m" xmlns:f="sap.ui.layout.form">
+	<m:headerToolbar>
+		<m:Toolbar>
+			<m:content>
+				<m:Label text="Current Tour"></m:Label>
+				<m:ToolbarSpacer></m:ToolbarSpacer>
+				<m:Label text="{demoCurrentToursListModel>/Name}"></m:Label>
+			</m:content>
+		</m:Toolbar>
+	</m:headerToolbar>
+	<m:content>
+		<l:Grid defaultSpan="L12 M12 S12">
+			<l:content>
+				<f:SimpleForm maxContainerCols="3" editable="true"
+					layout="ResponsiveGridLayout" class="currentTourForm">
+					<f:content>
+						<m:Label text="Start Time" class="moveUp" design="Bold">
+							<m:layoutData>
+								<l:GridData span="L1 M1 S2"></l:GridData>
+							</m:layoutData>
+						</m:Label>
+						<m:Text text="{path:'demoCurrentToursListModel>/Planned.StartTime', formatter:'.dateFormatter'}" class="moveUp">
+							<m:layoutData>
+								<l:GridData span="L3 M3 S4" />
+							</m:layoutData>
+						</m:Text>
+						<m:Label text="End Time" class="moveUp" design="Bold">
+							<m:layoutData>
+								<l:GridData span="L1 M1 S2"></l:GridData>
+							</m:layoutData>
+						</m:Label>
+						<m:Text text="{path:'demoCurrentToursListModel>/Planned.EndTime', formatter:'.dateFormatter'}" class="moveUp">
+							<m:layoutData>
+								<l:GridData span="L3 M3 S4" />
+							</m:layoutData>
+						</m:Text>
+					</f:content>
+				</f:SimpleForm>
+			</l:content>
+		</l:Grid>
+		<m:Panel expandable="true" expanded="true" headerText="All Stops"
+			class="stopsPanel">
+			<m:content>
+				<l:VerticalLayout id="sapSplDemoStopsLayout" width="100%">
+				</l:VerticalLayout>
+			</m:content>
+		</m:Panel>
+	</m:content>
+</m:Panel>

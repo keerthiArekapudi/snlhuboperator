@@ -1,0 +1,27 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<ResponsivePopover xmlns="sap.m" showHeader="false" xmlns:core="sap.ui.core" modal="false"
+	contentWidth="400px" contentHeight="50%" placement="Bottom" class="sapsplShellHeaderNotificationsPopover" busy="true">
+	<content>
+		<List id="sapsplNotificationsList" items="{/}"
+			growingScrollToLoad="true" growing="true" growingThreshold="20">
+			<CustomListItem press="fnHandleNavigationFromNotification" width="100%" id="sapSplShellHeaderNotificationsPopoverListItem"
+				type="Active">
+				<Toolbar height="4.5rem" class="sapSplShellHeaderNotificationsPopoverToolBar">
+					<core:Icon src="sap-icon://notification" class="splNotificationIconMargin">
+					</core:Icon>
+					<Text class="sapSplReportOutboundErrorsListItemText"
+						text="{parts:[{path:'ReplicationStatus'},{path:'Entity'},{path:'Desc_1'},{path:'Desc_2'}], formatter:'splReusable.libs.SapSplModelFormatters.formattingForNotifications'}">
+					</Text>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button type="Transparent" icon="sap-icon://synchronize"
+						press="fnDoRefreshItem" class="splNotificationsRefreshButton">
+					</Button>
+				</Toolbar>
+			</CustomListItem>
+		</List>
+	</content>
+</ResponsivePopover>

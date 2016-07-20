@@ -1,0 +1,89 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="splController.profile.UserProfile"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Page id="userProfilePage" style="background-color:#ffffff"
+		enableScrolling="true" showHeader="true" showFooter="true"
+		showNavButton="true" navButtonPress="handleProfileBackNavigation"
+		title="{splI18NModel>HEADER_USER_PROFILE}">
+		<content>
+			<ObjectHeader id="sapSplUserProfileHeader"
+				title="{parts:[{path:'loggedOnUserModel>/profile/PersonName_GivenName'},{path:'loggedOnUserModel>/profile/PersonName_Surname'}], formatter:'splReusable.libs.SapSplModelFormatters.displayNameFormatter'}">
+				<attributes>
+					<ObjectAttribute
+						text="{parts:[{path:'loggedOnUserModel>/profile/Role.description'}]}" />
+				</attributes>
+			</ObjectHeader>
+
+			<!-- CSNFIX 0000752877 2014 -->
+			<IconTabBar expanded="true" select="fnHandleSelectOfIconTabFilter"
+				id="sapSclProfileAndSettingIconTabBar">
+				<items>
+					<IconTabFilter text="{splI18NModel>PROFILE}" key="sapSclIconTabFilterProfile">
+						<content>
+							<Panel expanded="true" expandable="false" height="100%"
+								class="sapSplUserProfilePanelPaddingBorderBottomNone sapSplProfilePanelContent">
+								<content>
+									<f:SimpleForm xmlns:core="sap.ui.core" xmlns="sap.m"
+										xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" id="SimpleFormDisplay480"
+										minWidth="1024" maxContainerCols="2" editable="false"
+										layout="ResponsiveGridLayout" title="" labelSpanL="6"
+										labelSpanM="6" emptySpanL="0" emptySpanM="0" columnsL="2"
+										columnsM="2" height="100%">
+										<f:content>
+											<core:Fragment fragmentName="splView.profile.UserProfileDetails"
+												type="XML" />
+											<core:Fragment fragmentName="splView.profile.UserProfileDeregImplications"
+												type="XML" />
+										</f:content>
+									</f:SimpleForm>
+								</content>
+							</Panel>
+						</content>
+					</IconTabFilter>
+
+					<IconTabFilter text="{splI18NModel>FOLLOW_TRUKS}"
+						key="sapSclIconTabFilterFollowTrucks" id="sapSclIconTabFilterFollowTrucks"
+						visible="{parts:[{path:'loggedOnUserModel>/profile/canMaintainTruck'}],formatter:'splReusable.libs.SapSplModelFormatters.showFreightForwarderSpecificIconTabFilter'}">
+						<content>
+							<core:Fragment fragmentName="splView.profile.FollowTrucksTableSubscribe"
+								type="XML" />
+						</content>
+					</IconTabFilter>
+
+					<IconTabFilter text="{splI18NModel>THEME_TAB}"  key="sapSclIconTabFilternotifications">
+						<content>
+							<core:Fragment fragmentName="splView.profile.Notifications"
+								type="XML" />
+						</content>
+					</IconTabFilter>
+
+
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Bar id="userProfilePageFooter">
+				<contentRight>
+					<!-- CSNFIX 757755 2014 -->
+					<Button id="btnEditUserProfile" text="{splI18NModel>MY_COLLEAGUES_EDIT_BUTTON}"
+						press="handleProfileEditActionEvent" type="Emphasized"
+						tooltip="{splI18NModel>MY_COLLEAGUES_EDIT_BUTTON}"
+						visible="{parts:[{path:'loggedOnUserModel>/profile/isEditable'}],formatter:'splReusable.libs.SapSplModelFormatters.showEditable'}"
+						icon="sap-icon://edit" />
+					<Button id="sapSclFollowTrucksSaveButton" visible="false"
+						text="{splI18NModel>SAVE_PROFILE_ACTION}" type="Emphasized"
+						press="fnHandleUserPreferenceSaveButton" tooltip="{splI18NModel>SAVE_PROFILE_ACTION}" />
+					<Button id="sapSclFollowTrucksCancelButton" visible="false"
+						text="{splI18NModel>CANCEL_PROFILE_ACTION}" press="fnHandleUserPreferenceCancelButton"
+						tooltip="{splI18NModel>CANCEL_PROFILE_ACTION}" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

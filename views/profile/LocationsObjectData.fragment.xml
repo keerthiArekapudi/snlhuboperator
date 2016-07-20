@@ -1,0 +1,41 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Panel width="100%" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" class="sapSplCompanyProfileCompanyDeregisterBoldPanelHeader" headerText="{splI18NModel>LOCATION_OBJECT_DATA}">
+	<layoutData>
+		<l:GridData span="L12 M12 S12"/>
+	</layoutData>
+	<content>
+		<Table width="100%" enableBusyIndicator="true"
+			noDataText="{splI18NModel>NO_LOCATIONS_TO_BE_DELETED}" showOverlay="false" busy="false"
+			items="{compDeregLocationObjectModel>/results}">
+<!-- 			<headerToolbar> -->
+<!-- 				<Toolbar> -->
+<!-- 					<Label text="{splI18NModel>LOCATION_OBJECT_DATA}"></Label> -->
+<!-- 				</Toolbar> -->
+<!-- 			</headerToolbar> -->
+			<columns>
+				<Column width="90%">
+					<Text text="{splI18NModel>LOCATION_OBJECT}" />
+				</Column>
+				<Column width="10%">
+					<Text text="{splI18NModel>TOTAL_LOCATION}" />
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Label text="{compDeregLocationObjectModel>name}" />
+						<Label text="{compDeregLocationObjectModel>value}" design="Bold" />
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<!-- 				Fix for Incident : 1482012129 - added a style class -->
+		<Label text="{splI18NModel>ALL_LOCATION_DATA_DELETION}" design="Bold" class="sapSplDeregisterDeleteAllLocationLabel"/>
+	</content>
+</Panel>
+

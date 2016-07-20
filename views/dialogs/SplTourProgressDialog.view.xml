@@ -1,0 +1,29 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout" xmlns="sap.m"
+	controllerName="splController.dialogs.SplTourProgressDialog"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	
+	<Table id="SapSclTourPrgressDetailsTable" inset="false" items="{/results}">
+		<columns>
+			<Column width="60%">
+				<Label id="SapSclTourProgressTableStatus" design="Bold" />
+			</Column>
+			<Column width="40%">
+				<Label id="SapSclTourProgressTableTime" design="Bold" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Label design="Bold" text="{EventText}" />
+					<Text text="{path:'ReportedTime',formatter:'splReusable.libs.SapSplModelFormatters.getDateFromStringForTourProgressDialog'}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:View>

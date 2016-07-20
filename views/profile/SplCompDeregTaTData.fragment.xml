@@ -1,0 +1,82 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Panel xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	visible="{parts:[{path:'sapSplCompanyDetailsModel>/canMaintainWallet'}], formatter:'splReusable.libs.SapSplModelFormatters.isPanelVisible'}"
+	xmlns:core="sap.ui.core" expandable="false"
+	headerText="{splI18NModel>TRUCKS_AND_TOUR_DATA}" expanded="true" class="sapSplCompanyProfileCompanyDeregisterBoldPanelHeader">
+	<content>
+		<Table id="sapSplTruckAndTourDataTable" xmlns="sap.m" xmlns:l="sap.ui.layout"
+			xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" width="100%"
+			height="30%" enableBusyIndicator="true" noDataText="{splI18NModel>TRUCKS_AND_TOURS_NO_DATA}"
+			showOverlay="false" busy="true" items="{compDeregSharedTrucksModel>/results}">
+			<columns>
+			<!-- CSNFIX 1580132783. Tooltip added -->
+				<Column width="20%">
+					<Text text="{splI18NModel>VEHICLE_REGISTRATION_NUMBER}" tooltip="{splI18NModel>VEHICLE_REGISTRATION_NUMBER}" />
+				</Column>
+				<Column width="20%">
+					<Text text="{splI18NModel>TOUR_NAME}" tooltip="{splI18NModel>TOUR_NAME}" />
+				</Column>
+				<Column width="20%">
+					<Text text="{splI18NModel>TOUR_STATUS}" tooltip="{splI18NModel>TOUR_STATUS}" />
+				</Column>
+				<Column width="20%">
+					<Text text="{splI18NModel>TOUR_DATE}" tooltip="{splI18NModel>TOUR_DATE}" />
+				</Column>
+				<Column width="20%">
+					<Text text="{splI18NModel>RESULT_OF_TERMINATION}" tooltip="{splI18NModel>RESULT_OF_TERMINATION}" />
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Label text="{compDeregSharedTrucksModel>RegistrationNumber}" />
+						<Label
+							text="{parts:[{path:'compDeregSharedTrucksModel>TourName'},{path:'compDeregSharedTrucksModel>ShareDirection'},{path:'compDeregSharedTrucksModel>TourActive'}], formatter:'splReusable.libs.SapSplModelFormatters.getTourName'}" />
+						<Label
+							text="{parts:[{path:'compDeregSharedTrucksModel>TourActive'},{path:'compDeregSharedTrucksModel>ShareDirection'}],formatter:'splReusable.libs.SapSplModelFormatters.getTourStatus'}" />
+						<Label
+							text="{parts:[{path:'compDeregSharedTrucksModel>TourDate'},{path:'compDeregSharedTrucksModel>ShareDirection'},{path:'compDeregSharedTrucksModel>TourActive'}],formatter:'splReusable.libs.SapSplModelFormatters.getTourDate'}" />
+						<Label
+							text="{parts:[{path:'compDeregSharedTrucksModel>ShareDirection'},{path:'compDeregSharedTrucksModel>TourActive'}],formatter:'splReusable.libs.SapSplModelFormatters.getConsequence'}" />
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<l:Grid defaultSpan="L12 M12 S12" width="auto">
+			<f:SimpleForm maxContainerCols="2" labelSpanL="3"
+				labelSpanM="3" editable="false" layout="ResponsiveGridLayout">
+				<f:content>
+					<Label text="{splI18NModel>TOTAL_TRUCKS_TO_BE_TERMINATED}">
+						<layoutData>
+							<l:GridData span="L2 M2 S12" />
+						</layoutData>
+					</Label>
+					<Text design="Bold" id="sapSplTotalTruckTerminationText" busy="true"
+						class="sapSplCompanyProfileCompanyDeregisterBoldText">
+						<layoutData>
+							<l:GridData span="L4 M4 S12" />
+						</layoutData>
+					</Text>
+					<Label text="{splI18NModel>TOTAL_TOURS_TO_BE_TERMINATED}">
+						<layoutData>
+							<l:GridData span="L2 M2 S12" />
+						</layoutData>
+					</Label>
+					<Text id="sapSplTotalTourTerminationText" busy="true"
+						class="sapSplCompanyProfileCompanyDeregisterBoldText">
+						<layoutData>
+							<l:GridData span="L4 M4 S12" />
+						</layoutData>
+					</Text>
+				</f:content>
+			</f:SimpleForm>
+		</l:Grid>
+		<Label text="{splI18NModel>ALL_TRUCK_TOUR_DATA_DELETION}"
+			design="Bold">
+		</Label>
+	</content>
+</Panel>

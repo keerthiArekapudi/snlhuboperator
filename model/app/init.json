@@ -1,0 +1,10 @@
+{
+email: "admin.carrier1@sap.com",
+userId: "CL_CARRIER1_ADMIN",
+firstName: "Admin",
+lastName: "Carrier 1",
+isSAML: false,
+notificationMessages: [ ],
+Error: [ ],
+HttpStatusCode: 200
+}

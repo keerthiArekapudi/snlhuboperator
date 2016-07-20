@@ -1,0 +1,44 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.createForm .sapUiRFL {
+	background: transparent !important;
+}
+
+.contactImage {
+	margin-top: 2%;
+	margin-left: 20%;
+}
+
+.noDataLabel {
+	position: fixed;
+	top: 50%;
+	left: 55%;
+}
+
+.sapSplBupaList .sapMSLIDescription {
+	font-size: 0.675em !important;
+	margin-top: 3%;
+	color: #666666;
+}
+
+.sapMList .sapMLIB.sapMGHLI {
+	line-height: 2rem;
+	text-transform: capitalize;
+	font-size: 95%;
+	color: #666666;
+}
+
+.createForm .sapUiForm .sapUiFormResLayout .sapUiRLContainer .sapUiRLContainerCont .sapUiRFL .sapUiRFLCompleteRow .sapUiRFLContainer .sapUiRFLContainerContent .sapUiRFL .sapUiRFLRow .sapUiRFLContainer {
+	vertical-align: middle;
+}
+
+.createForm .sapUiForm .sapUiFormResLayout .sapUiRFL .sapUiRFLCompleteRow .sapUiRFLContainer .sapUiRFLContainerContent .sapUiRFL .sapUiRFLRow .sapUiRFLContainer {
+	vertical-align: middle;
+}
+
+.SapSplTruckShareLabel {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	font-size: 1rem;
+}

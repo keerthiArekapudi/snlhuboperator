@@ -1,0 +1,77 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+       xmlns:form="sap.ui.layout.form" xmlns="sap.m" xmlns:table="sap.ui.table"
+       xmlns:layout="sap.ui.layout" controllerName="splController.dialogs.SplSelectLocationDialog"
+       xmlns:html="http://www.w3.org/1999/xhtml">
+
+       <Toolbar class="SapSplSelectLocationToolbar">
+             <Button id="SapSplStopTypeButton_1" press="fnHandelStopTypesSegmentedButton">
+                    <layoutData>
+                           <ToolbarLayoutData shrinkable="true" />
+                    </layoutData>
+             </Button>
+             <Button id="SapSplStopTypeButton_2" press="fnHandelStopTypesSegmentedButton">
+                    <layoutData>
+                           <ToolbarLayoutData shrinkable="true" />
+                    </layoutData>
+             </Button>
+             <ToolbarSpacer />
+
+             <SearchField id="SapSplSelectLocationSearch" width="40%"
+                    search="fnToHandleSearchOfAddress">
+             </SearchField>
+       </Toolbar>
+
+       <table:Table id="SapSplSelectLocationDialogTable" selectionBehavior="RowOnly" busyIndicatorDelay="0"
+             rows="{/MyLocations}" rowSelectionChange="fnHandlePressOfLocationListItem" enableSelectAll = "false" selectionMode = "Single"
+             enableCellFilter="true" class="SapSplSelectLocationTable" filter = "fnHandleFilterOfSelectionLocations">
+             <table:columns>
+                    <table:Column hAlign="Center" filterProperty="BuildingID"
+                           width="21%">
+                           <Text id="SapSplSelectLocationDialogTableColumnHeader_AddressField1"></Text>
+                           <table:template>
+                                 <Text text="{BuildingID}" class="SplSapBold"></Text>
+                           </table:template>
+                    </table:Column>
+                    <table:Column hAlign="Center" filterProperty="StreetName"
+                           width="21%">
+                           <Text id="SapSplSelectLocationDialogTableColumnHeader_AddressField2"></Text>
+                           <table:template>
+                                 <Text text="{StreetName}"></Text>
+                           </table:template>
+                    </table:Column>
+                    <table:Column hAlign="Center" filterProperty="CityName"
+                           width="15%">
+                           <Text id="SapSplSelectLocationDialogTableColumnHeader_City"></Text>
+                           <table:template>
+                                 <Text text="{CityName}"></Text>
+                           </table:template>
+                    </table:Column>
+                    <table:Column hAlign="Center" filterProperty="StreetPostalCode"
+                           width="13%">
+                           <Text id="SapSplSelectLocationDialogTableColumnHeader_ZipCode"></Text>
+                           <table:template>
+                                 <Text text="{StreetPostalCode}"></Text>
+                           </table:template>
+                    </table:Column>
+                    <table:Column hAlign="Center" filterProperty="RegionName"
+                           width="15%">
+                           <Text id="SapSplSelectLocationDialogTableColumnHeader_Region"></Text>
+                           <table:template>
+                                 <Text text="{RegionName}"></Text>
+                           </table:template>
+                    </table:Column>
+                    <table:Column hAlign="Center" filterProperty="CountryName"
+                           width="15%">
+                           <Text id="SapSplSelectLocationDialogTableColumnHeader_Country"></Text>
+                           <table:template>
+                                 <Text text="{CountryName}"></Text>
+                           </table:template>
+                    </table:Column>
+             </table:columns>
+       </table:Table>
+</core:View>

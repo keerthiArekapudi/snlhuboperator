@@ -1,0 +1,127 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	xmlns="sap.m" controllerName="splController.registeration.MyContactDetails"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="MyContactsDetailPage">
+		<content>
+		<Label id="sapSplUsersDetailNoDataLabel" visible="{/noData}" class="noDataLabel"></Label>
+			<layout:VerticalLayout width="100%" visible="{/isClicked}">
+				<layout:content>
+					<ObjectHeader titleActive="false" icon="{parts:[{path:'/ImageUrl'}],formatter: 'splReusable.libs.SapSplModelFormatters.getImageUrlForUser'}"
+						title="{parts:[{path:'/PersonName_GivenName'},{path:'/PersonName_Surname'}] , formatter: 'splReusable.libs.SapSplModelFormatters.displayNameFormatter'}"
+						id="MyContactsDetailHeader">
+						<statuses>
+							<ObjectStatus text="{path:'/RequestStatus' , formatter:'splReusable.libs.SapSplModelFormatters.showPendingLabel'}"
+								state="Error" />
+						</statuses>
+						<attributes>
+							<ObjectAttribute text="{/Role.description}" />
+						</attributes>
+					</ObjectHeader>
+
+					<IconTabBar class="iconTabBarPaddingTop" id="idIconTabBarMulti"
+						expandable="false">
+						<items>
+							<IconTabFilter icon="sap-icon://hint" tooltip="{splI18NModel>INFO_ICON_TOOLTIP}">
+								<form:SimpleForm class="createForm">
+									<form:content>
+										<Label id="sapSplMyUserDetailEmail" visible="{/showEmail}">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="2">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Label>
+										<Link text="{/CommunicationInfo_EmailAddress}" visible="{/showEmail}"
+										href="mailto:{/CommunicationInfo_EmailAddress}">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="5">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Link>
+
+										<Label id="sapSplMyUserDetailPhone">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="2">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Label>
+										<Text text="{/CommunicationInfo_Phone}">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="5">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Text>
+
+										<Label text="Birthday" visible="false">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="2">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Label>
+										<Text text="{/Birthday}" visible="false">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="5">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Text>
+
+										<Label id="sapSplMyUserDetailAccountCreatedOn">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="2">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Label>
+										<Text
+											text="{path:'/AuditTrail_CreationTime' , formatter:'splReusable.libs.SapSplModelFormatters.showFormattedDate'}">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="5">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Text>
+
+										<Label text="Notes" visible="false">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="2">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Label>
+										<Text text="{/Notes}" visible="false">
+											<layoutData>
+												<layout:ResponsiveFlowLayoutData
+													weight="5">
+												</layout:ResponsiveFlowLayoutData>
+											</layoutData>
+										</Text>
+
+									</form:content>
+								</form:SimpleForm>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</layout:content>
+			</layout:VerticalLayout>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="MyContactDetailsEditButton" type="Emphasized" press="fnHandleEditOfMyContacts" visible="{parts:[{path:'/isEditable'},{path:'/showFooterButtons'}], formatter:'splReusable.libs.SapSplModelFormatters.visibilityOfUsersEditButton'}" enabled="{/isEnableEdit}"></Button>
+					<Button id="MyContactDetailsDeleteButton" press="fnHandleDeleteOfMyContacts" visible="{parts:[{path:'/isEditable'},{path:'/showFooterButtons'}], formatter:'splReusable.libs.SapSplModelFormatters.visibilityOfUsersEditButton'}" enabled="{/isEnableEdit}"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Opa check for accessibility in trucks tile</title>
+<script id="sap-ui-bootstrap" src="../resources/sap-ui-core.js"
+	data-sap-ui-resourceroots='{"opa5": "./"}'></script>
+<script src="../resources/sap/ui/thirdparty/qunit.js"></script>
+<link rel="stylesheet" href="../resources/sap/ui/thirdparty/qunit.css"
+	type="text/css" media="screen" />
+<script type="text/javascript">
+jQuery.sap.require("sap.ui.test.Opa5");
+jQuery.sap.require("sap.ui.test.opaQunit");
+var opa5 = sap.ui.test.Opa5;
+jQuery.sap.require("opa5.Arrangements.arrangements");
+jQuery.sap.require("opa5.Actions.toursTATTest_actions");
+jQuery.sap.require("opa5.Assertions.toursTAT_assertions");
+
+
+sap.ui.test.Opa5.extendConfig({
+	arrangements : new opa5.Arrangements.arrangements,
+	actions : new opa5.Actions.actions,
+	assertions : new opa5.Assertions.assertions,
+//	viewNamespace : "splView."
+}); 
+
+	opaTest("Should see the apps tiles on the launchpad", function(Given,
+			When, Then) {
+		// Arrangements
+	    Given.iStartMyApp();
+
+	    //Actions
+	    When.waitFor({
+			id : "masterTileContainerPage",
+			viewName : "splView.tileContainer.MasterTileContainer",
+			success : function(oPage) {
+				this.getContext().oAppsPage = oPage;
+			}
+		});
+		Then.iShouldSeeTiles();
+	});
+	opaTest("Should click on trucks tile and see the icontabs for tour types",function(Given,When,Then)
+			{
+				When.ClickonToursTile();
+				Then.iShouldSeeIconTab();
+			});
+	opaTest("Should click on Complete tour IconTab Filter and see a list of completed tours",function(Given,When,Then){
+			
+			When.ClickonCompleteTours();
+			Then.iShouldSeeCompletedTourList();
+	});
+	opaTest("Should Click on one Completed Tour and Navigate to tour details",function(Given,When,Then){
+			When.ClickOnCompletedTour();
+			Then.iNavigatetoTourDetails();
+	});
+	opaTest("Should Click on back button and Navigative to tours",function(Given,When,Then){
+		When.ClickOnBack();
+		Then.iNavigatetoTours();
+	});
+	opaTest("Should click on active Tours Icon Tab Filter",function(Given,When,Then){
+		When.ClickOnActiveTours();
+		Then.iShouldSeeActiveTourList();
+	});
+  opaTest("Should click on one Active Tour",function(Given,When,Then){
+		When.ClickOnActiveTourListItem();
+		Then.iShouldNotSeeTATBulletChart();
+	});  
+</script>
+	</head>
+	<body style="height: 100%">
+		<div id="content"></div>
+		<h1 id="qunit-header">Opa test for external viewer - ALL TESTS</h1>
+		<h2 id="qunit-banner"></h2>
+		<h2 id="qunit-userAgent"></h2>
+		<ol id="qunit-tests"></ol>
+	</body>
+	</html>

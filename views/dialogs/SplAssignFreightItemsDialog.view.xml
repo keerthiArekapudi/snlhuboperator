@@ -1,0 +1,84 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	xmlns="sap.m" controllerName="splController.dialogs.SplAssignFreightItemsDialog"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<Table id="SapSplAssignFreightItemsTable" width="100%" items="{/fItems}">
+		<columns>
+			<Column hAlign="Center" width="15%">
+			</Column>
+			
+			<Column hAlign="Center" width="10%">
+ 			</Column>
+ 			
+			<Column hAlign="Center" width="10%">
+			</Column>
+			
+			<Column hAlign="Center" width="10%">
+			</Column>
+			
+			<Column hAlign="Center" width="15%">
+			</Column>
+			
+			<Column hAlign="Center" width="40%">
+				<header>
+					<Text id="SapSplAssignFreightItemsTableColumnHeader_Action"></Text>
+				</header>
+			</Column>
+			
+			<Column hAlign="Center" width="25%">
+				<header>
+					<Text id="SapSplAssignFreightItemsTableColumnHeader_OrderID"></Text>
+				</header>
+			</Column>
+			
+			<Column hAlign="Center" width="25%">
+				<header>
+					<Text id="SapSplAssignFreightItemsTableColumnHeader_DestinationDescription"></Text>
+				</header>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem class="SplSapAssignFrieghtItemsCloumnListItem">
+				<cells>
+					<Label text="{ItemID}" design="Bold" class="sapSplFreightItemIdentifier sapSplAssignedFrieghtItemsLabelClass"></Label>
+					<Text text="{parts:[{path:'Type'},{path:'ContainerType'},{path:'Quantity_Value'},{path:'Quantity_Unit'}], formatter:'splReusable.libs.SapSplModelFormatters.getValueForAddFreightItemsTable'}" class="sapSplAssignedFrieghtItemsLabelClass"></Text>
+					<Text text="{parts:[{path:'Type'},{path:'Description'},{path:'Weight_Value'},{path:'Weight_Unit'}], formatter:'splReusable.libs.SapSplModelFormatters.getValueForAddFreightItemsTable'}" class="sapSplAssignedFrieghtItemsLabelClass"></Text>
+					<Text text="{parts:[{path:'Type'},{path:'Volume_Value'},{path:'Volume_Unit'}], formatter:'splReusable.libs.SapSplModelFormatters.getVolumeForAddFreightItemsTable'}" class="sapSplAssignedFrieghtItemsLabelClass"></Text>
+					<Text text="{DangerGoodsClass}" class="sapSplAssignedFrieghtItemsLabelClass"></Text>
+					<layout:HorizontalLayout id="SapSplAssignFreightItemsTableButtons">
+						<layout:content>
+							<Button id="SapSplAssignFreightItemsTableButton_1" text="{/labels/donothing}"
+							type= "{path:'Action' , formatter:'splReusable.libs.SapSplModelFormatters.setTypeForDoNothingButton'}" 
+							press = "fnhandelPressOfActionButton">
+
+							</Button>
+						
+							<Button id="SapSplAssignFreightItemsTableButton_2" text="{/labels/pickup}" class="sapSplPickUpButton" 
+							type= "{path:'Action' , formatter:'splReusable.libs.SapSplModelFormatters.setTypeForPickUpButton'}" 
+							enabled = "{path:'ItemUUID' , formatter:'splReusable.libs.SapSplModelFormatters.setEnablePropertyForPickUpButton'}"
+							press = "fnhandelPressOfActionButton">
+
+							</Button>
+							
+							<Button id="SapSplAssignFreightItemsTableButton_3" text="{/labels/drop}" class="sapSplDropButton" 
+							type= "{path:'Action' , formatter:'splReusable.libs.SapSplModelFormatters.setTypeForDropButton'}" 
+							enabled = "{path:'ItemUUID' , formatter:'splReusable.libs.SapSplModelFormatters.setEnablePropertyForDropButton'}"
+							press = "fnhandelPressOfActionButton">
+
+							</Button>
+						</layout:content>
+					</layout:HorizontalLayout>
+					<Input value="{PartnerOrderID}" placeholder="{splI18NModel>ENTER_ORDER_ID}" visible = "{parts:[{path:'/rowIndex'},{path:'SplCreateNewTourModel>/stopsRow'}],formatter:'splReusable.libs.SapSplModelFormatters.setVisiblePropertyForOrderIdDestinationInfo'}" ></Input>
+					<Input value="{ExternalStopDestination}" placeholder="{splI18NModel>ENTER_DESTINATION_DETAILS}" visible = "{parts:[{path:'/rowIndex'},{path:'SplCreateNewTourModel>/stopsRow'}],formatter:'splReusable.libs.SapSplModelFormatters.setVisiblePropertyForOrderIdDestinationInfo'}" ></Input>
+
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:View>

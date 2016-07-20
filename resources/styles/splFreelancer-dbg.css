@@ -1,0 +1,71 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.SapSplSearchBusinessPartnerVLayout {
+	border: 1px solid #bfbfbf;
+	margin-left: 19%;
+	margin-right: 7%;
+	margin-top: 11%;
+	padding-left: 5%;
+	padding-top: 4%;
+	/* padding-bottom: 6%; */
+	padding-right: 5%;
+}
+.sapSplBusinessPartnerSearchHLayout {
+	width : 100%;
+}
+.sapSplBusinessPartnerSearchHLayout  .sapUiHLayoutChildWrapper:first-child
+	{
+	width: 56%;
+	padding-left: 3%;
+	padding-top: 3%;
+}
+
+.sapSplBusinessPartnerSearchHLayout  .sapUiHLayoutChildWrapper:nth-child(2)
+	{
+	width: 31%;
+}
+
+.sapSplBusinessPartnerPaddingTop {
+	padding-top: 5%;
+}
+
+.freelancerTable .sapMListModeMultiSelect {
+	display: none;
+}
+
+.SapSplFreelancerTable .sapMListHdr {
+	font-size: larger;
+	padding-left: 0%;
+}
+
+.sapSplNewBusinessPartnerFontSize {
+	font-size: 11px;
+}
+
+.sapSplNewBusinessPartnerNewBuPaLink {
+	font-size: 11px;
+	padding-top: 8%;
+}
+
+.sapSplSearchFieldTitle {
+	padding-bottom: 4%;
+}
+
+.sapSplSearchFieldInput {
+	padding-bottom: 15%;
+}
+.SapSplDisableListItemCheckBox {
+	pointer-events: none;
+	opacity: 0.8;
+}
+.SapSplFreelancerTable {
+	
+}
+.SapSplFreelancerTable .sapMListTblRow {
+	pointer-events: none;
+	opacity: 0.8;
+}
+.sapSplBusinessPartnerSearchVLayout {
+	width: 100%;
+}

@@ -1,0 +1,168 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar"
+	controllerName="splController.communicationLog.communicationLog"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<!-- <Shell> -->
+	<Page id="sapSplCommunicationLogPage" backgroundDesign="Transparent"
+		title="{splI18NModel>COMMUNICATION_LOG_PAGE_TITLE}" showNavButton="true"
+		navButtonPress="fnHandleBackNavigation">
+		<content>
+			<fb:FilterBar showRestoreOnFB="true" showClearOnFB="false"
+				advancedMode="false" filterBarExpanded="true" search="handleSearchBasedOnFilters"
+				id="filterBar" class="communicationLogFilterBar" showRestoreButton="false"
+				showClearButton="false">
+				<fb:filterItems>
+					<fb:FilterItem name="timeHorizonFilter" id="timeHorizonFilter"
+						label="{splI18NModel>TIME_HORIZON_TEXT}">
+						<fb:control>
+							<Select items="{/time}" change="handleSelectOfTimeHorizon"
+								id="timeHorizonSelect">
+								<items>
+									<Item xmlns="sap.ui.core" key="{value}" text="{value_description}" />
+								</items>
+							</Select>
+						</fb:control>
+					</fb:FilterItem>
+
+					<fb:FilterItem name="directionFilter" id="directionFilter"
+						label="{splI18NModel>DIRECTION}">
+						<fb:control>
+							<Select items="{/direction}">
+								<items>
+									<Item xmlns="sap.ui.core" key="{value}" text="{value_description}" />
+								</items>
+							</Select>
+						</fb:control>
+					</fb:FilterItem>
+
+					<fb:FilterItem name="responseCodeFilter" id="responseCodeFilter"
+						label="{splI18NModel>RESPONSE_CODE}">
+						<fb:control>
+							<MultiComboBox items="{/responseCodes}">
+								<items>
+									<Item xmlns="sap.ui.core" key="{value}" text="{value_description}" />
+								</items>
+							</MultiComboBox>
+						</fb:control>
+					</fb:FilterItem>
+
+					<fb:FilterItem name="servicePathFilter" id="servicePathFilter"
+						label="{splI18NModel>SERVICE_PATH}">
+						<fb:control>
+							<MultiInput showValueHelp="false" showSuggestion="true"
+								suggestionItems="{/servicePaths}" enableMultiLineMode="true"
+								class="sapSplServicesPathMultiInput">
+								<suggestionItems>
+									<Item xmlns="sap.ui.core" key="{value}" text="{value_description}" />
+								</suggestionItems>
+							</MultiInput>
+						</fb:control>
+					</fb:FilterItem>
+
+				</fb:filterItems>
+			</fb:FilterBar>
+
+			<Table id="SapSplCommunicationLogTable" class="SapSplCommunicationLogTable" select="onColumnListSelected" enableBusyIndicator="true" noDataText="{splI18NModel>NO_LOGGED_EVENTS_TEXT}"
+				showOverlay="false" items="{/CommunicationLog}" mode="MultiSelect" growing="true" growingThreshold="100" growingScrollToLoad="true">
+				<headerToolbar>
+					<Toolbar>
+						<Label id="sapSplCommunicationLogLoggedEvents" text="{splI18NModel>LOGGED_EVENTS}"
+							design="Bold"></Label>
+						<ToolbarSpacer></ToolbarSpacer>
+						<SearchField id="sapSplCommunicationLogSearchField"
+							search="handleSearch" placeholder="{splI18NModel>SEARCH}" width="15%" />
+							<Button id="sapSplCommunicationLogSort" icon="sap-icon://sort" tooltip="{splI18NModel>SORTBY_BUTTON_TOOLTIP}" press="onSortButtonPressed"/>
+						<Button id="sapSplCommunicationLogGroup" icon="sap-icon://group-2" tooltip="{splI18NModel>GROUPBY_BUTTON_TOOLTIP}" press="onSortButtonPressed"/>
+						<Button icon="sap-icon://action-settings"
+							tooltip="{splI18NModel>PERSONALIZATION_BUTTON_TOOLTIP}" press="onPersoButtonPressed" />
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column id="Package" visible="true" demandPopin="true" minScreenWidth="Tablet">
+						<Label text="{splI18NModel>SERVICE_PATH}" />
+					</Column>
+					<Column id="Object" visible="false">
+						<Label text="{splI18NModel>OBJECT}" />
+					</Column>
+					<Column id="DestinationSuffix" visible="true" demandPopin="true" minScreenWidth="Tablet">
+						<Label text="{splI18NModel>DESTINATION_SUFFIX}" />
+					</Column>
+					<Column id="Direction" visible="true" demandPopin="true" minScreenWidth="Tablet">
+						<Label text="{splI18NModel>DIRECTION}" />
+					</Column>
+					<Column id="Request" visible="true" demandPopin="false">
+						<Label text="{splI18NModel>REQUEST}" />
+					</Column>
+					<Column id="RequestHeader" visible="false">
+						<Label text="{splI18NModel>REQUEST_HEADER}" />
+					</Column>
+					<Column id="httpMethod" visible="false">
+						<Label text="{splI18NModel>HTTP_METHOD}" />
+					</Column>
+					<Column id="ResponseCode" visible="true" demandPopin="true" minScreenWidth="Tablet">
+						<Label text="{splI18NModel>RESPONSE_CODE}" />
+					</Column>
+					<Column id="Response" visible="true" demandPopin="false">
+						<Label text="{splI18NModel>RESPONSE}" />
+					</Column>
+					<Column id="ResponseHeader" visible="false">
+						<Label text="{splI18NModel>RESPONSE_HEADER}" />
+					</Column>
+					<Column id="Duration" visible="false">
+						<Label text="{splI18NModel>DURATION}" />
+					</Column>
+					<Column id="StartTime" visible="true" demandPopin="true" minScreenWidth="Tablet">
+						<Label text="{splI18NModel>START_TIME}" />
+					</Column>
+					<Column id="EndTime" visible="false">
+						<Label text="{splI18NModel>END_TIME}" />
+					</Column>
+					<Column id="LogonUser" visible="false">
+						<Label text="{splI18NModel>LOGON_USER}" />
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem selected="true"
+						id="SapSplCommunicationLogTableListItem">
+						<cells>
+							<Link text="{Package}" wrapping="true" press="sapSplHandleClickOfCommunicationLogObjectLink" />
+							<Label text="{Object}" />
+							<Label text="{DestinationSuffix}" />
+							<Label text="{path:'Direction', formatter:'splReusable.libs.SapSplModelFormatters.communicationLogDirection'}" />
+							<Label text="{Request}" tooltip="{Request}"/>
+							<Label text="{RequestHeaders}" tooltip="{RequestHeaders}"/>
+							<Label text="{httpMethod}" />
+							<Label text="{ResponseCode}" />
+							<Label text="{Response}" tooltip="{Response}"/>
+							<Label text="{ResponseHeaders}" tooltip="{ResponseHeaders}" />
+							<Label text="{Duration}" />
+							<Label
+								text="{path:'StartTime', formatter:'splReusable.libs.SapSplModelFormatters.convertDateTimeToStringBasedOnLocaleInMediumFormat'}" />
+							<Label
+								text="{path:'EndTime', formatter:'splReusable.libs.SapSplModelFormatters.convertDateTimeToStringBasedOnLocaleInMediumFormat'}" />
+							<Label text="{LogonUser}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+
+			</Table>
+
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+				<Button id="sapSplComLogDelete" press="fnDeleteEvents" text="{splI18NModel>DELETE}"></Button>
+					<Button id="sapSplDownloadAsCSVButton" press="fnHandleDownloadAsCSV"
+						text="{splI18NModel>DOWNLOAD_AS_CSV}"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+	<!-- </Shell> -->
+</core:View>

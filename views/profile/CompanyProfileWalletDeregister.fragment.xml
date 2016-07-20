@@ -1,0 +1,94 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<VerticalLayout xmlns="sap.ui.layout" xmlns:core="sap.ui.core"
+	xmlns:m="sap.m" xmlns:f="sap.ui.layout.form">
+	<content>
+		<m:Panel expandable="false" expanded="true"
+			visible="{parts:[{path:'/canMaintainWallet'}], formatter:'splReusable.libs.SapSplModelFormatters.walletVisibility'}"
+			headerText="{splI18NModel>COMPANY_PROFILE_TRUCK_AND_DEVICE_DETAILS}"
+			class="sapSplPanelContentHideBorderBottom">
+			<m:content>
+				<m:Text text="{splI18NModel>OPEN_WALLET_BUTTON_TEXT}" />
+				<m:Button id="sapSplOpenTsiWalletButton"
+						  class = "CompanyProfileButtons"
+						  text="{splI18NModel>COMPANY_PROFILE_OPEN_TSI_WALLET}" type="Emphasized"
+						  press="handleTSIWalletLaunchPress" />
+			</m:content>
+		</m:Panel>
+		<!-- CSNFIX 763178 2014 Binding canDelete to control visibility of deregistration -->
+		<!-- <m:Panel expandable="false" expanded="true"
+			visible="{parts:[{path:'/canDelete'}],formatter:'splReusable.libs.SapSplModelFormatters.showEditable'}"
+			headerText="{splI18NModel>COMPANY_PROFILE_DEREGISTER_COMPANY}" class="sapSplPanelContentHideBorderBottom">
+			<m:content>
+				<VerticalLayout>
+					<content>
+						sapSplProfile/Style
+						<m:Text text="{splI18NModel>COMPANY_PROFILE_LABEL_DEREGISTER_PROMPT}"
+							class="sapSplHeaderTextFont"></m:Text>
+						<m:Link
+							text="{splI18NModel>COMPANY_PROFILE_LINK_DEREGISTER_MY_COMPANY}"
+							press="handleDeregisterOfCompany" />
+					</content>
+				</VerticalLayout>
+			</m:content>
+		</m:Panel> -->
+		<m:Panel expanded="true"
+		visible="{parts:[{path:'/canDelete'}],formatter:'splReusable.libs.SapSplModelFormatters.showEditable'}"
+		headerText="{splI18NModel>CONNECTED_HUBS}"
+		class="sapSplPanelContentHideBorderBottom" >
+			<m:content>
+				<m:Table items="{/MyOwnerList}">
+					<m:columns>
+						<m:Column>
+						<m:Text text="{splI18NModel>HUB_Name}" />
+						</m:Column>
+						<m:Column>
+						<m:Text text="{splI18NModel>SUBSCRIPTION_PACKAGE}" />
+						</m:Column>
+						<m:Column>
+						<m:Text text="{splI18NModel>IS_VISIBLE}" />
+						</m:Column>
+						<m:Column>
+						<m:Text/>
+						</m:Column>
+					</m:columns>
+					<m:items>
+						<m:ColumnListItem>
+							<m:cells>
+								<m:Text text = "{OwnerName}"/>
+								<!-- /* Bug Fix - Incident 1570002927 Changed the binding to show Proper values */ -->
+								<m:Text text = "{SubscriptionName}" />
+								<m:Text text = "{parts:[{path:'isVisibleOnSearch'}],formatter:'splReusable.libs.SapSplModelFormatters.getVisibilityText'}" />
+								<!-- /* Bug Fix - Incident 1570002926 added a tooltip */ --> 
+								<m:Button id = "sapSplEditHubButton" 
+								          tooltip = "{splI18NModel>MY_COLLEAGUES_EDIT_BUTTON}"
+										  icon="sap-icon://edit" 
+										  type = "Transparent" 
+										  press = "handleAddEditHubOperatorPress"/> 
+							</m:cells>
+						</m:ColumnListItem>
+					</m:items>
+				</m:Table>
+				<m:Button id = "sapSplAddHubButton"
+						  class = "CompanyProfileButtons"
+						  text="{splI18NModel>ADD_HUB}" type="Emphasized" 
+						  press = "handleAddEditHubOperatorPress" />
+			</m:content>
+		</m:Panel>
+		<m:Panel expanded="true"
+		visible="{parts:[{path:'/canDelete'}],formatter:'splReusable.libs.SapSplModelFormatters.showEditable'}"
+		headerText="{splI18NModel>COMPANY_PROFILE_DEREGISTER_COMPANY}"
+		class="sapSplPanelContentHideBorderBottom" >
+			<m:content>
+				<m:Text text="{splI18NModel>DEREGISTER_WARNING_TEXT}" />
+				<m:Button id="sapSplDeregisterMyCompanyButton"
+						  class = "CompanyProfileButtons"
+					   	  text="{splI18NModel>COMPANY_PROFILE_LINK_DEREGISTER_MY_COMPANY}" type="Emphasized"
+						  press="handleAddEditHubOperatorPress" />
+			</m:content>
+		</m:Panel>
+	</content>
+</VerticalLayout>

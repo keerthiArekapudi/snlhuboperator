@@ -1,0 +1,224 @@
+[
+    {
+        "Key": "Flag",
+        "Object": {
+            "SAPVB": {
+                "version": "2.0",
+                "Data": {
+                    "Set": {
+                        "type": "N",
+                        "name": "Flags",
+                        "N": {
+                            "name": "Flags",
+                            "E": []
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Key": "Area",
+        "Object": {
+            "SAPVB": {
+                "version": "2.0",
+                "Data": {
+                    "Set": {
+                        "type": "N",
+                        "name": "Areas",
+                        "N": {
+                            "name": "Areas",
+                            "E": []
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Key": "oPintOfInterestFlagSkeleton",
+        "Object": {
+            "SAPVB": {
+                "version": "2.0",
+                "Data": {
+                    "Set": {
+                        "type": "N",
+                        "name": "PointOfInterestFlags",
+                        "N": {
+                            "name": "PointOfInterestFlags",
+                            "E": []
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Key": "oTruckFlag",
+        "Object": {
+            "SAPVB": {
+                "version": "2.0",
+                "Data": {
+                    "Set": {
+                        "type": "N",
+                        "name": "TruckFlags",
+                        "N": {
+                            "name": "TruckFlags",
+                            "E": []
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Key": "oIncidentFlag",
+        "Object": {
+            "SAPVB": {
+                "version": "2.0",
+                "Data": {
+                    "Set": {
+                        "type": "N",
+                        "name": "IncidentFlags",
+                        "N": {
+                            "name": "IncidentFlags",
+                            "E": []
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Key": "Area",
+        "Object": {
+            "SAPVB": {
+                "version": "2.0",
+                "Data": {
+                    "Set": {
+                        "type": "N",
+                        "name": "Areas",
+                        "N": {
+                            "name": "Areas",
+                            "E": []
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Key": "GeoFenceAreas",
+        "Object": {
+            "SAPVB": {
+                "version": "2.0",
+                "Data": {
+                    "Set": {
+                        "type": "N",
+                        "name": "GeoFenceAreas",
+                        "N": {
+                            "name": "GeoFenceAreas",
+                            "E": []
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Key": "GeofenceGates",
+        "Object": {
+            "SAPVB": {
+                "version": "2.0",
+                "Data": {
+                    "Set": {
+                        "type": "N",
+                        "name": "GeofenceGates",
+                        "N": {
+                            "name": "GeofenceGates",
+                            "E": []
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Key": "GeofenceDetailWindow",
+        "Object": {
+            "SAPVB": {
+                "version": "2.0",
+                "Data": {
+                    "Set": {
+                        "type": "N",
+                        "name": "Window1",
+                        "N": {
+                            "name": "Window1",
+                            "E": []
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Key": "ContextMenu",
+        "Object": {
+            "SAPVB": {
+                "xmlns:VB": "VB",
+                "version": "2.0",
+                "Automation": {
+                    "Call": {
+                        "earliest": "0",
+                        "handler": "CONTEXTMENUHANDLER",
+                        "instance": "",
+                        "name": "SHOW",
+                        "object": "Map",
+                        "refID": "CTM_SPOT",
+                        "Param": [
+                            {
+                                "name": "x",
+                                "#": "877"
+                            },
+                            {
+                                "name": "y",
+                                "#": "167"
+                            },
+                            {
+                                "name": "scene",
+                                "#": "MainScene"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Key": "Clickevent",
+        "Object": {
+            "id": "3",
+            "name": "CLICK_ON_MAP",
+            "refScene": "MainScene",
+            "refVO": "Map",
+            "refEvent": "Click",
+            "AddActionProperty": [
+                {
+                    "name": "zoom"
+                },
+                {
+                    "name": "centerpoint"
+                },
+                {
+                    "name": "pos"
+                },
+                {
+                    "name": "pitch"
+                },
+                {
+                    "name": "yaw"
+                }
+            ]
+        }
+    }
+]

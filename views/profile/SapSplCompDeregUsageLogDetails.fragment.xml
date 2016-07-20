@@ -1,0 +1,23 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<f:SimpleForm xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" maxContainerCols="2"
+	editable="false" layout="ResponsiveGridLayout" labelSpanL="2"
+	labelSpanM="2" emptySpanL="0" emptySpanM="0">
+	<f:content>
+		<Label text="{splI18NModel>USAGE_LOG_COMP_DEREG_IMPLICATION_LABEL}" design="Bold">
+			<layoutData>
+				<l:GridData span="L12 M12 S12" />
+			</layoutData>
+		</Label>
+<!-- 		Fix for Incident : 1482012129 - Removed the style Class which was making the label bold -->
+		<Text text="{splI18NModel>USAGE_LOG_COMP_DEREG_IMPLICATION}">
+			<layoutData>
+				<l:GridData span="L12 M12 S12" />
+			</layoutData>
+		</Text>
+	</f:content>
+</f:SimpleForm>

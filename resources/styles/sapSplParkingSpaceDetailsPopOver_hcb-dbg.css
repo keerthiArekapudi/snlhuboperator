@@ -1,0 +1,126 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.sapSplParkingSpaceDetailsPopOver .sapMPageScroll {
+	padding: 4%;
+}
+
+.sapSplParkingSpaceDetailsPopOver .sapMText {
+	font-size: 0.75rem;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: normal;
+	padding-top: 2%;
+	font-weight: bold;
+	color: gray;
+	padding-bottom: 1%;
+}
+
+.sapSplOccupancyContainer {
+	padding-left: .5em;
+}
+
+.sapSplCapacityOfParkingSpace {
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+.sapSplParkingSpaceHeaderIcon {
+	width: 5em;
+	padding: 1%;
+	height: 80%;
+}
+
+.sapSplParkingSpaceDetailsFooterOKButton {
+	width: 100%;
+}
+
+.sapSplParkingSpaceIcon {
+	width: 5em;
+	margin: 1%;
+	border: 1px solid black;
+}
+
+.parkingAvailable>.sapMSltLabel {
+	border-left: 2em solid green;
+}
+
+.parkingFastFilling>.sapMSltLabel {
+	border-left: 2em solid orange;
+}
+
+.parkingFull>.sapMSltLabel {
+	border-left: 2em solid red;
+}
+
+/* CSNFIX : 0120031469 0000793981 2014 */
+.sapSplOccupancyContainerAvailabilityLabel {
+	word-wrap: break-word;
+	white-space: normal;
+}
+
+.containerTerminalServiceNotPossible>.sapMSltLabel {
+	border-left: 2em solid red;
+}
+
+.containerTerminalServiceWithDelay>.sapMSltLabel {
+	border-left: 2em solid yellow;
+}
+
+.containerTerminalServicing>.sapMSltLabel {
+	border-left: 2em solid green;
+}
+
+.containerTerminalOutsideWorkHours>.sapMSltLabel  {
+	border-left: 2em solid grey;
+}
+
+.sapSplContainerTerminalStatusSelect>.sapMSltLabel {
+	font-size: .7rem!important;
+}
+.sapSplContainerterminalDepotSourceForm .sapUiForm .sapUiFormResGrid .sapUiFormResGridCont {
+	padding : 0;
+	padding-left: 1em;
+}
+.sapSplContainerterminalDepotSourceLabel{
+	white-space: normal;
+}
+.sapSplGridSource {
+	padding:0 !important;
+	margin-left : -1rem;
+}
+.sapSplGridSource .sapUiRespGridSpanL12 {
+	margin-left:0 !important;
+}
+.sapSplGridTerminalDepotID {
+	padding:0 !important;
+}
+.sapSplGridTerminalDepotID .sapUiRespGridSpanL12 {
+	margin-left:0 !important;
+	margin-bottom:0 !important;
+}
+.sapSplOccupancyContainer .sapUiForm .sapUiFormResLayout .sapUiRFL{
+	padding-top: 0;
+  	padding-left: 1.5%;
+  	padding-bottom: 1.5%;
+}
+
+.sapSplOccupancyContainerTerminal .sapUiForm .sapUiFormResLayout .sapUiRFL{
+	padding-top: 0;
+  	padding-left: 1.5%;
+  	padding-bottom: 1.5%;
+}
+.sapSplContainerterminalDepotIdForm .sapUiForm .sapUiFormResLayout .sapUiRFL{
+	padding-top: 0;
+  	padding-left: 1.5%;
+  	padding-bottom: 1.5%;
+}
+.sapSplOccupancyContainerAvailabilityForm .sapUiForm .sapUiFormResLayout .sapUiRFL{
+	padding-top: 0;
+  	padding-left: 0%;
+}
+.sapSplOccupancyContainerlForm .sapUiForm .sapUiFormResLayout .sapUiRFL{
+	padding-left: 0%;
+}
+.sapSplWebCamURLStyle{
+	word-wrap:normal !important;
+}

@@ -1,0 +1,62 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns="sap.m"
+	controllerName="splController.dialogs.SplChangeTourPromptDialog"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<l:VerticalLayout>
+		<l:content>
+			<l:Grid defaultSpan="L12 M12 S12" width="auto">
+				<l:content>
+<!-- 				Fix for Incident : 1482012129 - added a style class -->
+					<f:SimpleForm id="splChangeTourPromptDialogContent" class="splChangeTourPromptDialogContentForm"
+						minWidth="1024" maxContainerCols="2" layout="ResponsiveGridLayout"
+						title="{splI18NModel>ORDER_MANAGEMENT_TERMS_CONDITIONS_PANEL_HEADER}"
+						labelSpanL="3" labelSpanM="3" emptySpanL="0" emptySpanM="0"
+						columnsL="0" columnsM="0">
+						<f:content>
+
+							<Label text="{splI18NModel>YOUR_SELECTION}">
+								<layoutData>
+									<l:GridData span="L3 M3 S12">
+
+									</l:GridData>
+								</layoutData>
+							</Label>
+							<Text id="sapSplTourValueLabel" design="Bold"
+								class="sapSplCompanyProfileCompanyDeregisterBoldText">
+								<layoutData>
+									<l:GridData span="L6 M6 S12">
+
+									</l:GridData>
+								</layoutData>
+							</Text>
+
+						</f:content>
+					</f:SimpleForm>
+					<Text text="{splI18NModel>MESSAGE_TOBE_SEEN_ON_RESTART_LABEL}"
+						class="sapSplComProfSubScripChangeWarningMessageText">
+						<layoutData>
+							<l:GridData span="L10 M10 S12" />
+						</layoutData>
+					</Text>
+					<core:HTML src="&lt;br&gt;" />
+
+					<Label text="{splI18NModel>BY_CLICKING_OK}" design="Bold">
+						<layoutData>
+							<l:GridData span="L12 M12 S12" />
+						</layoutData>
+					</Label>
+					<Text width="90%" text="{splI18NModel>AGREE_TOUR_TANDC}">
+						<layoutData>
+							<l:GridData span="L12 M12 S12" />
+						</layoutData>
+					</Text>
+				</l:content>
+			</l:Grid>
+		</l:content>
+	</l:VerticalLayout>
+</core:View>

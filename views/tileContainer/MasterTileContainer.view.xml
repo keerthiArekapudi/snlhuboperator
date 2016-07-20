@@ -1,0 +1,63 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:suite="sap.suite.ui.commons"
+	controllerName="splController.tileContainer.MasterTileContainer"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="masterTileContainerPage" enableScrolling="false"
+		showHeader="false" showFooter="true" content="{/results}">
+		<content>
+			<suite:GenericTile header="{AppName.description}"
+				press="handleSplStandardTilePressEvent" state="Loading" size="L"
+				frameType="OneByOne" >
+				<suite:tileContent>
+					<suite:TileContent footer="{scaleCount} {scaleText}"
+						size="L">
+						<suite:content>
+							<suite:NumericContent
+								value="{parts:[{path:'result'}]}"
+								size="M" icon="{AppIcon}" indicator="None"/>
+						</suite:content>
+					</suite:TileContent>
+					<suite:TileContent id="comparisonDataTileContent">
+						<suite:content>
+							<suite:ComparisonChart size="M">
+								<suite:data>
+									<suite:ComparisonData title="{totalText}" value="{result}" />
+									<suite:ComparisonData title="{scaleText}" value="{scaleCount}" />
+								</suite:data>
+							</suite:ComparisonChart>
+
+						</suite:content>
+					</suite:TileContent>
+					<suite:TileContent>
+						<suite:content>
+							<suite:ComparisonChart size="M">
+								<suite:data>
+									<suite:ComparisonData title="{totalText}" value="{result}" />
+									<suite:ComparisonData title="{scaleText}" value="{scaleCount}" />
+									<suite:ComparisonData title="{scaleText1}" value="{scaleCount1}" visible="false"/>
+								</suite:data>
+							</suite:ComparisonChart>
+						</suite:content>
+					</suite:TileContent>
+				</suite:tileContent>
+			</suite:GenericTile>
+		</content>
+		<footer>
+			<Bar id="sapSplTileContainerPageFooter">
+				<contentLeft>
+					<Button id="sapSplTileContainerPageFooterRefreshBtn" icon="sap-icon://refresh"
+						press="refreshTiles"></Button>
+				</contentLeft>
+				<contentRight>
+					<Button id="sapSplTileContainerFooterOpenLog" icon="sap-icon://list"
+						press="handleLoggerLaunch" visible="false" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

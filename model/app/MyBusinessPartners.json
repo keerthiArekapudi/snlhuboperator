@@ -1,0 +1,503 @@
+{
+  "d": {
+    "results": [
+      {
+        "__metadata": {
+          "type": "sap.spl.xs.app.services.appl.MyBusinessPartnersType",
+          "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')"
+        },
+        "UUID": "VcSM4F4HpVrhAAAACkJASQ==",
+        "BasicInfo_ID": null,
+        "BasicInfo_CompanyID": "VcSM4F4HpVrhAAAACkJASQ==",
+        "BasicInfo_Type": "O",
+        "BasicInfo_Type.description": "Organization",
+        "Organization_Name": "Hub Operator",
+        "Organization_RegistrationNumber": null,
+        "Organization_Registry": null,
+        "PersonName_Title": null,
+        "PersonName_Surname": null,
+        "PersonName_GivenName": null,
+        "PersonName_JobFunction": null,
+        "PersonName_SurnamePrefix": null,
+        "PostalAddress_Country": null,
+        "PostalAddress_District": null,
+        "PostalAddress_PostalCode": null,
+        "PostalAddress_Street": null,
+        "PostalAddress_StreetName": null,
+        "PostalAddress_Town": null,
+        "CommunicationInfo_EmailAddress": null,
+        "CommunicationInfo_Fax": null,
+        "CommunicationInfo_Phone": null,
+        "CommunicationInfo_Website": null,
+        "AuditTrail_CreatedBy": "CL_HUB_ADMIN",
+        "AuditTrail_ChangedBy": "CL_HUB_ADMIN",
+        "AuditTrail_CreationTime": "/Date(1438941123563)/",
+        "AuditTrail_ChangeTime": "/Date(1438941123563)/",
+        "Owner": null,
+        "InvitedByOrganization": null,
+        "RequestType": null,
+        "Request": null,
+        "Role": "LSPACEOP",
+        "Role.description": "Logistics Hub Operator",
+        "isReadable": 1,
+        "isEditable": 0,
+        "UserID": null,
+        "RegistrationRequest": "VcSM3l4HpVrhAAAACkJASQ==",
+        "ImageUrl": null,
+        "isDeleted": "0",
+        "MyOrganizationUUID": "VcSOqF4HpVrhAAAACkJASQ==",
+        "RoleUUID": "VcSM4V4HpVrhAAAACkJASQ==",
+        "RelationUUID": "VcSOq14HpVrhAAAACkJASQ==",
+        "Scope": null,
+        "canShareVehicle": null,
+        "isOrganizationEditable": 1,
+        "isOwner": 1,
+        "canTerminate": 0,
+        "isVehicleSharable": 0,
+        "RequestStatus": "1",
+        "Status": "1",
+        "PointOfContact": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')/PointOfContact"
+          }
+        },
+        "SharedTrucks": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')/SharedTrucks"
+          }
+        },
+        "SharedVehicleList": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')/SharedVehicleList"
+          }
+        }
+      },
+      {
+        "__metadata": {
+          "type": "sap.spl.xs.app.services.appl.MyBusinessPartnersType",
+          "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')"
+        },
+        "UUID": "VcSM4F4HpVrhAAAACkJASQ==",
+        "BasicInfo_ID": null,
+        "BasicInfo_CompanyID": "VcSM4F4HpVrhAAAACkJASQ==",
+        "BasicInfo_Type": "O",
+        "BasicInfo_Type.description": "Organization",
+        "Organization_Name": "Hub Operator",
+        "Organization_RegistrationNumber": null,
+        "Organization_Registry": null,
+        "PersonName_Title": null,
+        "PersonName_Surname": null,
+        "PersonName_GivenName": null,
+        "PersonName_JobFunction": null,
+        "PersonName_SurnamePrefix": null,
+        "PostalAddress_Country": null,
+        "PostalAddress_District": null,
+        "PostalAddress_PostalCode": null,
+        "PostalAddress_Street": null,
+        "PostalAddress_StreetName": null,
+        "PostalAddress_Town": null,
+        "CommunicationInfo_EmailAddress": null,
+        "CommunicationInfo_Fax": null,
+        "CommunicationInfo_Phone": null,
+        "CommunicationInfo_Website": null,
+        "AuditTrail_CreatedBy": "CL_HUB_ADMIN",
+        "AuditTrail_ChangedBy": "CL_HUB_ADMIN",
+        "AuditTrail_CreationTime": "/Date(1438941123563)/",
+        "AuditTrail_ChangeTime": "/Date(1438941123563)/",
+        "Owner": null,
+        "InvitedByOrganization": null,
+        "RequestType": null,
+        "Request": null,
+        "Role": "LSPACEOP",
+        "Role.description": "Logistics Hub Operator",
+        "isReadable": 1,
+        "isEditable": 0,
+        "UserID": null,
+        "RegistrationRequest": "VcSM3l4HpVrhAAAACkJASQ==",
+        "ImageUrl": null,
+        "isDeleted": "0",
+        "MyOrganizationUUID": "VcSOqF4HpVrhAAAACkJASQ==",
+        "RoleUUID": "VcSM4V4HpVrhAAAACkJASQ==",
+        "RelationUUID": "VcSOq14HpVrhAAAACkJASQ==",
+        "Scope": null,
+        "canShareVehicle": null,
+        "isOrganizationEditable": 1,
+        "isOwner": 1,
+        "canTerminate": 0,
+        "isVehicleSharable": 0,
+        "RequestStatus": "1",
+        "Status": "1",
+        "PointOfContact": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')/PointOfContact"
+          }
+        },
+        "SharedTrucks": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')/SharedTrucks"
+          }
+        },
+        "SharedVehicleList": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')/SharedVehicleList"
+          }
+        }
+      },
+      {
+        "__metadata": {
+          "type": "sap.spl.xs.app.services.appl.MyBusinessPartnersType",
+          "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')"
+        },
+        "UUID": "VcSM4F4HpVrhAAAACkJASQ==",
+        "BasicInfo_ID": null,
+        "BasicInfo_CompanyID": "VcSM4F4HpVrhAAAACkJASQ==",
+        "BasicInfo_Type": "O",
+        "BasicInfo_Type.description": "Organization",
+        "Organization_Name": "Hub Operator",
+        "Organization_RegistrationNumber": null,
+        "Organization_Registry": null,
+        "PersonName_Title": null,
+        "PersonName_Surname": null,
+        "PersonName_GivenName": null,
+        "PersonName_JobFunction": null,
+        "PersonName_SurnamePrefix": null,
+        "PostalAddress_Country": null,
+        "PostalAddress_District": null,
+        "PostalAddress_PostalCode": null,
+        "PostalAddress_Street": null,
+        "PostalAddress_StreetName": null,
+        "PostalAddress_Town": null,
+        "CommunicationInfo_EmailAddress": null,
+        "CommunicationInfo_Fax": null,
+        "CommunicationInfo_Phone": null,
+        "CommunicationInfo_Website": null,
+        "AuditTrail_CreatedBy": "CL_HUB_ADMIN",
+        "AuditTrail_ChangedBy": "CL_HUB_ADMIN",
+        "AuditTrail_CreationTime": "/Date(1438941123563)/",
+        "AuditTrail_ChangeTime": "/Date(1438941123563)/",
+        "Owner": null,
+        "InvitedByOrganization": null,
+        "RequestType": null,
+        "Request": null,
+        "Role": "LSPACEOP",
+        "Role.description": "Logistics Hub Operator",
+        "isReadable": 1,
+        "isEditable": 0,
+        "UserID": null,
+        "RegistrationRequest": "VcSM3l4HpVrhAAAACkJASQ==",
+        "ImageUrl": null,
+        "isDeleted": "0",
+        "MyOrganizationUUID": "VcSOqF4HpVrhAAAACkJASQ==",
+        "RoleUUID": "VcSM4V4HpVrhAAAACkJASQ==",
+        "RelationUUID": "VcSOq14HpVrhAAAACkJASQ==",
+        "Scope": null,
+        "canShareVehicle": null,
+        "isOrganizationEditable": 1,
+        "isOwner": 1,
+        "canTerminate": 0,
+        "isVehicleSharable": 0,
+        "RequestStatus": "1",
+        "Status": "1",
+        "PointOfContact": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')/PointOfContact"
+          }
+        },
+        "SharedTrucks": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')/SharedTrucks"
+          }
+        },
+        "SharedVehicleList": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')/SharedVehicleList"
+          }
+        }
+      },
+      {
+        "__metadata": {
+          "type": "sap.spl.xs.app.services.appl.MyBusinessPartnersType",
+          "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')"
+        },
+        "UUID": "VcSM4F4HpVrhAAAACkJASQ==",
+        "BasicInfo_ID": null,
+        "BasicInfo_CompanyID": "VcSM4F4HpVrhAAAACkJASQ==",
+        "BasicInfo_Type": "O",
+        "BasicInfo_Type.description": "Organization",
+        "Organization_Name": "Hub Operator",
+        "Organization_RegistrationNumber": null,
+        "Organization_Registry": null,
+        "PersonName_Title": null,
+        "PersonName_Surname": null,
+        "PersonName_GivenName": null,
+        "PersonName_JobFunction": null,
+        "PersonName_SurnamePrefix": null,
+        "PostalAddress_Country": null,
+        "PostalAddress_District": null,
+        "PostalAddress_PostalCode": null,
+        "PostalAddress_Street": null,
+        "PostalAddress_StreetName": null,
+        "PostalAddress_Town": null,
+        "CommunicationInfo_EmailAddress": null,
+        "CommunicationInfo_Fax": null,
+        "CommunicationInfo_Phone": null,
+        "CommunicationInfo_Website": null,
+        "AuditTrail_CreatedBy": "CL_HUB_ADMIN",
+        "AuditTrail_ChangedBy": "CL_HUB_ADMIN",
+        "AuditTrail_CreationTime": "/Date(1438941123563)/",
+        "AuditTrail_ChangeTime": "/Date(1438941123563)/",
+        "Owner": null,
+        "InvitedByOrganization": null,
+        "RequestType": null,
+        "Request": null,
+        "Role": "LSPACEOP",
+        "Role.description": "Logistics Hub Operator",
+        "isReadable": 1,
+        "isEditable": 0,
+        "UserID": null,
+        "RegistrationRequest": "VcSM3l4HpVrhAAAACkJASQ==",
+        "ImageUrl": null,
+        "isDeleted": "0",
+        "MyOrganizationUUID": "VcSOqF4HpVrhAAAACkJASQ==",
+        "RoleUUID": "VcSM4V4HpVrhAAAACkJASQ==",
+        "RelationUUID": "VcSOq14HpVrhAAAACkJASQ==",
+        "Scope": null,
+        "canShareVehicle": null,
+        "isOrganizationEditable": 1,
+        "isOwner": 1,
+        "canTerminate": 0,
+        "isVehicleSharable": 0,
+        "RequestStatus": "1",
+        "Status": "1",
+        "PointOfContact": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')/PointOfContact"
+          }
+        },
+        "SharedTrucks": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')/SharedTrucks"
+          }
+        },
+        "SharedVehicleList": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48CE05E07A55AE10000000A424049')/SharedVehicleList"
+          }
+        }
+      },
+      {
+        "__metadata": {
+          "type": "sap.spl.xs.app.services.appl.MyBusinessPartnersType",
+          "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48EB45E07A55AE10000000A424049')"
+        },
+        "UUID": "VcSOtF4HpVrhAAAACkJASQ==",
+        "BasicInfo_ID": null,
+        "BasicInfo_CompanyID": "VcSOtF4HpVrhAAAACkJASQ==",
+        "BasicInfo_Type": "O",
+        "BasicInfo_Type.description": "Organization",
+        "Organization_Name": "Parking Provider",
+        "Organization_RegistrationNumber": null,
+        "Organization_Registry": null,
+        "PersonName_Title": null,
+        "PersonName_Surname": null,
+        "PersonName_GivenName": null,
+        "PersonName_JobFunction": null,
+        "PersonName_SurnamePrefix": null,
+        "PostalAddress_Country": null,
+        "PostalAddress_District": null,
+        "PostalAddress_PostalCode": null,
+        "PostalAddress_Street": null,
+        "PostalAddress_StreetName": null,
+        "PostalAddress_Town": null,
+        "CommunicationInfo_EmailAddress": null,
+        "CommunicationInfo_Fax": null,
+        "CommunicationInfo_Phone": null,
+        "CommunicationInfo_Website": null,
+        "AuditTrail_CreatedBy": "CL_PARKING_ADMIN",
+        "AuditTrail_ChangedBy": "CL_PARKING_ADMIN",
+        "AuditTrail_CreationTime": "/Date(1438941123563)/",
+        "AuditTrail_ChangeTime": "/Date(1438941123563)/",
+        "Owner": null,
+        "InvitedByOrganization": null,
+        "RequestType": null,
+        "Request": null,
+        "Role": "PSPACEOP",
+        "Role.description": "Parking Operator",
+        "isReadable": 1,
+        "isEditable": 0,
+        "UserID": null,
+        "RegistrationRequest": "VcSOsl4HpVrhAAAACkJASQ==",
+        "ImageUrl": null,
+        "isDeleted": "0",
+        "MyOrganizationUUID": "VcSOqF4HpVrhAAAACkJASQ==",
+        "RoleUUID": "VcSOtV4HpVrhAAAACkJASQ==",
+        "RelationUUID": "Vd3KvUi6Yi7hAAAACkJASQ==",
+        "Scope": null,
+        "canShareVehicle": null,
+        "isOrganizationEditable": 1,
+        "isOwner": 0,
+        "canTerminate": 0,
+        "isVehicleSharable": 0,
+        "RequestStatus": "1",
+        "Status": "0",
+        "PointOfContact": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48EB45E07A55AE10000000A424049')/PointOfContact"
+          }
+        },
+        "SharedTrucks": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48EB45E07A55AE10000000A424049')/SharedTrucks"
+          }
+        },
+        "SharedVehicleList": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48EB45E07A55AE10000000A424049')/SharedVehicleList"
+          }
+        }
+      },
+      {
+        "__metadata": {
+          "type": "sap.spl.xs.app.services.appl.MyBusinessPartnersType",
+          "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48EBC5E07A55AE10000000A424049')"
+        },
+        "UUID": "VcSOvF4HpVrhAAAACkJASQ==",
+        "BasicInfo_ID": null,
+        "BasicInfo_CompanyID": "VcSOvF4HpVrhAAAACkJASQ==",
+        "BasicInfo_Type": "O",
+        "BasicInfo_Type.description": "Organization",
+        "Organization_Name": "Container Terminal",
+        "Organization_RegistrationNumber": null,
+        "Organization_Registry": null,
+        "PersonName_Title": null,
+        "PersonName_Surname": null,
+        "PersonName_GivenName": null,
+        "PersonName_JobFunction": null,
+        "PersonName_SurnamePrefix": null,
+        "PostalAddress_Country": null,
+        "PostalAddress_District": null,
+        "PostalAddress_PostalCode": null,
+        "PostalAddress_Street": null,
+        "PostalAddress_StreetName": null,
+        "PostalAddress_Town": null,
+        "CommunicationInfo_EmailAddress": null,
+        "CommunicationInfo_Fax": null,
+        "CommunicationInfo_Phone": null,
+        "CommunicationInfo_Website": null,
+        "AuditTrail_CreatedBy": "CL_CT_ADMIN",
+        "AuditTrail_ChangedBy": "CL_CT_ADMIN",
+        "AuditTrail_CreationTime": "/Date(1438941123563)/",
+        "AuditTrail_ChangeTime": "/Date(1438941123563)/",
+        "Owner": null,
+        "InvitedByOrganization": null,
+        "RequestType": null,
+        "Request": null,
+        "Role": "CONTAINERTRMNL",
+        "Role.description": "Container Terminal/Depot",
+        "isReadable": 1,
+        "isEditable": 0,
+        "UserID": null,
+        "RegistrationRequest": "VcSOul4HpVrhAAAACkJASQ==",
+        "ImageUrl": null,
+        "isDeleted": "0",
+        "MyOrganizationUUID": "VcSOqF4HpVrhAAAACkJASQ==",
+        "RoleUUID": "VcSOvV4HpVrhAAAACkJASQ==",
+        "RelationUUID": "Vd2TlIeKYi7hAAAACkJASQ==",
+        "Scope": null,
+        "canShareVehicle": null,
+        "isOrganizationEditable": 1,
+        "isOwner": 0,
+        "canTerminate": 1,
+        "isVehicleSharable": 0,
+        "RequestStatus": "1",
+        "Status": "1",
+        "PointOfContact": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48EBC5E07A55AE10000000A424049')/PointOfContact"
+          }
+        },
+        "SharedTrucks": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48EBC5E07A55AE10000000A424049')/SharedTrucks"
+          }
+        },
+        "SharedVehicleList": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55C48EBC5E07A55AE10000000A424049')/SharedVehicleList"
+          }
+        }
+      },
+      {
+        "__metadata": {
+          "type": "sap.spl.xs.app.services.appl.MyBusinessPartnersType",
+          "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55CAA83FE4571A11E10000000A424049')"
+        },
+        "UUID": "VcqoP+RXGhHhAAAACkJASQ==",
+        "BasicInfo_ID": "",
+        "BasicInfo_CompanyID": "VcqoP+RXGhHhAAAACkJASQ==",
+        "BasicInfo_Type": "O",
+        "BasicInfo_Type.description": "Organization",
+        "Organization_Name": "Carrier 2",
+        "Organization_RegistrationNumber": "",
+        "Organization_Registry": "",
+        "PersonName_Title": "",
+        "PersonName_Surname": "",
+        "PersonName_GivenName": "",
+        "PersonName_JobFunction": "",
+        "PersonName_SurnamePrefix": "",
+        "PostalAddress_Country": "",
+        "PostalAddress_District": "",
+        "PostalAddress_PostalCode": "",
+        "PostalAddress_Street": "",
+        "PostalAddress_StreetName": "",
+        "PostalAddress_Town": "",
+        "CommunicationInfo_EmailAddress": "",
+        "CommunicationInfo_Fax": "",
+        "CommunicationInfo_Phone": "",
+        "CommunicationInfo_Website": "",
+        "AuditTrail_CreatedBy": "SBV",
+        "AuditTrail_ChangedBy": "SBV",
+        "AuditTrail_CreationTime": "/Date(1439367463652)/",
+        "AuditTrail_ChangeTime": "/Date(1439367463652)/",
+        "Owner": null,
+        "InvitedByOrganization": null,
+        "RequestType": null,
+        "Request": null,
+        "Role": "FREIGHTFWD",
+        "Role.description": "Carrier",
+        "isReadable": 1,
+        "isEditable": 0,
+        "UserID": "",
+        "RegistrationRequest": "",
+        "ImageUrl": "",
+        "isDeleted": "0",
+        "MyOrganizationUUID": "VcSOqF4HpVrhAAAACkJASQ==",
+        "RoleUUID": "VcrxAORXGhHhAAAACkJASQ==",
+        "RelationUUID": "VcqtQOizGhHhAAAACkJASQ==",
+        "Scope": "SHARE_VEHICLE",
+        "canShareVehicle": 1,
+        "isOrganizationEditable": 1,
+        "isOwner": 0,
+        "canTerminate": 1,
+        "isVehicleSharable": 1,
+        "RequestStatus": "1",
+        "Status": "1",
+        "PointOfContact": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55CAA83FE4571A11E10000000A424049')/PointOfContact"
+          }
+        },
+        "SharedTrucks": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55CAA83FE4571A11E10000000A424049')/SharedTrucks"
+          }
+        },
+        "SharedVehicleList": {
+          "__deferred": {
+            "uri": "http://ld8635.wdf.sap.corp:8000/sap/spl/xs/app/services/appl.xsodata/MyBusinessPartners(X'55CAA83FE4571A11E10000000A424049')/SharedVehicleList"
+          }
+        }
+      }
+    ]
+  }
+}

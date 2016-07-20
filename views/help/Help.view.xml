@@ -1,0 +1,19 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:VBM="sap.ui.vbm" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout"
+	xmlns="sap.m" controllerName="splController.help.Help"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<!--CSNFIX 753341 2014 -->
+	<Page id="sapSplHelpPage" showNavButton = "true" navButtonPress="handleGoBackToLaunchPad"  >
+		<content>
+<!-- 			<Button text='help' id='help_help' press='fnHandleAppHeplButtonPress'> -->
+<!-- 			</Button> -->
+			<core:HTML id='iframe_wrapper' class='iframe_wrapper'>
+			</core:HTML>
+		</content>
+	</Page>
+</core:View> 

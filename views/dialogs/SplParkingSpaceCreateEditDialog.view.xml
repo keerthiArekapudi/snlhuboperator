@@ -1,0 +1,264 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:lay="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	xmlns="sap.m" controllerName="splController.dialogs.SplParkingSpaceCreateEditDialog"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<NavContainer id="SapSplParkingSpaceCreateEditNavContainer"
+		class="SapSplParkingSpaceCreateEditNavContainer">
+		<Page id="SapSplParkingSpaceCreateEditPage">
+			<content>
+				<form:SimpleForm>
+					<form:content>
+						<Label id="SapSplParkingSpaceCreateEditPageName" required="true">
+						</Label>
+						<lay:VerticalLayout>
+							<Input value="{/Name}" id="SapSplParkingSpaceCreateEditPageNameInput"
+								width="100%" liveChange="sapSplChangeDirtyFlag"></Input>
+							<CheckBox text="{splI18NModel>AUTOMATIC_STATUS}" select="handleSelectOfAutomaticManualStatusMode" id="checkBoxAutomaticManualStatusMode"></CheckBox>
+						</lay:VerticalLayout>
+						<Label text="{splI18NModel>SERVICE_PROVIDER}" required="true" id="SelectProvidersLabel"></Label>
+						<Select items="{/Providers}" id="SelectProvidersSelectControl" change="handleSelectOfEntityServiceProvider">
+							<items>
+								<Item xmlns="sap.ui.core" key="{terminalTypeName}" text="{description}" />
+							</items>
+						</Select>
+						<Label id="sapSplCreateLocationEntityIDLabel" required="true"></Label>
+<!-- 						Incident 1570149363 -->
+						<Input type="Text" width="100%" enabled="false" valueHelpOnly="true"
+							id="SapSplValueHelpForSelectEntitiesInput" showSuggestion="false"
+							showValueHelp="true" valueHelpRequest="fnValueHelpForSelectEntityIDInCreateEditPage">
+						</Input>
+						<Label id="SapSplParkingSpaceCreateEditPageAddress"
+							required="true">
+						</Label>
+						<!-- CSNFIX 0120061532 1308900 2014 -->
+						<layout:HorizontalLayout visible="false">
+							<Input id="sapSplCreateEditParkingSpaceLongitude" value="{/Longitude}"
+								liveChange="sapSplChangeDirtyFlag" editable="false"></Input>
+							<Input id="sapSplCreateEditParkingSpaceLatitude" value="{/Latitude}"
+								liveChange="sapSplChangeDirtyFlag" editable="false"></Input>
+						</layout:HorizontalLayout>
+
+						<Label id="SapSplParkingSpaceCreateEditPageAddressBuildingID"
+							required="true">
+						</Label>
+						<Input id="SapSplParkingSpaceCreateEditPageAddressBuildingIDInput"
+							value="{/BuildingID}" liveChange="sapSplChangeDirtyFlag"
+							editable="true"></Input>
+
+						<Label id="SapSplParkingSpaceCreateEditPageAddressStreetName"
+							required="true">
+						</Label>
+						<Input id="SapSplParkingSpaceCreateEditPageAddressStreetNameInput"
+							value="{/StreetName}" liveChange="sapSplChangeDirtyFlag"
+							editable="true"></Input>
+
+						<Label id="SapSplParkingSpaceCreateEditPageAddressCityName"
+							required="true">
+						</Label>
+						<Input id="SapSplParkingSpaceCreateEditPageAddressCityNameInput"
+							value="{/CityName}" liveChange="sapSplChangeDirtyFlag" editable="true"></Input>
+
+						<Label id="SapSplParkingSpaceCreateEditPageAddressPostalCode"
+							required="true">
+						</Label>
+						<Input id="SapSplParkingSpaceCreateEditPageAddressPostalCodeInput"
+							value="{/StreetPostalCode}" liveChange="sapSplChangeDirtyFlag"
+							editable="true"></Input>
+
+						<Label id="SapSplParkingSpaceCreateEditPageAddressRegionCode"
+							required="true">
+						</Label>
+						<Input id="SapSplParkingSpaceCreateEditPageAddressRegionCodeInput"
+							value="{/CountryName}" liveChange="sapSplChangeDirtyFlag"
+							editable="true"></Input>
+
+						<Label id="SapSplParkingSpaceCreateEditPageAddressCountryCode"
+							required="true">
+						</Label>
+						<Input id="SapSplParkingSpaceCreateEditPageAddressCountryCodeInput"
+							value="{/RegionName}" liveChange="sapSplChangeDirtyFlag"
+							editable="true"></Input>
+
+						<Label id="SapSplParkingSpaceCreateEditPageCapaity"
+							required="false">
+						</Label>
+						<Input value="{/Capacity}" liveChange="sapSplChangeDirtyFlag"
+							id="SapSplParkingSpaceCreateEditPageCapaityText"></Input>
+						<Label id="SapSplParkingSpaceCreateEditPageWebsite"
+							required="false">
+						</Label>
+						<Input value="{/Website}" liveChange="sapSplChangeDirtyFlag"></Input>
+						
+						<Label id="SapSplParkingSpaceCreateEditPageWebcamURL"
+							required="false">
+						</Label>
+						<Input value="{/WebcamUrl}" liveChange="sapSplChangeDirtyFlag"></Input>
+
+						<Label id="SapSplParkingSpaceCreateEditPageTimings"
+							required="false">
+						</Label>
+						<TextArea id="SapSplParkingSpaceCreateEditTimingsPlaceHolder"
+							class="SapSplParkingSpaceCreateEditTimingsPlaceHolder" value="{/Timings}"
+							liveChange="sapSplChangeDirtyFlag"></TextArea>
+						<Label id="SapSplParkingSpaceCreateEditPageAddPhoto"
+							required="false">
+						</Label>
+						<!-- CSNFIX : 0120061532 1480541 2014 -->
+						<Input id="sapSplParkingSpaceImageURL" liveChange="fnHandleLiveChangeOfImageURL"></Input>
+						<Button id="sapSplParkingSpaceAddImage" press="handleAddParkingSpacePhoto"
+							class="sapSplParkingSpaceAddImage"></Button>
+						<Image id="sapSplParkingSpaceImage" class="sapSplParkingSpaceImage"
+							visible="false"></Image>
+						<Label id="SapSplParkingSpaceCreateEditPagePhoneNumber"
+							required="false">
+						</Label>
+						<Input id="SapSplParkingSpaceCreateEditPagePhoneNumberInput"
+							value="{/PhoneNumber}" liveChange="sapSplChangeDirtyFlag"></Input>
+						<Label text="{splI18NModel>ADDITIONAL_INFORMATION}"
+							required="false">
+						</Label>
+						<TextArea value="{/AdditionalInformation}" liveChange="sapSplChangeDirtyFlag"
+							rows="4"></TextArea>
+
+						<Label id="SapSplParkingSpaceCreateEditPageCards" required="false"
+							visible="false">
+						</Label>
+						<layout:VerticalLayout visible="false">
+							<Input type="Text" width="100%"
+								id="SapSplValueHelpForSelectCardsInput" showSuggestion="false"
+								showValueHelp="true" class="sapSplValueHelp"
+								valueHelpRequest="fnValueHelpForSelectInParkingSpaceCreateEditPage">
+							</Input>
+							<layout:MatrixLayout class="valueHelpMainLayout"
+								id="SapSplCardsValueHelpLayout">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell id="SapSplCardsValueHelpCell"
+										content="{/Parking/results}">
+										<layout:content>
+											<layout:HorizontalLayout class="itemLayout">
+												<Button text="{Name}" type="Unstyled"
+													class="itemLayoutButton itemDetailButton"></Button>
+												<Button text="x" type="Unstyled"
+													class="itemLayoutButton deleteItemButton" press="fnHandleClickOfDeleteSelectedItem"></Button>
+											</layout:HorizontalLayout>
+										</layout:content>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+						</layout:VerticalLayout>
+
+						<Label id="SapSplParkingSpaceCreateEditPageServices"
+							required="false" visible="false">
+						</Label>
+						<layout:VerticalLayout visible="false">
+							<Input type="Text" width="100%"
+								id="SapSplValueHelpForSelectServicesInput" showSuggestion="false"
+								showValueHelp="true" class="sapSplValueHelp"
+								valueHelpRequest="fnValueHelpForSelectInParkingSpaceCreateEditPage">
+							</Input>
+							<layout:MatrixLayout class="valueHelpMainLayout"
+								id="SapSplServicesValueHelpLayout">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell id="SapSplServicesValueHelpCell"
+										content="{/Parking/results}">
+										<layout:content>
+											<layout:HorizontalLayout class="itemLayout">
+												<Button text="{Name}" type="Unstyled"
+													class="itemLayoutButton itemDetailButton"></Button>
+												<Button text="x" type="Unstyled"
+													class="itemLayoutButton deleteItemButton" press="fnHandleClickOfDeleteSelectedItem"></Button>
+											</layout:HorizontalLayout>
+										</layout:content>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+						</layout:VerticalLayout>
+
+						<Label id="SapSplParkingSpaceCreateEditPageFuel" required="false"
+							visible="false">
+						</Label>
+						<layout:VerticalLayout visible="false">
+							<Input type="Text" width="100%"
+								id="SapSplValueHelpForSelectFuelInput" showSuggestion="false"
+								showValueHelp="true" class="sapSplValueHelp"
+								valueHelpRequest="fnValueHelpForSelectInParkingSpaceCreateEditPage">
+							</Input>
+							<layout:MatrixLayout class="valueHelpMainLayout"
+								id="SapSplFuelValueHelpLayout">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell id="SapSplFuelValueHelpCell"
+										content="{/Parking/results}">
+										<layout:content>
+											<layout:HorizontalLayout class="itemLayout">
+												<Button text="{Name}" type="Unstyled"
+													class="itemLayoutButton itemDetailButton"></Button>
+												<Button text="x" type="Unstyled"
+													class="itemLayoutButton deleteItemButton" press="fnHandleClickOfDeleteSelectedItem"></Button>
+											</layout:HorizontalLayout>
+										</layout:content>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+						</layout:VerticalLayout>
+					</form:content>
+				</form:SimpleForm>
+			</content>
+
+		</Page>
+		<Page id="sapSplSelectedProviderEntities">
+			<customHeader>
+				<Bar>
+					<contentLeft>
+						<Button press="fnhandlePressOfOKInEntitySelectionPage"
+							icon="sap-icon://nav-back"></Button>
+					</contentLeft>
+					<contentMiddle>
+						<Label id="SapSplEntitySelectListPageTitle">
+						</Label>
+					</contentMiddle>
+				</Bar>
+			</customHeader>
+			<subHeader>
+				<Toolbar>
+					<SearchField search="fnSearchOfTerminalIDs">
+					</SearchField>
+				</Toolbar>
+			</subHeader>
+			<content>
+				<List id="SapSplCreateParkingSpaceEntityelectList" mode="SingleSelectMaster"
+					select="handleSelectOfEntityFromList" items="{/Entities}">
+					<StandardListItem iconDensityAware="false"
+						iconInset="false" title="{terminalId}"></StandardListItem>
+				</List>
+			</content>
+		</Page>
+		<Page id="SapSplMultiSelectListPage">
+			<customHeader>
+				<Bar>
+					<contentLeft>
+						<Button press="fnHandlePressOfButtonWithSelection" icon="sap-icon://nav-back"></Button>
+					</contentLeft>
+					<contentMiddle>
+						<Label id="SapSplMultiSelectListPageTitle">
+						</Label>
+					</contentMiddle>
+				</Bar>
+			</customHeader>
+			<content>
+				<SearchField search="fnSearchOfFacilities">
+				</SearchField>
+				<List id="SapSplCreateParkingSpaceMultiSelectList" mode="MultiSelect"
+					select="handleFacilitySelect" items="{/Parking/results}">
+					<StandardListItem id="SapSplCreateParkingSpaceMultiSelectListItem"
+						iconDensityAware="false" iconInset="false" title="{Name}"
+						description="{Name}" selected="{checked}" icon="{ImageUrl}"></StandardListItem>
+				</List>
+			</content>
+		</Page>
+	</NavContainer>
+</core:View>

@@ -1,0 +1,12 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.SplSapAssignFrieghtItemsCloumnListItem .sapMListTblCell{
+	padding: 0.5rem .5rem;
+}
+.sapSplPickUpButton {
+	margin-left: 1rem;
+}
+.sapSplAssignedFrieghtItemsLabelClass {
+	
+}

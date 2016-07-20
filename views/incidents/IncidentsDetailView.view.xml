@@ -1,0 +1,266 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:VBM="sap.ui.vbm" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	xmlns="sap.m" controllerName="splController.incidents.IncidentsDetailView"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="SapSplIncidentsDetailPage" class="sapSplIncidentDetailPage">
+		<content>
+			<Label id="sapSplIncidentDetailNoDataLabel" visible="{/noData}"
+				class="noDataLabel"></Label>
+			<layout:VerticalLayout width="96%" visible="{/isClicked}"
+				class="incidentsDetailVLayout">
+				<layout:content>
+					<ObjectHeader titleActive="false" title="{/Name}"
+						visible="{/isDisplay}" id="IncidentsDetailHeader" class="IncidentsDetailHeader">
+						<!-- icon="{parts:[{path:'ImageUrl'}], formatter:'splReusable.libs.SapSplModelFormatters.getImageUrlForVehicle'}" -->
+						<statuses>
+							<!-- <ObjectStatus text="{parts:[{path:'/Priority'},{path:'/Priority_description'}]}" 
+								state="Error" /> -->
+<!-- 								FIX : 1482007678 -->
+							<ObjectStatus text="{/Priority.description}"
+								state="{path:'/Priority',formatter:'splReusable.libs.SapSplModelFormatters.returnIncidentInfoState'}" />
+						</statuses>
+						<attributes>
+							<ObjectAttribute text="{/LongText}" />
+						</attributes>
+					</ObjectHeader>
+					<layout:HorizontalLayout class="incidentsMapHLayout"
+						width="100%">
+						<form:SimpleForm id="SapSplIncidentsDetailPageForm"
+							class="SapSplIncidentsDetailPageForm">
+							<form:content>
+								<Label class="sapSplIncidentsDetailFormLabel" id="SapSplIncidentsNameLabel"
+									required="{/isEdit}">
+									<layoutData>
+										<layout:ResponsiveFlowLayoutData
+											weight="1">
+										</layout:ResponsiveFlowLayoutData>
+									</layoutData>
+								</Label>
+								<Input value="{/Name}" id="SapSplIncidentsNameInput"
+									class="SapSplIncidentInputClass" width="98%" editable="false"
+									liveChange="fnToCaptureLiveChangeToSetIsDirtyFlag">
+									<layoutData>
+										<layout:ResponsiveFlowLayoutData
+											weight="2">
+										</layout:ResponsiveFlowLayoutData>
+									</layoutData>
+								</Input>
+
+								<Label class="sapSplIncidentsDetailFormLabel" id="SapSplIncidentsMessageLabel"
+									required="{/isEdit}">
+									<layoutData>
+										<layout:ResponsiveFlowLayoutData
+											weight="1">
+										</layout:ResponsiveFlowLayoutData>
+									</layoutData>
+								</Label>
+								<Input value="{/LongText}" width="98%" editable="{/isEdit}"
+									class="SapSplIncidentInputClass" change="fnhandleEditOfIncidentDetails"
+									liveChange="fnToCaptureLiveChangeToSetIsDirtyFlag">
+									<layoutData>
+										<layout:ResponsiveFlowLayoutData
+											weight="2">
+										</layout:ResponsiveFlowLayoutData>
+									</layoutData>
+								</Input>
+								<!-- </form:content> -->
+								<!-- </form:SimpleForm> -->
+
+
+								<!-- <form:SimpleForm > -->
+								<!-- <form:content> -->
+								<Label id="SapSplIncidentsCategoryLabel" class="sapSplIncidentsDetailFormLabel"
+									required="{/isEdit}" visible="{/isEdit}">
+									<layoutData>
+										<layout:ResponsiveFlowLayoutData
+											weight="1">
+										</layout:ResponsiveFlowLayoutData>
+									</layoutData>
+								</Label>
+								<Select id="sapSplIncidentsCategorySelect" items="{/}"
+									width="98%" visible="{SapSplIncidentsDetailModel>/isEdit}"
+									change="fnhandleEditOfIncidentDetails" selectedKey="{SapSplIncidentsDetailModel>/Category}">
+									<core:Item key="{Value}" text="{Value.description}" />
+									<layoutData>
+										<layout:ResponsiveFlowLayoutData
+											weight="2">
+										</layout:ResponsiveFlowLayoutData>
+									</layoutData>
+								</Select>
+
+								<Label id="SapSplIncidentsCategoryLabelInDisplay" class="sapSplIncidentsDetailFormLabel"
+									visible="{/isDisplay}">
+									<layoutData>
+										<layout:ResponsiveFlowLayoutData
+											weight="1">
+										</layout:ResponsiveFlowLayoutData>
+									</layoutData>
+								</Label>
+								<Text text="{/Category.description}" id="sapSplIncidentsCategoryTextInDisplay"
+									visible="{/isDisplay}" class="sapSplIncidentsDetailFormLabel">
+									<layoutData>
+										<layout:ResponsiveFlowLayoutData
+											weight="2">
+										</layout:ResponsiveFlowLayoutData>
+									</layoutData>
+								</Text>
+
+								<Label id="SapSplIncidentsPriorityLabelInDisplay" class="sapSplIncidentsDetailFormLabel"
+									visible="{/isDisplay}">
+									<layoutData>
+										<layout:ResponsiveFlowLayoutData
+											weight="1">
+										</layout:ResponsiveFlowLayoutData>
+									</layoutData>
+								</Label>
+<!-- 								CSNFIX : 0120031469 0000644770 2014 -->
+								<Text
+									text="{/Priority.description}"
+									id="sapSplIncidentsPriorityTextInDisplay" visible="{/isDisplay}"
+									class="sapSplIncidentsDetailFormLabel">
+									<layoutData>
+										<layout:ResponsiveFlowLayoutData
+											weight="2">
+										</layout:ResponsiveFlowLayoutData>
+									</layoutData>
+								</Text>
+
+								<Label id="SapSplIncidentsPriorityLabel" class="sapSplIncidentsDetailFormLabel"
+									required="{/isEdit}" visible="{/isEdit}">
+									<layoutData>
+										<layout:ResponsiveFlowLayoutData
+											weight="1">
+										</layout:ResponsiveFlowLayoutData>
+									</layoutData>
+								</Label>
+								<Select id="sapSplIncidentsPrioritySelect" items="{/}"
+									width="98%" visible="{SapSplIncidentsDetailModel>/isEdit}"
+									change="fnhandleEditOfIncidentDetails" selectedKey="{SapSplIncidentsDetailModel>/Priority}">
+									<core:Item key="{Value}" text="{Value.description}" />
+									<layoutData>
+										<layout:ResponsiveFlowLayoutData
+											weight="2">
+										</layout:ResponsiveFlowLayoutData>
+									</layoutData>
+								</Select>
+
+								<Label id="SapSplIncidentsLocationLabel" visible="false"
+									class="sapSplIncidentsDetailFormLabel">
+									<layoutData>
+										<layout:ResponsiveFlowLayoutData
+											weight="1">
+										</layout:ResponsiveFlowLayoutData>
+									</layoutData>
+								</Label>
+								<!-- <layout:VerticalLayout> -->
+								<!-- <layout:content> -->
+								<!-- <Text class="sapSplIncidentsDetailFormLabel" visible="false" 
+									id="SapSplIncidentsLocationCoordLabel" text="{/IncidentLocationGeometry}"> -->
+								<!-- <layoutData> -->
+								<!-- <layout:ResponsiveFlowLayoutData -->
+								<!-- weight="2"> -->
+								<!-- </layout:ResponsiveFlowLayoutData> -->
+								<!-- </layoutData> -->
+								<!-- </Text> -->
+								<Button id="SapSplIncidentsChangeGeoFenceAssignmentButton" width="98%"
+									type="Emphasized" visible="{/isEdit}" press="fnChangeButtonEvent">
+									<layoutData>
+										<layout:ResponsiveFlowLayoutData
+											weight="2">
+										</layout:ResponsiveFlowLayoutData>
+									</layoutData>
+								</Button>
+<!-- 								<Text class="sapSplIncidentsDetailFormLabel" visible="false" -->
+<!-- 									id="SapSplIncidentsLocationCoordLabel" text="{/IncidentLocationGeometry}"> -->
+<!-- 									<layoutData> -->
+<!-- 										<layout:ResponsiveFlowLayoutData -->
+<!-- 											weight="0"> -->
+<!-- 										</layout:ResponsiveFlowLayoutData> -->
+<!-- 									</layoutData> -->
+<!-- 								</Text> -->
+								<!-- </layout:content> -->
+								<!-- <layout:layoutData> -->
+								<!-- <layout:ResponsiveFlowLayoutData -->
+								<!-- weight="2"> -->
+								<!-- </layout:ResponsiveFlowLayoutData> -->
+								<!-- </layout:layoutData> -->
+								<!-- </layout:VerticalLayout> -->
+							</form:content>
+						</form:SimpleForm>
+						<layout:HorizontalLayout id="oSapSPlVBMapHolder">
+						<!-- CSNFIX 0120061532 1313985    2014 -->
+							<VBM:VBI id="oSapSplVBMap" class="incidentsMapPlaceHolderDisplay"
+								plugin="false" submit="fnEventHandler" config="{oSapSplVBModel>/}">
+							</VBM:VBI>
+						</layout:HorizontalLayout>
+					</layout:HorizontalLayout>
+
+					<Table id="SapSplIncidentsDetailAssignedGeofencesTable"
+						width="95%" class="incidentsAssignedGeoFenceTable" items="{/Geofences}">
+						<columns>
+							<!-- <Column width="30%"> -->
+							<!-- <header> -->
+							<!-- <Text id="SapSplAssignedGeofencesTableColumnHeader_Name"></Text> -->
+							<!-- </header> -->
+							<!-- </Column> -->
+							<Column cssAlign="center" width="35%">
+								<header>
+									<Text id="SapSplAssignedGeofencesTableColumnHeader_Geofence"></Text>
+								</header>
+							</Column>
+							<Column cssAlign="right" width="35%">
+								<header>
+									<Text id="SapSplAssignedGeofencesTableColumnHeader_Gate"></Text>
+								</header>
+							</Column>
+							<Column cssAlign="left" width="15%">
+							</Column>
+							<Column cssAlign="right" width="15%">
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<!-- <Text text="{Type}"></Text> -->
+									<Text text="{GeoFenceName}"></Text>
+									<Text
+										text="{path:'GateName',formatter:'splReusable.libs.SapSplModelFormatters.showGateName'}"></Text>
+									<Link id="SapSplIncidentsViewGeoFenceLink" press="fnHandleClickOfDetailViewGeoFence"></Link>
+									<!-- CSNFIX 0001295875 2014 -->
+									<Button icon="sap-icon://delete" type="Transparent" id="SapSplDeleteGeofenceAssignmentButton"
+										class="SapSplDeleteGeofenceAssignmentButton" visible="{/isEdit}"
+										press="fnHandleClickOfDeleteGeofence"></Button>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<Button icon="sap-icon://add" id="SapSplIncidentsAddGeoFenceButton"
+						type="Emphasized" visible="{/isEdit}" class="sapSplIncidentsAssignGeofenceButton"
+						press="fnHandleAddGeoFenceForIncidentAssignment"></Button>
+				</layout:content>
+			</layout:VerticalLayout>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button visible="{/isDisplay}" id="SapSplIncidentsFooterEdit"
+						enabled="{/isClicked}" press="fnHandlePressOfEditIncidents" type="Emphasized"></Button>
+					<Button visible="{/isDisplay}" icon="sap-icon://forward"
+						enabled="{/isClicked}" id="SapSplIncidentsFooterManageGeofences"
+						press="fnNavigateToManageLocations"></Button>
+					<Button visible="{/isEdit}" id="SapSplIncidentsFooterSave"
+						enabled="{/isClicked}" press="fnHandlePressOfSaveIncidents" type="Emphasized"></Button>
+					<Button visible="{/isEdit}" id="SapSplIncidentsFooterCancel"
+						enabled="{/isClicked}" press="fnHandlePressOfCancelEditIncidents"></Button>
+					<Button id="SapSplIncidentsFooterDelete" enabled="{/isClicked}"
+						press="fnHandlePressOfDeleteIncidents"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

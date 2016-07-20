@@ -1,0 +1,100 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	controllerName="splController.profile.EditUserProfile" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page backgroundDesign="List" id="sapSplUserProfileEditPage" enableScrolling="true"
+		showHeader="true" showFooter="true" title="{splI18NModel>EDIT_PROFILE_AND_SETTINGS}"
+		showNavButton="true" navButtonPress="handleEditProfileBackNavigation" style="background-color:#ffffff">
+		<content>
+			<l:Grid defaultSpan="L12 M12 S12" width="auto">
+
+				<f:SimpleForm id="SimpleFormDisplay410" minWidth="1024"
+					maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+					labelSpanL="2" labelSpanM="2" emptySpanL="0" emptySpanM="0"
+					columnsL="2" columnsM="2">
+					<Label id="sapSplMyProfileEditModelEmailLabel" text="{splI18NModel>MYPROFILEEMAIL}" />
+					<Link
+						text="{parts:[{path:'/CommunicationInfo_EmailAddress'}], formatter:'splReusable.libs.SapSplModelFormatters.valueNotAvailable'}"
+						href="mailto:{/CommunicationInfo_EmailAddress}">
+						<layoutData>
+							<l:GridData span="L6 M6 S12"/>
+						</layoutData>
+					</Link>
+
+					<Label id="sapSplMyProfileEditModeFirstNameLabel" required="true"
+						text="{splI18NModel>MYPROFILEFIRSTNAME}" />
+					<Input id="sapSplMyProfileEditModeFirstNameText" value="{/PersonName_GivenName}"
+						editable="true" liveChange="commonLiveChange" change="handleFirstNameChange">
+						<layoutData>
+							<l:GridData span="L6 M6 S12" />
+						</layoutData>
+					</Input>
+
+					<Label id="sapSplMyProfileEditModeLastNameLabel" required="true"
+						text="{splI18NModel>MYPROFILELASTNAME}" />
+					<Input id="sapSplMyProfileEditModeLastNameText" value="{/PersonName_Surname}"
+						editable="true" liveChange="commonLiveChange" change="handleLastNameChange">
+						<layoutData>
+							<l:GridData span="L6 M6 S12" />
+						</layoutData>
+					</Input>
+
+					<Label id="sapSplMyProfileEditModeSalutationLabel" required="false"
+						text="{splI18NModel>SALUTATION}" />
+					<Input id="sapSplMyProfileEditModeSalutationText" liveChange="commonLiveChange"
+						value="{/PersonName_Title}" change="handleSalutationChange">
+						<layoutData>
+							<l:GridData span="L6 M6 S12" />
+						</layoutData>
+					</Input>
+					<Label id="sapSplMyProfileEditModePrefixLabel" required="false"
+						text="{splI18NModel>PREFIX}" />
+					<Input id="sapSplMyProfileEditModePrefixText" liveChange="commonLiveChange"
+						value="{/PersonName_SurnamePrefix}" change="handlePrefixChange">
+						<layoutData>
+							<l:GridData span="L6 M6 S12" />
+						</layoutData>
+					</Input>
+
+					<Label id="sapSplMyProfileEditModeTelephoneLabel" required="false"
+						text="{splI18NModel>MYPROFILEPHONE}" />
+					<Input id="sapSplMyProfileEditModeTelephoneText" liveChange="commonLiveChange"
+						value="{/CommunicationInfo_Phone}" change="handleTelephoneChange">
+						<layoutData>
+							<l:GridData span="L6 M6 S12" />
+						</layoutData>
+					</Input>
+
+					<Label id="sapSplMyProfileEditModeDesignationLabel" required="false"
+						text="{splI18NModel>MYPROFILEDESIGNATION}" />
+					<Input id="sapSplMyProfileEditModeDesignationText"
+						liveChange="commonLiveChange" value="{/PersonName_JobFunction}"
+						change="handleDesignationChange">
+						<layoutData>
+							<l:GridData span="L6 M6 S12" />
+						</layoutData>
+					</Input>
+					<Label id="sapSplMyProfileEditModeRoleLabel" required="false"
+						text="{splI18NModel>MYPROFILEROLE}" />
+					<Text
+						text="{parts:[{path:'/Role.description'}], formatter:'splReusable.libs.SapSplModelFormatters.valueNotAvailable'}" />
+				</f:SimpleForm>
+			</l:Grid>
+
+		</content>
+		<footer>
+			<Bar id="userProfileEditPageFooter">
+				<contentRight>
+					<Button id="btnSaveMyProfile" text="{splI18NModel>SAVE_PROFILE_ACTION}"
+						press="handleProfileSaveButtonPressEvent" type="Emphasized" />
+					<Button id="btnCancelEditMyProfile" text="{splI18NModel>CANCEL_PROFILE_ACTION}"
+						press="handleProfileCancelButtonPressEvent" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

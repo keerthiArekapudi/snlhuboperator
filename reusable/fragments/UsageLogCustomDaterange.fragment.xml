@@ -1,0 +1,47 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Dialog xmlns="sap.m" showHeader="false" modal="false"
+	id="SapSplUsageLogCustomDateRangeDialog" contentHeight="180px"
+	contentWidth="300px" offsetX="{splTruckDetailsPopOverModel>/x}"
+	offsetY="{splTruckDetailsPopOverModel>/y}">
+	<content>
+		<Page xmlns="sap.m" showFooter="true" backgroundDesign="Solid"  id = "SapSplUsageLogPage">
+			<content>
+				<SimpleForm xmlns="sap.ui.layout.form" id="splFormForReadLocation">
+					<Label xmlns="sap.m" id="CustomDateRangeFromLabel" text="from">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+
+					</Label>
+					<DatePicker xmlns="sap.ui.commons" id="SapSplUsageLogFromDate" width="80%" change = "handleChangeOfDatePicker">
+
+					</DatePicker>
+
+					<Label xmlns="sap.m" id="CustomDateRangeToLabel" text="to">
+						<layoutData>
+							<ResponsiveFlowLayoutData xmlns="sap.ui.commons.layout"
+								weight="1">
+							</ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<DatePicker xmlns="sap.ui.commons" id="SapSplUsageLogToDate" width="80%" change = "handleChangeOfDatePicker">
+					</DatePicker>
+				</SimpleForm>
+
+			</content>
+		</Page>
+	</content>
+	<beginButton>
+		<Button id="SapSplUsageLogOKButton"  press="handlePressOfOk" />
+	</beginButton>
+	<endButton>
+		<Button  id="SapSplUsageLogCancelButton" press="handlePressOfCancel" />
+
+	</endButton>
+</Dialog>

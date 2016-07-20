@@ -1,0 +1,20 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<ViewSettingsDialog confirm="fnHandleConfirmOfViewSettingDialog" xmlns="sap.m">
+	<groupItems>
+    	<ViewSettingsItem text="{splI18NModel>OWNERSHIP_TYPE}" key="isSharedWithMyOrg" xmlns="sap.m"/>
+     	<ViewSettingsItem text="{splI18NModel>SUBSCRIPTION}" key="isSubscribed" xmlns="sap.m"/>
+   	</groupItems>
+   	<filterItems>
+	   	<ViewSettingsFilterItem text="{splI18NModel>STATUS}" key="Status" xmlns="sap.m">
+	        <items>
+	          	<ViewSettingsItem text="{splI18NModel>FILTER_LABEL_ACTIVE}" key="Status_A_isDeleted_0" xmlns="sap.m"/>
+	     		<ViewSettingsItem text="{splI18NModel>FILTER_LABEL_INACTIVE}" key="Status_I_isDeleted_0" xmlns="sap.m"/>
+	     		<ViewSettingsItem text="{splI18NModel>FILTER_LABEL_DEREGISTERED}" key="isDeleted_1" xmlns="sap.m"/>
+	        </items>
+	   	</ViewSettingsFilterItem>
+   	</filterItems>
+ </ViewSettingsDialog>

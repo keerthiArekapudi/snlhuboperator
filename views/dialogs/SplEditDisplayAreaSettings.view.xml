@@ -1,0 +1,56 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="splController.dialogs.SplEditDisplayAreaSettings"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<!-- 			Incident fix : 1570452538 -->
+	<Table id="SapSplEditDisplayAreaSettingsTable" growing="true" growingThreshold="100" growingScrollToLoad="true" class="SapSplEditDisplayAreaSettingsTable" noDataText="{splI18NModel>NO_DISPLAY_AREAS}"
+		items="{/ViewList}">
+		<columns>
+			<Column hAlign="Begin" width="55%">
+				<header>
+					<Text text="{splI18NModel>NAME}"></Text>
+				</header>
+			</Column>
+			<Column hAlign="Center" width="12.5%">
+				<header>
+					<Text text="{splI18NModel>FAVORITE}"></Text>
+				</header>
+			</Column>
+			<Column hAlign="Begin" width="12.5%">
+				<header>
+					<Text text="{splI18NModel>DEFAULT}"></Text>
+				</header>
+			</Column>
+			<Column hAlign="Begin" width="12.5%" id="isPublicColumn">
+				<header>
+					<Text text="{splI18NModel>PUBLIC}"></Text>
+				</header>
+			</Column>
+			<Column hAlign="Center" width="7.5%">
+			</Column>
+
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Input value="{Name}" liveChange="fnHandleChangeOfName"
+						editable="{path:'isMyCompanyView', formatter:'splReusable.libs.SapSplModelFormatters.getCanPublishValue'}"></Input>
+					<CheckBox select="fnHandleSelectOfFavourite"
+						selected="{path:'Favourite', formatter:'splReusable.libs.SapSplModelFormatters.getCanPublishValue'}"></CheckBox>
+					<RadioButton select="fnHandleSelectOfDefault"
+						selected="{path:'isDefault', formatter:'splReusable.libs.SapSplModelFormatters.getCanPublishValue'}"></RadioButton>
+<!-- 						Fix For Incident : 1570451646 -->
+					<CheckBox select="fnHandleSelectOfPublic" enabled="{path:'isMyCompanyView', formatter:'splReusable.libs.SapSplModelFormatters.getCanPublishValue'}"
+						selected="{path:'isPublic', formatter:'splReusable.libs.SapSplModelFormatters.getCanPublishValue'}"></CheckBox>
+					<Button icon="sap-icon://sys-cancel" type="Transparent" press="fnHandleDeleteOfDisplayArea"
+						visible="{path:'isMyCompanyView', formatter:'splReusable.libs.SapSplModelFormatters.getCanPublishValue'}"></Button>
+				</cells>
+			</ColumnListItem>
+		</items>
+
+	</Table>
+</core:View>

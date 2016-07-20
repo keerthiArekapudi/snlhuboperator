@@ -1,0 +1,31 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	xmlns="sap.m" controllerName="splController.dialogs.SplDriverDetailDialog"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="SapSplDriverList">
+		<customHeader>
+			<Bar id="SapSplDriverListBar">
+				<contentMiddle>
+					<Label id="SapSplDriverListHeaderTitle"></Label>
+				</contentMiddle>
+			</Bar>
+		</customHeader>
+
+		<content>
+			<List id="SapSplSelectDriverList" select="fnHandleSelectOfListItem"
+				items="{/results}" mode="SingleSelectMaster">
+				<items>
+					<StandardListItem id="SapSplSelectDriverDialogListItem"
+	 					title="{PersonName_GivenName}, {PersonName_Surname}"> <!-- CSNFIX: 602320 2014, 468166 2014, 0001320694 2014 -->
+
+					</StandardListItem>
+				</items>
+			</List>
+		</content>
+	</Page>
+</core:View>

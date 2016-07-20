@@ -1,0 +1,2171 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<edmx:Edmx Version="1.0"
+	xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+	<edmx:DataServices
+		xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+		m:DataServiceVersion="2.0">
+		<Schema Namespace="sap.spl.xs.app.services.appl"
+			xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+			xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="MyLocationsType">
+				<Key>
+					<PropertyRef Name="LocationID" />
+				</Key>
+				<Property Name="LocationID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="Name" Type="Edm.String" MaxLength="100" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="Type" Type="Edm.String" MaxLength="50" />
+				<Property Name="Type.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ParentLocationID" Type="Edm.Binary" />
+				<Property Name="Stacked" Type="Edm.String" MaxLength="1" />
+				<Property Name="TextType" Type="Edm.String" MaxLength="1" />
+				<Property Name="Tag.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Tag" Type="Edm.String" MaxLength="1024" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="isEditable" Type="Edm.Int32" />
+				<Property Name="isPublic" Type="Edm.String" MaxLength="1" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="ImageUrl" Type="Edm.String" MaxLength="5000" />
+				<Property Name="Website" Type="Edm.String" MaxLength="5000" />
+				<Property Name="IncidentCount" Type="Edm.Int32" />
+				<Property Name="Capacity" Type="Edm.Int32" />
+				<Property Name="PhoneNumber" Type="Edm.String" MaxLength="50" />
+				<Property Name="isIncidentEditable" Type="Edm.Int32" />
+				<Property Name="AddressUUID" Type="Edm.Binary" />
+				<Property Name="FacilityUUID" Type="Edm.Binary" />
+				<Property Name="CanPublish" Type="Edm.Int32" />
+				<Property Name="ReportedStatus" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="CareOfName" Type="Edm.String" MaxLength="100" />
+				<Property Name="RoomID" Type="Edm.String" MaxLength="50" />
+				<Property Name="BuildingID" Type="Edm.String" MaxLength="50" />
+				<Property Name="HouseID" Type="Edm.String" MaxLength="50" />
+				<Property Name="AdditionalHouseID" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="StreetName" Type="Edm.String" MaxLength="100" />
+				<Property Name="CityName" Type="Edm.String" MaxLength="100" />
+				<Property Name="DistrictName" Type="Edm.String" MaxLength="100" />
+				<Property Name="StreetPostalCode" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="RegionName" Type="Edm.String" MaxLength="100" />
+				<Property Name="RegionCode" Type="Edm.String" MaxLength="50" />
+				<Property Name="CountryName" Type="Edm.String" MaxLength="100" />
+				<Property Name="CountryCode" Type="Edm.String" MaxLength="50" />
+				<Property Name="Timings" Type="Edm.String" MaxLength="1024" />
+				<Property Name="AdditionalInformation" Type="Edm.String"
+					MaxLength="5000" />
+				<Property Name="StatusText" Type="Edm.String" MaxLength="1024" />
+				<Property Name="ModeOfStatusUpdate" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="StatusProvider" Type="Edm.String"
+					MaxLength="1024" />
+				<Property Name="AdditionalID" Type="Edm.String" MaxLength="50" />
+				<Property Name="WebcamUrl" Type="Edm.String" MaxLength="5000" />
+				<Property Name="RunsWithTour" Type="Edm.String" MaxLength="1" />
+				<Property Name="Entry" Type="Edm.String" MaxLength="1" />
+				<Property Name="Exit" Type="Edm.String" MaxLength="1" />
+				<Property Name="RuleUUID" Type="Edm.Binary" />
+				<Property Name="RelationStatus" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="RadarRelationUUID" Type="Edm.Binary" />
+				<Property Name="isRadar" Type="Edm.String" MaxLength="1" />
+				<Property Name="OwnerName" Type="Edm.String" MaxLength="100" />
+				<Property Name="isMyOrgObject" Type="Edm.String" MaxLength="1" />
+				<Property Name="canActOnRadar" Type="Edm.String" MaxLength="10" />
+				<Property Name="Geometry" Type="Edm.String" MaxLength="2147483647" />
+				<NavigationProperty Name="Incidents"
+					Relationship="sap.spl.xs.app.services.appl.LocationToIncidentsType"
+					FromRole="MyLocationsPrincipal" ToRole="AssignedIncidentsDependent" />
+				<NavigationProperty Name="GeofenceGates"
+					Relationship="sap.spl.xs.app.services.appl.LocationToGatesType"
+					FromRole="MyLocationsPrincipal" ToRole="GatesDependent" />
+				<NavigationProperty Name="StatusOfRadars"
+					Relationship="sap.spl.xs.app.services.appl.LocationToRadarStatusType"
+					FromRole="MyLocationsPrincipal" ToRole="StatusOfMyRadarsDependent" />
+				<NavigationProperty Name="Parking"
+					Relationship="sap.spl.xs.app.services.appl.LocationToFacilityType"
+					FromRole="MyLocationsPrincipal" ToRole="FacilityDependent" />
+			</EntityType>
+			<EntityType Name="StatusOfMyRadarsType">
+				<Key>
+					<PropertyRef Name="ID" />
+				</Key>
+				<Property Name="ID" Type="Edm.String" Nullable="false"
+					MaxLength="2147483647" />
+				<Property Name="From_Organization_Name" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="FromUUID" Type="Edm.Binary" />
+				<Property Name="ObservationGF" Type="Edm.Binary" />
+				<Property Name="Status" Type="Edm.String" MaxLength="25" />
+			</EntityType>
+			<EntityType Name="GatesType">
+				<Key>
+					<PropertyRef Name="LocationID" />
+					<PropertyRef Name="GateUUID" />
+				</Key>
+				<Property Name="LocationID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="Name" Type="Edm.String" MaxLength="100" />
+				<Property Name="GateUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="TechnicalLocationID" Type="Edm.Binary" />
+				<Property Name="GateGeometry" Type="Edm.String" MaxLength="2147483647" />
+				<Property Name="TechnicalLocationGeometry" Type="Edm.String"
+					MaxLength="2147483647" />
+			</EntityType>
+			<EntityType Name="ViewListType">
+				<Key>
+					<PropertyRef Name="LocationID" />
+				</Key>
+				<Property Name="LocationID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="Name" Type="Edm.String" MaxLength="100" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="Type" Type="Edm.String" MaxLength="50" />
+				<Property Name="Type.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ParentLocationID" Type="Edm.Binary" />
+				<Property Name="Stacked" Type="Edm.String" MaxLength="1" />
+				<Property Name="TextType" Type="Edm.String" MaxLength="1" />
+				<Property Name="Tag.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Tag" Type="Edm.String" MaxLength="1024" />
+				<Property Name="isPublic" Type="Edm.Int32" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="ImageUrl" Type="Edm.String" MaxLength="5000" />
+				<Property Name="Website" Type="Edm.String" MaxLength="5000" />
+				<Property Name="PhoneNumber" Type="Edm.String" MaxLength="50" />
+				<Property Name="AddressUUID" Type="Edm.Binary" />
+				<Property Name="CareOfName" Type="Edm.String" MaxLength="100" />
+				<Property Name="RoomID" Type="Edm.String" MaxLength="50" />
+				<Property Name="BuildingID" Type="Edm.String" MaxLength="50" />
+				<Property Name="HouseID" Type="Edm.String" MaxLength="50" />
+				<Property Name="AdditionalHouseID" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="StreetName" Type="Edm.String" MaxLength="100" />
+				<Property Name="CityName" Type="Edm.String" MaxLength="100" />
+				<Property Name="DistrictName" Type="Edm.String" MaxLength="100" />
+				<Property Name="StreetPostalCode" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="RegionName" Type="Edm.String" MaxLength="100" />
+				<Property Name="RegionCode" Type="Edm.String" MaxLength="50" />
+				<Property Name="CountryName" Type="Edm.String" MaxLength="100" />
+				<Property Name="CountryCode" Type="Edm.String" MaxLength="50" />
+				<Property Name="Timings" Type="Edm.String" MaxLength="1024" />
+				<Property Name="isMyCompanyView" Type="Edm.Int32" />
+				<Property Name="Favourite" Type="Edm.Int32" />
+				<Property Name="OwnerName" Type="Edm.String" MaxLength="100" />
+				<Property Name="DisplayArea_ZoomLevel" Type="Edm.Decimal"
+					Precision="34" Scale="14" />
+				<Property Name="isDefault" Type="Edm.Int32" />
+				<Property Name="Geometry" Type="Edm.String" MaxLength="2147483647" />
+				<Property Name="DisplayArea_Center" Type="Edm.String"
+					MaxLength="2147483647" />
+			</EntityType>
+			<EntityType Name="AssignedIncidentsType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="Name" Type="Edm.String" MaxLength="50" />
+				<Property Name="Priority" Type="Edm.String" MaxLength="1" />
+				<Property Name="Priority.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Category" Type="Edm.String" MaxLength="1" />
+				<Property Name="Category.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="RecipientType" Type="Edm.String" MaxLength="50" />
+				<Property Name="RecipientUUID" Type="Edm.Binary" />
+				<Property Name="ShortText" Type="Edm.String" MaxLength="256" />
+				<Property Name="LongText" Type="Edm.String" MaxLength="1024" />
+				<Property Name="SourceLocation" Type="Edm.String"
+					MaxLength="5000" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="AssignmentUUID" Type="Edm.Binary" />
+				<Property Name="WebcamUrl" Type="Edm.String" MaxLength="5000" />
+			</EntityType>
+			<EntityType Name="FacilityType">
+				<Key>
+					<PropertyRef Name="FacilityUUID" />
+				</Key>
+				<Property Name="LocationID" Type="Edm.Binary" />
+				<Property Name="FacilityUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="Name" Type="Edm.String" MaxLength="100" />
+				<Property Name="Category" Type="Edm.String" MaxLength="1" />
+				<Property Name="Category.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ReportedStatus" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="Availability" Type="Edm.Int32" />
+				<Property Name="Capacity" Type="Edm.Int32" />
+				<Property Name="ImageUrl" Type="Edm.String" MaxLength="5000" />
+				<Property Name="Website" Type="Edm.String" MaxLength="5000" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="Description" Type="Edm.String" MaxLength="1024" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="StatusText" Type="Edm.String" MaxLength="1024" />
+				<Property Name="ModeOfStatusUpdate" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="StatusProvider" Type="Edm.String"
+					MaxLength="1024" />
+				<Property Name="WebcamUrl" Type="Edm.String" MaxLength="5000" />
+			</EntityType>
+			<EntityType Name="BusinessPartnerRoleRelationType">
+				<Key>
+					<PropertyRef Name="Name" />
+				</Key>
+				<Property Name="Name" Type="Edm.String" Nullable="false"
+					MaxLength="50" />
+				<Property Name="FromRole" Type="Edm.String" MaxLength="50" />
+				<Property Name="FromRole.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ToRole" Type="Edm.String" MaxLength="50" />
+				<Property Name="ToRole.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Scope" Type="Edm.String" MaxLength="50" />
+				<Property Name="Scope.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="InstanceSpecific" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="FromRolePartnerType" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="FromRolePartnerType.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ToRolePartnerType" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="ToRolePartnerType.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ToPartyHasToAccept" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="FromPartyPrivilege_ObjectType" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="FromPartyPrivilege_Action" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="ToPartyPrivilege_ObjectType" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="ToPartyPrivilege_Action" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="CannotBeChanged" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="ToPartyCanDelete" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="PrerequisiteRelation" Type="Edm.String"
+					MaxLength="50" />
+			</EntityType>
+			<EntityType Name="PersonPreferencesType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="MessagePreferences_Priorities_Low" Type="Edm.String"
+					MaxLength="2" />
+				<Property Name="MessagePreferences_Priorities_Medium" Type="Edm.String"
+					MaxLength="2" />
+				<Property Name="MessagePreferences_Priorities_High" Type="Edm.String"
+					MaxLength="2" />
+				<Property Name="MessagePreferences_Priorities_VeryHigh"
+					Type="Edm.String" MaxLength="2" />
+				<Property Name="MessagePreferences_SelectionTimeWindowInSeconds"
+					Type="Edm.Int32" />
+			</EntityType>
+			<EntityType Name="ReplicationEntitiesType">
+				<Key>
+					<PropertyRef Name="UUID_1" />
+				</Key>
+				<Property Name="Entity" Type="Edm.String" MaxLength="50" />
+				<Property Name="Desc_2" Type="Edm.String" MaxLength="50" />
+				<Property Name="UUID_2" Type="Edm.Binary" />
+				<Property Name="Desc_1" Type="Edm.String" MaxLength="200" />
+				<Property Name="UUID_1" Type="Edm.Binary" Nullable="false" />
+				<Property Name="AppPath" Type="Edm.String" MaxLength="1024" />
+				<Property Name="ReplicationStatus" Type="Edm.Int32" />
+			</EntityType>
+			<EntityType Name="TourPreferenceType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="OrganizationUUID" Type="Edm.Binary" />
+				<Property Name="LowerThreshold" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="UpperThreshold" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="WarningValue" Type="Edm.String" MaxLength="100" />
+				<Property Name="CriticalValue" Type="Edm.String" MaxLength="100" />
+			</EntityType>
+			<EntityType Name="RelationsType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="FromPartner" Type="Edm.Binary" />
+				<Property Name="ToPartner" Type="Edm.Binary" />
+				<Property Name="Relation" Type="Edm.String" MaxLength="50" />
+				<Property Name="Text" Type="Edm.String" MaxLength="100" />
+				<Property Name="FromRole" Type="Edm.String" MaxLength="50" />
+				<Property Name="FromRole.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ToRole" Type="Edm.String" MaxLength="50" />
+				<Property Name="ToRole.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Scope" Type="Edm.String" MaxLength="50" />
+				<Property Name="Scope.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Status" Type="Edm.String" MaxLength="1" />
+				<Property Name="InstanceUUID" Type="Edm.Binary" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+			</EntityType>
+			<EntityType Name="GrantableRolesForPersonType">
+				<Key>
+					<PropertyRef Name="GrantableRole" />
+				</Key>
+				<Property Name="GrantableRole" Type="Edm.String" Nullable="false"
+					MaxLength="512" />
+				<Property Name="GrantableRole.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="canLogonAsUser" Type="Edm.String"
+					MaxLength="1" />
+			</EntityType>
+			<EntityType Name="MyBusinessPartnersType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="BasicInfo_ID" Type="Edm.String" MaxLength="50" />
+				<Property Name="BasicInfo_CompanyID" Type="Edm.Binary" />
+				<Property Name="BasicInfo_Type" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="BasicInfo_Type.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Organization_Name" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Organization_RegistrationNumber" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="Organization_Registry" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="PersonName_Title" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_Surname" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_GivenName" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_JobFunction" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="PersonName_SurnamePrefix" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PostalAddress_Country" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PostalAddress_District" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="PostalAddress_PostalCode" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="PostalAddress_Street" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="PostalAddress_StreetName" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="PostalAddress_Town" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="CommunicationInfo_EmailAddress" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="CommunicationInfo_Fax" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="CommunicationInfo_Phone" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="CommunicationInfo_Website" Type="Edm.String"
+					MaxLength="2000" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="Owner" Type="Edm.Binary" />
+				<Property Name="InvitedByOrganization" Type="Edm.Binary" />
+				<Property Name="RequestType" Type="Edm.String" MaxLength="1" />
+				<Property Name="Request" Type="Edm.Binary" />
+				<Property Name="Role" Type="Edm.String" MaxLength="50" />
+				<Property Name="Role.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="isEditable" Type="Edm.Int32" />
+				<Property Name="UserID" Type="Edm.String" MaxLength="256" />
+				<Property Name="RegistrationRequest" Type="Edm.Binary" />
+				<Property Name="ImageUrl" Type="Edm.String" MaxLength="2000" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="MyOrganizationUUID" Type="Edm.Binary" />
+				<Property Name="RoleUUID" Type="Edm.Binary" />
+				<Property Name="RelationUUID" Type="Edm.Binary" />
+				<Property Name="Scope" Type="Edm.String" MaxLength="50" />
+				<Property Name="canShareVehicle" Type="Edm.Int32" />
+				<Property Name="isOrganizationEditable" Type="Edm.Int32" />
+				<Property Name="isOwner" Type="Edm.Int32" />
+				<Property Name="canTerminate" Type="Edm.Int32" />
+				<Property Name="isVehicleSharable" Type="Edm.Int32" />
+				<Property Name="RequestStatus" Type="Edm.String" MaxLength="2" />
+				<Property Name="Status" Type="Edm.String" MaxLength="2" />
+				<NavigationProperty Name="PointOfContact"
+					Relationship="sap.spl.xs.app.services.appl.BuPaToPOCType" FromRole="MyBusinessPartnersPrincipal"
+					ToRole="PointOfContactDependent" />
+				<NavigationProperty Name="SharedTrucks"
+					Relationship="sap.spl.xs.app.services.appl.BuPaToTrucksType"
+					FromRole="MyBusinessPartnersPrincipal" ToRole="SharedWithMyOrganizationDependent" />
+				<NavigationProperty Name="SharedVehicleList"
+					Relationship="sap.spl.xs.app.services.appl.BuPaToAllSharedType"
+					FromRole="MyBusinessPartnersPrincipal" ToRole="SharedListDependent" />
+			</EntityType>
+			<EntityType Name="PointOfContactType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="BasicInfo_ID" Type="Edm.String" MaxLength="50" />
+				<Property Name="BasicInfo_Type" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="BasicInfo_Type.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Organization_Name" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Organization_RegistrationNumber" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="Organization_Registry" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="PersonName_Title" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_Surname" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_GivenName" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_JobFunction" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="PersonName_SurnamePrefix" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PostalAddress_Country" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PostalAddress_District" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="PostalAddress_PostalCode" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="PostalAddress_Street" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="PostalAddress_StreetName" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="PostalAddress_Town" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="CommunicationInfo_EmailAddress" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="CommunicationInfo_Fax" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="CommunicationInfo_Phone" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="CommunicationInfo_Website" Type="Edm.String"
+					MaxLength="2000" />
+				<Property Name="UserID" Type="Edm.String" MaxLength="256" />
+				<Property Name="RegistrationRequest" Type="Edm.Binary" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="ImageUrl" Type="Edm.String" MaxLength="2000" />
+				<Property Name="Role" Type="Edm.String" MaxLength="50" />
+				<Property Name="Role.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="isMyself" Type="Edm.Int32" />
+				<Property Name="BasicInfo_CompanyID" Type="Edm.Binary" />
+			</EntityType>
+			<EntityType Name="MyThemePreferenceType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="Value" Type="Edm.String" MaxLength="50" />
+				<Property Name="Value_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="isSelected" Type="Edm.String" MaxLength="1" />
+			</EntityType>
+			<EntityType Name="MyUsersType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="BasicInfo_ID" Type="Edm.String" MaxLength="50" />
+				<Property Name="BasicInfo_CompanyID" Type="Edm.Binary" />
+				<Property Name="BasicInfo_Type" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="Organization_Name" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Organization_RegistrationNumber" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="Organization_Registry" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="PersonName_Title" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_Surname" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_GivenName" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_JobFunction" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="PersonName_SurnamePrefix" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PostalAddress_Country" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PostalAddress_District" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="PostalAddress_PostalCode" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="PostalAddress_Street" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="PostalAddress_StreetName" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="PostalAddress_Town" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="CommunicationInfo_EmailAddress" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="CommunicationInfo_Fax" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="CommunicationInfo_Phone" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="CommunicationInfo_Website" Type="Edm.String"
+					MaxLength="2000" />
+				<Property Name="UserID" Type="Edm.String" MaxLength="256" />
+				<Property Name="RegistrationRequest" Type="Edm.Binary" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="ImageUrl" Type="Edm.String" MaxLength="2000" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="BasicInfo_Type_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Owner" Type="Edm.Binary" />
+				<Property Name="InvitedByOrganization" Type="Edm.Binary" />
+				<Property Name="RequestType" Type="Edm.String" MaxLength="1" />
+				<Property Name="Request" Type="Edm.Binary" />
+				<Property Name="RequestStatus" Type="Edm.String" MaxLength="5" />
+				<Property Name="isEditableTemp" Type="Edm.Int32" />
+				<Property Name="RoleUUID" Type="Edm.Binary" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="isMyself" Type="Edm.Int32" />
+				<Property Name="Role" Type="Edm.String" MaxLength="512" />
+				<Property Name="Role.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="canChangeRole" Type="Edm.Int32" />
+				<Property Name="isEditable" Type="Edm.Int32" />
+				<Property Name="canMaintainTruck" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="canMaintainTourPreference" Type="Edm.String"
+					MaxLength="1" />
+				<NavigationProperty Name="ThemePreferences"
+					Relationship="sap.spl.xs.app.services.appl.UsersToThemeType"
+					FromRole="MyUsersPrincipal" ToRole="MyThemePreferenceDependent" />
+			</EntityType>
+			<EntityType Name="UIAppsType">
+				<Key>
+					<PropertyRef Name="AppName" />
+					<PropertyRef Name="SessionUser" />
+				</Key>
+				<Property Name="AppName" Type="Edm.String" Nullable="false"
+					MaxLength="100" />
+				<Property Name="AppName.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="AppPath" Type="Edm.String" MaxLength="1024" />
+				<Property Name="AppID" Type="Edm.String" MaxLength="20" />
+				<Property Name="AppIcon" Type="Edm.String" MaxLength="1024" />
+				<Property Name="SequenceNumber" Type="Edm.Int32" />
+				<Property Name="SessionUser" Type="Edm.String" Nullable="false"
+					MaxLength="256" />
+				<NavigationProperty Name="AppConfig"
+					Relationship="sap.spl.xs.app.services.appl.UIAppsToConfigType"
+					FromRole="UIAppsPrincipal" ToRole="AppConfigDataDependent" />
+			</EntityType>
+			<EntityType Name="MyOrganizationType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="BuPaReplication" Type="Edm.Int32" />
+				<Property Name="BasicInfo_ID" Type="Edm.String" MaxLength="50" />
+				<Property Name="BasicInfo_CompanyID" Type="Edm.Binary" />
+				<Property Name="BasicInfo_Type" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="Organization_Name" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Organization_RegistrationNumber" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="Organization_Registry" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="PersonName_Title" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_Surname" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_GivenName" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_JobFunction" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="PersonName_SurnamePrefix" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PostalAddress_Country" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PostalAddress_District" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="PostalAddress_PostalCode" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="PostalAddress_Street" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="PostalAddress_StreetName" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="PostalAddress_Town" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="CommunicationInfo_EmailAddress" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="CommunicationInfo_Fax" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="CommunicationInfo_Phone" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="CommunicationInfo_Website" Type="Edm.String"
+					MaxLength="2000" />
+				<Property Name="UserID" Type="Edm.String" MaxLength="256" />
+				<Property Name="RegistrationRequest" Type="Edm.Binary" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="ImageUrl" Type="Edm.String" MaxLength="2000" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="BasicInfo_Type_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="isMyOrganization" Type="Edm.Int32" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="isEditable" Type="Edm.Int32" />
+				<Property Name="Role" Type="Edm.String" MaxLength="50" />
+				<Property Name="Role_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="canMaintainWallet" Type="Edm.Int32" />
+				<Property Name="TourInputType" Type="Edm.String" MaxLength="1" />
+				<Property Name="canDelete" Type="Edm.Int32" />
+				<Property Name="canChangeTourInput" Type="Edm.Int32" />
+				<Property Name="canChangeSearchTemp" Type="Edm.Int32" />
+				<Property Name="isReplicated" Type="Edm.Int32" />
+				<Property Name="canChangeSearch" Type="Edm.Int32" />
+				<Property Name="CanChangeSubscriptionProductFinal" Type="Edm.Int32" />
+				<Property Name="CanChangeSubscriptionProduct" Type="Edm.Int32" />
+				<Property Name="TourInputTypeFinal" Type="Edm.String"
+					MaxLength="10" />
+				<NavigationProperty Name="Owners"
+					Relationship="sap.spl.xs.app.services.appl.MyOrganizationToRelationsType"
+					FromRole="MyOrganizationPrincipal" ToRole="RelationsDependent" />
+				<NavigationProperty Name="Owner"
+					Relationship="sap.spl.xs.app.services.appl.MyOwnerType" FromRole="MyOrganizationPrincipal"
+					ToRole="InvitationOwnerDependent" />
+			</EntityType>
+			<EntityType Name="GrantableRolesType">
+				<Key>
+					<PropertyRef Name="GrantableRole" />
+				</Key>
+				<Property Name="GrantableRole" Type="Edm.String" Nullable="false"
+					MaxLength="512" />
+				<Property Name="GrantableRole.description" Type="Edm.String"
+					MaxLength="100" />
+			</EntityType>
+			<EntityType Name="InvitationOwnerType">
+				<Key>
+					<PropertyRef Name="Owner" />
+				</Key>
+				<Property Name="MyOrganization" Type="Edm.Binary" />
+				<Property Name="Owner" Type="Edm.Binary" Nullable="false" />
+			</EntityType>
+			<EntityType Name="AppConfigDataType">
+				<Key>
+					<PropertyRef Name="AppID" />
+				</Key>
+				<Property Name="AppID" Type="Edm.String" Nullable="false"
+					MaxLength="30" />
+				<Property Name="canSendMessageOnMap" Type="Edm.Int32" />
+				<Property Name="isIncidentEditable" Type="Edm.Int32" />
+				<Property Name="canPublish" Type="Edm.Int32" />
+				<Property Name="isSearchVisible" Type="Edm.Int32" />
+				<Property Name="canSendMessageToTruck" Type="Edm.Int32" />
+				<Property Name="canSendMessageToGeofence" Type="Edm.Int32" />
+				<Property Name="isTrucksLabelVisible" Type="Edm.Int32" />
+				<Property Name="FeedPartnerMessage" Type="Edm.Int32" />
+				<Property Name="FeedTrafficMessage" Type="Edm.Int32" />
+				<Property Name="FeedIncidentMessage" Type="Edm.Int32" />
+				<Property Name="FeedTourMessage" Type="Edm.Int32" />
+				<Property Name="isFeedContextEnabled" Type="Edm.Int32" />
+				<Property Name="canViewShareVehicle" Type="Edm.Int32" />
+				<Property Name="canShareVehicle" Type="Edm.Int32" />
+				<Property Name="canViewParkingStatus" Type="Edm.Int32" />
+				<Property Name="canAssignTour" Type="Edm.Int32" />
+				<Property Name="canClickTruck" Type="Edm.Int32" />
+				<Property Name="canViewContainerStatus" Type="Edm.Int32" />
+				<Property Name="canPublishDisplayArea" Type="Edm.Int32" />
+				<Property Name="canSendMessageToTruckFromMap" Type="Edm.Int32" />
+				<Property Name="canViewRulesWithTour" Type="Edm.Int32" />
+				<Property Name="canEditRulesWithTour" Type="Edm.Int32" />
+				<Property Name="canViewRulesWithoutTour" Type="Edm.Int32" />
+				<Property Name="canEditRulesWithoutTour" Type="Edm.Int32" />
+				<Property Name="FeedDriverMessage" Type="Edm.Int32" />
+			</EntityType>
+			<EntityType Name="ProductListType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="Name" Type="Edm.String" MaxLength="100" />
+				<Property Name="Name.description" Type="Edm.String"
+					MaxLength="1024" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="ImageUrl" Type="Edm.String" MaxLength="2000" />
+				<Property Name="Website" Type="Edm.String" MaxLength="2000" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="isDefault" Type="Edm.String" MaxLength="1" />
+			</EntityType>
+			<EntityType Name="PossibleOwnerListType">
+				<Key>
+					<PropertyRef Name="OwnerID" />
+				</Key>
+				<Property Name="OwnerID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="OwnerName" Type="Edm.String" MaxLength="100" />
+				<Property Name="SubscriptionUUID" Type="Edm.Binary" />
+				<Property Name="SubscriptionProductName" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="RelationUUID" Type="Edm.Binary" />
+				<Property Name="isConnected" Type="Edm.Int32" />
+				<Property Name="SubscriptionName" Type="Edm.String"
+					MaxLength="1024" />
+				<Property Name="MyOrg" Type="Edm.Binary" />
+				<Property Name="isVisibleOnSearchTemp" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="OwnerRelationUUID" Type="Edm.Binary" />
+				<Property Name="isVisibleOnSearch" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="Role" Type="Edm.String" MaxLength="50" />
+				<NavigationProperty Name="SubscriptionProductList"
+					Relationship="sap.spl.xs.app.services.appl.SubscriptionProductOfSelectedOwnerType"
+					FromRole="PossibleOwnerListPrincipal" ToRole="SubscriptionProductListDependent" />
+			</EntityType>
+			<EntityType Name="IncidentAssignedLocationsType">
+				<Key>
+					<PropertyRef Name="LocationID" />
+				</Key>
+				<Property Name="IncidentUUID" Type="Edm.Binary" />
+				<Property Name="AssignmentID" Type="Edm.Binary" />
+				<Property Name="LocationID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="GateName" Type="Edm.String" MaxLength="256" />
+				<Property Name="GeoFenceName" Type="Edm.String" MaxLength="256" />
+				<Property Name="isStacked" Type="Edm.String" MaxLength="1" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="isPublic" Type="Edm.String" MaxLength="1" />
+				<Property Name="GeofenceID" Type="Edm.Binary" />
+				<Property Name="TechnicalLocationID" Type="Edm.Binary" />
+				<Property Name="Geometry" Type="Edm.String" MaxLength="2147483647" />
+			</EntityType>
+			<EntityType Name="IncidentDetailsType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="Name" Type="Edm.String" MaxLength="50" />
+				<Property Name="Priority" Type="Edm.String" MaxLength="1" />
+				<Property Name="Priority.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Category" Type="Edm.String" MaxLength="1" />
+				<Property Name="Category.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ShortText" Type="Edm.String" MaxLength="256" />
+				<Property Name="LongText" Type="Edm.String" MaxLength="1024" />
+				<Property Name="InternalName" Type="Edm.String" MaxLength="50" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="isEditable" Type="Edm.Int32" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="IncidentLocationGeometry" Type="Edm.String"
+					MaxLength="2147483647" />
+				<NavigationProperty Name="AssignedLocations"
+					Relationship="sap.spl.xs.app.services.appl.IncidentToLocationType"
+					FromRole="IncidentDetailsPrincipal" ToRole="IncidentAssignedLocationsDependent" />
+			</EntityType>
+			<EntityType Name="OccurredIncidentsType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="TemplateUUID" Type="Edm.Binary" />
+				<Property Name="Name" Type="Edm.String" MaxLength="50" />
+				<Property Name="Priority" Type="Edm.String" MaxLength="1" />
+				<Property Name="Category" Type="Edm.String" MaxLength="1" />
+				<Property Name="MessageType" Type="Edm.String" MaxLength="50" />
+				<Property Name="LongText" Type="Edm.String" MaxLength="5000" />
+				<Property Name="Validity_StartTime" Type="Edm.DateTime" />
+				<Property Name="Validity_EndTime" Type="Edm.DateTime" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="Category.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Priority.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="isValid" Type="Edm.Int32" />
+				<Property Name="isLocationNull" Type="Edm.Int32" />
+				<Property Name="SourceLocation" Type="Edm.String"
+					MaxLength="2147483647" />
+			</EntityType>
+			<EntityType Name="DistinctRolesType">
+				<Key>
+					<PropertyRef Name="Role" />
+				</Key>
+				<Property Name="Role" Type="Edm.String" Nullable="false"
+					MaxLength="50" />
+				<Property Name="Role.description" Type="Edm.String"
+					MaxLength="100" />
+			</EntityType>
+			<EntityType Name="RecipientListType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="BasicInfo_ID" Type="Edm.String" MaxLength="50" />
+				<Property Name="BasicInfo_CompanyID" Type="Edm.Binary" />
+				<Property Name="BasicInfo_Type" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="BasicInfo_Type.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Organization_Name" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Organization_RegistrationNumber" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="Organization_Registry" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="PersonName_Title" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_Surname" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_GivenName" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_JobFunction" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="PersonName_SurnamePrefix" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PostalAddress_Country" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PostalAddress_District" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="PostalAddress_PostalCode" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="PostalAddress_Street" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="PostalAddress_StreetName" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="PostalAddress_Town" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="CommunicationInfo_EmailAddress" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="CommunicationInfo_Fax" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="CommunicationInfo_Phone" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="CommunicationInfo_Website" Type="Edm.String"
+					MaxLength="2000" />
+				<Property Name="UserID" Type="Edm.String" MaxLength="256" />
+				<Property Name="RegistrationRequest" Type="Edm.Binary" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="ImageUrl" Type="Edm.String" MaxLength="2000" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="MyOrganizationUUID" Type="Edm.Binary" />
+				<Property Name="Status" Type="Edm.String" MaxLength="1" />
+				<Property Name="isOwner" Type="Edm.Int32" />
+				<Property Name="Role" Type="Edm.String" MaxLength="50" />
+				<Property Name="Role.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="RequestStatus" Type="Edm.String" MaxLength="2" />
+			</EntityType>
+			<EntityType Name="FeedRecipientListType">
+				<Key>
+					<PropertyRef Name="MessageUUID" />
+				</Key>
+				<Property Name="MessageUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="RecipientUUID" Type="Edm.Binary" />
+				<Property Name="RecipientName" Type="Edm.String" MaxLength="200" />
+				<Property Name="SenderID" Type="Edm.Binary" />
+				<Property Name="SenderName" Type="Edm.String" MaxLength="250" />
+				<Property Name="isSent" Type="Edm.Int32" />
+			</EntityType>
+			<EntityType Name="ThreadListType">
+				<Key>
+					<PropertyRef Name="ThreadUUID" />
+				</Key>
+				<Property Name="ThreadUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="SenderID" Type="Edm.Binary" />
+				<Property Name="Type" Type="Edm.String" MaxLength="50" />
+				<Property Name="RecipientUUID" Type="Edm.Binary" />
+			</EntityType>
+			<EntityType Name="MyFeedType">
+				<Key>
+					<PropertyRef Name="MessageUUID" />
+				</Key>
+				<Property Name="MessageType" Type="Edm.String" MaxLength="512" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="MessageUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="RecipientName" Type="Edm.String" MaxLength="200" />
+				<Property Name="TemplateUUID" Type="Edm.Binary" />
+				<Property Name="ShortText" Type="Edm.String" MaxLength="256" />
+				<Property Name="Text1" Type="Edm.String" MaxLength="5000" />
+				<Property Name="Priority" Type="Edm.String" MaxLength="1" />
+				<Property Name="Priority.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Validity_StartTime" Type="Edm.DateTime" />
+				<Property Name="Validity_EndTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="ReportedTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="SenderDeviceID" Type="Edm.Binary" />
+				<Property Name="SourceLocation" Type="Edm.String"
+					MaxLength="5000" />
+				<Property Name="ThreadUUID" Type="Edm.Binary" />
+				<Property Name="EventUUID" Type="Edm.Binary" />
+				<Property Name="EventCode" Type="Edm.String" MaxLength="256" />
+				<Property Name="EventType" Type="Edm.String" MaxLength="1" />
+				<Property Name="TourUUID" Type="Edm.Binary" />
+				<Property Name="StopUUID" Type="Edm.Binary" />
+				<Property Name="ItemUUID" Type="Edm.Binary" />
+				<Property Name="EventSequenceNumber" Type="Edm.String"
+					MaxLength="5" />
+				<Property Name="SenderName" Type="Edm.String" MaxLength="250" />
+				<Property Name="InstanceUUID" Type="Edm.Binary" />
+				<Property Name="RecipientUUID" Type="Edm.Binary" />
+				<Property Name="isRead" Type="Edm.String" MaxLength="1" />
+				<Property Name="MessageRecipientID" Type="Edm.Binary" />
+				<Property Name="SenderID" Type="Edm.Binary" />
+				<Property Name="RelationUUID" Type="Edm.Binary" />
+				<Property Name="isThirdPartyMessage" Type="Edm.Int32" />
+				<Property Name="RecipientCount" Type="Edm.Int32" />
+				<Property Name="isReplicated" Type="Edm.Int32" />
+				<Property Name="isNotification" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="isActive" Type="Edm.String" MaxLength="1" />
+				<Property Name="isReplicationFailed" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="isReplicationDeferred" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="ReplicationRetryCount" Type="Edm.Int32" />
+				<Property Name="isSubscribed" Type="Edm.String" MaxLength="1" />
+				<Property Name="VehicleSubscriptionChangeTime" Type="Edm.DateTime" />
+				<Property Name="ReferenceObjectType" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="ReferenceObjectUUID" Type="Edm.Binary" />
+				<NavigationProperty Name="FeedControl"
+					Relationship="sap.spl.xs.app.services.appl.FeedToControlType"
+					FromRole="MyFeedPrincipal" ToRole="FeedListControlDependent" />
+			</EntityType>
+			<EntityType Name="FeedListControlType">
+				<Key>
+					<PropertyRef Name="MessageUUID" />
+				</Key>
+				<Property Name="MessageUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="TemplateUUID" Type="Edm.Binary" />
+				<Property Name="ShortText" Type="Edm.String" MaxLength="256" />
+				<Property Name="Text1" Type="Edm.String" MaxLength="5000" />
+				<Property Name="Priority" Type="Edm.String" MaxLength="1" />
+				<Property Name="Priority.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Validity_StartTime" Type="Edm.DateTime" />
+				<Property Name="Validity_EndTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="SenderID" Type="Edm.Binary" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="MessageType" Type="Edm.String" MaxLength="512" />
+				<Property Name="SenderDeviceID" Type="Edm.Binary" />
+				<Property Name="EventUUID" Type="Edm.Binary" />
+				<Property Name="SourceLocation" Type="Edm.String"
+					MaxLength="5000" />
+				<Property Name="ThreadUUID" Type="Edm.Binary" />
+				<Property Name="RecipientCount" Type="Edm.Int32" />
+				<Property Name="isSentByMe" Type="Edm.Int32" />
+				<Property Name="ReportedTime" Type="Edm.DateTime" />
+				<Property Name="OnClickAction" Type="Edm.String" MaxLength="1" />
+				<Property Name="ActionType" Type="Edm.String" MaxLength="50" />
+				<Property Name="ActionNumber" Type="Edm.String" MaxLength="10" />
+				<Property Name="Icon" Type="Edm.String" MaxLength="100" />
+				<Property Name="NavigationPath" Type="Edm.String"
+					MaxLength="1000" />
+				<Property Name="MessageType_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="OnClickAction_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ActionType_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="RecipientUUID" Type="Edm.Binary" />
+				<Property Name="RecipientName" Type="Edm.String" MaxLength="200" />
+				<Property Name="EventCode" Type="Edm.String" MaxLength="256" />
+				<Property Name="EventType" Type="Edm.String" MaxLength="1" />
+				<Property Name="TourUUID" Type="Edm.Binary" />
+				<Property Name="StopUUID" Type="Edm.Binary" />
+				<Property Name="ItemUUID" Type="Edm.Binary" />
+				<Property Name="EventSequenceNumber" Type="Edm.String"
+					MaxLength="5" />
+				<Property Name="SenderName" Type="Edm.String" MaxLength="250" />
+				<Property Name="RelationUUID" Type="Edm.Binary" />
+				<Property Name="isRead" Type="Edm.String" MaxLength="1" />
+				<Property Name="InstanceUUID" Type="Edm.Binary" />
+				<Property Name="isThirdPartyMessage" Type="Edm.Int32" />
+				<Property Name="isSent" Type="Edm.Int32" />
+			</EntityType>
+			<EntityType Name="ChatMessageType">
+				<Key>
+					<PropertyRef Name="MessageUUID" />
+				</Key>
+				<Property Name="MessageUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="TemplateUUID" Type="Edm.Binary" />
+				<Property Name="ShortText" Type="Edm.String" MaxLength="256" />
+				<Property Name="Text" Type="Edm.String" MaxLength="1024" />
+				<Property Name="Priority" Type="Edm.String" MaxLength="1" />
+				<Property Name="Priority.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Validity_StartTime" Type="Edm.DateTime" />
+				<Property Name="Validity_EndTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="SenderID" Type="Edm.Binary" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="MessageType" Type="Edm.String" MaxLength="50" />
+				<Property Name="SenderDeviceID" Type="Edm.Binary" />
+				<Property Name="EventUUID" Type="Edm.Binary" />
+				<Property Name="SourceLocation" Type="Edm.String"
+					MaxLength="5000" />
+				<Property Name="ThreadUUID" Type="Edm.Binary" />
+				<Property Name="RecipientUUID" Type="Edm.Binary" />
+				<Property Name="MessageDirection" Type="Edm.String"
+					MaxLength="5" />
+				<Property Name="ReportedTime" Type="Edm.DateTime" />
+				<Property Name="ReplicationStatus" Type="Edm.Int32" />
+				<Property Name="VehicleSubscriptionChangeTime" Type="Edm.DateTime" />
+				<Property Name="isSubscribed" Type="Edm.String" MaxLength="1" />
+			</EntityType>
+			<EntityType Name="SentMessageType">
+				<Key>
+					<PropertyRef Name="MessageUUID" />
+				</Key>
+				<Property Name="MessageUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="TemplateUUID" Type="Edm.Binary" />
+				<Property Name="ShortText" Type="Edm.String" MaxLength="256" />
+				<Property Name="Text1" Type="Edm.String" MaxLength="1024" />
+				<Property Name="Priority" Type="Edm.String" MaxLength="1" />
+				<Property Name="Priority.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Validity_StartTime" Type="Edm.DateTime" />
+				<Property Name="Validity_EndTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="ReportedTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="SenderID" Type="Edm.Binary" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="MessageType" Type="Edm.String" MaxLength="512" />
+				<Property Name="SenderDeviceID" Type="Edm.Binary" />
+				<Property Name="EventUUID" Type="Edm.Binary" />
+				<Property Name="SourceLocation" Type="Edm.String"
+					MaxLength="5000" />
+				<Property Name="ThreadUUID" Type="Edm.Binary" />
+				<Property Name="RecipientCount" Type="Edm.Int32" />
+				<Property Name="PersonName_Surname" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PersonName_GivenName" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Organization_Name" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="isSentByMe" Type="Edm.Int32" />
+				<Property Name="SenderName" Type="Edm.String" MaxLength="200" />
+				<Property Name="isSent" Type="Edm.Int32" />
+				<Property Name="RecipientName" Type="Edm.String" MaxLength="200" />
+				<Property Name="RecipientUUID" Type="Edm.Binary" />
+			</EntityType>
+			<EntityType Name="SentMessageContextType">
+				<Key>
+					<PropertyRef Name="MessageUUID" />
+				</Key>
+				<Property Name="MessageUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="TemplateUUID" Type="Edm.Binary" />
+				<Property Name="ShortText" Type="Edm.String" MaxLength="256" />
+				<Property Name="Text1" Type="Edm.String" MaxLength="1024" />
+				<Property Name="Priority" Type="Edm.String" MaxLength="1" />
+				<Property Name="Priority.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Validity_StartTime" Type="Edm.DateTime" />
+				<Property Name="Validity_EndTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="SenderID" Type="Edm.Binary" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="MessageType" Type="Edm.String" MaxLength="512" />
+				<Property Name="SenderDeviceID" Type="Edm.Binary" />
+				<Property Name="EventUUID" Type="Edm.Binary" />
+				<Property Name="SourceLocation" Type="Edm.String"
+					MaxLength="5000" />
+				<Property Name="ThreadUUID" Type="Edm.Binary" />
+				<Property Name="RecipientCount" Type="Edm.Int32" />
+				<Property Name="isSentByMe" Type="Edm.Int32" />
+				<Property Name="ReportedTime" Type="Edm.DateTime" />
+				<Property Name="OnClickAction" Type="Edm.String" MaxLength="1" />
+				<Property Name="ActionType" Type="Edm.String" MaxLength="50" />
+				<Property Name="ActionNumber" Type="Edm.String" MaxLength="10" />
+				<Property Name="Icon" Type="Edm.String" MaxLength="100" />
+				<Property Name="NavigationPath" Type="Edm.String"
+					MaxLength="1000" />
+				<Property Name="MessageType_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="OnClickAction_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ActionType_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="isSent" Type="Edm.Int32" />
+			</EntityType>
+			<EntityType Name="LocationCreateEnumType">
+				<Key>
+					<PropertyRef Name="Value" />
+				</Key>
+				<Property Name="Value" Type="Edm.String" Nullable="false"
+					MaxLength="512" />
+				<Property Name="Value.description" Type="Edm.String"
+					MaxLength="100" />
+			</EntityType>
+			<EntityType Name="LocationViewEnumType">
+				<Key>
+					<PropertyRef Name="Value" />
+				</Key>
+				<Property Name="Value" Type="Edm.String" Nullable="false"
+					MaxLength="512" />
+				<Property Name="Value.description" Type="Edm.String"
+					MaxLength="100" />
+			</EntityType>
+			<EntityType Name="SubscriptionProductListType">
+				<Key>
+					<PropertyRef Name="ProductUUID" />
+				</Key>
+				<Property Name="ProductUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="Name" Type="Edm.String" MaxLength="100" />
+				<Property Name="Name.description" Type="Edm.String"
+					MaxLength="1024" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="Role" Type="Edm.String" MaxLength="50" />
+			</EntityType>
+			<EntityType Name="VehiclePositionsType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="DeviceUUID" Type="Edm.Binary" />
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="Type" Type="Edm.String" MaxLength="2" />
+				<Property Name="Type.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PublicName" Type="Edm.String" MaxLength="100" />
+				<Property Name="DriverID" Type="Edm.Binary" />
+				<Property Name="RegistrationNumber" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="CountryCode" Type="Edm.String" MaxLength="3" />
+				<Property Name="Status" Type="Edm.String" MaxLength="1" />
+				<Property Name="Status.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ImageUrl" Type="Edm.String" MaxLength="256" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="DriverName" Type="Edm.String" MaxLength="100" />
+				<Property Name="DriverPhoneNumber" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="isTruckRunningLate" Type="Edm.Int32" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="isEditable" Type="Edm.Int32" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="ReportedTime" Type="Edm.DateTime" />
+				<Property Name="TourUUID" Type="Edm.Binary" />
+				<Property Name="StopUUID" Type="Edm.Binary" />
+				<Property Name="TourName" Type="Edm.String" MaxLength="100" />
+				<Property Name="TourNextStop" Type="Edm.String" MaxLength="100" />
+				<Property Name="ETA" Type="Edm.DateTime" />
+				<Property Name="Planned_ArrivalTime" Type="Edm.DateTime" />
+				<Property Name="NextTourUUID" Type="Edm.Binary" />
+				<Property Name="NextTourName" Type="Edm.String" MaxLength="100" />
+				<Property Name="NextTourStartTime" Type="Edm.DateTime" />
+				<Property Name="isTerminated" Type="Edm.Int32" />
+				<Property Name="Position" Type="Edm.String" MaxLength="2147483647" />
+			</EntityType>
+			<EntityType Name="VehiclePositionHistoryType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="DeviceUUID" Type="Edm.Binary" />
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="Type" Type="Edm.String" MaxLength="2" />
+				<Property Name="Type.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PublicName" Type="Edm.String" MaxLength="100" />
+				<Property Name="DriverID" Type="Edm.Binary" />
+				<Property Name="RegistrationNumber" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="CountryCode" Type="Edm.String" MaxLength="3" />
+				<Property Name="Status" Type="Edm.String" MaxLength="1" />
+				<Property Name="Status.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ImageUrl" Type="Edm.String" MaxLength="256" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="DriverName" Type="Edm.String" MaxLength="100" />
+				<Property Name="DriverPhoneNumber" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="isTruckRunningLate" Type="Edm.Int32" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="isEditable" Type="Edm.Int32" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="ReportedTime" Type="Edm.DateTime" />
+				<Property Name="TourUUID" Type="Edm.Binary" />
+				<Property Name="StopUUID" Type="Edm.Binary" />
+				<Property Name="TourName" Type="Edm.String" MaxLength="100" />
+				<Property Name="TourNextStop" Type="Edm.String" MaxLength="100" />
+				<Property Name="ETA" Type="Edm.DateTime" />
+				<Property Name="Planned_ArrivalTime" Type="Edm.DateTime" />
+				<Property Name="NextTourUUID" Type="Edm.Binary" />
+				<Property Name="NextTourName" Type="Edm.String" MaxLength="100" />
+				<Property Name="NextTourStartTime" Type="Edm.DateTime" />
+				<Property Name="isTerminated" Type="Edm.Int32" />
+				<Property Name="PositionGeo" Type="Edm.String" MaxLength="2147483647" />
+			</EntityType>
+			<EntityType Name="MyDevicesType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="VehicleUUID" Type="Edm.Binary" />
+				<Property Name="AssignmentTime" Type="Edm.DateTime" />
+				<Property Name="isUnAssigned" Type="Edm.Int32" />
+				<Property Name="isEditable" Type="Edm.Int32" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="DeviceType" Type="Edm.String" MaxLength="20" />
+				<Property Name="UniqueID" Type="Edm.String" MaxLength="50" />
+				<Property Name="PhoneNumber" Type="Edm.String" MaxLength="50" />
+				<Property Name="PublicName" Type="Edm.String" MaxLength="100" />
+				<Property Name="Status" Type="Edm.String" MaxLength="1" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="DeviceType_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Status_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+			</EntityType>
+			<EntityType Name="SharedListType">
+				<Key>
+					<PropertyRef Name="UUID" />
+					<PropertyRef Name="Partner" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="Partner" Type="Edm.Binary" Nullable="false" />
+				<Property Name="TourName" Type="Edm.String" MaxLength="100" />
+				<Property Name="PublicName" Type="Edm.String" MaxLength="100" />
+				<Property Name="DriverID" Type="Edm.Binary" />
+				<Property Name="RegistrationNumber" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="DriverName" Type="Edm.String" MaxLength="100" />
+				<Property Name="DriverPhoneNumber" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="Partner_Name" Type="Edm.String" MaxLength="100" />
+				<Property Name="RelationUUID" Type="Edm.Binary" />
+				<Property Name="Role" Type="Edm.String" MaxLength="50" />
+				<Property Name="Role_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="TourDate" Type="Edm.DateTime" />
+				<Property Name="TourActive" Type="Edm.Int32" />
+				<Property Name="TourCount" Type="Edm.Int32" />
+				<Property Name="ShareDirection" Type="Edm.String"
+					MaxLength="5" />
+				<Property Name="isShared" Type="Edm.Int32" />
+			</EntityType>
+			<EntityType Name="MyTrackableObjectsType">
+				<Key>
+					<PropertyRef Name="UUID" />
+					<PropertyRef Name="DeviceUUID" />
+				</Key>
+				<Property Name="ObjectType" Type="Edm.String" MaxLength="50" />
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="RegistrationNumber" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="Status" Type="Edm.String" MaxLength="1" />
+				<Property Name="Status.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Type" Type="Edm.String" MaxLength="2" />
+				<Property Name="Type.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="DriverID" Type="Edm.Binary" />
+				<Property Name="ImageUrl" Type="Edm.String" MaxLength="256" />
+				<Property Name="DriverName" Type="Edm.String" MaxLength="100" />
+				<Property Name="DriverPhoneNumber" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="isEditable" Type="Edm.Int32" />
+				<Property Name="PublicName" Type="Edm.String" MaxLength="100" />
+				<Property Name="isSharedByMyOrg" Type="Edm.Int32" />
+				<Property Name="isSharedWithMyOrg" Type="Edm.Int32" />
+				<Property Name="isAnonymous" Type="Edm.Int32" />
+				<Property Name="isTerminated" Type="Edm.Int32" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="DeviceType" Type="Edm.String" MaxLength="20" />
+				<Property Name="DeviceType.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="UniqueID" Type="Edm.String" MaxLength="50" />
+				<Property Name="PhoneNumber" Type="Edm.String" MaxLength="50" />
+				<Property Name="DeviceOwnerID" Type="Edm.Binary" />
+				<Property Name="DevicePublicName" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="DeviceStatus" Type="Edm.String" MaxLength="1" />
+				<Property Name="DeviceStatus.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="AssignmentTime" Type="Edm.DateTime" />
+				<Property Name="DeviceCategory" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="DeviceCategory_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="isReplicated" Type="Edm.Int32" />
+				<Property Name="isSubscribed" Type="Edm.String" MaxLength="1" />
+				<Property Name="VehicleSubscriptionChangeTime" Type="Edm.DateTime" />
+				<Property Name="DeviceUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="DeviceReplicationStatus" Type="Edm.Int32" />
+			</EntityType>
+			<EntityType Name="SharedTrackableObjectsType">
+				<Key>
+					<PropertyRef Name="UUID" />
+					<PropertyRef Name="Partner" />
+				</Key>
+				<Property Name="isShared" Type="Edm.Int32" />
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="Partner" Type="Edm.Binary" Nullable="false" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="RegistrationNumber" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="Status" Type="Edm.String" MaxLength="1" />
+				<Property Name="Type" Type="Edm.String" MaxLength="2" />
+				<Property Name="DriverID" Type="Edm.Binary" />
+				<Property Name="CountryCode" Type="Edm.String" MaxLength="3" />
+				<Property Name="ImageUrl" Type="Edm.String" MaxLength="256" />
+				<Property Name="DriverName" Type="Edm.String" MaxLength="100" />
+				<Property Name="PublicName" Type="Edm.String" MaxLength="100" />
+				<Property Name="Type_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Status_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="isEditable" Type="Edm.Int32" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="PartnerName" Type="Edm.String" MaxLength="100" />
+				<Property Name="Role" Type="Edm.String" MaxLength="50" />
+				<Property Name="Role_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="RelationUUID" Type="Edm.Binary" />
+			</EntityType>
+			<EntityType Name="SharedWithMyOrganizationType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="MyOrganization" Type="Edm.Binary" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="Type" Type="Edm.String" MaxLength="2" />
+				<Property Name="PublicName" Type="Edm.String" MaxLength="100" />
+				<Property Name="DriverID" Type="Edm.Binary" />
+				<Property Name="RegistrationNumber" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="CountryCode" Type="Edm.String" MaxLength="3" />
+				<Property Name="Status" Type="Edm.String" MaxLength="1" />
+				<Property Name="ImageUrl" Type="Edm.String" MaxLength="256" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="DriverName" Type="Edm.String" MaxLength="100" />
+				<Property Name="DriverPhoneNumber" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="Type_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Status_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="isEditable" Type="Edm.Int32" />
+			</EntityType>
+			<EntityType Name="TrackableObjectsWithinViewType">
+				<Key>
+					<PropertyRef Name="LocationID" />
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="LocationID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="DeviceUUID" Type="Edm.Binary" />
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="RegistrationNumber" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="isWithin" Type="Edm.Int32" Nullable="false" />
+				<Property Name="Position" Type="Edm.String" MaxLength="2147483647" />
+				<Property Name="TourName" Type="Edm.String" MaxLength="100" />
+			</EntityType>
+			<EntityType Name="CommunicationLogType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="Package" Type="Edm.String" MaxLength="255" />
+				<Property Name="Object" Type="Edm.String" MaxLength="255" />
+				<Property Name="Direction" Type="Edm.String" MaxLength="1" />
+				<Property Name="Request" Type="Edm.String" MaxLength="2147483647" />
+				<Property Name="RequestHeaders" Type="Edm.String"
+					MaxLength="2147483647" />
+				<Property Name="httpMethod" Type="Edm.String" MaxLength="10" />
+				<Property Name="ResponseCode" Type="Edm.Int32" />
+				<Property Name="Response" Type="Edm.String" MaxLength="2147483647" />
+				<Property Name="ResponseHeaders" Type="Edm.String"
+					MaxLength="2147483647" />
+				<Property Name="Duration" Type="Edm.Int32" />
+				<Property Name="StartTime" Type="Edm.DateTime" />
+				<Property Name="EndTime" Type="Edm.DateTime" />
+				<Property Name="ReferenceUUID" Type="Edm.Binary" />
+				<Property Name="ReferenceID" Type="Edm.String" MaxLength="255" />
+				<Property Name="DestinationSuffix" Type="Edm.String"
+					MaxLength="255" />
+				<Property Name="ResponseHasNoContent" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="LogonUser" Type="Edm.String" MaxLength="255" />
+			</EntityType>
+			<EntityType Name="CommLogObjectsType">
+				<Key>
+					<PropertyRef Name="ID" />
+				</Key>
+				<Property Name="ID" Type="Edm.String" Nullable="false"
+					MaxLength="2147483647" />
+				<Property Name="OBJECT" Type="Edm.String" MaxLength="255" />
+			</EntityType>
+			<EntityType Name="CommLogObjectsParametersType">
+				<Key>
+					<PropertyRef Name="starttime" />
+					<PropertyRef Name="endtime" />
+				</Key>
+				<Property Name="starttime" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="endtime" Type="Edm.DateTime" Nullable="false" />
+				<NavigationProperty Name="Results"
+					Relationship="sap.spl.xs.app.services.appl.CommLogObjectsParameters_CommLogObjectsType"
+					FromRole="CommLogObjectsParametersPrincipal" ToRole="CommLogObjectsDependent" />
+			</EntityType>
+			<EntityType Name="CommLogHTTPCodesType">
+				<Key>
+					<PropertyRef Name="ID" />
+				</Key>
+				<Property Name="ID" Type="Edm.String" Nullable="false"
+					MaxLength="2147483647" />
+				<Property Name="RESPONSECODE" Type="Edm.Int32" />
+			</EntityType>
+			<EntityType Name="CommLogHTTPCodesParametersType">
+				<Key>
+					<PropertyRef Name="starttime" />
+					<PropertyRef Name="endtime" />
+				</Key>
+				<Property Name="starttime" Type="Edm.DateTime" Nullable="false" />
+				<Property Name="endtime" Type="Edm.DateTime" Nullable="false" />
+				<NavigationProperty Name="Results"
+					Relationship="sap.spl.xs.app.services.appl.CommLogHTTPCodesParameters_CommLogHTTPCodesType"
+					FromRole="CommLogHTTPCodesParametersPrincipal" ToRole="CommLogHTTPCodesDependent" />
+			</EntityType>
+			<EntityType Name="ToursType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="TourID" Type="Edm.String" MaxLength="256" />
+				<Property Name="Name" Type="Edm.String" MaxLength="100" />
+				<Property Name="VehicleUUID" Type="Edm.Binary" />
+				<Property Name="TourStatus" Type="Edm.String" MaxLength="1" />
+				<Property Name="TourStatus.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Planned_StartTime" Type="Edm.DateTime" />
+				<Property Name="Planned_EndTime" Type="Edm.DateTime" />
+				<Property Name="Actual_StartTime" Type="Edm.DateTime" />
+				<Property Name="Actual_EndTime" Type="Edm.DateTime" />
+				<Property Name="Text" Type="Edm.String" MaxLength="256" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="AuditTrail_CreatedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_ChangedBy" Type="Edm.String"
+					MaxLength="256" />
+				<Property Name="AuditTrail_CreationTime" Type="Edm.DateTime" />
+				<Property Name="AuditTrail_ChangeTime" Type="Edm.DateTime" />
+				<Property Name="RegistrationNumber" Type="Edm.String"
+					MaxLength="200" />
+				<Property Name="DriverName" Type="Edm.String" MaxLength="100" />
+				<Property Name="DriverPhoneNumber" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="EventSchema" Type="Edm.String" MaxLength="50" />
+				<Property Name="CurrentStop" Type="Edm.Binary" />
+				<Property Name="PlannedDuration" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ActualDuration" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="TourDelay" Type="Edm.String" MaxLength="100" />
+				<Property Name="isReplicated" Type="Edm.Int32" />
+				<Property Name="OwnerID" Type="Edm.Binary" />
+				<Property Name="DelayCount" Type="Edm.Int32" />
+				<Property Name="isEditable" Type="Edm.Int32" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="VehicleSubscriptionChangeTime" Type="Edm.DateTime" />
+				<Property Name="isSubscribed" Type="Edm.String" MaxLength="1" />
+				<Property Name="LowerThreshold" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="UpperThreshold" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="WarningValue" Type="Edm.String" MaxLength="100" />
+				<Property Name="CriticalValue" Type="Edm.String" MaxLength="100" />
+				<Property Name="TourState" Type="Edm.Int32" />
+				<Property Name="CriticalDuration" Type="Edm.Double" />
+				<Property Name="WarningDuration" Type="Edm.Double" />
+				<Property Name="MinTurnAroundTimeIndex" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="MaxTurnAroundTimeIndex" Type="Edm.String"
+					MaxLength="100" />
+				<NavigationProperty Name="Stops"
+					Relationship="sap.spl.xs.app.services.appl.ToursToStopsType"
+					FromRole="ToursPrincipal" ToRole="StopsDependent" />
+				<NavigationProperty Name="Items"
+					Relationship="sap.spl.xs.app.services.appl.ToursToItemsType"
+					FromRole="ToursPrincipal" ToRole="TourItemsDependent" />
+				<NavigationProperty Name="Log"
+					Relationship="sap.spl.xs.app.services.appl.ToursToLogType"
+					FromRole="ToursPrincipal" ToRole="TourActivityLogDependent" />
+				<NavigationProperty Name="Position"
+					Relationship="sap.spl.xs.app.services.appl.TourToPositionType"
+					FromRole="ToursPrincipal" ToRole="VehiclePositionsDependent" />
+				<NavigationProperty Name="PositionHistory"
+					Relationship="sap.spl.xs.app.services.appl.TourToPositionHistoryType"
+					FromRole="ToursPrincipal" ToRole="VehiclePositionHistoryDependent" />
+			</EntityType>
+			<EntityType Name="StopsType">
+				<Key>
+					<PropertyRef Name="UUID" />
+				</Key>
+				<Property Name="UUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="TourUUID" Type="Edm.Binary" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="isEditable" Type="Edm.Int32" />
+				<Property Name="Sequence" Type="Edm.String" MaxLength="5" />
+				<Property Name="Name" Type="Edm.String" MaxLength="100" />
+				<Property Name="Description" Type="Edm.String" MaxLength="100" />
+				<Property Name="Status" Type="Edm.String" MaxLength="1" />
+				<Property Name="LastReportedEvent" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Planned_ArrivalTime" Type="Edm.DateTime" />
+				<Property Name="Planned_DepartureTime" Type="Edm.DateTime" />
+				<Property Name="Actual_ArrivalTime" Type="Edm.DateTime" />
+				<Property Name="Actual_DepartureTime" Type="Edm.DateTime" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="VehicleUUID" Type="Edm.Binary" />
+				<Property Name="ETA" Type="Edm.DateTime" />
+				<Property Name="ReportedTime" Type="Edm.DateTime" />
+				<Property Name="LocationID" Type="Edm.Binary" />
+				<Property Name="CareOfName" Type="Edm.String" MaxLength="100" />
+				<Property Name="RoomID" Type="Edm.String" MaxLength="50" />
+				<Property Name="BuildingID" Type="Edm.String" MaxLength="50" />
+				<Property Name="HouseID" Type="Edm.String" MaxLength="50" />
+				<Property Name="AdditionalHouseID" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="StreetName" Type="Edm.String" MaxLength="100" />
+				<Property Name="CityName" Type="Edm.String" MaxLength="100" />
+				<Property Name="DistrictName" Type="Edm.String" MaxLength="100" />
+				<Property Name="StreetPostalCode" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="RegionCode" Type="Edm.String" MaxLength="50" />
+				<Property Name="CountryCode" Type="Edm.String" MaxLength="50" />
+				<Property Name="RegionName" Type="Edm.String" MaxLength="100" />
+				<Property Name="CountryName" Type="Edm.String" MaxLength="100" />
+				<Property Name="AddressUUID" Type="Edm.Binary" />
+				<Property Name="DaysBetween" Type="Edm.Int32" />
+				<Property Name="isReplicated" Type="Edm.Int32" />
+				<Property Name="ActualSequence" Type="Edm.String"
+					MaxLength="5" />
+				<Property Name="ArrivalDelay" Type="Edm.String" MaxLength="100" />
+				<Property Name="DepartureDelay" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ETAStatus" Type="Edm.String" MaxLength="20" />
+				<Property Name="ArrivalTime" Type="Edm.DateTime" />
+				<Property Name="ActualStayDuration" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="PlannedStayDuration" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="TurnAroundTimeIndex" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="GeometryGeo" Type="Edm.String" MaxLength="2147483647" />
+				<NavigationProperty Name="AssignedItems"
+					Relationship="sap.spl.xs.app.services.appl.StopsToItemsType"
+					FromRole="StopsPrincipal" ToRole="ItemsDependent" />
+			</EntityType>
+			<EntityType Name="ItemsType">
+				<Key>
+					<PropertyRef Name="ItemUUID" />
+					<PropertyRef Name="StopUUID" />
+				</Key>
+				<Property Name="TourUUID" Type="Edm.Binary" />
+				<Property Name="isEditable" Type="Edm.Int32" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="ItemUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="StopUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="ItemID" Type="Edm.String" MaxLength="256" />
+				<Property Name="AssignmentType" Type="Edm.String"
+					MaxLength="1" />
+				<Property Name="Type" Type="Edm.String" MaxLength="1" />
+				<Property Name="Type_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="AssignmentType_description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Detail1" Type="Edm.String" MaxLength="100" />
+				<Property Name="Detail2" Type="Edm.String" MaxLength="100" />
+				<Property Name="Detail3" Type="Edm.String" MaxLength="100" />
+				<Property Name="DangerGoodsClass" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="ContainerType" Type="Edm.String" MaxLength="50" />
+				<Property Name="Description" Type="Edm.String" MaxLength="256" />
+				<Property Name="Weight_Unit" Type="Edm.String" MaxLength="50" />
+				<Property Name="Weight_Value" Type="Edm.String" MaxLength="100" />
+				<Property Name="Volume_Value" Type="Edm.String" MaxLength="100" />
+				<Property Name="Volume_Unit" Type="Edm.String" MaxLength="50" />
+				<Property Name="Quantity_Value" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Quantity_Unit" Type="Edm.String" MaxLength="50" />
+				<Property Name="Length_Value" Type="Edm.String" MaxLength="100" />
+				<Property Name="Length_Unit" Type="Edm.String" MaxLength="50" />
+				<Property Name="Height_Unit" Type="Edm.String" MaxLength="50" />
+				<Property Name="Width_Value" Type="Edm.String" MaxLength="100" />
+				<Property Name="Width_Unit" Type="Edm.String" MaxLength="50" />
+				<Property Name="Height_Value" Type="Edm.String" MaxLength="100" />
+			</EntityType>
+			<EntityType Name="TourItemsType">
+				<Key>
+					<PropertyRef Name="ItemUUID" />
+					<PropertyRef Name="TourUUID" />
+				</Key>
+				<Property Name="ItemUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="ItemID" Type="Edm.String" MaxLength="256" />
+				<Property Name="TourUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="Type" Type="Edm.String" MaxLength="1" />
+				<Property Name="Detail1" Type="Edm.String" MaxLength="100" />
+				<Property Name="Detail2" Type="Edm.String" MaxLength="100" />
+				<Property Name="Detail3" Type="Edm.String" MaxLength="100" />
+				<Property Name="isEditable" Type="Edm.Int32" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="DangerGoodsClass" Type="Edm.String"
+					MaxLength="50" />
+				<Property Name="isDeleted" Type="Edm.String" MaxLength="1" />
+				<Property Name="ContainerType" Type="Edm.String" MaxLength="50" />
+				<Property Name="Description" Type="Edm.String" MaxLength="256" />
+				<Property Name="Weight_Value" Type="Edm.String" MaxLength="100" />
+				<Property Name="Weight_Unit" Type="Edm.String" MaxLength="50" />
+				<Property Name="Volume_Value" Type="Edm.String" MaxLength="100" />
+				<Property Name="Volume_Unit" Type="Edm.String" MaxLength="50" />
+				<Property Name="Quantity_Value" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Quantity_Unit" Type="Edm.String" MaxLength="50" />
+				<Property Name="Length_Value" Type="Edm.String" MaxLength="100" />
+				<Property Name="Length_Unit" Type="Edm.String" MaxLength="50" />
+				<Property Name="Height_Value" Type="Edm.String" MaxLength="100" />
+				<Property Name="Height_Unit" Type="Edm.String" MaxLength="50" />
+				<Property Name="Width_Value" Type="Edm.String" MaxLength="100" />
+				<Property Name="Width_Unit" Type="Edm.String" MaxLength="50" />
+				<Property Name="Type_description" Type="Edm.String"
+					MaxLength="100" />
+			</EntityType>
+			<EntityType Name="TourActivityLogType">
+				<Key>
+					<PropertyRef Name="MessageUUID" />
+					<PropertyRef Name="TourUUID" />
+				</Key>
+				<Property Name="MessageUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="MessageType" Type="Edm.String" MaxLength="50" />
+				<Property Name="Priority" Type="Edm.String" MaxLength="1" />
+				<Property Name="Priority.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ReportedTime" Type="Edm.DateTime" />
+				<Property Name="EventUUID" Type="Edm.Binary" />
+				<Property Name="EventCode" Type="Edm.String" MaxLength="256" />
+				<Property Name="StopUUID" Type="Edm.Binary" />
+				<Property Name="TourUUID" Type="Edm.Binary" Nullable="false" />
+				<Property Name="EventType" Type="Edm.String" MaxLength="1" />
+				<Property Name="SequenceNumber" Type="Edm.String"
+					MaxLength="5" />
+				<Property Name="EventText" Type="Edm.String" MaxLength="50" />
+				<Property Name="SenderDeviceID" Type="Edm.Binary" />
+				<Property Name="BasicInfo_CompanyID" Type="Edm.Binary" />
+				<Property Name="isReadable" Type="Edm.Int32" />
+				<Property Name="StopName" Type="Edm.String" MaxLength="100" />
+				<Property Name="PlannedStayDuration" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="ActualStayDuration" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="TurnAroundTimeIndex" Type="Edm.String"
+					MaxLength="100" />
+			</EntityType>
+			<Association Name="CommLogObjectsParameters_CommLogObjectsType">
+				<End Type="sap.spl.xs.app.services.appl.CommLogObjectsParametersType"
+					Role="CommLogObjectsParametersPrincipal" Multiplicity="*" />
+				<End Type="sap.spl.xs.app.services.appl.CommLogObjectsType"
+					Role="CommLogObjectsDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="CommLogHTTPCodesParameters_CommLogHTTPCodesType">
+				<End Type="sap.spl.xs.app.services.appl.CommLogHTTPCodesParametersType"
+					Role="CommLogHTTPCodesParametersPrincipal" Multiplicity="*" />
+				<End Type="sap.spl.xs.app.services.appl.CommLogHTTPCodesType"
+					Role="CommLogHTTPCodesDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="IncidentToLocationType">
+				<End Type="sap.spl.xs.app.services.appl.IncidentDetailsType"
+					Role="IncidentDetailsPrincipal" Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.IncidentAssignedLocationsType"
+					Role="IncidentAssignedLocationsDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="ToursToStopsType">
+				<End Type="sap.spl.xs.app.services.appl.ToursType" Role="ToursPrincipal"
+					Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.StopsType" Role="StopsDependent"
+					Multiplicity="*" />
+			</Association>
+			<Association Name="StopsToItemsType">
+				<End Type="sap.spl.xs.app.services.appl.StopsType" Role="StopsPrincipal"
+					Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.ItemsType" Role="ItemsDependent"
+					Multiplicity="*" />
+			</Association>
+			<Association Name="ToursToItemsType">
+				<End Type="sap.spl.xs.app.services.appl.ToursType" Role="ToursPrincipal"
+					Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.TourItemsType" Role="TourItemsDependent"
+					Multiplicity="*" />
+			</Association>
+			<Association Name="LocationToIncidentsType">
+				<End Type="sap.spl.xs.app.services.appl.MyLocationsType" Role="MyLocationsPrincipal"
+					Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.AssignedIncidentsType"
+					Role="AssignedIncidentsDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="LocationToRadarStatusType">
+				<End Type="sap.spl.xs.app.services.appl.MyLocationsType" Role="MyLocationsPrincipal"
+					Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.StatusOfMyRadarsType"
+					Role="StatusOfMyRadarsDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="LocationToGatesType">
+				<End Type="sap.spl.xs.app.services.appl.MyLocationsType" Role="MyLocationsPrincipal"
+					Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.GatesType" Role="GatesDependent"
+					Multiplicity="*" />
+			</Association>
+			<Association Name="LocationToFacilityType">
+				<End Type="sap.spl.xs.app.services.appl.MyLocationsType" Role="MyLocationsPrincipal"
+					Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.FacilityType" Role="FacilityDependent"
+					Multiplicity="*" />
+			</Association>
+			<Association Name="BuPaToPOCType">
+				<End Type="sap.spl.xs.app.services.appl.MyBusinessPartnersType"
+					Role="MyBusinessPartnersPrincipal" Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.PointOfContactType"
+					Role="PointOfContactDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="BuPaToTrucksType">
+				<End Type="sap.spl.xs.app.services.appl.MyBusinessPartnersType"
+					Role="MyBusinessPartnersPrincipal" Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.SharedWithMyOrganizationType"
+					Role="SharedWithMyOrganizationDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="MyOrganizationToRelationsType">
+				<End Type="sap.spl.xs.app.services.appl.MyOrganizationType"
+					Role="MyOrganizationPrincipal" Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.RelationsType" Role="RelationsDependent"
+					Multiplicity="*" />
+			</Association>
+			<Association Name="MyOwnerType">
+				<End Type="sap.spl.xs.app.services.appl.MyOrganizationType"
+					Role="MyOrganizationPrincipal" Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.InvitationOwnerType"
+					Role="InvitationOwnerDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="FeedToControlType">
+				<End Type="sap.spl.xs.app.services.appl.MyFeedType" Role="MyFeedPrincipal"
+					Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.FeedListControlType"
+					Role="FeedListControlDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="ToursToLogType">
+				<End Type="sap.spl.xs.app.services.appl.ToursType" Role="ToursPrincipal"
+					Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.TourActivityLogType"
+					Role="TourActivityLogDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="UIAppsToConfigType">
+				<End Type="sap.spl.xs.app.services.appl.UIAppsType" Role="UIAppsPrincipal"
+					Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.AppConfigDataType" Role="AppConfigDataDependent"
+					Multiplicity="*" />
+			</Association>
+			<Association Name="BuPaToAllSharedType">
+				<End Type="sap.spl.xs.app.services.appl.MyBusinessPartnersType"
+					Role="MyBusinessPartnersPrincipal" Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.SharedListType" Role="SharedListDependent"
+					Multiplicity="*" />
+			</Association>
+			<Association Name="SubscriptionProductOfSelectedOwnerType">
+				<End Type="sap.spl.xs.app.services.appl.PossibleOwnerListType"
+					Role="PossibleOwnerListPrincipal" Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.SubscriptionProductListType"
+					Role="SubscriptionProductListDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="TourToPositionType">
+				<End Type="sap.spl.xs.app.services.appl.ToursType" Role="ToursPrincipal"
+					Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.VehiclePositionsType"
+					Role="VehiclePositionsDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="TourToPositionHistoryType">
+				<End Type="sap.spl.xs.app.services.appl.ToursType" Role="ToursPrincipal"
+					Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.VehiclePositionHistoryType"
+					Role="VehiclePositionHistoryDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="UsersToThemeType">
+				<End Type="sap.spl.xs.app.services.appl.MyUsersType" Role="MyUsersPrincipal"
+					Multiplicity="1" />
+				<End Type="sap.spl.xs.app.services.appl.MyThemePreferenceType"
+					Role="MyThemePreferenceDependent" Multiplicity="*" />
+			</Association>
+			<EntityContainer Name="appl"
+				m:IsDefaultEntityContainer="true">
+				<EntitySet Name="MyLocations"
+					EntityType="sap.spl.xs.app.services.appl.MyLocationsType" />
+				<EntitySet Name="StatusOfMyRadars"
+					EntityType="sap.spl.xs.app.services.appl.StatusOfMyRadarsType" />
+				<EntitySet Name="Gates" EntityType="sap.spl.xs.app.services.appl.GatesType" />
+				<EntitySet Name="ViewList"
+					EntityType="sap.spl.xs.app.services.appl.ViewListType" />
+				<EntitySet Name="AssignedIncidents"
+					EntityType="sap.spl.xs.app.services.appl.AssignedIncidentsType" />
+				<EntitySet Name="Facility"
+					EntityType="sap.spl.xs.app.services.appl.FacilityType" />
+				<EntitySet Name="BusinessPartnerRoleRelation"
+					EntityType="sap.spl.xs.app.services.appl.BusinessPartnerRoleRelationType" />
+				<EntitySet Name="PersonPreferences"
+					EntityType="sap.spl.xs.app.services.appl.PersonPreferencesType" />
+				<EntitySet Name="ReplicationEntities"
+					EntityType="sap.spl.xs.app.services.appl.ReplicationEntitiesType" />
+				<EntitySet Name="TourPreference"
+					EntityType="sap.spl.xs.app.services.appl.TourPreferenceType" />
+				<EntitySet Name="Relations"
+					EntityType="sap.spl.xs.app.services.appl.RelationsType" />
+				<EntitySet Name="GrantableRolesForPerson"
+					EntityType="sap.spl.xs.app.services.appl.GrantableRolesForPersonType" />
+				<EntitySet Name="MyBusinessPartners"
+					EntityType="sap.spl.xs.app.services.appl.MyBusinessPartnersType" />
+				<EntitySet Name="PointOfContact"
+					EntityType="sap.spl.xs.app.services.appl.PointOfContactType" />
+				<EntitySet Name="MyThemePreference"
+					EntityType="sap.spl.xs.app.services.appl.MyThemePreferenceType" />
+				<EntitySet Name="MyUsers" EntityType="sap.spl.xs.app.services.appl.MyUsersType" />
+				<EntitySet Name="UIApps" EntityType="sap.spl.xs.app.services.appl.UIAppsType" />
+				<EntitySet Name="MyOrganization"
+					EntityType="sap.spl.xs.app.services.appl.MyOrganizationType" />
+				<EntitySet Name="GrantableRoles"
+					EntityType="sap.spl.xs.app.services.appl.GrantableRolesType" />
+				<EntitySet Name="InvitationOwner"
+					EntityType="sap.spl.xs.app.services.appl.InvitationOwnerType" />
+				<EntitySet Name="AppConfigData"
+					EntityType="sap.spl.xs.app.services.appl.AppConfigDataType" />
+				<EntitySet Name="ProductList"
+					EntityType="sap.spl.xs.app.services.appl.ProductListType" />
+				<EntitySet Name="PossibleOwnerList"
+					EntityType="sap.spl.xs.app.services.appl.PossibleOwnerListType" />
+				<EntitySet Name="IncidentAssignedLocations"
+					EntityType="sap.spl.xs.app.services.appl.IncidentAssignedLocationsType" />
+				<EntitySet Name="IncidentDetails"
+					EntityType="sap.spl.xs.app.services.appl.IncidentDetailsType" />
+				<EntitySet Name="OccurredIncidents"
+					EntityType="sap.spl.xs.app.services.appl.OccurredIncidentsType" />
+				<EntitySet Name="DistinctRoles"
+					EntityType="sap.spl.xs.app.services.appl.DistinctRolesType" />
+				<EntitySet Name="RecipientList"
+					EntityType="sap.spl.xs.app.services.appl.RecipientListType" />
+				<EntitySet Name="FeedRecipientList"
+					EntityType="sap.spl.xs.app.services.appl.FeedRecipientListType" />
+				<EntitySet Name="ThreadList"
+					EntityType="sap.spl.xs.app.services.appl.ThreadListType" />
+				<EntitySet Name="MyFeed" EntityType="sap.spl.xs.app.services.appl.MyFeedType" />
+				<EntitySet Name="FeedListControl"
+					EntityType="sap.spl.xs.app.services.appl.FeedListControlType" />
+				<EntitySet Name="ChatMessage"
+					EntityType="sap.spl.xs.app.services.appl.ChatMessageType" />
+				<EntitySet Name="SentMessage"
+					EntityType="sap.spl.xs.app.services.appl.SentMessageType" />
+				<EntitySet Name="SentMessageContext"
+					EntityType="sap.spl.xs.app.services.appl.SentMessageContextType" />
+				<EntitySet Name="LocationCreateEnum"
+					EntityType="sap.spl.xs.app.services.appl.LocationCreateEnumType" />
+				<EntitySet Name="LocationViewEnum"
+					EntityType="sap.spl.xs.app.services.appl.LocationViewEnumType" />
+				<EntitySet Name="SubscriptionProductList"
+					EntityType="sap.spl.xs.app.services.appl.SubscriptionProductListType" />
+				<EntitySet Name="VehiclePositions"
+					EntityType="sap.spl.xs.app.services.appl.VehiclePositionsType" />
+				<EntitySet Name="VehiclePositionHistory"
+					EntityType="sap.spl.xs.app.services.appl.VehiclePositionHistoryType" />
+				<EntitySet Name="MyDevices"
+					EntityType="sap.spl.xs.app.services.appl.MyDevicesType" />
+				<EntitySet Name="SharedList"
+					EntityType="sap.spl.xs.app.services.appl.SharedListType" />
+				<EntitySet Name="MyTrackableObjects"
+					EntityType="sap.spl.xs.app.services.appl.MyTrackableObjectsType" />
+				<EntitySet Name="SharedTrackableObjects"
+					EntityType="sap.spl.xs.app.services.appl.SharedTrackableObjectsType" />
+				<EntitySet Name="SharedWithMyOrganization"
+					EntityType="sap.spl.xs.app.services.appl.SharedWithMyOrganizationType" />
+				<EntitySet Name="TrackableObjectsWithinView"
+					EntityType="sap.spl.xs.app.services.appl.TrackableObjectsWithinViewType" />
+				<EntitySet Name="CommunicationLog"
+					EntityType="sap.spl.xs.app.services.appl.CommunicationLogType" />
+				<EntitySet Name="CommLogObjects"
+					EntityType="sap.spl.xs.app.services.appl.CommLogObjectsType" />
+				<EntitySet Name="CommLogObjectsParameters"
+					EntityType="sap.spl.xs.app.services.appl.CommLogObjectsParametersType" />
+				<EntitySet Name="CommLogHTTPCodes"
+					EntityType="sap.spl.xs.app.services.appl.CommLogHTTPCodesType" />
+				<EntitySet Name="CommLogHTTPCodesParameters"
+					EntityType="sap.spl.xs.app.services.appl.CommLogHTTPCodesParametersType" />
+				<EntitySet Name="Tours" EntityType="sap.spl.xs.app.services.appl.ToursType" />
+				<EntitySet Name="Stops" EntityType="sap.spl.xs.app.services.appl.StopsType" />
+				<EntitySet Name="Items" EntityType="sap.spl.xs.app.services.appl.ItemsType" />
+				<EntitySet Name="TourItems"
+					EntityType="sap.spl.xs.app.services.appl.TourItemsType" />
+				<EntitySet Name="TourActivityLog"
+					EntityType="sap.spl.xs.app.services.appl.TourActivityLogType" />
+				<AssociationSet Name="CommLogObjectsParameters_CommLogObjects"
+					Association="sap.spl.xs.app.services.appl.CommLogObjectsParameters_CommLogObjectsType">
+					<End Role="CommLogObjectsParametersPrincipal" EntitySet="CommLogObjectsParameters" />
+					<End Role="CommLogObjectsDependent" EntitySet="CommLogObjects" />
+				</AssociationSet>
+				<AssociationSet Name="CommLogHTTPCodesParameters_CommLogHTTPCodes"
+					Association="sap.spl.xs.app.services.appl.CommLogHTTPCodesParameters_CommLogHTTPCodesType">
+					<End Role="CommLogHTTPCodesParametersPrincipal" EntitySet="CommLogHTTPCodesParameters" />
+					<End Role="CommLogHTTPCodesDependent" EntitySet="CommLogHTTPCodes" />
+				</AssociationSet>
+				<AssociationSet Name="IncidentToLocation"
+					Association="sap.spl.xs.app.services.appl.IncidentToLocationType">
+					<End Role="IncidentDetailsPrincipal" EntitySet="IncidentDetails" />
+					<End Role="IncidentAssignedLocationsDependent" EntitySet="IncidentAssignedLocations" />
+				</AssociationSet>
+				<AssociationSet Name="ToursToStops"
+					Association="sap.spl.xs.app.services.appl.ToursToStopsType">
+					<End Role="ToursPrincipal" EntitySet="Tours" />
+					<End Role="StopsDependent" EntitySet="Stops" />
+				</AssociationSet>
+				<AssociationSet Name="StopsToItems"
+					Association="sap.spl.xs.app.services.appl.StopsToItemsType">
+					<End Role="StopsPrincipal" EntitySet="Stops" />
+					<End Role="ItemsDependent" EntitySet="Items" />
+				</AssociationSet>
+				<AssociationSet Name="ToursToItems"
+					Association="sap.spl.xs.app.services.appl.ToursToItemsType">
+					<End Role="ToursPrincipal" EntitySet="Tours" />
+					<End Role="TourItemsDependent" EntitySet="TourItems" />
+				</AssociationSet>
+				<AssociationSet Name="LocationToIncidents"
+					Association="sap.spl.xs.app.services.appl.LocationToIncidentsType">
+					<End Role="MyLocationsPrincipal" EntitySet="MyLocations" />
+					<End Role="AssignedIncidentsDependent" EntitySet="AssignedIncidents" />
+				</AssociationSet>
+				<AssociationSet Name="LocationToRadarStatus"
+					Association="sap.spl.xs.app.services.appl.LocationToRadarStatusType">
+					<End Role="MyLocationsPrincipal" EntitySet="MyLocations" />
+					<End Role="StatusOfMyRadarsDependent" EntitySet="StatusOfMyRadars" />
+				</AssociationSet>
+				<AssociationSet Name="LocationToGates"
+					Association="sap.spl.xs.app.services.appl.LocationToGatesType">
+					<End Role="MyLocationsPrincipal" EntitySet="MyLocations" />
+					<End Role="GatesDependent" EntitySet="Gates" />
+				</AssociationSet>
+				<AssociationSet Name="LocationToFacility"
+					Association="sap.spl.xs.app.services.appl.LocationToFacilityType">
+					<End Role="MyLocationsPrincipal" EntitySet="MyLocations" />
+					<End Role="FacilityDependent" EntitySet="Facility" />
+				</AssociationSet>
+				<AssociationSet Name="BuPaToPOC"
+					Association="sap.spl.xs.app.services.appl.BuPaToPOCType">
+					<End Role="MyBusinessPartnersPrincipal" EntitySet="MyBusinessPartners" />
+					<End Role="PointOfContactDependent" EntitySet="PointOfContact" />
+				</AssociationSet>
+				<AssociationSet Name="BuPaToTrucks"
+					Association="sap.spl.xs.app.services.appl.BuPaToTrucksType">
+					<End Role="MyBusinessPartnersPrincipal" EntitySet="MyBusinessPartners" />
+					<End Role="SharedWithMyOrganizationDependent" EntitySet="SharedWithMyOrganization" />
+				</AssociationSet>
+				<AssociationSet Name="MyOrganizationToRelations"
+					Association="sap.spl.xs.app.services.appl.MyOrganizationToRelationsType">
+					<End Role="MyOrganizationPrincipal" EntitySet="MyOrganization" />
+					<End Role="RelationsDependent" EntitySet="Relations" />
+				</AssociationSet>
+				<AssociationSet Name="MyOwner"
+					Association="sap.spl.xs.app.services.appl.MyOwnerType">
+					<End Role="MyOrganizationPrincipal" EntitySet="MyOrganization" />
+					<End Role="InvitationOwnerDependent" EntitySet="InvitationOwner" />
+				</AssociationSet>
+				<AssociationSet Name="FeedToControl"
+					Association="sap.spl.xs.app.services.appl.FeedToControlType">
+					<End Role="MyFeedPrincipal" EntitySet="MyFeed" />
+					<End Role="FeedListControlDependent" EntitySet="FeedListControl" />
+				</AssociationSet>
+				<AssociationSet Name="ToursToLog"
+					Association="sap.spl.xs.app.services.appl.ToursToLogType">
+					<End Role="ToursPrincipal" EntitySet="Tours" />
+					<End Role="TourActivityLogDependent" EntitySet="TourActivityLog" />
+				</AssociationSet>
+				<AssociationSet Name="UIAppsToConfig"
+					Association="sap.spl.xs.app.services.appl.UIAppsToConfigType">
+					<End Role="UIAppsPrincipal" EntitySet="UIApps" />
+					<End Role="AppConfigDataDependent" EntitySet="AppConfigData" />
+				</AssociationSet>
+				<AssociationSet Name="BuPaToAllShared"
+					Association="sap.spl.xs.app.services.appl.BuPaToAllSharedType">
+					<End Role="MyBusinessPartnersPrincipal" EntitySet="MyBusinessPartners" />
+					<End Role="SharedListDependent" EntitySet="SharedList" />
+				</AssociationSet>
+				<AssociationSet Name="SubscriptionProductOfSelectedOwner"
+					Association="sap.spl.xs.app.services.appl.SubscriptionProductOfSelectedOwnerType">
+					<End Role="PossibleOwnerListPrincipal" EntitySet="PossibleOwnerList" />
+					<End Role="SubscriptionProductListDependent" EntitySet="SubscriptionProductList" />
+				</AssociationSet>
+				<AssociationSet Name="TourToPosition"
+					Association="sap.spl.xs.app.services.appl.TourToPositionType">
+					<End Role="ToursPrincipal" EntitySet="Tours" />
+					<End Role="VehiclePositionsDependent" EntitySet="VehiclePositions" />
+				</AssociationSet>
+				<AssociationSet Name="TourToPositionHistory"
+					Association="sap.spl.xs.app.services.appl.TourToPositionHistoryType">
+					<End Role="ToursPrincipal" EntitySet="Tours" />
+					<End Role="VehiclePositionHistoryDependent" EntitySet="VehiclePositionHistory" />
+				</AssociationSet>
+				<AssociationSet Name="UsersToTheme"
+					Association="sap.spl.xs.app.services.appl.UsersToThemeType">
+					<End Role="MyUsersPrincipal" EntitySet="MyUsers" />
+					<End Role="MyThemePreferenceDependent" EntitySet="MyThemePreference" />
+				</AssociationSet>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

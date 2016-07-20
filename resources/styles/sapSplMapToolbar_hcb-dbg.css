@@ -1,0 +1,102 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.sapUiSizeCompact .sapSplMapsFilterHLayout {
+	margin-top: .25em;
+}
+
+.oSapSplMapToolbarFeedFilterLayout {
+	width: 18rem;
+	/* 	border: solid; */
+}
+
+.oSapSplMapToolbarFeedFilterLayout>.sapUiHLayoutChildWrapper {
+	/* 	float : left; */
+	
+}
+
+.oSapSplMapToolbarParkingFilterLayout {
+	width: 16rem;
+	/* 	border: solid; */
+}
+
+.oSapSplMapToolbarParkingFilterLayoutButton {
+	padding: .5rem;
+}
+
+.splMapTollbarBar {  
+    background-color: white;
+    position: fixed;
+}
+
+.splMapTollbarBar .sapMBarRight {
+	overflow: visible;
+}
+
+/* .splMapTollbarBar > .sapMBarMiddle .sapMBarContainer { */
+/* overflow: visible; */
+/* } */
+
+
+/* .splMapTollbarBar > .sapMBarPH { */
+/* 	position: absolute; */
+/* 	width: 79% !important; */
+/* 	right: 0px; */
+/* 	height: 70rem; */
+/* } */
+
+.splMapTollbarBarContentLayout {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.oToolbarBlockerLayout {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.oToolbarBlockerLayoutHidden {
+	z-index: 10;
+	width: 100%;
+	height: 3rem;
+}
+
+.showMapFilter {
+	display: block!important;
+}
+
+/* Feed */
+/* .sapSplMessageFeedListContainer { */
+/* 	width: 21rem; */
+/* 	position: absolute; */
+/* 	right: 0; */
+/* 	z-index: 100; */
+/* 	max-height: 65rem; */
+/* 	overflow-y: scroll; */
+/* } */
+
+/* .sapSplMessageFeedListItem { */
+/* 	height: 4.5rem; */
+/* 	padding-top: 0.5rem; */
+/* 	padding-left: 0.5rem; */
+/* 	width: 17rem; */
+/* } */
+
+/* .sapSplMessageFeedList { */
+/* 	/* 	width: 16rem; */
+*
+/
+
+/* } */
+
+/* .sapSplMessageFeedListFilterbar { */
+/* 	width: 18rem; */
+/* 	height: 1rem; */
+/* } */
+
+/* Feed */

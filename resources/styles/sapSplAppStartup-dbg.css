@@ -1,0 +1,98 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.splashDiv {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	width: 350px;
+	height: 300px;
+	margin-top: -175px;
+	margin-left: -150px;
+	text-align: center;
+	opacity: 1.0 !important;
+}
+
+/*CSNFIX 1317237 2014: Remove the sapUiBly overlay override as it was hiding the busy indicator*/
+
+#splash-screen {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+	background-color: transparent !important;
+	background-size: 100% !important;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+}
+
+#splash-screen>* {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	user-select: none;
+	-o-user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: -moz-none;
+	-webkit-user-select: none;
+	cursor: default;
+}
+
+.splash-screen-circle {
+	z-index: 20001;
+	width: 80px;
+	height: 80px;
+	border-radius: 80px;
+	margin-top: -40px;
+	margin-left: -40px;
+	background-color: rgba(0, 0, 0, 0);
+	border: 5px solid white;
+	opacity: .9;
+	border-left: 5px solid rgba(0, 0, 0, 0);
+	-moz-animation: spinoffPulse 1s infinite linear;
+	-webkit-animation: spinoffPulse 1s infinite linear;
+	animation: spinoffPulse 1s infinite linear;
+}
+
+@-moz-keyframes spinoffPulse { 0% {
+	-moz-transform: rotate(0deg);
+}
+
+100%
+{
+-moz-transform:rotate(360deg);
+
+      
+}
+}
+@-webkit-keyframes spinoffPulse { 0% {
+	-webkit-transform: rotate(0deg);
+}
+
+100%
+{
+-webkit-transform:rotate(360deg);
+
+      
+}
+}
+@keyframes spinoffPulse { 0% {
+	transform: rotate(0deg);
+}
+100%
+{
+transform:rotate(360deg);
+
+      
+}
+}
+
+.sapSplHelpDialog .sapMDialogSection{
+	overflow: hidden!important;
+}

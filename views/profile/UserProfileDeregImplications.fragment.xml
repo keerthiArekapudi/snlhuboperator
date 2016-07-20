@@ -1,0 +1,12 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Panel headerText="{splI18NModel>MYPROFILEDELACCHDG}" expanded="true"
+	expandable="false" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core" height="100%" class="sapSplPanelContentHideBorderBottom">
+	<content>
+		<Link text="{splI18NModel>MYPROFILEDELACCLINK}" press="handleDeleteOfAccountAction"/>
+	</content>
+</Panel>

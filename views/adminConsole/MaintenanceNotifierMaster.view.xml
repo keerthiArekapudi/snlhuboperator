@@ -1,0 +1,58 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="splController.adminConsole.MaintenanceNotifierMaster"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="sapSplMaintenanceNotifierMasterPage" backgroundDesign="Transparent"
+		showNavButton="true" navButtonPress="fnHandleBackNavigation">
+		<subHeader>
+			<Toolbar>
+				<SearchField id="sapSplMaintenanceNotifierMasterSearch"
+					search="fnToHandleSearchOfNotications" showRefreshButton="true"></SearchField>
+			</Toolbar>
+		</subHeader>
+		<content>
+			<Toolbar design="Info">
+				<content>
+					<Text id="FilterStatusText"></Text>
+				</content>
+			</Toolbar>
+			<List items="{path:'/MyFeed'}" id="SapSplMaintenanceNotifierList" noDataText="{splI18NModel>NO_NOTIFICATIONS_TEXT}"
+				mode="SingleSelectMaster" select="fnHandleSelectOfMaintenanceNotification"
+				growing="true">
+				<items>
+					<ObjectListItem id="oSapSplNotificationListItem" title="{Text1}"
+						press="fnHandleSelectOfNotification">
+						<firstStatus>
+							<ObjectStatus text="{path:'isActive' , formatter:'splReusable.libs.SapSplModelFormatters.getNotificationValidityText'}" 
+								state="{path:'isActive' , formatter:'splReusable.libs.SapSplModelFormatters.getNotificationValidityState'}"/>
+						</firstStatus>
+						<attributes>
+							<ObjectAttribute id="sapSplStartTime"
+								text="{path:'Validity_StartTime' , formatter:'splReusable.libs.SapSplModelFormatters.convertDateTimeToStringBasedOnLocaleInShortFormat'}" />
+							<ObjectAttribute id="sapSplExpiryTime"
+								text="{path:'Validity_EndTime' , formatter:'splReusable.libs.SapSplModelFormatters.convertDateTimeToStringBasedOnLocaleInShortFormat'}" />
+							<ObjectAttribute
+								text="{path:'MessageType' , formatter:'splReusable.libs.SapSplModelFormatters.getMessageTypeForNotification'}" />
+						</attributes>
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="SapSplGroupNotificationsButton" icon="sap-icon://group-2"
+						press="fnHandleSortNotification"></Button>
+					<Button id="SapSplFilterNotificationsButton" icon="sap-icon://filter"
+						press="fnHandleFilterNotification"></Button>
+					<Button id="SapSplAddNotificationsButton" icon="sap-icon://add"
+						press="fnHandleAddNotication"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

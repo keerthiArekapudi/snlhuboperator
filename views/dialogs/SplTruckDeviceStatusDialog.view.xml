@@ -1,0 +1,52 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout"
+	xmlns="sap.m" controllerName="splController.dialogs.SplTruckDeviceStatusDialog" xmlns:html="http://www.w3.org/1999/xhtml">
+	
+	<layout:VerticalLayout id="SapSplDeactivateTruckFormContainer" class="SapSplDeactivateTruckFormContainer" width="100%" visible="{/visibility/SapSplDeactivateTruckFormContainer}">
+		<layout:content>
+<!-- 		CSNFIX : 0120061532 1322863    2014 -->
+			<layout:HorizontalLayout id="SapSplDeactivateDeregisterWarningMessageLayout" visible="false">
+				<core:Icon src="sap-icon://warning2" color="maroon" class="sapSPlMarginLeftForWarningUIElements"></core:Icon>
+				<Label id="SapSplDeactivateDeregisterWarningMessage" class="sapSPlMarginLeftForWarningUIElements"></Label>
+			</layout:HorizontalLayout>
+			<form:SimpleForm title="{/Title}">
+				<form:content>
+					<Label id="SapSplDeactivateTruckFormContainerRegistrationNumberLabel">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="1">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Text text="{/data/RegistrationNumber}" class="sapSplBoldText">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="1">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Text>
+					
+					<Label id="SapSplDeactivateTruckFormContainerDeviceIDLabel">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="1">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Text text="{/data/DevicePublicName}" class="sapSplBoldText">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="1">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Text>
+				</form:content>
+			</form:SimpleForm>
+		</layout:content>
+	</layout:VerticalLayout>
+</core:View>

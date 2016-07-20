@@ -1,0 +1,27 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	xmlns="sap.m" controllerName="splController.dialogs.SplCreateDisplayAreaDialog"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<layout:VerticalLayout id="SapSplCreateDisplayAreaContainer" width="100%">
+		<layout:content>
+<!-- 		CSNFIX : 1570171472 -->
+			<Label id="SapSplCreateDisplayAreaPageInfo" class="sapSplDisplayAreaCreateLabel" design="Bold">
+					</Label>
+					<form:SimpleForm id="SapSplFormForCreateDisplayArea">
+						<Label id="SapSplDisplayAreaNameLabel" required="true" />
+						<Input id="SapSplDisplayAreaNameInput" type="Text" value="{/Name}"
+							liveChange="fnToCaptureLiveChangeNameInput" />
+					</form:SimpleForm>
+					<CheckBox id="SapSplDisplayAreaMakeDefaultCheckBox" class="sapSplDisplayAreaCreateCheckBox"
+						selected="false" select="fnToCaptureLiveChangeToSetFlag" />
+					<CheckBox id="SapSplDisplayAreaIsPublicCheckBox" class="sapSplDisplayAreaCreateCheckBox" selected="false"
+						select="fnToCaptureLiveChangeToSetFlag" />
+		</layout:content>
+	</layout:VerticalLayout>
+
+</core:View>

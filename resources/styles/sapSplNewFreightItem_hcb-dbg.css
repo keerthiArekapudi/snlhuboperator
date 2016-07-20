@@ -1,0 +1,28 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+
+.SapSplNewFreightItemAlignLabel {
+	padding-top: 0.5rem;
+}
+.sapSplNewFreightItemDialog {
+	width: 30rem;
+}
+
+.SapSplNewFreightItemForm .sapUiForm .sapUiFormResLayout .sapUiRFL .sapUiRFLCompleteRow {
+	padding-top: 0.5rem; 
+}
+.sapSplNewFreightItemDialog .sapMDialogScroll .sapMDialogScrollCont {
+	padding-top: 0%;
+}
+.SapSplNewFreightItemForm .sapUiForm .sapUiFormResLayout .sapUiRFL {
+	padding: 0%;
+}
+.SapSplFreightItemCustomLengthInput .sapMInputBaseInner{
+	position: absolute;
+	bottom: 95%;
+	left: 51%;
+}
+.sapSplNewFreightItemDialog .sapMDialogSection {
+	overflow: hidden !important;
+}

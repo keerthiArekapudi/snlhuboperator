@@ -1,0 +1,42 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.splSendMessageBusinessPartnerDialog {
+	top: 10em !important;
+}
+
+.splSendMessageBusinessPartnerDialog .sapMDialogScrollCont {
+	padding: 0rem !important;
+}
+
+.viewHolderLayout {
+	display: block !important;
+}
+
+.sendMessageBusinessPartnerDialogContainerView {
+	height: 26em;
+}
+
+
+.sapSplCustomBarContent .sapMBarPH {
+	width: 100% !important;
+	visibility: visible !important;
+}
+
+.sapSplCustomBarContent .sapMBarLeft {
+	width: 100% !important;
+}
+
+.sapSplSendMessageToBuPaDisableInputField .sapMInputBaseInner{
+	opacity: 0.8;
+	pointer-events: none;
+}
+
+/* CSNFIX : 759542 */
+.SapSplSendMessagePriorityRadioButtonHolder .sapMRbB {
+    width: 2.5rem;
+}
+
+.SapSplSendMessagePriorityRadioButtonHolder.sapUiHLayoutNoWrap {
+	white-space: normal;
+}

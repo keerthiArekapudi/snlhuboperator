@@ -1,0 +1,69 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	Version="1.0">
+	<edmx:DataServices
+		xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+		m:DataServiceVersion="2.0">
+		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+			xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="sap.spl.xs.utils.services.utils">
+			<EntityType Name="EnumerationType">
+				<Key>
+					<PropertyRef Name="Name" />
+				</Key>
+				<Property Name="Name" Type="Edm.String" Nullable="false"
+					MaxLength="50" />
+				<Property Name="Name.description" Type="Edm.String"
+					MaxLength="100" />
+				<NavigationProperty Name="Values"
+					Relationship="sap.spl.xs.utils.services.utils.EnumerationToValueType"
+					FromRole="EnumerationPrincipal" ToRole="EnumerationValueDependent" />
+			</EntityType>
+			<EntityType Name="EnumerationValueType">
+				<Key>
+					<PropertyRef Name="Name" />
+					<PropertyRef Name="Value" />
+				</Key>
+				<Property Name="Name" Type="Edm.String" Nullable="false"
+					MaxLength="50" />
+				<Property Name="Name.description" Type="Edm.String"
+					MaxLength="100" />
+				<Property Name="Value" Type="Edm.String" Nullable="false"
+					MaxLength="50" />
+				<Property Name="Value.description" Type="Edm.String"
+					MaxLength="100" />
+			</EntityType>
+			<EntityType Name="UUIDType">
+				<Key>
+					<PropertyRef Name="ID" />
+				</Key>
+				<Property Name="ID" Type="Edm.String" Nullable="false"
+					MaxLength="2147483647" />
+				<Property Name="UUID" Type="Edm.Binary" />
+			</EntityType>
+			<Association Name="EnumerationToValueType">
+				<End Type="sap.spl.xs.utils.services.utils.EnumerationType"
+					Role="EnumerationPrincipal" Multiplicity="1" />
+				<End Type="sap.spl.xs.utils.services.utils.EnumerationValueType"
+					Role="EnumerationValueDependent" Multiplicity="*" />
+			</Association>
+			<EntityContainer Name="utils"
+				m:IsDefaultEntityContainer="true">
+				<EntitySet Name="Enumeration"
+					EntityType="sap.spl.xs.utils.services.utils.EnumerationType" />
+				<EntitySet Name="EnumerationValue"
+					EntityType="sap.spl.xs.utils.services.utils.EnumerationValueType" />
+				<EntitySet Name="UUID" EntityType="sap.spl.xs.utils.services.utils.UUIDType" />
+				<AssociationSet Name="EnumerationToValue"
+					Association="sap.spl.xs.utils.services.utils.EnumerationToValueType">
+					<End Role="EnumerationPrincipal" EntitySet="Enumeration" />
+					<End Role="EnumerationValueDependent" EntitySet="EnumerationValue" />
+				</AssociationSet>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

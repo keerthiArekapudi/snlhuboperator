@@ -1,0 +1,27 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+
+.SapSplNewLocationForm .sapUiForm .sapUiFormResLayout .sapUiRFL .sapUiRFLCompleteRow {
+	padding-top: 0.5rem; 
+}
+.sapSplNewLocationDialog .sapMDialogScroll .sapMDialogScrollCont {
+	padding-top: 0%;
+}
+.sapSplNewLocationDialog .sapUiForm .sapUiFormResLayout .sapUiRFL {
+	padding-left: 0%;
+	padding-right: 0%;
+}
+
+.SapSplNewLocationAlignLabel {
+	padding-top: 0.5rem;
+}
+.sapSplNewLocationDialog  .sapMDialogScroll .sapMDialogScrollCont{
+	padding-bottom: 0%;
+}
+.SapSplNewLocationForm .sapUiForm .sapUiFormResLayout .sapUiRFL .sapUiRFLCompleteRow {
+	padding-top: 0.5rem; 
+}
+.SapSplNewLocationForm .sapUiForm .sapUiFormResLayout .sapUiRFL {
+	padding: 0%;
+}

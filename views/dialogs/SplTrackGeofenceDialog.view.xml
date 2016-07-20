@@ -1,0 +1,45 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	xmlns="sap.m" controllerName="splController.dialogs.SplTrackGeofenceDialog"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<List id="SapSnlhTrackGeofenceDialogList" noDataText="{path:'/ReferenceLocationName', formatter:'splReusable.libs.SapSplModelFormatters.setNoDataTextForTrackGeofenceDialogList'}" items="{/geofences}" select="fnHandlePressList">
+		<items>
+			<CustomListItem id="SapSnlhTrackGeofenceDialogListItem"
+				class="sapSnlhTrackGeofenceDialogColumnListItem" type="Active">
+				<layout:HorizontalLayout>
+					<layout:VerticalLayout
+						class="sapUiSmallMarginBegin sapUiTinyMarginTopBottom">
+						<Label text="{Name}" />
+						<Label visible="{path:'RelationStatus' , formatter:'splReusable.libs.SapSplModelFormatters.setVisibleForNewLabel'}" />
+					</layout:VerticalLayout>
+					<layout:VerticalLayout
+						class="sapUiBigMarginTop sapUiTinyMarginBottom sapSnlhHorizotalLayout">
+
+						<core:Icon src="sap-icon://repost" color="#959595" visible="{path:'RelationStatus' , formatter:'splReusable.libs.SapSplModelFormatters.setVisiblePropertyForRepostButton'}" />
+
+						<layout:HorizontalLayout>
+							<core:Icon src="sap-icon://accept" color="#61a656"
+								tooltip="{splI18NModel>APPROVE}" class="sapUiTinyMarginEnd"
+								press="fnHandlePressAccept"
+								visible="{path:'RelationStatus' , formatter:'splReusable.libs.SapSplModelFormatters.setVisiblePropertyForAcceptButton'}" />
+							<core:Icon src="sap-icon://decline" color="#d14900"
+								tooltip="{splI18NModel>REJECT}" class="sapUiTinyMarginEnd sapUiTinyMarginBegin"
+								press="fnHandlePressReject"
+								visible="{path:'RelationStatus' , formatter:'splReusable.libs.SapSplModelFormatters.setVisiblePropertyForRejectButton'}" />
+						</layout:HorizontalLayout>
+
+					</layout:VerticalLayout>
+
+
+				</layout:HorizontalLayout>
+			</CustomListItem>
+		</items>
+	</List>
+
+</core:View>

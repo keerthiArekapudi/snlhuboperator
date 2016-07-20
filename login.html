@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Please wait...</title>
+<style>
+.sapSplTempImageClass {
+	visibility: hidden;
+}
+</style>
+<script type="text/javascript">
+	
+	/*On Load of Login page*/
+	function onLoadOfLoginPage() {
+		
+		if (window.XMLHttpRequest) {
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET","/sap/spl/xs/app/services/dummy.xsjs",true);
+			xhr.send();
+			
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState === XMLHttpRequest.DONE ) {
+					//Request Response complete.
+					window.location.replace("/index.html");
+				}
+			}
+			
+		} else {
+			console.log("Unsupported browser");
+		}
+	}
+	
+</script>
+</head>
+<body onload="onLoadOfLoginPage()">
+	<img src="/favicon.ico" class="sapSplTempImageClass" />
+</body>
+</html>

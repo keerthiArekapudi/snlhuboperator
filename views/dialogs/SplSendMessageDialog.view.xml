@@ -1,0 +1,180 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	xmlns:custom="splReusable.libs" xmlns="sap.m"
+	controllerName="splController.dialogs.SplSendMessageDialog"
+	xmlns:uiLayout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
+	<NavContainer id="SapSplSendMessageNavContainer" class="sendMessageDialogNavContainer">
+		
+		<Page id="SapSplSendMessagesPage" navButtonPress="fnHandlePressOfSendMessageBackButton">
+			<content>
+				<form:SimpleForm>
+					<form:content>
+						<Label id="SapSplMessageReceipientsLabel" required="true">
+						</Label>
+						<layout:MatrixLayout class="valueHelpMainLayout" id="SapSplGeofencesValueHelpLayout">
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell id="SapSplGeofencesValueHelpCell">
+									<Input type="Text" width="100%"
+										id="SapSplValueHelpForSelectGeofencesInput" showSuggestion="true"
+										showValueHelp="true" suggestionItems="{/Geofences}" class="sapSplValueHelp"
+										valueHelpRequest="fnValueHelpForSelectGeofences" change="fnHandleChangeOfInputField"
+										suggestionItemSelected="fnValueHelpForSelectGeofencesSuggestItemSelected">
+										<suggestionItems>
+											<core:Item text="{Name}">
+											</core:Item>
+										</suggestionItems>
+									</Input>
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+						</layout:MatrixLayout>
+						<Label id="SapSplIncidentMessageLabel" required="true">
+						</Label>
+<!-- 						CSNFIX : 0120061532 1443215    2014 -->
+<!-- 						CSN FIX : 0120031469 620972     2014 -->
+						<uiLayout:VerticalLayout id="sapSplMessageToRecipientMessageFieldLayout" class="sapSplMessageToRecipientMessageFieldLayout">
+							<TextArea id="SapSplMessageFromIncidentInput" rows="3"
+								width="100%" class="sapSplMessageToRecipientTextArea"
+								liveChange="sapSplChangeDirtyFlag" change='sapSplEnableDisableSendButton'>
+							</TextArea>
+							<Link id="sapSplAttachIncidentLink" class="sapSplAttachIncidentLink"
+								press="fnValueHelpForIncidentMessage"></Link>
+						</uiLayout:VerticalLayout>
+
+						<Label id="SapSplMessageValidFrom">
+							<layoutData>
+								<layout:ResponsiveFlowLayoutData
+									weight="1">
+								</layout:ResponsiveFlowLayoutData>
+							</layoutData>
+						</Label>
+						<custom:SapSplTimeControl id="SapSplMessageValidFromDateTime"
+							displayFormat="MMM dd,    hh : mm a" type="DateTime"
+							change="sapSplHandleDateChange">
+							<custom:layoutData>
+								<layout:ResponsiveFlowLayoutData
+									weight="4">
+								</layout:ResponsiveFlowLayoutData>
+							</custom:layoutData>
+						</custom:SapSplTimeControl>
+
+						<Label id="SapSplMessageValidTo">
+							<layoutData>
+								<layout:ResponsiveFlowLayoutData
+									weight="1">
+								</layout:ResponsiveFlowLayoutData>
+							</layoutData>
+						</Label>
+						<custom:SapSplTimeControl id="SapSplMessageValidToDateTime"
+							displayFormat="MMM dd,    hh : mm a" type="DateTime"
+							change="sapSplHandleDateChange">
+							<custom:layoutData>
+								<layout:ResponsiveFlowLayoutData
+									weight="4">
+								</layout:ResponsiveFlowLayoutData>
+							</custom:layoutData>
+						</custom:SapSplTimeControl>
+						<Label id="SapSplMessagePriorityLabel">
+							<layoutData>
+								<layout:ResponsiveFlowLayoutData
+									weight="1">
+								</layout:ResponsiveFlowLayoutData>
+							</layoutData>
+						</Label>
+						<!-- 						CSNFIX : 759542 -->
+						<uiLayout:HorizontalLayout class="SapSplSendMessagePriorityRadioButtonHolder"
+							id="SapSplSendMessagePriorityRadioButtonHolder">
+							<RadioButton groupName="GroupA" id="SapSplPriorityRadioButton_1"
+								text="1 (High)" selected="true" />
+							<RadioButton groupName="GroupA" id="SapSplPriorityRadioButton_2"
+								text="2" />
+							<RadioButton groupName="GroupA" id="SapSplPriorityRadioButton_3"
+								text="3" />
+							<RadioButton groupName="GroupA" id="SapSplPriorityRadioButton_4"
+								text="4 (Low)" />
+						</uiLayout:HorizontalLayout>
+					</form:content>
+				</form:SimpleForm>
+			</content>
+		</Page>
+		<Page id="SapSplSendMessageSelectViewPage">
+			<content>				
+<!-- 			Incident fix : 1570452538 -->
+				<List id="SapSplSendMessageSelectViewList" items="{/ViewList}" growing="true" growingThreshold="100" growingScrollToLoad="true" noDataText="{splI18NModel>NO_DISPLAY_AREAS_TEXT}"
+					mode="SingleSelectMaster" itemPress="fnHandleSelectOfViewItem">
+					<items>
+						<StandardListItem id="SapSplSendMessageSelectViewListItem" type="Active"
+							title="{parts:[{path:'Name'},{path:'isDefault'}], formatter:'splReusable.libs.SapSplModelFormatters.getDefaultDisplayAreaName'}">
+						</StandardListItem>
+					</items>
+				</List>
+			</content>
+		</Page>
+		<Page id="SapSplSendMessageSelectGeofencePage">
+			<customHeader>
+				<Bar>
+					<contentLeft>
+						<Button press="fnHandlePressOfButtonWithSelection" icon="sap-icon://nav-back"></Button>
+					</contentLeft>
+					<contentMiddle>
+						<Label id="SapSplSendMessageSelectDialogTitle">
+						</Label>
+					</contentMiddle>
+				</Bar>
+			</customHeader>
+			<subHeader>
+				<Toolbar>
+					<SearchField id = "SapSplsearchOfGeofences" search="fnToHandleSearchOfGeofences">
+					</SearchField>
+				</Toolbar>
+			</subHeader>
+			<content>
+				
+				<List id="SapSplSendMessageSelectDialogList" rememberSelections="true" items="{/Geofences}" noDataText="{splI18NModel>NO_DATA_TEXT_GEOFENCE}"
+					mode="MultiSelect" select="fnHandleCheckUncheckOfListItem">
+					<items>
+						<ObjectListItem id="SapSplSendMessageSelectDialogListItem"
+							iconDensityAware="false" iconInset="false" type="Active" title="{Name}"
+							selected="{bIsSelected}" press="fnHandleClickOfListItem">
+						</ObjectListItem>
+					</items>
+				</List>
+			</content>
+		</Page>
+		<Page id="SapSplSendMessageSelectIncidentsPage">
+			<customHeader>
+				<Bar>
+					<contentLeft>
+						<Button press="fnHandlePressOfButtonWithSelection" icon="sap-icon://nav-back"></Button>
+					</contentLeft>
+					<contentMiddle>
+						<Label id="SapSplSendMessageSelectDialogTitleIncident">
+						</Label>
+					</contentMiddle>
+				</Bar>
+			</customHeader>
+			<subHeader>
+				<Toolbar>
+					<SearchField search="fnToHandleSearchOfIncidents">
+					</SearchField>
+				</Toolbar>
+			</subHeader>
+			<content>
+				
+				<List id="SapSplSendMessageSelectDialogListIncident" items="{/Incidents}" noDataText="{splI18NModel>NO_INCIDENTS_TEXT}"
+					mode="SingleSelectMaster" select="fnHandlePressOfButtonWithSelection">
+					<items>
+						<StandardListItem id="SapSplSendMessageSelectDialogListItemIncident"
+							iconDensityAware="false" iconInset="false" title="{Name}"
+							description="{ShortText}">
+						</StandardListItem>
+					</items>
+				</List>
+			</content>
+		</Page>
+	</NavContainer>
+</core:View>

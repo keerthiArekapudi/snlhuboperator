@@ -1,0 +1,18 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	xmlns="sap.m" controllerName="splController.dialogs.SplLeftPanelGroupByDialog"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<List id="SapSnlhTrackGeofenceDialogList" items="{/groupList}" select="fnHandleSelectOfGeofenceGroupType" mode="SingleSelectLeft">
+		<items>
+			<StandardListItem id="SapSnlhTrackGeofenceDialogListItem" type="Active" title="{GroupName}" selected="{parts:[{path:'FieldName'},{path:'/sorterField'}], formatter:'splReusable.libs.SapSplModelFormatters.setSelectedForLeftPanelGroupingList'}"> 
+			</StandardListItem>
+		</items>
+	</List>
+	
+</core:View>

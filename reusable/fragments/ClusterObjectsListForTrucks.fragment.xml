@@ -1,0 +1,29 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<ResponsivePopover xmlns="sap.m" showHeader="true"
+	xmlns:core="sap.ui.core" title="{/Title}" class="clusterObjectsListPopover"
+	modal="false" contentWidth="400px" offsetX="{/PositionObject/x}"
+	offsetY="{/PositionObject/y}" placement="{/PositionObject/placement}">
+	<content>
+		<List items="{/Data}" mode="SingleSelectMaster" select="fnHandleClickOfClusterObjectTruckListItem">
+			<items>
+				<CustomListItem>
+					<Toolbar height="2.5rem">
+						<content>
+							<Image src="{parts:[{path:'TourName'},{path:'isTruckRunningLate'}], formatter:'splReusable.libs.SapSplModelFormatters.getTruckTypeIcon'}"
+								width="1.5rem"></Image>
+							<Label design="Bold" text="{parts:[{path:'RegistrationNumber'}, {path:'TourName'}, {path:'isTruckRunningLate'}], formatter:'splReusable.libs.MapsDataMarshal.prototype.fnGetTruckRegistrationNumber'}"
+							class="ClusterObjectListItemRegistrationNumber"></Label>
+							<ToolbarSpacer></ToolbarSpacer>
+							<Label class="ClusterObjectListItemReportedTime" text="{path:'ReportedTime', formatter:'splReusable.libs.SapSplModelFormatters.returnMessageTimestamp'}"></Label>
+							<Button type="Transparent" icon="sap-icon://slim-arrow-right" enabled="false"></Button>
+						</content>
+					</Toolbar>
+				</CustomListItem>
+			</items>
+		</List>
+	</content>
+</ResponsivePopover>

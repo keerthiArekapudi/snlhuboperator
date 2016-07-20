@@ -1,0 +1,126 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout" 
+	xmlns="sap.m" controllerName="splController.dialogs.SplSelectTruckDialog"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<NavContainer id="SapSplSelectTruckDialogNavContainer">
+	<Page id="SapSplSelectTruckDialogPage" showHeader="false">
+		<content>
+			<Table id="SapSplSelectTruckDialogTable" width="100%" mode="SingleSelectMaster"
+				class="SapSplSelectTruckDialogTable" items="{/results}" >
+				<headerToolbar>
+          			<Toolbar>
+            			<Label id="SapSplSelectTruckDialogTableHeader"></Label>
+            			<ToolbarSpacer></ToolbarSpacer>
+            			
+          			</Toolbar>
+        		</headerToolbar>
+				<columns>
+					<Column hAlign="Center" width="25%">
+						<header>
+							<Text id="SapSplSelectTruckDialogTableColumnHeader_LicencePlate"></Text>
+						</header>
+					</Column>
+					<Column hAlign="Center" width="25%">
+						<header>
+							<Text id="SapSplSelectTruckDialogTableColumnHeader_DriverName"></Text>
+						</header>
+					</Column>
+					<Column hAlign="Center" width="25%">
+						<header>
+							<Text id="SapSplSelectTruckDialogTableColumnHeader_Vehicletype"></Text>
+						</header>
+					</Column>
+					<Column hAlign="Center" width="25%">
+						<header>
+							<Text id="SapSplSelectTruckDialogTableColumnHeader_OtherTours"></Text>
+						</header>
+					</Column>
+					
+				</columns>
+				<items>
+					<ColumnListItem class="SplSapSelectTruckDialogCloumnListItem">
+						<cells>
+							<Label text="{RegistrationNumber}" design="Bold"></Label>
+							<Text text="{DriverName}"></Text>
+							<Text text="{Type.description}"></Text>
+							<Link text="{/ShowTours}"  press="fnHandlePressOfShowTours"></Link>
+							
+						</cells>
+					</ColumnListItem>
+
+				</items>
+			</Table>
+		</content>
+	</Page>
+	<Page id="SapSplTourDetailsDialogPage" showHeader="false">
+		<content>
+			<Table id="SapSplTourDetailsDialogTable" width="100%"
+				class="SapSplTourDetailsDialogTable" items="{/tours}">
+				
+				<columns>
+					<Column  width="35%">
+						<header>
+							<Text id="SapSplTourDetailsDialogTableColumnHeader_TourName"></Text>
+						</header>
+					</Column>
+					<Column hAlign="Center" width="15%">
+						<header>
+							<Text id="SapSplTourDetailsDialogTableColumnHeader_Date"></Text>
+						</header>
+					</Column>
+					<Column hAlign="Center" width="12.5%">
+						<header>
+							<Text id="SapSplTourDetailsDialogTableColumnHeader_Arrive"></Text>
+						</header>
+					</Column>
+					<Column hAlign="Center" width="12.5%">
+						<header>
+							<Text id="SapSplTourDetailsDialogTableColumnHeader_Leave"></Text>
+						</header>
+					</Column>
+					<Column hAlign="Center" width="25%">
+						<header>
+							<Text id="SapSplTourDetailsDialogTableColumnHeader_Stops"></Text>
+						</header>
+					</Column>
+					
+				</columns>
+				<items>
+					<ColumnListItem class="SplSapTourDetailsDialogCloumnListItem">
+						<cells>
+							<Text text="{Name}" class="SplSapBold" ></Text>
+							
+							<layout:VerticalLayout content="{Stops/results}" class="SplSapPaddingBotton">							
+								<Label text="{path:'Planned_ArrivalDate',formatter:'splReusable.libs.SapSplModelFormatters.getDateFromStringtoLocaleString'}" >
+								</Label>
+							</layout:VerticalLayout>
+							
+							<layout:VerticalLayout content="{Stops/results}" class="SplSapPaddingBotton">							
+								<Label text="{path:'Planned_ArrivalTime',formatter:'splReusable.libs.SapSplModelFormatters.returnTimeValue'}" >
+								</Label>
+							</layout:VerticalLayout>
+							
+							<layout:VerticalLayout content="{Stops/results}" class="SplSapPaddingBotton">
+								<Label text="{path:'Planned_DepartureTime',formatter:'splReusable.libs.SapSplModelFormatters.returnTimeValue'}" >
+								</Label>						
+							</layout:VerticalLayout>
+							
+							<layout:VerticalLayout content="{Stops/results}" class="SplSapPaddingBotton" width="100%">
+								<Label text="{parts:[{path:'BuildingID'},{path:'CityName'}] , formatter: 'splReusable.libs.SapSplModelFormatters.returnLocationName'}" >
+								</Label>						
+							</layout:VerticalLayout>							
+						</cells>
+					</ColumnListItem>
+
+				</items>
+			</Table>
+		</content>
+	</Page>
+</NavContainer>
+	
+</core:View>

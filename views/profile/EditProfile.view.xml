@@ -1,0 +1,37 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	controllerName="splController.profile.EditProfile" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{splI18NModel>HEADER_COMPANY_PROFILE_EDIT}" id="profileEditPage" enableScrolling="true" showHeader="true"
+		showFooter="true" showNavButton="true" navButtonPress="handleProfileBackNavigation" class="sapSplCustomPageStyle">
+		<content>
+			<l:Grid defaultSpan="L12 M12 S12" width="auto">
+					<l:content>
+						<f:SimpleForm id="SimpleFormDisplay400" minWidth="1024"
+							maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+							title="" labelSpanL="3" labelSpanM="3" emptySpanL="0" emptySpanM="0"
+							columnsL="2" columnsM="2">
+								<f:content>
+									<core:Fragment fragmentName="splView.profile.EditCompanyProfileDetails" type="XML"/>
+									<core:Fragment fragmentName="splView.profile.EditCompanyProfileSubscriptionMisc" type="XML"/>
+								</f:content>
+						</f:SimpleForm>
+					</l:content>
+			</l:Grid>
+
+		</content>
+		<footer>
+			<Bar id="profileEditPageFooter">
+				<contentRight>
+					<Button id="btnSaveCompanyProfile" text="{splI18NModel>NEW_CONTACT_SAVE}" press="handleProfileSaveButtonPressEvent"
+						type="Emphasized" />
+					<Button id="btnCancelCompanyEditProfile" text="{splI18NModel>CANCEL}" press="handleProfileCancelButtonPressEvent" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

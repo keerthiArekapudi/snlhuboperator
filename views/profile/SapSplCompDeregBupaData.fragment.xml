@@ -1,0 +1,28 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Panel xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" expandable="false" headerText="{splI18NModel>BUPA_DATA_DEREG_COMPANY}"
+	expanded="true" class="sapSplCompanyProfileCompanyDeregisterBoldPanelHeader">
+	<content>
+		<f:SimpleForm maxContainerCols="2" editable="false"
+			layout="ResponsiveGridLayout" labelSpanL="2" labelSpanM="2"
+			emptySpanL="0" emptySpanM="0">
+			<f:content>
+				<Label text="{splI18NModel>TOTAL_CONNECTIONS_TO_BE_DELETED}">
+					<layoutData>
+						<l:GridData span="L2 M2 S12" />
+					</layoutData>
+				</Label>
+				<Text id="sapSplCompDeregBupaConnectionCountText" class="sapSplCompanyProfileCompanyDeregisterBoldText" busy="true">
+					<layoutData>
+						<l:GridData span="L8 M8 S12" />
+					</layoutData>
+				</Text>
+			</f:content>
+		</f:SimpleForm>
+		<Label text="{splI18NModel>ALL_BUPA_DATA_ONDELETION}" design="Bold" />
+	</content>
+</Panel>

@@ -1,0 +1,24 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.relationTerminatorTruckDialogTable {
+	max-height: 300px;
+	overflow-y: scroll;
+	margin-top: 15px;
+}
+
+.relationTerminatorTruckDialogLabel {
+	margin-top: 15px;
+}
+
+.relationTerminatorTruckDialogTable .greenActiveLabel {
+	color: green;
+}
+.SapSplBusinessPartnerExternalIDInputViewMode
+{
+     margin-top: -8.25px;
+}
+.SapSplBusinessPartnerMessageStrip
+{
+	width:50%
+}

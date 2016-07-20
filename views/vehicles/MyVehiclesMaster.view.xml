@@ -1,0 +1,55 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout" xmlns="sap.m"
+	controllerName="splController.vehicles.MyVehiclesMaster" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="SapSplMyVehiclesMasterPage" showNavButton="true" navButtonPress="fnHandleBackNavigation">
+		<subHeader>
+      		<Toolbar>
+      			<SearchField id="sapSplVehicleSearch" search="fnToHandleSearchOfVehicles" showRefreshButton="true"></SearchField>
+      		</Toolbar>
+    	</subHeader>
+		<content>
+			
+			<Toolbar design="Info">
+				<content>
+					<Text id="FilterStatusText"></Text>
+				</content>
+			</Toolbar>
+			<List items="{path:'/MyTrackableObjects'}" id="SapSplVehiclesList"
+				mode="SingleSelectMaster" growing="true" select="onSelectOfVehicle">
+				<items>
+<!-- 				CSNFIX : 0120031469 620158     2014 -->
+					<StandardListItem title="{RegistrationNumber}" id="SapSplVehiclesListItem" class="sapSplVehiclesMasterListItem"
+						description="{parts:[{path:'DevicePublicName'}], formatter:'splReusable.libs.SapSplModelFormatters.descriptionField'}"
+						info="{parts:[{path:'Status.description'},{path:'isDeleted'}],formatter:'splReusable.libs.SapSplModelFormatters.getStatusLabel'}"
+						infoState="{path:'Status',formatter:'splReusable.libs.SapSplModelFormatters.infoState'}">
+					</StandardListItem>
+				</items>
+			</List>
+		</content>
+
+		<footer>
+			<Bar>
+				<contentLeft>
+					<Button icon="sap-icon://settings" visible="false"></Button>
+					<Button text="{splI18NModel>REFRESH_ASSIGNMENT_BUTTON}" id="sapSplRVehiclesButton" press="refreshAssignmentStatus"></Button>
+					
+				</contentLeft>
+				<contentRight>
+					<Button icon="sap-icon://group-2" id="sapSplGroupVehiclesButton" press="openSapSplDeviceSortPopover"></Button>
+					<Button icon="sap-icon://filter" id="sapSplFilterVehiclesButton" press="openSapSplDeviceFilterPopover"></Button>
+					<Button id ="SapSplAddNewTruck" icon="sap-icon://add" press="fireSelectionOfAddTruckMode"></Button>
+				</contentRight>
+			</Bar>
+
+		</footer>
+	</Page>
+</core:View>
+
+
+
+

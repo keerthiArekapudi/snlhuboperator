@@ -1,0 +1,115 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	controllerName="splController.adminConsole.MaintenanceNotifierDetailAddNotification"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="sapSplMaintenanceNotifierDetailAddNotificationPage">
+		<content>
+			<form:SimpleForm class="sapSplAddNotificationFormContent">
+				<form:content>
+					<core:Title id="AddNotificationFormTitle_Content">
+					</core:Title>
+					<Label id="SapSplAddNotificationMessageLabel" required="true">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="1">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+<!--     	CSNFIX : 1570016512 -->
+					<TextArea id="SapSplAddNotificationMessage" liveChange="fnToCaptureLiveChangeToSetFlag"
+						rows="3" width="70%" value="{/Text1}" required="true">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="4">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</TextArea>
+
+					<Label id="SapSplAddNotificationTypeLabel" required="true">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="1">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<Select id="sapSplAddNotificationType" items="{/enum}"
+						required="true" width="40%" change="fnToHandleSelectNotificationType"
+						selectedKey="{/MessageType}">
+						<core:Item key="{Value}" text="{Value.description}" />
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="4">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Select>
+
+				</form:content>
+			</form:SimpleForm>
+
+			<form:SimpleForm class="sapSplAddNotificationFormValidity">
+				<form:content>
+					<core:Title id="AddNotificationFormTitle_Validity">
+					</core:Title>
+					<Label id="SapSplAddNotificationStartTimeLabel" required="true">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="1">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<layout:HorizontalLayout>
+						<DatePicker id="SapSplAddNotificationStartTime" change="fnHandleChangeOfStartDate" valueStateText="{splI18NModel>START_TIME_END_TIME_WARNING}"
+							displayFormat="short" width="100%" dateValue="{/Validity_StartTime}">
+						</DatePicker>
+						<DateTimeInput id="SapSplAddNotificationStartTimeValue" dateValue="{/Validity_StartTime1}" valueStateText="{splI18NModel>START_TIME_END_TIME_WARNING}"
+							change="fnHandleChangeOfStartTime" type="Time" width="100%">
+						</DateTimeInput>
+						<layout:layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="4">
+							</layout:ResponsiveFlowLayoutData>
+						</layout:layoutData>
+					</layout:HorizontalLayout>
+					<Label id="SapSplAddNotificationExpiryTimeLabel" required="true">
+						<layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="1">
+							</layout:ResponsiveFlowLayoutData>
+						</layoutData>
+					</Label>
+					<layout:HorizontalLayout>
+						<DatePicker id="SapSplAddNotificationExpiryTime"
+							change="fnHandleChangeOfExpiryDate" displayFormat="short" width="100%" valueStateText="{splI18NModel>START_TIME_END_TIME_WARNING}"
+							dateValue="{/Validity_EndTime}">
+						</DatePicker>
+						<DateTimeInput id="SapSplAddNotificationExpiryTimeValue" dateValue="{/Validity_EndTime1}" valueStateText="{splI18NModel>START_TIME_END_TIME_WARNING}"
+							change="fnHandleChangeOfExpiryTime" type="Time" width="100%">
+						</DateTimeInput>
+						<layout:layoutData>
+							<layout:ResponsiveFlowLayoutData
+								weight="4">
+							</layout:ResponsiveFlowLayoutData>
+						</layout:layoutData>
+					</layout:HorizontalLayout>
+				</form:content>
+			</form:SimpleForm>
+
+
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button press="fnHandlePressOfAddNotificationSave" id="sapSplAddNotificationSave"
+						type="Emphasized"
+						enabled="{path:'/' , formatter:'splReusable.libs.SapSplModelFormatters.getNotificationSaveButtonEnabled'}"></Button>
+					<Button press="fnHandlePressOfAddNotificationCancel" id="sapSplAddNotificationCancel"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

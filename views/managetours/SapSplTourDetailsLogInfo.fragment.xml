@@ -1,0 +1,28 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Panel width="100%" id="sapSplLogPanel" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Table id="SapSplLogdetails" items="{/data/Log/results}" class="SapSplTourDetailsLogTable"
+		width="97%">
+		<columns>
+			<Column hAlign="Center" width="20%" />
+			<Column hAlign="Center" width="20%" />
+			<Column hAlign="Center" width="60%" />
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Text id="splSapAddFreightItems_Length"
+						text="{path:'ReportedTime',formatter:'splReusable.libs.SapSplModelFormatters.getDateFromStringtoLocaleString'}" />
+					<Text id="splSapLogReportedTime" class="SapSplTourDetailLabel"
+						text="{path:'ReportedTime',formatter:'splReusable.libs.SapSplModelFormatters.returnTimeValue'}" />
+					<Text id="splSapAddFreightItems_Volume"
+						text="{parts:[{path:'EventType'},{path:'StopName'},{path:'EventText'}], formatter:'splReusable.libs.SapSplModelFormatters.displayStopEventText'}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</Panel>

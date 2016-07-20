@@ -1,0 +1,31 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="splController.profile.DeregisterCompanyDetails"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Panel expandable="false"
+		expanded="true">
+		<headerToolbar>
+			<Toolbar>
+				<content>
+					<Label text="{splI18NModel>CONSEQUENCE_OF_TERMINATION}" design="Bold" class="sapSplCompanyProfileCompanyDeregisterConsequenceHeaderLabel"/>
+				</content>
+			</Toolbar>
+		</headerToolbar>
+		<content>
+			<core:Fragment fragmentName="splView.profile.SplCompDeregTaTData"
+				type="XML" />
+			<core:Fragment fragmentName="splView.profile.LocationsObjectData"
+				type="XML" />
+			<core:Fragment fragmentName="splView.profile.SapSplCompDeregBupaData"
+				type="XML" />
+			<core:Fragment fragmentName="splView.profile.SapSplCompDeregUsageLogDetails"
+				type="XML" />
+			<Label text = "{splI18NModel>COMPANY_DELETION_FINAL_CONFIRMATION_LABEL}" design="Bold"/>
+		</content>
+	</Panel>
+</core:View>

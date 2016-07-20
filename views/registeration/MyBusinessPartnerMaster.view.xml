@@ -1,0 +1,42 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="splController.registeration.MyBusinessPartnerMaster" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="MyBusinessPartnerMasterPage" backgroundDesign="Transparent" showNavButton="true" navButtonPress="fnHandleBackNavigation">
+		
+		<subHeader>
+      		<Toolbar>
+        		<SearchField id="sapSplSearchBusinessPartnerMasterList" search="fnToHandleSearchOfMyBusinessPartners" showRefreshButton="true">
+        		</SearchField>
+      		</Toolbar>
+    	</subHeader>
+<!--     	CSNFIX : 0120031469 0000760596 2014 added 'Status' to the path -->
+		<content>			
+			<List items="{path:'/MyBusinessPartners'}" id="myBusinessPartnerList" mode="SingleSelectMaster" 
+				select="onSelectOfContact" growing="true">
+				<items>
+					<StandardListItem id="myBusinessPartnerListItem" title="{Organization_Name}" info="{parts:[{path:'RequestStatus'},{path:'Status'}] , formatter:'splReusable.libs.SapSplModelFormatters.showPendingLabel'}"
+						infoState="Error" description="{parts:[{path:'Description'}], formatter:'splReusable.libs.SapSplModelFormatters.descriptionField'}" icon="{parts:[{path:'ImageUrl'}], formatter:'splReusable.libs.SapSplModelFormatters.getImageUrlForOrganization'}" >
+					</StandardListItem>
+				</items>
+				
+			</List>
+		</content>
+		
+		<footer>
+			<Bar>
+				<contentLeft>
+					<Button press="fire" icon="sap-icon://action-settings" visible="false"></Button>
+				</contentLeft>
+				<contentRight>
+					<Button press="fire" icon="sap-icon://sort" visible="false"></Button>
+					<Button press="fire" icon="sap-icon://filter" visible="false"></Button>
+					<Button id="sapSplAddBusinessPartnerButton" icon="sap-icon://add" press="openActionSheet"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

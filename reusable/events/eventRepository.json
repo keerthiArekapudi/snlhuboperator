@@ -1,0 +1,22 @@
+{
+			"reloadApp" : {
+				"event": "splReusable.events.ReloadAppEvent",
+				"listener" : "splReusable.listeners.ReloadAppEventListener"
+			},
+			"template": {
+				"event" : "splReusable.events.TemplateEvent",
+				"listener" : "splReusable.listeners.TemplateEventListener"
+			},
+			"sessiontimeout": {
+				"event" : "splReusable.events.SessionTimeoutEvent",
+				"listener" : "splReusable.listeners.SessionTimeoutEventListener"
+			},
+			"startPolling": {
+				"event" : "splReusable.events.StartPollingEvent",
+				"listener" : "splReusable.listeners.StartPollingEventListener"
+			},
+			"stopPolling": {
+				"event" : "splReusable.events.StopPollingEvent",
+				"listener" : "splReusable.listeners.StopPollingEventListener"
+			}
+	}

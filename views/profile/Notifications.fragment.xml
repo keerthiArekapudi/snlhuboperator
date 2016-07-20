@@ -1,0 +1,28 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Grid defaultSpan="L12 M12 S12" width="auto" xmlns="sap.ui.layout">
+	<VerticalLayout id="sapSplNotifications" width="100%"
+		xmlns="sap.ui.layout">
+		<layoutData xmlns="sap.ui.layout">
+			<GridData span="L6 M12 S12" xmlns="sap.ui.layout" />
+		</layoutData>
+		<Panel id="ThemePanel" xmlns="sap.m" headerText="{splI18NModel>USER_THEME}">
+			<content xmlns="sap.m">
+				<Grid width="auto" id="sapSclThemeGridLayout" xmlns="sap.ui.layout"
+					content="{/}" class="sapSplThemePreferenceLayout">
+					<content>
+						<VerticalLayout id="vLayoutThemeOption" xmlns="sap.ui.layout">
+							<RadioButton xmlns="sap.m" text="{Value_description}" selected="{parts:[{path:'isSelected'}],formatter:'splReusable.libs.SapSplModelFormatters.showFreightForwarderSpecificIconTabFilter'}" select="fnHandleSelectOfTheme">
+							</RadioButton>
+							<Image xmlns="sap.m" src="{parts:[{path:'Value'}],formatter:'splReusable.libs.SapSplModelFormatters.getThemeIcon'}">
+							</Image>
+						</VerticalLayout>
+					</content>
+				</Grid>
+			</content>
+		</Panel>
+	</VerticalLayout>
+</Grid>

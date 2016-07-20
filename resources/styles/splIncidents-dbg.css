@@ -1,0 +1,119 @@
+/**
+ * Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+ */
+.incidentsMapHLayout .sapUiHLayoutChildWrapper {
+	width: 51%;
+}
+
+.incidentsMapHLayout {
+	width: 100%;
+}
+
+.noDataLabel {
+	position: fixed;
+	top: 50%;
+	left: 55%;
+}
+
+.incidentsDetailVLayout {
+	margin: 0% 2% 2% 2%;
+}
+
+.incidentsDetailVLayout .sapUiRFL {
+	background: transparent;
+}
+
+.sapSplIncidentsDetailFormLabel {
+	margin-top: 1em;
+}
+
+.sapSplIncidentsGroupPopover {
+	margin-right: 1em;
+}
+
+/* CSNFIX 0120061532 1313985    2014 */
+
+.incidentsMapPlaceHolderDisplay {
+	position: absolute;
+	margin-top: 4.5em;
+	margin-left: 1em;
+	width: 38% !important;
+	height: 10.2em !important;
+	border: solid black 1px;
+}
+
+/* CSNFIX 0120061532 1313985    2014 */
+
+.incidentsMapPlaceHolderEdit {
+	position: absolute;
+	margin-top: 4.5em;
+	margin-left: 1em;
+	width: 38% !important;
+	height: 14.2em !important;
+	border: solid black 1px;
+}
+
+.SapSplIncidentInputClass .sapMInputBaseReadonlyInner {
+	word-break: break-word;
+	padding: 0rem !important;
+}
+
+.SapSplGeofenceToIncidentAssignmentSelectDialog .sapMDialogScrollCont {
+	padding: 0rem !important;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.SapSplGeofenceToIncidentAssignmentSelectDialog .sapMDialogScroll {
+	height: 26em !important;
+	-webkit-box-sizing: border-box;
+}
+
+.SapSplGeofenceToIncidentAssignmentSelectDialog .sapMNav {
+	height: 100%;
+}
+
+.SapSplDeleteGeofenceAssignmentButton {
+	margin-top: -1em;
+	height: 2rem !important;
+}
+
+.SapSplIncidentsDetailPageForm h5 {
+	width: 185%;
+}
+
+.incidentsAssignedGeoFenceTable {
+	margin-top: 1rem;
+}
+
+.incidentsAssignedGeoFenceTable .sapMListTbl {
+	width: 97%;
+	margin-left: 2em;
+	margin-top: 0.5em;
+}
+
+.SapSplFilterDialog .sapMDialogScrollCont {
+	padding: 0em !important;
+}
+
+.incidentsMapPlaceHolder .vbi-scrollarea {
+	display: none !important;
+}
+
+.incidentsMapPlaceHolder .vbi-cursor-grip {
+	display: none !important;
+}
+
+.incidentsMapPlaceHolder .vbi-cursor {
+	display: none !important;
+}
+
+.assignGeofencesDialog>section {
+	height: 30em !important;
+}
+
+.sapSplIncidentsAssignGeofenceButton {
+	margin-left: 2em;
+	margin-top: 0.5em;
+}

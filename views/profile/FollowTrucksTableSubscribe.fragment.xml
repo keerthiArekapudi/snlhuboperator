@@ -1,0 +1,50 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Table id="sapSplFollowTrucksTab" xmlns="sap.m" items="{path:'/MyTrackableObjects', parameters: {countMode:'Inline'}}" growing="true">								
+	<headerToolbar xmlns="sap.m">
+      <Toolbar xmlns="sap.m">
+        <Text id="sapSclFollowTrucksTableHeaderText" xmlns="sap.m"/>
+        <ToolbarSpacer xmlns="sap.m" ></ToolbarSpacer>
+        
+        <SearchField id="sapSclFollowTrucksSearchField" class="sapSclFollowTrucksSearchField" search="fnToHandleSearchOfFollowTrucks" showRefreshButton="true" xmlns="sap.m"
+        refreshButtonTooltip ="{splI18NModel>REFRESH_BUTTON_TOOLTIP}">
+        </SearchField>
+        
+        <Button id="sapSclFollowTrucksGrouping" icon="sap-icon://group-2" press="fnHandleFollowTrucksViewSettingDialog" xmlns="sap.m" tooltip="{splI18NModel>GROUPBY_BUTTON_TOOLTIP}" />
+        <Button id="sapSclFollowTrucksFilter" icon="sap-icon://filter" press="fnHandleFollowTrucksViewSettingDialog" xmlns="sap.m" tooltip="{splI18NModel>FILTER_BUTTON_TOOLTIP}" />							        
+      	</Toolbar>
+	</headerToolbar>
+	<columns>
+         <Column xmlns="sap.m">
+         	<Text text="{splI18NModel>REGISTRATION_NUMBER}" xmlns="sap.m"/>
+         </Column>
+         <Column xmlns="sap.m">
+         	<Text text="{splI18NModel>OWNERSHIP_TYPE}" xmlns="sap.m"/>
+         </Column>
+         <Column hAlign="Right" xmlns="sap.m">
+         	<Text text="{splI18NModel>STATUS}" xmlns="sap.m"/>
+         </Column>
+         <Column hAlign="Right" xmlns="sap.m" id="sapSplFollowTrucksSubscribeText">
+         	<!-- Fix incident 1580101642 -->
+         	<Text text="{splI18NModel>SUBSCRIBED}" xmlns="sap.m"/>
+         </Column>
+         <Column hAlign="Right" xmlns="sap.m" visible="false" id="sapSplFollowTrucksSubscribeCheckBox">
+         	<Text text="{splI18NModel>SUBSCRIBE}" xmlns="sap.m"/>
+         </Column>
+    </columns>
+    <items>
+    	<ColumnListItem id="sapSclFollowTrucksCloumnListItem" class = "sapSclFollowTrucksColumnListItems" visible="{parts:[{path:'Status'},{path:'isDeleted'},{path:'isSharedWithMyOrg'}],formatter:'splReusable.libs.SapSplModelFormatters.setTrucksListEnabledBasedOnStatus'}">
+         	<cells>
+           		<Link text="{RegistrationNumber}" emphasized="true" press="fnHandleRegistrationNumberLink"/>
+           		<Text text="{parts:[{path:'isSharedWithMyOrg'}],formatter:'splReusable.libs.SapSplModelFormatters.showOwnershipTypeText'}" />
+           		<Text text="{parts:[{path:'Status.description'},{path:'isDeleted'}],formatter:'splReusable.libs.SapSplModelFormatters.showStatusText'}" />
+           		<Text text="{parts:[{path:'isSubscribed'},{path:'Status'},{path:'isDeleted'}],formatter:'splReusable.libs.SapSplModelFormatters.showIsSubscribeText'}" />
+           		<CheckBox selected="{parts:[{path:'isSubscribed'},{path:'Status'},{path:'isDeleted'}],formatter:'splReusable.libs.SapSplModelFormatters.getEnableForSubscribeCheckBox'}" 
+           		select="fnHandleSelectOfCheckBox" />       		      		
+         	</cells>
+       	</ColumnListItem>
+     </items>
+</Table>

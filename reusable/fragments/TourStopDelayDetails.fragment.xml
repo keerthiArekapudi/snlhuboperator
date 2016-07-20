@@ -1,0 +1,36 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+	<ResponsivePopover id="SapSclTourDelayDetailsPopoverTitle" placement="Auto" modal="false">
+		<endButton>
+			<Button id="SapSclTourDelayDetailsPopoverCloseButton" press="fnHandleTourDelayDetailsPopoverCloseButton" />
+		</endButton>
+		<content>
+			<Table id="SapSclTourDelayDetailsTable" inset="false" width="20em" items="{/results}">
+				<columns>
+					<Column>
+						<Label id="SapSclTourDelayDetailsTableArrival" design="Bold"/>
+					</Column>
+					<Column >
+						<Label id="SapSclTourDelayDetailsTableDeparture" design="Bold"/>
+					</Column>					
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{path:'ArrivalDelay',formatter:'splReusable.libs.SapSplModelFormatters.getStopDelayInMinutesForPopup'}" />
+							<Text text="{path:'DepartureDelay',formatter:'splReusable.libs.SapSplModelFormatters.getStopDelayInMinutesForPopup'}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</ResponsivePopover>
+
+</core:FragmentDefinition>
+

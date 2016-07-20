@@ -1,0 +1,54 @@
+<!--
+
+    Copyright (C) 2009-2015 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns="sap.m"
+	controllerName="splController.dialogs.SplChangeSubScriptionPromptDialog"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<l:VerticalLayout>
+		<l:content>
+			<l:Grid defaultSpan="L12 M12 S12" width="auto">
+				<l:content>
+				<!-- 				Fix for Incident : 1482012129 - added a style class -->
+					<f:SimpleForm id="splChangeSubscriptionPromptDialogContent" class="splChangeTourPromptDialogContentForm"
+						minWidth="1024" maxContainerCols="2" layout="ResponsiveGridLayout"
+						title="{splI18NModel>PAYMENT_TERMS_CONDITIONS_PANEL_HEADER}"
+						labelSpanL="3" labelSpanM="3" emptySpanL="0" emptySpanM="0"
+						columnsL="0" columnsM="0">
+						<f:content>
+
+							<Label text="{splI18NModel>SELECTED_SUBSCRIPTION}">
+								<layoutData>
+									<l:GridData span="L4 M4 S12"/>
+								</layoutData>
+							</Label>
+							<Text id="sapSplSelectedSubscriptionValueLabel" text="DUMMY"
+								design="Bold" class="sapSplCompanyProfileCompanyDeregisterBoldText">
+								<layoutData>
+									<l:GridData span="L8 M8 S12"/>
+								</layoutData>
+							</Text>
+
+						</f:content>
+					</f:SimpleForm>
+					<Text text="{splI18NModel>MESSAGE_TOBE_SEEN_ON_RESTART_LABEL}"
+						class="sapSplComProfSubScripChangeWarningMessageText">
+						<layoutData>
+							<l:GridData span="L10 M10 S12" />
+						</layoutData>
+					</Text>
+					<core:HTML src="&lt;br&gt;" />
+					<l:HorizontalLayout style="padding-top:1.37rem;">
+						<l:content>
+							<CheckBox id="sapSplComProfSubScriptChangeAcceptCheckBox" select="handleSubScriptionWarningAccepted" class="sapSplComProfSubScriptChangeAcceptanceCheckBox" text="{splI18NModel>AGREE_TO_SUBSCRIPTION_CHANGE_CHECKBOX}" />
+<!-- 							<Text maxLines="2" width="90%" -->
+<!-- 								text="{splI18NModel>AGREE_TO_SUBSCRIPTION_CHANGE_CHECKBOX}" /> -->
+						</l:content>
+					</l:HorizontalLayout>
+				</l:content>
+			</l:Grid>
+		</l:content>
+	</l:VerticalLayout>
+</core:View>
